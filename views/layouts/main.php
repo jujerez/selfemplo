@@ -9,6 +9,7 @@ use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
 use yii\bootstrap4\Breadcrumbs;
 use app\assets\AppAsset;
+use yii\bootstrap4\Button;
 
 AppAsset::register($this);
 ?>
@@ -42,8 +43,9 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+         
+            ['label' => 'Registrarse', 'url' => ['/usuarios/registrar'], 'options' => ['class' => 'btn btn-sm btn-success p-0 text-white']],
+            
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
@@ -57,7 +59,11 @@ AppAsset::register($this);
                 . '</li>'
             )
         ],
+
+       
     ]);
+
+    
     NavBar::end();
     ?>
 
