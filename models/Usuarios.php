@@ -209,11 +209,19 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
                 $security = Yii::$app->security;
                 $this->auth_key = $security->generateRandomString();
                 $this->password = $security->generatePasswordHash($this->password);
+                $this->token_acti = $security->generateRandomString();
             }
         }
 
         return true;
     }
+
+   
+    public function getCuentaActivada()
+    {
+        return $this->token_acti === null;
+    }
+
 
 
 }
