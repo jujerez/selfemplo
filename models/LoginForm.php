@@ -32,7 +32,29 @@ class LoginForm extends Model
             ['rememberMe', 'boolean'],
             // password is validated by validatePassword()
             ['password', 'validatePassword'],
+            ['username', 'validateCuenta'],
         ];
+    }
+
+    /**
+     * Comprueba si la cuenta del usuario está activada o no.
+     * @param  string $attribute  El atributo que se está validando.
+     * @param  array  $params     the additional name-value pairs given in the rule
+     */
+    public function validateCuenta($attribute, $params)
+    {
+        $usuario = Usuarios::findOne(['nombre'=>$this->username]);
+
+        if ($usuario!==null) {
+       
+            if (!$usuario->cuentaActivada) {
+                $this->addError(
+                    $attribute,
+                    'Para iniciar sesión deberá activar su cuenta por correo electronico '
+        
+                );
+            }
+        }
     }
 
     /**
