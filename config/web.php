@@ -7,6 +7,7 @@ $log = require __DIR__ . '/log.php';
 $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
+    'name' => 'Selfemplo',
     'bootstrap' => ['log'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
