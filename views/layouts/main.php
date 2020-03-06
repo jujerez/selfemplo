@@ -43,9 +43,11 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
-         
-            ['label' => 'Registrarse', 'url' => ['/usuarios/registrar'], 'options' => ['class' => 'btn btn-sm btn-success p-0 text-white']],
+
+            Yii::$app->user->isGuest 
             
+            ? (['label' => 'Registrarse', 'url' => ['/usuarios/registrar'], 'options' => ['class' => 'btn btn-sm btn-success p-0 text-white']])
+            : (''),
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
@@ -53,7 +55,7 @@ AppAsset::register($this);
                 . Html::beginForm(['/site/logout'], 'post')
                 . Html::submitButton(
                     'Cerrar sesión (' . Yii::$app->user->identity->nombre . ')',
-                    ['class' => 'btn btn-dark nav-link logout']
+                    ['class' => 'btn btn-primary nav-link logout']
                 )
                 . Html::endForm()
                 . '</li>'
