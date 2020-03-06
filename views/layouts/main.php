@@ -27,7 +27,7 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-<div class="wrap mb-5">
+<div class="wrap">
     <?php
     NavBar::begin([
         'brandLabel' => Html::img('@web/img/selfemployed.png', ['alt'=>Yii::$app->name, 'style'=>['height'=>'40px']]),
@@ -70,7 +70,7 @@ AppAsset::register($this);
     ?>
 
     <div class="container-fluid">
-        <div class="container mt-5">
+        <div class="container mt-5 pt-4">
             
             <?= Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],

@@ -13,8 +13,9 @@ $this->title = 'My Yii Application';
             <h1 class="display-4 ">Contrata  profesionales</h1>
             <p class="lead">Millones de personas utilizan selfemplo.com para hacer realidad sus ideas</p>
             <div class="mt-2">
-                <?= Html::button('Quiero contratar',['class' => 'btn btn-warning']) ?> 
-                <?= Html::button('Quiero trabajar',['class' => 'btn  btn-outline-light']) ?> 
+            
+                <?= Html::a('Quiero contratar', ['/empleos/create'], ['class' => 'btn  btn-outline-light']) ?> 
+                <?= Html::a('Quiero trabajar', ['/empleos/index'], ['class' => 'btn  btn-outline-light']) ?> 
                 
             </div>
 
