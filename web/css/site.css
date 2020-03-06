@@ -99,3 +99,34 @@ a.desc:after {
 .nav > li > form > button.logout:hover {
     background-color: transparent;
 }
+
+
+/* Mi css*/
+.jumbotron {
+    background: url('../img/bg-jumbotron.jpg') no-repeat center center;
+    height: 100vh;
+    color: white;
+    text-shadow: #444 0 1px 1px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.btn-warning {
+    background-color: #fc8c14 !important;
+    color: white;
+}
+
+.btn-warning:hover {
+    color: white;
+    
+    
+}

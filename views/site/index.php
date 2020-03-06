@@ -2,19 +2,28 @@
 
 /* @var $this yii\web\View */
 
+use yii\helpers\Html;
+
 $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
+    <div class="jumbotron jumbotron-fluid  ">
+        <div class=" align-self-center ">
+            <h1 class="display-4 ">Contrata  profesionales</h1>
+            <p class="lead">Millones de personas utilizan selfemplo.com para hacer realidad sus ideas</p>
+            <div class="mt-2">
+                <?= Html::button('Quiero contratar',['class' => 'btn btn-warning']) ?> 
+                <?= Html::button('Quiero trabajar',['class' => 'btn  btn-outline-light']) ?> 
+                
+            </div>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+        </div>
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
     </div>
 
-    <div class="body-content">
+
+    <div class="body-content container">
 
         <div class="row">
             <div class="col-xl-4">

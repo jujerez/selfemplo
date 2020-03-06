@@ -27,13 +27,13 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-<div class="wrap">
+<div class="wrap mb-5">
     <?php
     NavBar::begin([
-        'brandLabel' => Yii::$app->name,
+        'brandLabel' => Html::img('@web/img/selfemployed.png', ['alt'=>Yii::$app->name, 'style'=>['height'=>'40px']]),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-light bg-light navbar-expand-md shadow fixed-top',
+            'class' => 'navbar-light bg-light navbar-expand-md shadow fixed-top ',
         ],
         'collapseOptions' => [
             'class' => 'justify-content-end',
@@ -46,10 +46,10 @@ AppAsset::register($this);
 
             Yii::$app->user->isGuest 
             
-            ? (['label' => 'Registrarse', 'url' => ['/usuarios/registrar'], 'options' => ['class' => 'btn btn-sm btn-success p-0 text-white']])
+            ? (['label' => 'Registrarse', 'url' => ['/usuarios/registrar'], 'options' => ['class' => ' p-0 text-white']])
             : (''),
             Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
+                ['label' => 'Entrar', 'url' => ['/site/login']]
             ) : (
                 '<li class="nav-item">'
                 . Html::beginForm(['/site/logout'], 'post')
@@ -69,11 +69,14 @@ AppAsset::register($this);
     NavBar::end();
     ?>
 
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
+    <div class="container-fluid">
+        <div class="container mt-5">
+            
+            <?= Breadcrumbs::widget([
+                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            ]) ?>
+            <?= Alert::widget() ?>
+        </div>
         <?= $content ?>
     </div>
 </div>
