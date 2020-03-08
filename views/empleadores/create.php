@@ -9,7 +9,7 @@ $this->title = 'Create Empleadores';
 $this->params['breadcrumbs'][] = ['label' => 'Empleadores', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="empleadores-create">
+<div class="empleadores-create container">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

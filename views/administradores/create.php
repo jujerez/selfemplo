@@ -9,7 +9,7 @@ $this->title = 'Create Administradores';
 $this->params['breadcrumbs'][] = ['label' => 'Administradores', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="administradores-create">
+<div class="administradores-create container">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
