@@ -76,10 +76,10 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
      *
      * @return \yii\db\ActiveQuery
      */
-    /*public function getAdministradores()
+    public function getAdministradores()
     {
         return $this->hasOne(Administradores::className(), ['usuario_id' => 'id']);
-    }*/
+    }
 
     /**
      * Gets query for [[Comentarios]].
@@ -106,10 +106,10 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
      *
      * @return \yii\db\ActiveQuery
      */
-    /*public function getEmpleadores()
+    public function getEmpleadores()
     {
         return $this->hasOne(Empleadores::className(), ['usuario_id' => 'id']);
-    }*/
+    }
 
     /**
      * Gets query for [[Empleos]].
@@ -136,10 +136,10 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
      *
      * @return \yii\db\ActiveQuery
      */
-    /*public function getProfesionales()
+    public function getProfesionales()
     {
         return $this->hasOne(Profesionales::className(), ['usuario_id' => 'id']);
-    }*/
+    }
 
     /**
      * Gets query for [[Votos]].
@@ -216,12 +216,59 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
         return true;
     }
 
+    public function afterSave($insert, $changedAttributes)
+    {
+        Yii::debug($insert);
+        if ($insert) {
+            if ($this->rol == '0') {
+                $q = (new Profesionales([
+                    'usuario_id' => $this->id,
+                    'nombre' => $this->nombre,
+                    'apellidos' => 'xxxx',
+                    'telefono' => 'xxxx',
+                    'direccion' => 'xxxx',
+                    'slogan' => 'xxxx',
+                    'poblacion_id' => 1,
+                    'profesion_id' => 1,
+                ]))->save();
+
+                    // if ($q) {
+
+                    //     Yii::$app->session->setFlash('success', 'Completa tu perfil de profesional');
+                    // } else {
+                    //     Yii::$app->session->setFlash('danger', 'No se creo el perfil de profesional');
+
+                    // }
+
+
+            } elseif ($this->rol == '1') {
+                (new Empleadores([
+                    'usuario_id' => $this->id,
+                    'nombre' => $this->nombre,
+                    'apellidos' => 'xxx',
+                    'telefono' => 'xxx',
+                    'direccion' => 'xxx',
+                    'poblacion_id' => 1,
+                ]))->save();
+                    
+                } else {
+                    (new Administradores([
+                        'usuario_id' => $this->id,
+                        'nombre' => $this->nombre,
+                        'apellidos' => 'xxx',
+                        'telefono' => 'xxx',
+                        'direccion' => 'xxx',
+                        'poblacion_id' => 1,
+                    ]))->save();
+                        
+            }
+        }
+    }
+
+
    
     public function getCuentaActivada()
     {
         return $this->token_acti === null;
     }
-
-
-
 }

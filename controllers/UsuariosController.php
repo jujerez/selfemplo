@@ -51,7 +51,6 @@ class UsuariosController extends Controller
             )
             ->send();
 
-
             return $this->redirect(['site/login']);
         }
 
@@ -73,6 +72,7 @@ class UsuariosController extends Controller
      */
     public function actionValidarCorreo($token_acti)
     {
+        
         if (($usuario = Usuarios::findOne(['token_acti'=>$token_acti])) !== null) {
             $usuario->token_acti = null;
             $usuario->save();    
@@ -81,8 +81,18 @@ class UsuariosController extends Controller
             Yii::$app->session->setFlash('danger',  'Su cuenta de  correo electrónico ya se verifico anteriormente');
                     
         }
+        if ($usuario['rol'] == '0') {
 
-        return $this->redirect(['site/login', 'verificado' => 1]);
+            return $this->redirect(['site/login', 'pro-verifi' => 1]);
+
+        } elseif ($usuario['rol'] == '1') {
+
+            return $this->redirect(['site/login', 'emple-verifi' => 1]);
+            
+        } else {
+            
+            return $this->redirect(['site/login', 'admin-verifi' => 1]);
+        }
     }
 
 
