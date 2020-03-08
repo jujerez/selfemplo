@@ -7,38 +7,54 @@
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
 
-$this->title = 'Login';
+$this->title = 'Iniciar sesión';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-login container">
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="site-login container ">
+    <div class="row justify-content-center align-items-center">
 
-    <p>Please fill out the following fields to login:</p>
+    
+        <div class="col-md-6 col-sm-12 borde-sombreado pt-3 m-3 redondeado gris">
+            <div class="col-12">
 
-    <?php $form = ActiveForm::begin([
-        'id' => 'login-form',
-        'layout' => 'horizontal',
-        'fieldConfig' => [
-            'horizontalCssClasses' => ['wrapper' => 'col-sm-5'],
-        ],
-    ]); ?>
+                <h1 class="text-center"><?= Html::encode($this->title) ?></h1>
+                <hr>
 
-        <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+                <?php $form = ActiveForm::begin([
+                    'id' => 'login-form',
+                    'layout' => 'horizontal',
+                    
+                    'fieldConfig' => [
+                        'horizontalCssClasses' => ['wrapper' => 'col-12'],
+                        
+                    ],
+                ]); ?>
+                    <div class="form-group">
 
-        <?= $form->field($model, 'password')->passwordInput() ?>
+                        <?= $form->field($model, 'username')->textInput(['autofocus' => true])->label('Usuario') ?>
+                    </div>
 
-        <?= $form->field($model, 'rememberMe')->checkbox() ?>
+                    <div class="form-group">
+                                                        
+                         <?= $form->field($model, 'password')->passwordInput()->label('Contraseña') ?>
+            
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="">
+                            <?= $form->field($model, 'recordarme',)->checkbox() ?>
 
-        <div class="form-group">
-            <div class="offset-sm-2">
-                <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                            <?= Html::submitButton('Entrar', ['class' => 'btn btn-warning w-100', 'name' => 'login-button']) ?>
+                        </div>
+                        
+    
+                    </div>
+
+                <?php ActiveForm::end(); ?>
             </div>
+            
         </div>
-
-    <?php ActiveForm::end(); ?>
-
-    <div class="offset-sm-2" style="color:#999;">
-        You may login with <strong>admin/admin</strong> or <strong>demo/demo</strong>.<br>
-        To modify the username/password, please check out the code <code>app\models\User::$users</code>.
     </div>
+
+  
 </div>

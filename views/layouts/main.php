@@ -70,22 +70,21 @@ AppAsset::register($this);
     ?>
 
     <div class="container-fluid">
-        <div class="container mt-5 pt-4">
-            
+        <div class="container migas">
             <?= Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-            ]) ?>
+                ]) 
+            ?>
             <?= Alert::widget() ?>
         </div>
         <?= $content ?>
     </div>
 </div>
 
-<footer class="footer">
+<footer class="footer bg-dark">
     <div class="container">
-        <p class="float-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="text-center text-white">&copy; Selfemplo <?= date('Y')?> | Todos los derechos reservados</p>
 
-        <p class="float-right"><?= Yii::powered() ?></p>
     </div>
 </footer>
 
