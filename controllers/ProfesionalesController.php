@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Profesionales;
 use app\models\ProfesionalesSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -19,13 +20,52 @@ class ProfesionalesController extends Controller
      */
     public function behaviors()
     {
+        
         return [
+            
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                    
                 ],
             ],
+
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['create','index','update'],
+                'rules' => [
+                
+                    [
+                        'allow' => true,
+                        'actions' => ['create', 'index'],
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action ) {
+                            return Yii::$app->user->identity->rol === '2';
+                        }
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['update'],
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action ) {
+                            
+                            return Yii::$app->request->get('id') == Yii::$app->user->identity->id ;
+                        }
+                    ],
+                    // Solo usuarios-profesionales 
+                    [
+                        'allow' => true,
+                        'actions' => ['update'],
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action ) {
+                            return Yii::$app->user->identity->rol === '0';
+                        }
+                    ],
+                ],
+            ],
+
+          
         ];
     }
 

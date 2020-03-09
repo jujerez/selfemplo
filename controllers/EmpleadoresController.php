@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Empleadores;
 use app\models\EmpleadoresSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -24,6 +25,41 @@ class EmpleadoresController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                ],
+            ],
+
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['create','index','update'],
+                'rules' => [
+                
+                    [
+                        'allow' => true,
+                        'actions' => ['create', 'index'],
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action ) {
+                            return Yii::$app->user->identity->rol === '2';
+                        }
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['update'],
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action ) {
+                            
+                            return Yii::$app->request->get('id') == Yii::$app->user->identity->id ;
+                        }
+                    ],
+
+                    // Solo usuarios-empleadores
+                    [
+                        'allow' => true,
+                        'actions' => ['update'],
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action ) {
+                            return Yii::$app->user->identity->rol === '1';
+                        }
+                    ],
                 ],
             ],
         ];
