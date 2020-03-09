@@ -39,6 +39,7 @@ class Empleadores extends \yii\db\ActiveRecord
             [['usuario_id', 'poblacion_id'], 'integer'],
             [['created_at'], 'safe'],
             [['nombre', 'apellidos', 'telefono', 'direccion'], 'string', 'max' => 255],
+            
             [['usuario_id'], 'unique'],
             [['poblacion_id'], 'exist', 'skipOnError' => true, 'targetClass' => Poblaciones::className(), 'targetAttribute' => ['poblacion_id' => 'id']],
             [['usuario_id'], 'exist', 'skipOnError' => true, 'targetClass' => Usuarios::className(), 'targetAttribute' => ['usuario_id' => 'id']],

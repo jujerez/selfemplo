@@ -6,6 +6,16 @@ use yii\bootstrap4\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Administradores */
 /* @var $form yii\bootstrap4\ActiveForm */
+
+    $js = <<<EOT
+    document.getElementById('administradores-nombre').value = '';
+    document.getElementById('administradores-apellidos').value = '';
+    document.getElementById('administradores-telefono').value = ''; 
+    EOT;
+    if(isset(Yii::$app->request->get()['admin-mod'])) {
+    unset(Yii::$app->request->get()['admin-mod']);
+    $this->registerJs($js);
+    }
 ?>
 
 <div class="administradores-form">

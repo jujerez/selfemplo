@@ -6,6 +6,16 @@ use yii\bootstrap4\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Profesionales */
 /* @var $form yii\bootstrap4\ActiveForm */
+
+$js = <<<EOT
+    document.getElementById('profesionales-nombre').value = '';
+    document.getElementById('profesionales-apellidos').value = '';
+    document.getElementById('profesionales-telefono').value = ''; 
+EOT;
+if(isset(Yii::$app->request->get()['pro-mod'])) {
+    unset(Yii::$app->request->get()['pro-mod']);
+    $this->registerJs($js);
+}
 ?>
 
 <div class="profesionales-form">

@@ -224,22 +224,11 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
                 $q = (new Profesionales([
                     'usuario_id' => $this->id,
                     'nombre' => $this->nombre,
-                    'apellidos' => 'xxxx',
-                    'telefono' => 'xxxx',
-                    'direccion' => 'xxxx',
-                    'slogan' => 'xxxx',
+                    'apellidos' => 'xxx',
+                    'telefono' => 'xxx',
                     'poblacion_id' => 1,
                     'profesion_id' => 1,
                 ]))->save();
-
-                    // if ($q) {
-
-                    //     Yii::$app->session->setFlash('success', 'Completa tu perfil de profesional');
-                    // } else {
-                    //     Yii::$app->session->setFlash('danger', 'No se creo el perfil de profesional');
-
-                    // }
-
 
             } elseif ($this->rol == '1') {
                 (new Empleadores([
@@ -247,7 +236,6 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
                     'nombre' => $this->nombre,
                     'apellidos' => 'xxx',
                     'telefono' => 'xxx',
-                    'direccion' => 'xxx',
                     'poblacion_id' => 1,
                 ]))->save();
                     
@@ -257,7 +245,6 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
                         'nombre' => $this->nombre,
                         'apellidos' => 'xxx',
                         'telefono' => 'xxx',
-                        'direccion' => 'xxx',
                         'poblacion_id' => 1,
                     ]))->save();
                         

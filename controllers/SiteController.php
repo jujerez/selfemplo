@@ -82,19 +82,19 @@ class SiteController extends Controller
 
                 unset(Yii::$app->request->get()['pro-verifi']);
                 Yii::$app->session->setFlash('success', 'Completa tu perfil de profesional');
-                return $this->redirect(['profesionales/update', 'id' => Yii::$app->user->identity->id ]);
+                return $this->redirect(['profesionales/update', 'id' => Yii::$app->user->identity->id, 'pro-mod' => 1 ],);
 
             } elseif (Yii::$app->user->identity->rol == '1' && isset(Yii::$app->request->get()['emple-verifi'])) {
 
                 unset(Yii::$app->request->get()['emple-verifi']);
                 Yii::$app->session->setFlash('success', 'Completa tu perfil de empleador');
-                return $this->redirect(['empleadores/update', 'id' => Yii::$app->user->identity->id ]);
+                return $this->redirect(['empleadores/update', 'id' => Yii::$app->user->identity->id, 'emple-mod' => 1 ]);
 
             } elseif (Yii::$app->user->identity->rol == '2' && isset(Yii::$app->request->get()['admin-verifi'])) {
 
                 unset(Yii::$app->request->get()['admin-verifi']);
                 Yii::$app->session->setFlash('success', 'Completa tu perfil de administrador');
-                return $this->redirect(['administradores/update', 'id' => Yii::$app->user->identity->id ]);
+                return $this->redirect(['administradores/update', 'id' => Yii::$app->user->identity->id, 'admin-mod' => 1 ]);
             } else {
 
                 return $this->goBack();
