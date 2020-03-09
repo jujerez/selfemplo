@@ -41,6 +41,16 @@ class EmpleadoresController extends Controller
                             return Yii::$app->user->identity->rol === '2';
                         }
                     ],
+
+                     // Solo usuarios-empleadores
+                     [
+                        'allow' => true,
+                        'actions' => ['update'],
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action ) {
+                            return Yii::$app->user->identity->rol === '1';
+                        }
+                    ],
                     [
                         'allow' => true,
                         'actions' => ['update'],
@@ -51,15 +61,7 @@ class EmpleadoresController extends Controller
                         }
                     ],
 
-                    // Solo usuarios-empleadores
-                    [
-                        'allow' => true,
-                        'actions' => ['update'],
-                        'roles' => ['@'],
-                        'matchCallback' => function ($rule, $action ) {
-                            return Yii::$app->user->identity->rol === '1';
-                        }
-                    ],
+                   
                 ],
             ],
         ];
