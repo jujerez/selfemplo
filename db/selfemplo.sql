@@ -70,7 +70,7 @@ CREATE TABLE profesionales
     , telefono                 VARCHAR(255) NOT NULL
     , direccion                VARCHAR(255) 
     , slogan                   VARCHAR(255)
-    , created_at               TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+    , created_at               TIMESTAMP(0) DEFAULT CURRENT_TIMESTAMP
     , poblacion_id             BIGINT       NOT NULL REFERENCES poblaciones (id)
                                             ON DELETE CASCADE ON UPDATE CASCADE
     , profesion_id             BIGINT       NOT NULL REFERENCES profesiones (id)

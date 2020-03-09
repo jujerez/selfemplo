@@ -42,29 +42,51 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
+            ['label' => 'Inicio', 'url' => ['/site/index']],
 
             Yii::$app->user->isGuest 
+            ? (['label' => 'Entrar', 'url' => ['site/login']])
+            : '',
+            Yii::$app->user->isGuest 
+            ? (['label' => 'Registrarse', 'url' => ['usuarios/registrar']])
+            : '',
+
+            !Yii::$app->user->isGuest 
+            ? 
+                (['label' => 'Mi perfil', 
+                    'items' => [
+                        Yii::$app->user->isGuest ? (['label' => 'Login', 'url' => ['/site/login']]) 
+                        : (
+                            Html::beginForm(['/site/logout'], 'post')
+                        . Html::submitButton(
+                                'Cerrar sesión (' . Yii::$app->user->identity->nombre . ')',
+                                ['class' => 'dropdown-item'],
+                            )
+                            . Html::endForm()
+                            ),
+
+                            (Yii::$app->user->identity->rol == '0') 
+                            ? (['label' => 'Modificar mi perfil', 'url' => ['profesionales/update', 'id' => Yii::$app->user->identity->id],])
+                            : (['label' => 'Modificar mi perfil', 'url' => ['empleadores/update', 'id' => Yii::$app->user->identity->id],]) ,
+
+                            (Yii::$app->user->identity->rol == '0') 
+                            ? (['label' => 'Ver mi perfil', 'url' => ['profesionales/view', 'id' => Yii::$app->user->identity->id],])
+                            : (['label' => 'Ver mi perfil', 'url' => ['empleadores/view', 'id' => Yii::$app->user->identity->id],]),
+
+                            (Yii::$app->user->identity->rol == '0') 
+                            ? (['label' => 'Ver empleos', 'url' => ['empleos/index'],])
+                            : '' ,
+
+
+
             
-            ? (['label' => 'Registrarse', 'url' => ['/usuarios/registrar'], 'options' => ['class' => ' p-0 text-white']])
-            : (''),
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Entrar', 'url' => ['/site/login']]
-            ) : (
-                '<li class="nav-item">'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Cerrar sesión (' . Yii::$app->user->identity->nombre . ')',
-                    ['class' => 'btn btn-primary nav-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
+                
+                        ],
+                    ])
+            : '',
+            
         ],
-
-       
     ]);
-
     
     NavBar::end();
     ?>
