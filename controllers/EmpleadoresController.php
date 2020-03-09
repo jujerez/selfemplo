@@ -30,9 +30,9 @@ class EmpleadoresController extends Controller
 
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['create','index','update'],
+                'only' => ['create','index','update','view'],
                 'rules' => [
-                
+                    // Solo usuarios-administradores pueden crear y ver index
                     [
                         'allow' => true,
                         'actions' => ['create', 'index'],
@@ -42,25 +42,17 @@ class EmpleadoresController extends Controller
                         }
                     ],
 
-                     // Solo usuarios-empleadores
-                     [
-                        'allow' => true,
-                        'actions' => ['update'],
-                        'roles' => ['@'],
-                        'matchCallback' => function ($rule, $action ) {
-                            return Yii::$app->user->identity->rol === '1';
-                        }
-                    ],
                     [
                         'allow' => true,
-                        'actions' => ['update'],
+                        'actions' => ['update', 'view'],
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action ) {
                             
-                            return Yii::$app->request->get('id') == Yii::$app->user->identity->id ;
+                            
+                            return (Yii::$app->request->get('id') == Yii::$app->user->identity->id
+                                 && Yii::$app->user->identity->rol === '0' );
                         }
                     ],
-
                    
                 ],
             ],

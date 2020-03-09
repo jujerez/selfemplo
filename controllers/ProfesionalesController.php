@@ -44,24 +44,16 @@ class ProfesionalesController extends Controller
                             return Yii::$app->user->identity->rol === '2';
                         }
                     ],
-                    // Solo usuarios-profesionales 
-                    [
-                        'allow' => true,
-                        'actions' => ['update'],
-                        'roles' => ['@'],
-                        'matchCallback' => function ($rule, $action ) {
-                            return Yii::$app->user->identity->rol === '0';
-                        }
-                    ],
+                    
                     [
                         'allow' => true,
                         'actions' => ['update', 'view'],
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action ) {
-                            var_dump(Yii::$app->request->get('id'));
-                            var_dump(strval(Yii::$app->user->identity->id));
                             
-                            return Yii::$app->request->get('id') == strval(Yii::$app->user->id);
+                            
+                            return (Yii::$app->request->get('id') == Yii::$app->user->identity->id
+                                 && Yii::$app->user->identity->rol === '0' );
                         }
                     ],
                 ],
