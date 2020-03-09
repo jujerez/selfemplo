@@ -11,7 +11,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Profesionales', 'url' => ['index']
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="profesionales-view">
+<div class="profesionales-view container">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
