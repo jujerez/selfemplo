@@ -2,13 +2,16 @@
 
 namespace app\controllers;
 
+use app\models\Poblaciones;
 use Yii;
 use app\models\Profesionales;
 use app\models\ProfesionalesSearch;
+use app\models\Provincias;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Response;
 
 /**
  * ProfesionalesController implements the CRUD actions for Profesionales model.
@@ -123,10 +126,28 @@ class ProfesionalesController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->usuario_id]);
         }
+        $provincias = Provincias::lista();
+        $provincia_id = key($provincias);      
+        $poblaciones = Poblaciones::lista($provincia_id);
 
         return $this->render('update', [
             'model' => $model,
+            'provincias' => $provincias,
+            'poblaciones' => $poblaciones,
         ]);
+    }
+    /**
+     * Metodo que devuelve las poblaciones en función de la provicia reciba por parametros,
+     * en formato JSON
+     *
+     * @param  int $provincia_id es el id de la provincia
+     * @return void
+     */
+    public function actionPoblaciones($provincia_id)
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        return Poblaciones::lista($provincia_id);
     }
 
     /**

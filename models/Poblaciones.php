@@ -102,4 +102,14 @@ class Poblaciones extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Profesionales::className(), ['poblacion_id' => 'id'])->inverseOf('poblacion');
     }
+
+    public static function lista($provincia_id)
+    {
+        return static::find()
+            ->select('nombre')
+            ->where(['provincia_id' => $provincia_id])
+            ->orderBy('nombre')
+            ->indexBy('id')
+            ->column();
+    }
 }

@@ -26,6 +26,7 @@ class Profesionales extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+
     public static function tableName()
     {
         return 'profesionales';
@@ -43,11 +44,16 @@ class Profesionales extends \yii\db\ActiveRecord
             [['created_at'], 'safe'],
             [['nombre', 'apellidos', 'telefono', 'direccion', 'slogan'], 'string', 'max' => 255],
             [['usuario_id'], 'unique'],
-            
+            [['!provincia'], 'safe'],
             [['poblacion_id'], 'exist', 'skipOnError' => true, 'targetClass' => Poblaciones::className(), 'targetAttribute' => ['poblacion_id' => 'id']],
             [['profesion_id'], 'exist', 'skipOnError' => true, 'targetClass' => Profesiones::className(), 'targetAttribute' => ['profesion_id' => 'id']],
             [['usuario_id'], 'exist', 'skipOnError' => true, 'targetClass' => Usuarios::className(), 'targetAttribute' => ['usuario_id' => 'id']],
         ];
+    }
+
+    public function attributes()
+    {
+        return array_merge(parent::attributes(), ['provincia'], );
     }
 
     /**
@@ -63,7 +69,7 @@ class Profesionales extends \yii\db\ActiveRecord
             'direccion' => 'Direccion',
             'slogan' => 'Slogan',
             'created_at' => 'Created At',
-            'poblacion_id' => 'Poblacion ID',
+            'poblacion_id' => 'Población',
             'profesion_id' => 'Profesion ID',
         ];
     }
