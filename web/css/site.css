@@ -120,16 +120,7 @@ a.desc:after {
     padding-right: 0;
 }
 
-.btn-warning {
-    background-color: #fc8c14 !important;
-    color: white;
-}
 
-.btn-warning:hover {
-    background-color: #d67813 !important;
-    color: white;  
-    
-}
 
 .migas {
     padding-top: 4.5em;
