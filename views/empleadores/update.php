@@ -6,7 +6,7 @@ use yii\bootstrap4\Html;
 /* @var $model app\models\Empleadores */
 
 $this->title = 'Modificar perfil';
-$this->params['breadcrumbs'][] = ['label' => 'Empleadores', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Mi perfil', 'url' => ['perfil']];
 $this->params['breadcrumbs'][] = 'Modificar';
 ?>
 <div class="empleadores-update container">

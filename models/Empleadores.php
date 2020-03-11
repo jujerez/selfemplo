@@ -74,10 +74,10 @@ class Empleadores extends \yii\db\ActiveRecord
             'usuario_id' => 'Usuario ID',
             'nombre' => 'Nombre',
             'apellidos' => 'Apellidos',
-            'telefono' => 'Telefono',
-            'direccion' => 'Direccion',
+            'telefono' => 'Teléfono',
+            'direccion' => 'Dirección',
             'created_at' => 'Created At',
-            'poblacion_id' => 'Poblacion ID',
+            'poblacion_id' => 'Población',
         ];
     }
 
