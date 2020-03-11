@@ -394,7 +394,7 @@
 | **Prioridad**   | Importante           |
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
-| **Entrega**     | v1             |
+| **Entrega**     | v3             |
 | **Incidencia**  | [44](https://github.com/jujerez/selfemplo/issues/44) |
 
 | **R45**     | **Inicio de sesión de usuario**         |
@@ -919,6 +919,24 @@
 | **Entrega**     | v2             |
 | **Incidencia**  | [102](https://github.com/jujerez/selfemplo/issues/102) |
 
+| **R103**     | **Sección perfil profesionales**         |
+| --------------: | :------------------- |
+| **Descripción** | El usuario-profesional tendrá un sección “Mi Perfil” con enlaces a todas las opciones disponibles              |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [103](https://github.com/jujerez/selfemplo/issues/103) |
+
+| **R104**     | **Sección perfil empleadores**         |
+| --------------: | :------------------- |
+| **Descripción** | El usuario-empleador tendrá un sección “Mi Perfil” con enlaces a todas las opciones disponibles              |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [104](https://github.com/jujerez/selfemplo/issues/104) |
+
 
 ## Cuadro resumen
 
@@ -967,7 +985,7 @@
 | (**R41**) Verificación de usuario | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [41](https://github.com/jujerez/selfemplo/issues/41) |
 | (**R42**) Completar registro  | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [42](https://github.com/jujerez/selfemplo/issues/42) |
 | (**R43**) Modificación de usuario | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [43](https://github.com/jujerez/selfemplo/issues/43) |
-| (**R44**) Baja de usuario | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [44](https://github.com/jujerez/selfemplo/issues/44) |
+| (**R44**) Baja de usuario | Importante | Funcional | Fácil | v3 | | **Incidencia**  | [44](https://github.com/jujerez/selfemplo/issues/44) |
 | (**R45**) Inicio de sesión de usuario | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [45](https://github.com/jujerez/selfemplo/issues/45) |
 | (**R46**) Cierre de sesión de usuario | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [46](https://github.com/jujerez/selfemplo/issues/46) |
 | (**R47**) Recordar sesión usuario | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [47](https://github.com/jujerez/selfemplo/issues/47) |
@@ -1026,3 +1044,5 @@
 | (**R100**) Imagen de perfil | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [100](https://github.com/jujerez/selfemplo/issues/100) |
 | (**R101**) Envío de e-mail a usuario-profesional | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [101](https://github.com/jujerez/selfemplo/issues/101) |
 | (**R102**) Envío de e-mail a usuario-empleador | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [102](https://github.com/jujerez/selfemplo/issues/102) |
+| (**R103**) Sección perfil profesionales | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [103](https://github.com/jujerez/selfemplo/issues/103) |
+| (**R104**) Sección perfil empleadores | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [104](https://github.com/jujerez/selfemplo/issues/104) |
