@@ -85,8 +85,10 @@ class EmpleadoresController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+        $model->provincia = $model->getNom()['nombre'];
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
         ]);
     }
 

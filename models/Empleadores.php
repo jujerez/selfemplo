@@ -20,6 +20,7 @@ use Yii;
  */
 class Empleadores extends \yii\db\ActiveRecord
 {
+    private $_provincia = null;
     /**
      * {@inheritdoc}
      */
@@ -49,6 +50,19 @@ class Empleadores extends \yii\db\ActiveRecord
     public function attributes()
     {
         return array_merge(parent::attributes(), ['provincia'], );
+    }
+
+    public function setProvincia($provincia)
+    {
+        $this->_provincia = $provincia;
+    }
+
+    public function getProvincia()
+    {
+        if ($this->_provincia === null && !$this->isNewRecord) {
+            $this->setProvincia($this->getNom()['nombre']);
+        }
+        return $this->_provincia;
     }
 
     /**
@@ -85,5 +99,19 @@ class Empleadores extends \yii\db\ActiveRecord
     public function getUsuario()
     {
         return $this->hasOne(Usuarios::className(), ['id' => 'usuario_id'])->inverseOf('empleadores');
+    }
+
+    public function getNom() {
+
+        $nombre = (new \yii\db\Query())
+         ->select("prov.nombre")
+         ->from('empleadores e')
+         ->join('left join', 'poblaciones po', 'e.poblacion_id = po.id')
+         ->join('left join', 'provincias prov', 'po.provincia_id = prov.id')
+         ->where(['usuario_id' => $this->usuario_id])
+         ->one();
+        
+         return $nombre;
+        
     }
 }
