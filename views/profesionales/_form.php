@@ -10,7 +10,7 @@ use yii\web\View;
 /* @var $form yii\bootstrap4\ActiveForm */
 
 $js = <<<EOT
-    document.getElementById('profesionales-nombre').value = '';
+    
     document.getElementById('profesionales-apellidos').value = '';
     document.getElementById('profesionales-telefono').value = ''; 
 EOT;

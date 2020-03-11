@@ -6,39 +6,42 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Profesionales */
 
-$this->title = $model->usuario_id;
-$this->params['breadcrumbs'][] = ['label' => 'Profesionales', 'url' => ['index']];
+$this->title = $model->nombre;
+$this->params['breadcrumbs'][] = ['label' => 'Mi perfil', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="profesionales-view container">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->usuario_id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->usuario_id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
+   
 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'usuario_id',
+            
             'nombre',
             'apellidos',
             'telefono',
             'direccion',
             'slogan',
             'created_at',
-            'poblacion_id',
+            'poblacion.nombre',
+            'provincia',
             'profesion_id',
+            
         ],
     ]) ?>
+
+    <p>
+        <?= Html::a('Modificar mis datos', ['update', 'id' => $model->usuario_id], ['class' => 'btn btn-primary']) ?>
+        <!-- <?= Html::a('Delete', ['delete', 'id' => $model->usuario_id], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => 'Are you sure you want to delete this item?',
+                'method' => 'post',
+            ],
+        ]) ?> -->
+    </p>
 
 </div>

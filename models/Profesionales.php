@@ -23,6 +23,7 @@ use Yii;
  */
 class Profesionales extends \yii\db\ActiveRecord
 {
+    private $_provincia = null;
     /**
      * {@inheritdoc}
      */
@@ -44,6 +45,7 @@ class Profesionales extends \yii\db\ActiveRecord
             [['created_at'], 'safe'],
             [['nombre', 'apellidos', 'telefono', 'direccion', 'slogan'], 'string', 'max' => 255],
             [['usuario_id'], 'unique'],
+            [['telefono'], 'match', 'pattern' =>'/(\+34|0034|34)?[ -]*(6|7)[ -]*([0-9][ -]*){8}/'],
             [['!provincia'], 'safe'],
             [['poblacion_id'], 'exist', 'skipOnError' => true, 'targetClass' => Poblaciones::className(), 'targetAttribute' => ['poblacion_id' => 'id']],
             [['profesion_id'], 'exist', 'skipOnError' => true, 'targetClass' => Profesiones::className(), 'targetAttribute' => ['profesion_id' => 'id']],
@@ -56,6 +58,19 @@ class Profesionales extends \yii\db\ActiveRecord
         return array_merge(parent::attributes(), ['provincia'], );
     }
 
+    public function setProvincia($provincia)
+    {
+        $this->_provincia = $provincia;
+    }
+
+    public function getProvincia()
+    {
+        if ($this->_provincia === null && !$this->isNewRecord) {
+            $this->setProvincia($this->getNom()['nombre']);
+        }
+        return $this->_provincia;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -65,12 +80,13 @@ class Profesionales extends \yii\db\ActiveRecord
             'usuario_id' => 'Usuario ID',
             'nombre' => 'Nombre',
             'apellidos' => 'Apellidos',
-            'telefono' => 'Telefono',
-            'direccion' => 'Direccion',
+            'telefono' => 'Teléfono',
+            'direccion' => 'Dirección',
             'slogan' => 'Slogan',
             'created_at' => 'Created At',
             'poblacion_id' => 'Población',
             'profesion_id' => 'Profesion ID',
+            'provincia' => 'Provincia'
         ];
     }
 
@@ -103,4 +119,21 @@ class Profesionales extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Usuarios::className(), ['id' => 'usuario_id'])->inverseOf('profesionales');
     }
+
+   
+    public function getNom() {
+
+        $nombre = (new \yii\db\Query())
+         ->select("prov.nombre")
+         ->from('profesionales pr')
+         ->join('left join', 'poblaciones po', 'pr.poblacion_id = po.id')
+         ->join('left join', 'provincias prov', 'po.provincia_id = prov.id')
+         ->where(['usuario_id' => $this->usuario_id])
+         ->one();
+        
+         return $nombre;
+        
+    }
+
+    
 }

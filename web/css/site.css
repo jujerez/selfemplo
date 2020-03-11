@@ -1,6 +1,7 @@
 html,
 body {
     height: 100%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .wrap {
@@ -138,6 +139,20 @@ a.desc:after {
 
 .redondeado {
     border-radius: 10px;
+}
+
+.navbar-light .navbar-nav .show>.nav-link,
+.navbar-light .navbar-nav .active>.nav-link,
+.navbar-light .navbar-nav .nav-link.show,
+.navbar-light .navbar-nav .nav-link.active {
+    color: rgba(0,0,0,0.9);
+}
+
+.breadcrumb-item.active {
+    color: rgba(0,0,0,0.9);
+}
+.bg-light .dropdown-menu .dropdown-item, .bg-light .dropdown-menu .dropdown-item:focus {
+    color: rgba(0,0,0,0.9);
 }
 
 

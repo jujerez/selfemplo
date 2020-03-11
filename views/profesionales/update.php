@@ -6,7 +6,7 @@ use yii\bootstrap4\Html;
 /* @var $model app\models\Profesionales */
 
 $this->title = 'Modificar Perfil: ';
-$this->params['breadcrumbs'][] = ['label' => 'Profesionales', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Mi perfil', 'url' => ['view', 'id' => $model->usuario_id]];
 $this->params['breadcrumbs'][] = 'Modificar';
 ?>
 <div class="profesionales-update container">

@@ -225,7 +225,7 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
                     'usuario_id' => $this->id,
                     'nombre' => $this->nombre,
                     'apellidos' => 'xxx',
-                    'telefono' => 'xxx',
+                    'telefono' => '666666666',
                     'poblacion_id' => 1,
                     'profesion_id' => 1,
                 ]))->save();
@@ -235,7 +235,7 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
                     'usuario_id' => $this->id,
                     'nombre' => $this->nombre,
                     'apellidos' => 'xxx',
-                    'telefono' => 'xxx',
+                    'telefono' => '666666666',
                     'poblacion_id' => 1,
                 ]))->save();
                     
@@ -244,7 +244,7 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
                         'usuario_id' => $this->id,
                         'nombre' => $this->nombre,
                         'apellidos' => 'xxx',
-                        'telefono' => 'xxx',
+                        'telefono' => '666666666',
                         'poblacion_id' => 1,
                     ]))->save();
                         

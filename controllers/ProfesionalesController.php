@@ -89,8 +89,11 @@ class ProfesionalesController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+        $model->provincia = $model->getNom()['nombre'];
+        
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,      
         ]);
     }
 
@@ -122,6 +125,7 @@ class ProfesionalesController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $x = $model->getNom();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->usuario_id]);
@@ -134,6 +138,7 @@ class ProfesionalesController extends Controller
             'model' => $model,
             'provincias' => $provincias,
             'poblaciones' => $poblaciones,
+            'x' => $x,
         ]);
     }
     /**
