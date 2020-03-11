@@ -25,7 +25,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'telefono',
             'direccion',
             'slogan',
-            'created_at',
             'poblacion.nombre',
             'provincia',
             'profesion_id',

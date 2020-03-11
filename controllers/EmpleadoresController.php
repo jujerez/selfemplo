@@ -5,10 +5,13 @@ namespace app\controllers;
 use Yii;
 use app\models\Empleadores;
 use app\models\EmpleadoresSearch;
+use app\models\Poblaciones;
+use app\models\Provincias;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Response;
 
 /**
  * EmpleadoresController implements the CRUD actions for Empleadores model.
@@ -30,7 +33,7 @@ class EmpleadoresController extends Controller
 
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['create','index','update','view'],
+                'only' => ['create','index', 'update'],
                 'rules' => [
                     // Solo usuarios-administradores pueden crear y ver index
                     [
@@ -44,13 +47,13 @@ class EmpleadoresController extends Controller
 
                     [
                         'allow' => true,
-                        'actions' => ['update', 'view'],
+                        'actions' => ['update'],
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action ) {
                             
                             
                             return (Yii::$app->request->get('id') == Yii::$app->user->identity->id
-                                 && Yii::$app->user->identity->rol === '0' );
+                                 && Yii::$app->user->identity->rol === '1' );
                         }
                     ],
                    
@@ -119,10 +122,29 @@ class EmpleadoresController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->usuario_id]);
         }
+        $provincias = Provincias::lista();
+        $provincia_id = key($provincias);      
+        $poblaciones = Poblaciones::lista($provincia_id);
 
         return $this->render('update', [
             'model' => $model,
+            'provincias' => $provincias,
+            'poblaciones' => $poblaciones,
         ]);
+    }
+
+    /**
+     * Metodo que devuelve las poblaciones en función de la provicia reciba por parametros,
+     * en formato JSON
+     *
+     * @param  int $provincia_id es el id de la provincia
+     * @return void
+     */
+    public function actionPoblaciones($provincia_id)
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        return Poblaciones::lista($provincia_id);
     }
 
     /**
