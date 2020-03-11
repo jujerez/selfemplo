@@ -98,8 +98,8 @@ class Empleos extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getPresupuestos()
-    {
-        return $this->hasMany(Presupuestos::className(), ['empleo_id' => 'id'])->inverseOf('empleo');
-    }
+    // public function getPresupuestos()
+    // {
+    //     return $this->hasMany(Presupuestos::className(), ['empleo_id' => 'id'])->inverseOf('empleo');
+    // }
 }

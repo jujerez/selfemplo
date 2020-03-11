@@ -47,6 +47,7 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav'],
         'items' => [
             ['label' => 'Inicio', 'url' => ['/site/index']],
+            ['label' => 'Empleos', 'url' => ['/empleos/index']],
 
             Yii::$app->user->isGuest 
             ? (['label' => 'Entrar', 'url' => ['site/login']])

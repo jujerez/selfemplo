@@ -18,8 +18,13 @@ class EmpleosSearch extends Empleos
     {
         return [
             [['id', 'poblacion_id', 'empleador_id', 'profesion_id'], 'integer'],
-            [['titulo', 'descripcion', 'created_at'], 'safe'],
+            [['titulo', 'descripcion', 'created_at', 'profesion.pronom', 'poblacion.nombre', 'empleador.nombre'], 'safe'],
         ];
+    }
+
+    public function attributes()
+    {
+        return array_merge(parent::attributes(), ['profesion.pronom', 'poblacion.nombre', 'empleador.nombre']);
     }
 
     /**
@@ -41,6 +46,10 @@ class EmpleosSearch extends Empleos
     public function search($params)
     {
         $query = Empleos::find();
+        $query = Empleos::find()
+          ->joinWith('poblacion p')
+          ->joinWith('profesion pro')
+          ->joinWith('empleador e');
 
         // add conditions that should always apply here
 
@@ -65,8 +74,12 @@ class EmpleosSearch extends Empleos
             'profesion_id' => $this->profesion_id,
         ]);
 
+
         $query->andFilterWhere(['ilike', 'titulo', $this->titulo])
-            ->andFilterWhere(['ilike', 'descripcion', $this->descripcion]);
+            ->andFilterWhere(['ilike', 'descripcion', $this->descripcion])
+            ->andFilterWhere(['ilike', 'p.nombre', $this->getAttributes(['poblacion.nombre'])])
+            ->andFilterWhere(['ilike', 'pro.pronom', $this->getAttributes(['profesion.pronom'])])
+            ->andFilterWhere(['ilike', 'e.nombre', $this->getAttributes(['empleador.nombre'])]);
 
         return $dataProvider;
     }
