@@ -57,6 +57,22 @@ class EmpleosSearch extends Empleos
             'query' => $query,
         ]);
 
+        // ORDENACION del atributo ajeno(genero es del modelo, NO de la tabla)
+        $dataProvider->sort->attributes['poblacion.nombre'] = [
+            'asc' => ['p.nombre' => SORT_ASC],
+            'desc' => ['p.nombre' => SORT_DESC],
+        ];
+
+        $dataProvider->sort->attributes['profesion.pronom'] = [
+            'asc' => ['pro.pronom' => SORT_ASC],
+            'desc' => ['pro.pronom' => SORT_DESC],
+        ];
+
+        $dataProvider->sort->attributes['empleador.nombre'] = [
+            'asc' => ['e.nombre' => SORT_ASC],
+            'desc' => ['e.nombre' => SORT_DESC],
+        ];
+
         $this->load($params);
 
         if (!$this->validate()) {
