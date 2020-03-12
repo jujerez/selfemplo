@@ -86,20 +86,20 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
      *
      * @return \yii\db\ActiveQuery
      */
-    /*public function getComentarios()
+    public function getComentarios()
     {
         return $this->hasMany(Comentarios::className(), ['empleador_id' => 'id']);
-    }*/
+    }
 
     /**
      * Gets query for [[Comentarios0]].
      *
      * @return \yii\db\ActiveQuery
      */
-    /*public function getComentarios0()
+    public function getComentarios0()
     {
         return $this->hasMany(Comentarios::className(), ['profesional_id' => 'id']);
-    }*/
+    }
 
     /**
      * Gets query for [[Empleadores]].
@@ -116,20 +116,20 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
      *
      * @return \yii\db\ActiveQuery
      */
-    /*public function getEmpleos()
+    public function getEmpleos()
     {
         return $this->hasMany(Empleos::className(), ['empleador_id' => 'id']);
-    }*/
+    }
 
     /**
      * Gets query for [[Presupuestos]].
      *
      * @return \yii\db\ActiveQuery
      */
-    /*public function getPresupuestos()
+    public function getPresupuestos()
     {
         return $this->hasMany(Presupuestos::className(), ['profesional_id' => 'id']);
-    }*/
+    }
 
     /**
      * Gets query for [[Profesionales]].
@@ -146,20 +146,20 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
      *
      * @return \yii\db\ActiveQuery
      */
-    /*public function getVotos()
+    public function getVotos()
     {
         return $this->hasMany(Votos::className(), ['empleador_id' => 'id']);
-    }*/
+    }
 
     /**
      * Gets query for [[Votos0]].
      *
      * @return \yii\db\ActiveQuery
      */
-    /*public function getVotos0()
+    public function getVotos0()
     {
         return $this->hasMany(Votos::className(), ['profesional_id' => 'id']);
-    }*/
+    }
 
     public static function findIdentity($id)
     {

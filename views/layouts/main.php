@@ -47,6 +47,7 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav'],
         'items' => [
             ['label' => 'Inicio', 'url' => ['/site/index']],
+            ['label' => 'Empleos', 'url' => ['/empleos/index']],
 
             Yii::$app->user->isGuest 
             ? (['label' => 'Entrar', 'url' => ['site/login']])
@@ -96,7 +97,7 @@ AppAsset::register($this);
     ?>
 
     <div class="container-fluid">
-        <div class="container migas">
+        <div class="container migas ">
             <?= Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
                 ]) 
@@ -107,7 +108,7 @@ AppAsset::register($this);
     </div>
 </div>
 
-<footer class="footer bg-dark">
+<footer class="footer bg-dark mt-3">
     <div class="container">
         <p class="text-center text-white">&copy; Selfemplo <?= date('Y')?> | Todos los derechos reservados</p>
 
