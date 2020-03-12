@@ -2,6 +2,7 @@
 
 use yii\bootstrap4\Html;
 use yii\grid\GridView;
+use yii\widgets\LinkSorter;
 use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
@@ -18,9 +19,29 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <div class="col-md-3 col-sm-12">
              <?php echo $this->render('_search', ['model' => $searchModel]); ?>
+             <!-- <div class="shadow p-3 mt-3">
+                <h4>Ordenar por titulo</h4>
+                <hr>
+                <?= LinkSorter::widget([
+
+                    'sort' => $dataProvider->sort,
+                    'attributes' => [
+                        'titulo',
+                        'descripcion',
+                        'created_at',
+                        'poblacion.nombre',
+                        'empleador.nombre',
+                        'profesion.pronom',
+                        
+                    ],
+                    
+
+                ]) ?>
+             </div> -->
         </div>
 
         <div class="col-md-9 col-sm-12">
+
         
             <?= ListView::widget([
                 'dataProvider' => $dataProvider,
@@ -30,15 +51,15 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <!-- <h1><?= Html::encode($this->title) ?></h1> -->
 
-    <p>
+    <!-- <p>
         <?= Html::a('Create Empleos', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    </p> -->
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?= GridView::widget([
+    <!-- <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
@@ -58,7 +79,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
-    ]); ?>
+    ]); ?> -->
 
 
 </>

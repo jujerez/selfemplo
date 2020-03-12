@@ -108,7 +108,7 @@ AppAsset::register($this);
     </div>
 </div>
 
-<footer class="footer bg-dark">
+<footer class="footer bg-dark mt-3">
     <div class="container">
         <p class="text-center text-white">&copy; Selfemplo <?= date('Y')?> | Todos los derechos reservados</p>
 
