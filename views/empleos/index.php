@@ -2,6 +2,7 @@
 
 use yii\bootstrap4\Html;
 use yii\grid\GridView;
+use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\EmpleosSearch */
@@ -11,6 +12,23 @@ $this->title = 'Empleos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <main class="empleos-index container">
+
+    <!-- <h1><?= Html::encode($this->title) ?></h1> -->
+    <div class="row">
+
+        <div class="col-md-3 col-sm-12">
+             <?php echo $this->render('_search', ['model' => $searchModel]); ?>
+        </div>
+
+        <div class="col-md-9 col-sm-12">
+        
+            <?= ListView::widget([
+                'dataProvider' => $dataProvider,
+                'itemView' => '_empleos',
+                'summary' => '',
+            ]); ?>
+        </div>
+    </div>
 
     <h1><?= Html::encode($this->title) ?></h1>
 

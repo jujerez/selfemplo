@@ -97,7 +97,7 @@ AppAsset::register($this);
     ?>
 
     <div class="container-fluid">
-        <div class="container migas">
+        <div class="container migas ">
             <?= Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
                 ]) 

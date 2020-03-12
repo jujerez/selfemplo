@@ -9,16 +9,23 @@ use yii\helpers\Html;
     <div class="col-12">
         <div class="card shadow  p-4 mb-2">
          
-            <div class="text-left p-2"><strong class="text-success text-left"><?=$model->titulo?></strong></div> 
+            <div class="text-left p-2"><strong class="text-success text-left"><?= Html::encode($model->profesion->pronom) ?></strong></div> 
              
             <h3><?=$model->titulo?></h3>
-            <p class="card-text mb-auto">Isbn: <?=$model->titulo?></p>
-            <p class="card-text mb-auto">Numero de paginas: <?=$model->titulo?></p>
-            <div class="p-2">
+            <p class="card-text mb-auto"><?= Html::encode($model->descripcion) ?></p>
+            <p class="card-text mb-auto text-black-50">Ubicación: <b><?= Html::encode($model->poblacion->nombre) ?></b></p>
+            
+            <div class="pt-3">
 
-                <?=Html::a('Ver', ['libros/view', 'id' => $key], ['class' => 'btn btn-sm btn-info'])?>
+                <?=Html::a('Ver', ['empleos/view', 'id' => $key], ['class' => 'btn btn-sm btn-warning'])?>
+                <?=Html::a('Enviar presupuesto', ['libros/view', 'id' => $key], ['class' => 'btn btn-sm btn-success'])?>
             </div>
-            <div class="text-muted text-right p-2"><?=Yii::$app->formatter->asDatetime($model->created_at)?></div>  
+
+
+            <div class="card-footer mt-3">
+                <span class="float-right text-muted"><?=Yii::$app->formatter->asDate($model->created_at)?></span>
+                <span class="text-muted"><i class="fa fa-home"></i>Publicado por: <?= Html::encode($model->empleador->nombre)?></span>
+            </div>
         </div>
     </div>
 </div>

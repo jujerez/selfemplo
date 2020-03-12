@@ -7,33 +7,33 @@ use yii\bootstrap4\ActiveForm;
 /* @var $model app\models\EmpleosSearch */
 /* @var $form yii\bootstrap4\ActiveForm */
 ?>
+<div class="col-12 card shadow p-3">
+    <div class="empleos-search">
+    <h4 style="border-bottom: 1px solid #ccc; padding:0.5em">Filtros</h4>
+        <?php $form = ActiveForm::begin([
+            'action' => ['index'],
+            'method' => 'get',
+        ]); ?>
 
-<div class="empleos-search">
 
-    <?php $form = ActiveForm::begin([
-        'action' => ['index'],
-        'method' => 'get',
-    ]); ?>
+        <?= $form->field($model, 'titulo') ?>
 
-    <?= $form->field($model, 'id') ?>
+        <?= $form->field($model, 'descripcion') ?>
 
-    <?= $form->field($model, 'titulo') ?>
+        <?= $form->field($model, 'created_at')->label('Fecha de publicación') ?>
 
-    <?= $form->field($model, 'descripcion') ?>
+        <?= $form->field($model, 'poblacion.nombre') ?>
 
-    <?= $form->field($model, 'created_at') ?>
+        <?php echo $form->field($model, 'empleador.nombre')->label('Autor publicación') ?>
 
-    <?= $form->field($model, 'poblacion_id') ?>
+        <?php echo $form->field($model, 'profesion.pronom')->label('Profesión') ?>
 
-    <?php // echo $form->field($model, 'empleador_id') ?>
+        <div class="form-group">
+            <?= Html::submitButton('Filtrar', ['class' => 'btn btn-primary']) ?>
+            <?= Html::resetButton('Limpiar', ['class' => 'btn btn-secondary']) ?>
+        </div>
 
-    <?php // echo $form->field($model, 'profesion_id') ?>
+        <?php ActiveForm::end(); ?>
 
-    <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>
     </div>
-
-    <?php ActiveForm::end(); ?>
-
 </div>
