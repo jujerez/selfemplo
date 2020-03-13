@@ -6,7 +6,9 @@ use Yii;
 use app\models\Empleos;
 use app\models\EmpleosSearch;
 use app\models\Poblaciones;
+use app\models\Profesiones;
 use app\models\Provincias;
+use app\models\Sectores;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -77,10 +79,16 @@ class EmpleosController extends Controller
         $provincia_id = key($provincias);      
         $poblaciones = Poblaciones::lista($provincia_id);
 
+        $sectores = Sectores::lista();
+        $sector_id = key($sectores);      
+        $profesiones = Profesiones::lista($sector_id);
+
         return $this->render('create', [
             'model' => $model,
             'provincias' => $provincias,
             'poblaciones' => $poblaciones,
+            'sectores' => $sectores,
+            'profesiones' => $profesiones,
         ]);
     }
 
@@ -137,6 +145,21 @@ class EmpleosController extends Controller
 
         return Poblaciones::lista($provincia_id);
     }
+
+    /**
+     * Metodo que devuelve las profesiones en función del sector que reciba por parametros,
+     * en formato JSON
+     *
+     * @param  int $sector_id es el id del sector
+     * @return void
+     */
+    public function actionProfesiones($sector_id)
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        return Profesiones::lista($sector_id);
+    }
+
 
     /**
      * Finds the Empleos model based on its primary key value.

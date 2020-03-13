@@ -10,7 +10,7 @@ use yii\web\View;
 /* @var $form yii\bootstrap4\ActiveForm */
 
 $url = Url::to(['empleos/poblaciones']);
-$js2 = <<<EOT
+$js = <<<EOT
     
     $('#empleos-provincia').on('change', function(e) {
         var provincia_id = $(this).val();
@@ -22,6 +22,31 @@ $js2 = <<<EOT
             },
             success: function (data, code, jqXHR) {
                 var selec = $('#empleos-poblacion_id');
+                selec.empty();
+                for (var i in data) {
+                    selec.append(`<option value="\${i}">\${data[i]}</option>`);
+                    
+                }
+            }   
+        });
+    })
+EOT;
+
+$this->registerJs($js, View::POS_END);
+
+$url2 = Url::to(['empleos/profesiones']);
+$js2 = <<<EOT
+    
+    $('#empleos-sector').on('change', function(e) {
+        var sector_id = $(this).val();
+        $.ajax({
+            method: 'GET',
+            url: '$url2',
+            data: {
+                sector_id: sector_id
+            },
+            success: function (data, code, jqXHR) {
+                var selec = $('#empleos-profesion_id');
                 selec.empty();
                 for (var i in data) {
                     selec.append(`<option value="\${i}">\${data[i]}</option>`);
@@ -58,7 +83,8 @@ $this->registerJs($js2, View::POS_END);
 
     <?= Html::activeHiddenInput($model, 'empleador_id', ['value' => Yii::$app->user->identity->id]) ?>
     
-    <?= $form->field($model, 'profesion_id')->textInput() ?>
+    <?= $form->field($model, 'sector')->dropDownList($sectores) ?>
+    <?= $form->field($model, 'profesion_id')->dropDownList($profesiones) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>

@@ -80,4 +80,20 @@ class Profesiones extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Sectores::className(), ['id' => 'sector_id'])->inverseOf('profesiones');
     }
+
+    /**
+     * Función que devuelve la lista de profesiones de un sector determinado
+     *
+     * @param [type] $sector_id es el id del sector del que obtendrá la lista
+     * @return void
+     */
+    public static function lista($sector_id)
+    {
+        return static::find()
+            ->select('pronom')
+            ->where(['sector_id' => $sector_id])
+            ->orderBy('pronom')
+            ->indexBy('id')
+            ->column();
+    }
 }

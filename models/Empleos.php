@@ -43,6 +43,7 @@ class Empleos extends \yii\db\ActiveRecord
             [['poblacion_id', 'empleador_id', 'profesion_id'], 'integer'],
             [['titulo'], 'string', 'max' => 255],
             [['!provincia'], 'safe'],
+            [['!sector'], 'safe'],
             [['descripcion'], 'string'],
             [['poblacion_id'], 'exist', 'skipOnError' => true, 'targetClass' => Poblaciones::className(), 'targetAttribute' => ['poblacion_id' => 'id']],
             [['profesion_id'], 'exist', 'skipOnError' => true, 'targetClass' => Profesiones::className(), 'targetAttribute' => ['profesion_id' => 'id']],
@@ -62,13 +63,14 @@ class Empleos extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'poblacion_id' => 'Población',
             'empleador_id' => 'Empleador ID',
-            'profesion_id' => 'Profesion ID',
+            'profesion_id' => 'Profesion ',
+            'sector' => 'Sector al que pertenece el profesional'
         ];
     }
 
     public function attributes()
     {
-        return array_merge(parent::attributes(), ['provincia'], );
+        return array_merge(parent::attributes(), ['provincia'], ['sector'] );
     }
 
     /**
