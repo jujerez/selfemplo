@@ -118,7 +118,7 @@ CREATE TABLE empleos
 (
     id             BIGSERIAL    PRIMARY KEY 
   , titulo         VARCHAR(255) NOT NULL
-  , descripcion    VARCHAR(255) NOT NULL
+  , descripcion    TEXT NOT NULL
   , created_at     TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
   , poblacion_id   BIGINT       NOT NULL REFERENCES poblaciones (id)
                                 ON DELETE CASCADE ON UPDATE CASCADE

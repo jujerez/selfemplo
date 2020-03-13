@@ -5,7 +5,7 @@ use yii\bootstrap4\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Empleos */
 
-$this->title = 'Create Empleos';
+$this->title = 'Crear Empleo';
 $this->params['breadcrumbs'][] = ['label' => 'Empleos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -15,6 +15,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $this->render('_form', [
         'model' => $model,
+        'provincias' => $provincias,
+        'poblaciones' => $poblaciones,
+        'sectores' => $sectores,
+        'profesiones' => $profesiones,
     ]) ?>
 
 </main>

@@ -24,7 +24,7 @@ use yii\helpers\Html;
 
             <div class="card-footer mt-3">
                 <span class="float-right text-muted"><?=Yii::$app->formatter->asDate($model->created_at)?></span>
-                <span class="text-muted"><i class="fa fa-home"></i>Publicado por: <?= Html::encode($model->empleador->nombre)?></span>
+                <span class="text-muted"><i class="fa fa-home"></i>Publicado por: <?= Html::encode($model->nombre)?></span>             
             </div>
         </div>
     </div>

@@ -22,6 +22,7 @@ use Yii;
  */
 class Empleos extends \yii\db\ActiveRecord
 {
+    
     /**
      * {@inheritdoc}
      */
@@ -40,7 +41,10 @@ class Empleos extends \yii\db\ActiveRecord
             [['created_at'], 'safe'],
             [['poblacion_id', 'empleador_id', 'profesion_id'], 'default', 'value' => null],
             [['poblacion_id', 'empleador_id', 'profesion_id'], 'integer'],
-            [['titulo', 'descripcion'], 'string', 'max' => 255],
+            [['titulo'], 'string', 'max' => 255],
+            [['!provincia'], 'safe'],
+            [['!sector'], 'safe'],
+            [['descripcion'], 'string'],
             [['poblacion_id'], 'exist', 'skipOnError' => true, 'targetClass' => Poblaciones::className(), 'targetAttribute' => ['poblacion_id' => 'id']],
             [['profesion_id'], 'exist', 'skipOnError' => true, 'targetClass' => Profesiones::className(), 'targetAttribute' => ['profesion_id' => 'id']],
             [['empleador_id'], 'exist', 'skipOnError' => true, 'targetClass' => Usuarios::className(), 'targetAttribute' => ['empleador_id' => 'id']],
@@ -55,12 +59,18 @@ class Empleos extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'titulo' => 'Titulo',
-            'descripcion' => 'Descripcion',
+            'descripcion' => 'Descripción',
             'created_at' => 'Created At',
-            'poblacion_id' => 'Poblacion ID',
+            'poblacion_id' => 'Población',
             'empleador_id' => 'Empleador ID',
-            'profesion_id' => 'Profesion ID',
+            'profesion_id' => 'Profesion ',
+            'sector' => 'Sector al que pertenece el profesional'
         ];
+    }
+
+    public function attributes()
+    {
+        return array_merge(parent::attributes(), ['provincia'], ['sector'] );
     }
 
     /**
@@ -92,6 +102,24 @@ class Empleos extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Usuarios::className(), ['id' => 'empleador_id'])->inverseOf('empleos');
     }
+
+    /**
+     * Metodo que devuelve el nombre del empleador
+     *
+     * @return string 
+     */
+    public function getNombre() {
+
+        $query = (new \yii\db\Query())
+        ->select('e.nombre')
+        ->from('usuarios u')
+        ->join('left join', 'empleadores e', 'u.id = e.usuario_id')
+        ->where(['id' => $this->empleador_id])
+        ->one();
+
+        return $query['nombre'];
+    }
+    
 
     /**
      * Gets query for [[Presupuestos]].

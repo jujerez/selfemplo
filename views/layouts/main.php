@@ -70,21 +70,10 @@ AppAsset::register($this);
                             . Html::endForm()
                             ),
 
+                           
                             (Yii::$app->user->identity->rol == '0') 
-                            ? (['label' => 'Modificar mi perfil', 'url' => ['profesionales/update', 'id' => Yii::$app->user->identity->id],])
-                            : (['label' => 'Modificar mi perfil', 'url' => ['empleadores/update', 'id' => Yii::$app->user->identity->id],]) ,
-
-                            (Yii::$app->user->identity->rol == '0') 
-                            ? (['label' => 'Ver mi perfil', 'url' => ['profesionales/view', 'id' => Yii::$app->user->identity->id],])
-                            : (['label' => 'Ver mi perfil', 'url' => ['empleadores/view', 'id' => Yii::$app->user->identity->id],]),
-
-                            (Yii::$app->user->identity->rol == '0') 
-                            ? (['label' => 'Ver empleos', 'url' => ['empleos/index'],])
-                            : '' ,
-
-
-
-            
+                            ? (['label' => 'Opciones mi perfil', 'url' => ['profesionales/perfil', 'id' => Yii::$app->user->identity->id],])
+                            : (['label' => 'Opciones mi perfil', 'url' => ['empleadores/perfil', 'id' => Yii::$app->user->identity->id],]),
                 
                         ],
                     ])

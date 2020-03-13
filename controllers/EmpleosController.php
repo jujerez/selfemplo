@@ -5,9 +5,14 @@ namespace app\controllers;
 use Yii;
 use app\models\Empleos;
 use app\models\EmpleosSearch;
+use app\models\Poblaciones;
+use app\models\Profesiones;
+use app\models\Provincias;
+use app\models\Sectores;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Response;
 
 /**
  * EmpleosController implements the CRUD actions for Empleos model.
@@ -36,8 +41,7 @@ class EmpleosController extends Controller
     public function actionIndex()
     {
         $searchModel = new EmpleosSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);     
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -70,8 +74,20 @@ class EmpleosController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
+        $provincias = Provincias::lista();
+        $provincia_id = key($provincias);      
+        $poblaciones = Poblaciones::lista($provincia_id);
+
+        $sectores = Sectores::lista();
+        $sector_id = key($sectores);      
+        $profesiones = Profesiones::lista($sector_id);
+
         return $this->render('create', [
             'model' => $model,
+            'provincias' => $provincias,
+            'poblaciones' => $poblaciones,
+            'sectores' => $sectores,
+            'profesiones' => $profesiones,
         ]);
     }
 
@@ -90,8 +106,14 @@ class EmpleosController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
+        $provincias = Provincias::lista();
+        $provincia_id = key($provincias);      
+        $poblaciones = Poblaciones::lista($provincia_id);
+
         return $this->render('update', [
             'model' => $model,
+            'provincias' => $provincias,
+            'poblaciones' => $poblaciones,
         ]);
     }
 
@@ -108,6 +130,35 @@ class EmpleosController extends Controller
 
         return $this->redirect(['index']);
     }
+
+    /**
+     * Metodo que devuelve las poblaciones en función de la provicia reciba por parametros,
+     * en formato JSON
+     *
+     * @param  int $provincia_id es el id de la provincia
+     * @return void
+     */
+    public function actionPoblaciones($provincia_id)
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        return Poblaciones::lista($provincia_id);
+    }
+
+    /**
+     * Metodo que devuelve las profesiones en función del sector que reciba por parametros,
+     * en formato JSON
+     *
+     * @param  int $sector_id es el id del sector
+     * @return void
+     */
+    public function actionProfesiones($sector_id)
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        return Profesiones::lista($sector_id);
+    }
+
 
     /**
      * Finds the Empleos model based on its primary key value.

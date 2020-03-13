@@ -53,4 +53,18 @@ class Sectores extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Profesiones::className(), ['sector_id' => 'id'])->inverseOf('sector');
     }
+
+    /**
+     * Función que devuelve una lista de sectores
+     *
+     * @return Sectores[] sectores
+     */
+    public static function lista()
+    {
+        return static::find()
+            ->select('secnom')
+            ->orderBy('id')
+            ->indexBy('id')
+            ->column();
+    }
 }
