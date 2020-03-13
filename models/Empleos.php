@@ -22,6 +22,7 @@ use Yii;
  */
 class Empleos extends \yii\db\ActiveRecord
 {
+    
     /**
      * {@inheritdoc}
      */
@@ -40,7 +41,9 @@ class Empleos extends \yii\db\ActiveRecord
             [['created_at'], 'safe'],
             [['poblacion_id', 'empleador_id', 'profesion_id'], 'default', 'value' => null],
             [['poblacion_id', 'empleador_id', 'profesion_id'], 'integer'],
-            [['titulo', 'descripcion'], 'string', 'max' => 255],
+            [['titulo'], 'string', 'max' => 255],
+            [['!provincia'], 'safe'],
+            [['descripcion'], 'string'],
             [['poblacion_id'], 'exist', 'skipOnError' => true, 'targetClass' => Poblaciones::className(), 'targetAttribute' => ['poblacion_id' => 'id']],
             [['profesion_id'], 'exist', 'skipOnError' => true, 'targetClass' => Profesiones::className(), 'targetAttribute' => ['profesion_id' => 'id']],
             [['empleador_id'], 'exist', 'skipOnError' => true, 'targetClass' => Usuarios::className(), 'targetAttribute' => ['empleador_id' => 'id']],
@@ -55,12 +58,17 @@ class Empleos extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'titulo' => 'Titulo',
-            'descripcion' => 'Descripcion',
+            'descripcion' => 'Descripción',
             'created_at' => 'Created At',
-            'poblacion_id' => 'Poblacion ID',
+            'poblacion_id' => 'Población',
             'empleador_id' => 'Empleador ID',
             'profesion_id' => 'Profesion ID',
         ];
+    }
+
+    public function attributes()
+    {
+        return array_merge(parent::attributes(), ['provincia'], );
     }
 
     /**
