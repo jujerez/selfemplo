@@ -20,8 +20,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="card bg-light">
                     <div class="card-body text-center">
                         <h3>Mis datos</h3><hr>
-                        <p><?= Html::a('Modificar', ['empleos/create'], ['class' =>'text-primary']) ?></p>
-                        <p><?= Html::a('Ver', ['empleos/create'], ['class' =>'text-primary']) ?></p>
+                        <p><?= Html::a('Modificar', ['empleadores/update', 'id' => $model->usuario_id], ['class' =>'text-primary']) ?></p>
+                        <p><?= Html::a('Ver', ['empleadores/view', 'id' => $model->usuario_id], ['class' =>'text-primary']) ?></p>
                         
                         
                     </div>

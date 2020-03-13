@@ -104,6 +104,24 @@ class Empleos extends \yii\db\ActiveRecord
     }
 
     /**
+     * Metodo que devuelve el nombre del empleador
+     *
+     * @return string 
+     */
+    public function getNombre() {
+
+        $query = (new \yii\db\Query())
+        ->select('e.nombre')
+        ->from('usuarios u')
+        ->join('left join', 'empleadores e', 'u.id = e.usuario_id')
+        ->where(['id' => $this->empleador_id])
+        ->one();
+
+        return $query['nombre'];
+    }
+    
+
+    /**
      * Gets query for [[Presupuestos]].
      *
      * @return \yii\db\ActiveQuery
