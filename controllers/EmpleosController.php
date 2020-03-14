@@ -6,6 +6,7 @@ use Yii;
 use app\models\Empleos;
 use app\models\EmpleosSearch;
 use app\models\Poblaciones;
+use app\models\Presupuestos;
 use app\models\Profesiones;
 use app\models\Provincias;
 use app\models\Sectores;
@@ -55,8 +56,7 @@ class EmpleosController extends Controller
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action ) {
                             return Yii::$app->user->identity->rol === '1';
-                            
-                            
+                                    
                         }
                     ],
 
@@ -169,9 +169,19 @@ class EmpleosController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $num_presupuestos = Presupuestos::find()
+        ->where(['empleo_id' => $id])
+        ->count();
 
-        return $this->redirect(['index']);
+        if ($num_presupuestos > 0) {
+            Yii::$app->session->setFlash('danger', 'Este empleo tiene presupuestos asociados.');
+            return $this->redirect(['index']);
+        } else {
+
+            $this->findModel($id)->delete();
+            return $this->redirect(['index']);
+        }
+
     }
 
     /**
