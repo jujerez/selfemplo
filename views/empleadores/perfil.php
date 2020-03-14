@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="card-body text-center">
                         <h3>Empleos</h3><hr>
                         <p><?= Html::a('Publicar Empleo', ['empleos/create'], ['class' =>'text-primary']) ?></p>
-                        <p><?= Html::a('Modificar Empleo', ['empleos/update'], ['class' =>'text-primary']) ?></p>
+                        <p><?= Html::a('Modificar Empleo', ['empleos/index'], ['class' =>'text-primary']) ?></p>
                         
                     </div>
                 </div>

@@ -17,14 +17,20 @@ use yii\helpers\Html;
             
             <div class="pt-3">
 
-                <?=Html::a('Ver', ['empleos/view', 'id' => $key], ['class' => 'btn btn-sm btn-warning'])?>
-                <?=Html::a('Enviar presupuesto', ['libros/view', 'id' => $key], ['class' => 'btn btn-sm btn-success'])?>
+                <?=Html::a('Enviar presupuesto', ['presupuestos/create', 'id' => $key], ['class' => 'btn btn-sm btn-success'])?>
+                <?php if (Yii::$app->user->identity->rol == '1' && Yii::$app->user->identity->nombre == $model->empleador->nombre):?>
+                    <?=Html::a('Modificar empleo', 
+                        ['empleos/update', 'id' => $key, 'idu' => Yii::$app->user->identity->id],
+                        ['class' => 'btn btn-sm btn-warning']
+                    )?>
+                <?php endif ?>
+
             </div>
 
 
             <div class="card-footer mt-3">
                 <span class="float-right text-muted"><?=Yii::$app->formatter->asDate($model->created_at)?></span>
-                <span class="text-muted"><i class="fa fa-home"></i>Publicado por: <?= Html::encode($model->nombre)?></span>             
+                <span class="text-muted"><i class=""></i>Publicado por: <?= Html::encode($model->nombre)?></span>             
             </div>
         </div>
     </div>

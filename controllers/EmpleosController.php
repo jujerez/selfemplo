@@ -9,6 +9,7 @@ use app\models\Poblaciones;
 use app\models\Profesiones;
 use app\models\Provincias;
 use app\models\Sectores;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -29,6 +30,40 @@ class EmpleosController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                ],
+            ],
+
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['create', 'update',],
+                'rules' => [
+
+                    // propio empleador
+                    [
+                        'allow' => true,
+                        'actions' => ['update'],
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action ) {
+                            return Yii::$app->user->identity->rol === '1' 
+                            && Yii::$app->request->get('idu') == Yii::$app->user->identity->id;
+                            
+                        }
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['create'],
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action ) {
+                            return Yii::$app->user->identity->rol === '1';
+                            
+                            
+                        }
+                    ],
+
+                   
+
+        
+                   
                 ],
             ],
         ];
@@ -110,12 +145,20 @@ class EmpleosController extends Controller
         $provincia_id = key($provincias);      
         $poblaciones = Poblaciones::lista($provincia_id);
 
+        $sectores = Sectores::lista();
+        $sector_id = key($sectores);      
+        $profesiones = Profesiones::lista($sector_id);
+
         return $this->render('update', [
             'model' => $model,
             'provincias' => $provincias,
             'poblaciones' => $poblaciones,
+            'sectores' => $sectores,
+            'profesiones' => $profesiones,
         ]);
     }
+
+   
 
     /**
      * Deletes an existing Empleos model.
