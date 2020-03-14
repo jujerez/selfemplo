@@ -31,6 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <h3>Empleos</h3><hr>
                         <p><?= Html::a('Publicar Empleo', ['empleos/create'], ['class' =>'text-primary']) ?></p>
                         <p><?= Html::a('Modificar Empleo', ['empleos/index'], ['class' =>'text-primary']) ?></p>
+                        <p><?= Html::a('Borrar Empleo', ['empleos/index'], ['class' =>'text-primary']) ?></p>
                         
                     </div>
                 </div>

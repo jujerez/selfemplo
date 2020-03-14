@@ -19,9 +19,19 @@ use yii\helpers\Html;
 
                 <?=Html::a('Enviar presupuesto', ['presupuestos/create', 'id' => $key], ['class' => 'btn btn-sm btn-success'])?>
                 <?php if (Yii::$app->user->identity->rol == '1' && Yii::$app->user->identity->nombre == $model->empleador->nombre):?>
-                    <?=Html::a('Modificar empleo', 
+                    <?=Html::a('Modificar', 
                         ['empleos/update', 'id' => $key, 'idu' => Yii::$app->user->identity->id],
                         ['class' => 'btn btn-sm btn-warning']
+                    )?>
+
+                    <?=Html::a('Borrar', 
+                        ['delete', 'id' => $model->id],
+                        ['class' => 'btn btn-sm btn-danger', 
+                            'data' => [
+                                'confirm' => '¿Seguro que desea borrar este empleo?',
+                                'method' => 'post',
+                            ],
+                        ]
                     )?>
                 <?php endif ?>
 
