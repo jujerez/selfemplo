@@ -59,7 +59,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <!-- <?= GridView::widget([
+    <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
@@ -76,10 +76,11 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'poblacion.nombre',
             'empleador.nombre',
+            'poblacion.provincia.nombre',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
-    ]); ?> -->
+    ]); ?>
 
 
 </>

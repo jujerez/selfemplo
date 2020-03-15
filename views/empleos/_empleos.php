@@ -13,7 +13,11 @@ use yii\helpers\Html;
              
             <h3><?=$model->titulo?></h3>
             <p class="card-text mb-auto"><?= Html::encode($model->descripcion) ?></p>
-            <p class="card-text mb-auto text-black-50">Ubicación: <b><?= Html::encode($model->poblacion->nombre) ?></b></p>
+            <p class="card-text mb-auto text-black-50">
+                Ubicación: <b><?= Html::encode($model->poblacion->nombre).', '. 
+                    Html::encode($model->poblacion->provincia->nombre) ?>
+                </b>
+            </p>
             
             <div class="pt-3">
             

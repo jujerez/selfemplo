@@ -18,14 +18,16 @@ class EmpleosSearch extends Empleos
     {
         return [
             [['id', 'poblacion_id', 'empleador_id', 'profesion_id'], 'integer'],
-            [['titulo', 'descripcion', 'created_at', 'profesion.pronom', 'poblacion.nombre', 'empleador.nombre'], 'safe'],
+            [['titulo', 'descripcion', 'created_at', 'profesion.pronom', 'poblacion.nombre', 'empleador.nombre', 'poblacion.provincia.nombre'], 'safe'],
         ];
     }
 
     public function attributes()
     {
-        return array_merge(parent::attributes(), ['profesion.pronom', 'poblacion.nombre', 'empleador.nombre']);
+        return array_merge(parent::attributes(), ['profesion.pronom', 'poblacion.nombre', 'empleador.nombre','poblacion.provincia.nombre']);
     }
+
+    
 
     /**
      * {@inheritdoc}
@@ -49,7 +51,10 @@ class EmpleosSearch extends Empleos
         $query = Empleos::find()
           ->joinWith('poblacion p')
           ->joinWith('profesion pro')
-          ->joinWith('empleador e');
+          ->joinWith('empleador e')
+          ->joinWith('provincia prov');
+          
+          
 
         // add conditions that should always apply here
 
@@ -57,11 +62,13 @@ class EmpleosSearch extends Empleos
             'query' => $query,
         ]);
 
-        // ORDENACION del atributo ajeno(genero es del modelo, NO de la tabla)
+        // ORDENACION 
         $dataProvider->sort->attributes['poblacion.nombre'] = [
             'asc' => ['p.nombre' => SORT_ASC],
             'desc' => ['p.nombre' => SORT_DESC],
         ];
+
+        
 
         $dataProvider->sort->attributes['profesion.pronom'] = [
             'asc' => ['pro.pronom' => SORT_ASC],
@@ -95,7 +102,8 @@ class EmpleosSearch extends Empleos
             ->andFilterWhere(['ilike', 'descripcion', $this->descripcion])
             ->andFilterWhere(['ilike', 'p.nombre', $this->getAttributes(['poblacion.nombre'])])
             ->andFilterWhere(['ilike', 'pro.pronom', $this->getAttributes(['profesion.pronom'])])
-            ->andFilterWhere(['ilike', 'e.nombre', $this->getAttributes(['empleador.nombre'])]);
+            ->andFilterWhere(['ilike', 'e.nombre', $this->getAttributes(['empleador.nombre'])])
+            ->andFilterWhere(['ilike', 'prov.nombre', $this->getAttributes(['poblacion.provincia.nombre'])]);
 
         return $dataProvider;
     }
