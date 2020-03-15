@@ -23,9 +23,12 @@ use yii\bootstrap4\ActiveForm;
         <?= $form->field($model, 'created_at')->label('Fecha de publicación') ?>
 
         <?= $form->field($model, 'poblacion.nombre') ?>
+
         <?= $form->field($model, 'poblacion.provincia.nombre')->label('Provincia') ?>
 
         <?php echo $form->field($model, 'empleador.nombre')->label('Autor publicación') ?>
+
+        <?php echo $form->field($model, 'profesion.sector.secnom')->label('Sector') ?>
 
         <?php echo $form->field($model, 'profesion.pronom')->label('Profesión') ?>
 

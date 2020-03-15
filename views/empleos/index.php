@@ -77,6 +77,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'poblacion.nombre',
             'empleador.nombre',
             'poblacion.provincia.nombre',
+            'profesion.sector.secnom',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

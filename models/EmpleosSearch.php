@@ -18,13 +18,25 @@ class EmpleosSearch extends Empleos
     {
         return [
             [['id', 'poblacion_id', 'empleador_id', 'profesion_id'], 'integer'],
-            [['titulo', 'descripcion', 'created_at', 'profesion.pronom', 'poblacion.nombre', 'empleador.nombre', 'poblacion.provincia.nombre'], 'safe'],
+            [
+                [
+                    'titulo', 
+                    'descripcion', 
+                    'created_at', 
+                    'profesion.pronom', 
+                    'poblacion.nombre', 
+                    'empleador.nombre', 
+                    'poblacion.provincia.nombre',
+                    'profesion.sector.secnom',
+                    
+                ], 'safe'],
         ];
     }
 
     public function attributes()
     {
-        return array_merge(parent::attributes(), ['profesion.pronom', 'poblacion.nombre', 'empleador.nombre','poblacion.provincia.nombre']);
+        return array_merge(parent::attributes(),
+         ['profesion.pronom', 'poblacion.nombre', 'empleador.nombre','poblacion.provincia.nombre', 'profesion.sector.secnom']);
     }
 
     
@@ -52,7 +64,8 @@ class EmpleosSearch extends Empleos
           ->joinWith('poblacion p')
           ->joinWith('profesion pro')
           ->joinWith('empleador e')
-          ->joinWith('provincia prov');
+          ->joinWith('provincia prov')
+          ->joinWith('sector s');
           
           
 
@@ -103,7 +116,8 @@ class EmpleosSearch extends Empleos
             ->andFilterWhere(['ilike', 'p.nombre', $this->getAttributes(['poblacion.nombre'])])
             ->andFilterWhere(['ilike', 'pro.pronom', $this->getAttributes(['profesion.pronom'])])
             ->andFilterWhere(['ilike', 'e.nombre', $this->getAttributes(['empleador.nombre'])])
-            ->andFilterWhere(['ilike', 'prov.nombre', $this->getAttributes(['poblacion.provincia.nombre'])]);
+            ->andFilterWhere(['ilike', 'prov.nombre', $this->getAttributes(['poblacion.provincia.nombre'])])
+            ->andFilterWhere(['ilike', 's.secnom', $this->getAttributes(['profesion.sector.secnom'])]);
 
         return $dataProvider;
     }
