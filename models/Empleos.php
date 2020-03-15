@@ -103,6 +103,11 @@ class Empleos extends \yii\db\ActiveRecord
         return $this->hasOne(Usuarios::className(), ['id' => 'empleador_id'])->inverseOf('empleos');
     }
 
+    public function getProvincia()
+    {
+        return $this->hasOne(Provincias::className(), ['id' => 'provincia_id'])->via('poblacion');
+    }
+
     /**
      * Metodo que devuelve el nombre del empleador
      *
