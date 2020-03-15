@@ -9,39 +9,48 @@ use yii\helpers\Html;
     <div class="col-12">
         <div class="card shadow  p-4 mb-2">
          
-            <div class="text-left p-2"><strong class="text-success text-left"><?= Html::encode($model->profesion->pronom) ?></strong></div> 
-             
-            <h3><?=$model->titulo?></h3>
-            <p class="card-text mb-auto"><?= Html::encode($model->descripcion) ?></p>
-            <p class="card-text mb-auto text-black-50">
-                Ubicación: <b><?= Html::encode($model->poblacion->nombre).', '. 
-                    Html::encode($model->poblacion->provincia->nombre) ?>
-                </b>
-            </p>
-            
-            <div class="pt-3">
-            
-                <?=Html::a('Enviar presupuesto', ['presupuestos/create', 'id' => $key], ['class' => 'btn btn-sm btn-success'])?>
-                <?php if(!Yii::$app->user->isGuest): 
-                        if (Yii::$app->user->identity->rol == '1' && Yii::$app->user->identity->nombre == $model->empleador->nombre):?>
-                            <?=Html::a('Modificar', 
-                                ['empleos/update', 'id' => $key, 'idu' => Yii::$app->user->identity->id],
-                                ['class' => 'btn btn-sm btn-warning']
-                            )?>
-                       
+            <div class="card-header p-2">
+                <span class="text-success ">
+                    <?= Html::encode($model->profesion->pronom) ?>
+                </span>
+                <span class=" text-muted float-right">
+                    <?= Html::encode($model->profesion->sector->secnom) ?>
+                </span>
+            </div> 
+            <div class="card-body">
+ 
+                <h3><?=$model->titulo?></h3>
+                <p class="card-text mb-auto"><?= Html::encode($model->descripcion) ?></p>
+                <p class="card-text mb-auto text-black-50">
+                    Ubicación: <b><?= Html::encode($model->poblacion->nombre).', '. 
+                        Html::encode($model->poblacion->provincia->nombre) ?>
+                    </b>
+                </p>
+                
+                <div class="pt-3">
+                
+                    <?=Html::a('Enviar presupuesto', ['presupuestos/create', 'id' => $key], ['class' => 'btn btn-sm btn-success'])?>
+                    <?php if(!Yii::$app->user->isGuest): 
+                            if (Yii::$app->user->identity->rol == '1' && Yii::$app->user->identity->nombre == $model->empleador->nombre):?>
+                                <?=Html::a('Modificar', 
+                                    ['empleos/update', 'id' => $key, 'idu' => Yii::$app->user->identity->id],
+                                    ['class' => 'btn btn-sm btn-warning']
+                                )?>
+                        
 
-                            <?=Html::a('Borrar', 
-                                ['delete', 'id' => $model->id],
-                                ['class' => 'btn btn-sm btn-danger', 
-                                    'data' => [
-                                        'confirm' => '¿Seguro que desea borrar este empleo?',
-                                        'method' => 'post',
-                                    ],
-                                ]
-                            )?>
-                        <?php endif ?>
-                <?php endif ?>
+                                <?=Html::a('Borrar', 
+                                    ['delete', 'id' => $model->id],
+                                    ['class' => 'btn btn-sm btn-danger', 
+                                        'data' => [
+                                            'confirm' => '¿Seguro que desea borrar este empleo?',
+                                            'method' => 'post',
+                                        ],
+                                    ]
+                                )?>
+                            <?php endif ?>
+                    <?php endif ?>
 
+                </div>
             </div>
 
 

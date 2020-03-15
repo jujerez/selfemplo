@@ -108,6 +108,11 @@ class Empleos extends \yii\db\ActiveRecord
         return $this->hasOne(Provincias::className(), ['id' => 'provincia_id'])->via('poblacion');
     }
 
+    public function getSector()
+    {
+        return $this->hasOne(Sectores::className(), ['id' => 'sector_id'])->via('profesion');
+    }
+
     /**
      * Metodo que devuelve el nombre del empleador
      *
