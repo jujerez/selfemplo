@@ -39,8 +39,6 @@ class EmpleosSearch extends Empleos
         ['profesion.pronom', 'poblacion.nombre', 'empleador.nombre','poblacion.provincia.nombre','profesion.sector.secnom']);
     }
 
-    
-
     /**
      * {@inheritdoc}
      */
@@ -81,8 +79,6 @@ class EmpleosSearch extends Empleos
             'desc' => ['p.nombre' => SORT_DESC],
         ];
 
-        
-
         $dataProvider->sort->attributes['profesion.pronom'] = [
             'asc' => ['pro.pronom' => SORT_ASC],
             'desc' => ['pro.pronom' => SORT_DESC],
@@ -91,6 +87,12 @@ class EmpleosSearch extends Empleos
         $dataProvider->sort->attributes['empleador.nombre'] = [
             'asc' => ['e.nombre' => SORT_ASC],
             'desc' => ['e.nombre' => SORT_DESC],
+        ];
+
+        $dataProvider->sort->attributes['profesion.sector.secnom'] = [
+            'asc' => ['s.secnom' => SORT_ASC],
+            'desc' => ['s.secnom' => SORT_DESC],
+            'label' => 'Sector',
         ];
 
         $this->load($params);

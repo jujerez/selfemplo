@@ -61,6 +61,8 @@ kartik\icons\FontAwesomeAsset::register($this);
                     'label' => 'Ordenar por',
                     'attributes' => [
                         'titulo',
+                        'profesion.sector.secnom',
+                        
                     ]
                 ],
             ]); ?>
