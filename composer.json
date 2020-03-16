@@ -29,7 +29,9 @@
         "kartik-v/yii2-datecontrol": "dev-master",
         "kartik-v/yii2-widget-datetimepicker": "dev-master",
         "kartik-v/yii2-widget-datepicker": "@dev",
-        "kartik-v/yii2-icons": "@dev"
+        "kartik-v/yii2-icons": "@dev",
+        "jscdev/bs4": "@dev",
+        "jscdev/yii2-dropdown-sorter": "@dev"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
