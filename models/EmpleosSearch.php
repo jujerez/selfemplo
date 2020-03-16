@@ -96,6 +96,12 @@ class EmpleosSearch extends Empleos
             'label' => 'Sector',
         ];
 
+        $dataProvider->sort->attributes['poblacion.provincia.nombre'] = [
+            'asc' => ['prov.nombre' => SORT_ASC],
+            'desc' => ['prov.nombre' => SORT_DESC],
+            'label' => 'Provincia',
+        ];
+
 
         $this->load($params);
 
