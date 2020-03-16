@@ -62,6 +62,7 @@ kartik\icons\FontAwesomeAsset::register($this);
                     'attributes' => [
                         'titulo',
                         'profesion.sector.secnom',
+                        'poblacion.nombre'
                         
                     ]
                 ],

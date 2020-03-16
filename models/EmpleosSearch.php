@@ -77,6 +77,7 @@ class EmpleosSearch extends Empleos
         $dataProvider->sort->attributes['poblacion.nombre'] = [
             'asc' => ['p.nombre' => SORT_ASC],
             'desc' => ['p.nombre' => SORT_DESC],
+            'label' => 'Población'
         ];
 
         $dataProvider->sort->attributes['profesion.pronom'] = [
