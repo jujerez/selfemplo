@@ -1,5 +1,7 @@
 <?php
 
+use kartik\date\DatePicker;
+use kartik\datetime\DateTimePicker;
 use yii\bootstrap4\Html;
 use yii\bootstrap4\ActiveForm;
 
@@ -20,7 +22,20 @@ use yii\bootstrap4\ActiveForm;
 
         <?= $form->field($model, 'descripcion') ?>
 
-        <?= $form->field($model, 'created_at')->label('Fecha de publicación') ?>
+        
+
+        <?= $form->field($model, 'created_at')->widget(
+            DatePicker::class, 
+            [
+                'options' => ['placeholder' => ''],
+                'convertFormat' => true,
+                'pluginOptions' => [
+                    // 'format' => 'dd-M-yyyy  H:i:s',
+                    'format' => 'dd-M-yyyy',
+                    'autoclose' => true,
+                    'todayHighlight' => true
+                ]
+            ])->label('Fecha publicación')?>
 
         <?= $form->field($model, 'poblacion.nombre') ?>
 
