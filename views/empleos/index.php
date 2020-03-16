@@ -34,11 +34,8 @@ kartik\icons\FontAwesomeAsset::register($this);
                         'created_at',
                         'poblacion.nombre',
                         'empleador.nombre',
-                        'profesion.pronom',
-                        
-                        
-                    ],
-                    
+                        'profesion.pronom',     
+                    ],         
 
                 ]) ?>
              </div> -->
@@ -62,7 +59,9 @@ kartik\icons\FontAwesomeAsset::register($this);
                     'attributes' => [
                         'titulo',
                         'profesion.sector.secnom',
-                        'poblacion.nombre'
+                        'poblacion.nombre',
+                        'created_at',
+
                         
                     ]
                 ],

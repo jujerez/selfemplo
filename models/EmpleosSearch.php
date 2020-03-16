@@ -96,6 +96,7 @@ class EmpleosSearch extends Empleos
             'label' => 'Sector',
         ];
 
+
         $this->load($params);
 
         if (!$this->validate()) {
