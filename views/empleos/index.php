@@ -51,6 +51,18 @@ kartik\icons\FontAwesomeAsset::register($this);
                 'dataProvider' => $dataProvider,
                 'itemView' => '_empleos',
                 'summary' => '',
+                'layout' => "{sorter}\n{summary}\n{items}\n{pager}\n",
+                'sorter' => [
+                    'class' => 'jscdev\yii2\ButtonDropdownSorter',
+                    'linkOptions' => [
+                        'class' => 'dropdown-item',
+                        'tabindex' => '-1'
+                    ],
+                    'label' => 'Ordenar por',
+                    'attributes' => [
+                        'titulo',
+                    ]
+                ],
             ]); ?>
         </div>
     </div>
