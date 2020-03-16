@@ -61,8 +61,7 @@ kartik\icons\FontAwesomeAsset::register($this);
                         'profesion.sector.secnom',
                         'poblacion.nombre',
                         'created_at',
-
-                        
+                        'poblacion.provincia.nombre',   
                     ]
                 ],
             ]); ?>
