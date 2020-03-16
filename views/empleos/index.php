@@ -1,5 +1,7 @@
 <?php
 
+use kartik\date\DatePicker;
+use kartik\datetime\DateTimePicker;
 use yii\bootstrap4\Html;
 use yii\grid\GridView;
 use yii\widgets\LinkSorter;
@@ -11,6 +13,7 @@ use yii\widgets\ListView;
 
 $this->title = 'Empleos';
 $this->params['breadcrumbs'][] = $this->title;
+kartik\icons\FontAwesomeAsset::register($this);
 ?>
 <main class="empleos-index container">
 
@@ -32,6 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'poblacion.nombre',
                         'empleador.nombre',
                         'profesion.pronom',
+                        
                         
                     ],
                     
@@ -59,16 +63,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <!-- <?= GridView::widget([
+     <!-- <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'titulo',
-            'descripcion',
-            'created_at:datetime',
+           
+            
             [
                 'attribute' => 'profesion.pronom',
                 'format' => 'text',
@@ -78,10 +80,18 @@ $this->params['breadcrumbs'][] = $this->title;
             'empleador.nombre',
             'poblacion.provincia.nombre',
             'profesion.sector.secnom',
+            [
+                'attribute' => 'created_at',
+                'format' => 'datetime',
+                'filter' => DateTimePicker::widget([
+                    'model' => $searchModel,
+                    'attribute' => 'created_at',
+                ])
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
-    ]); ?> -->
+    ]); ?>  -->
 
 
 </>

@@ -113,6 +113,8 @@ class Empleos extends \yii\db\ActiveRecord
         return $this->hasOne(Sectores::className(), ['id' => 'sector_id'])->via('profesion');
     }
 
+    
+
     /**
      * Metodo que devuelve el nombre del empleador
      *

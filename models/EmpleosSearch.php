@@ -104,20 +104,23 @@ class EmpleosSearch extends Empleos
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'created_at' => $this->created_at,
+            // 'created_at' => $this->created_at,
             'poblacion_id' => $this->poblacion_id,
             'empleador_id' => $this->empleador_id,
             'profesion_id' => $this->profesion_id,
         ]);
-
-
+        //  var_dump($this->created_at);
+        //  var_dump(date('Y-m-d H:i:s',strtotime($this->created_at)+ 3600*24));  
+         
+        //  die();
         $query->andFilterWhere(['ilike', 'titulo', $this->titulo])
             ->andFilterWhere(['ilike', 'descripcion', $this->descripcion])
             ->andFilterWhere(['ilike', 'p.nombre', $this->getAttributes(['poblacion.nombre'])])
             ->andFilterWhere(['ilike', 'pro.pronom', $this->getAttributes(['profesion.pronom'])])
             ->andFilterWhere(['ilike', 'e.nombre', $this->getAttributes(['empleador.nombre'])])
             ->andFilterWhere(['ilike', 'prov.nombre', $this->getAttributes(['poblacion.provincia.nombre'])])
-            ->andFilterWhere(['ilike', 's.secnom', $this->getAttributes(['profesion.sector.secnom'])]);
+            ->andFilterWhere(['ilike', 's.secnom', $this->getAttributes(['profesion.sector.secnom'])])
+            ->andFilterWhere(['between', 'created_at', $this->created_at, date('Y-m-d H:i:s',strtotime($this->created_at)+ 3600*24)]);
 
         return $dataProvider;
     }
