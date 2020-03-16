@@ -60,7 +60,7 @@ class Empleos extends \yii\db\ActiveRecord
             'id' => 'ID',
             'titulo' => 'Titulo',
             'descripcion' => 'Descripción',
-            'created_at' => 'Created At',
+            'created_at' => 'Fecha de publicación',
             'poblacion_id' => 'Población',
             'empleador_id' => 'Empleador ID',
             'profesion_id' => 'Profesion ',
