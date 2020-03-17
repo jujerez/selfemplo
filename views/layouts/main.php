@@ -76,7 +76,7 @@ AppAsset::register($this);
                             ? (['label' => 'Opciones mi perfil', 'url' => ['profesionales/perfil', 'id' => Yii::$app->user->identity->id],])
                             : (Yii::$app->user->identity->rol == '1') 
                                 ? (['label' => 'Opciones mi perfil', 'url' => ['empleadores/perfil', 'id' => Yii::$app->user->identity->id],])
-                                : (['label' => 'Opciones mi perfil', 'url' => ['administradores/perfil', 'id' => Yii::$app->user->identity->id],]),
+                                : (['label' => 'Opciones administrador', 'url' => ['administradores/perfil', 'id' => Yii::$app->user->identity->id],]),
                 
                         ],
                     ])
