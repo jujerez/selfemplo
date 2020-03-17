@@ -40,7 +40,7 @@ class Sectores extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'secnom' => 'Secnom',
+            'secnom' => 'Sector',
         ];
     }
 

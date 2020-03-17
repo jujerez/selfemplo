@@ -5,16 +5,23 @@ use yii\bootstrap4\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Sectores */
 
-$this->title = 'Create Sectores';
+$this->title = 'Crear Sector';
 $this->params['breadcrumbs'][] = ['label' => 'Sectores', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="sectores-create">
+<main class="container sectores-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="row">
+        <section class="col-12 p-3 shadow">
 
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
+            <h1><?= Html::encode($this->title) ?></h1>
 
-</div>
+            <?= $this->render('_form', [
+                'model' => $model,
+            ]) ?>
+
+        </section>
+    </div>
+
+    
+</main>
