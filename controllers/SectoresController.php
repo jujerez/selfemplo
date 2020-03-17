@@ -3,16 +3,17 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Administradores;
-use app\models\AdministradoresSearch;
+use app\models\Sectores;
+use app\models\SectoresSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * AdministradoresController implements the CRUD actions for Administradores model.
+ * SectoresController implements the CRUD actions for Sectores model.
  */
-class AdministradoresController extends Controller
+class SectoresController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -26,16 +27,32 @@ class AdministradoresController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['create', 'update', 'index', 'delete' ],
+                'rules' => [
+
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return Yii::$app->user->identity->rol === '2';
+                            
+                        }
+                    ],
+                    
+                ],
+            ],
         ];
     }
 
     /**
-     * Lists all Administradores models.
+     * Lists all Sectores models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new AdministradoresSearch();
+        $searchModel = new SectoresSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +62,7 @@ class AdministradoresController extends Controller
     }
 
     /**
-     * Displays a single Administradores model.
+     * Displays a single Sectores model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,16 +75,16 @@ class AdministradoresController extends Controller
     }
 
     /**
-     * Creates a new Administradores model.
+     * Creates a new Sectores model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Administradores();
+        $model = new Sectores();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->usuario_id]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
@@ -76,7 +93,7 @@ class AdministradoresController extends Controller
     }
 
     /**
-     * Updates an existing Administradores model.
+     * Updates an existing Sectores model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -87,7 +104,7 @@ class AdministradoresController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->usuario_id]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -96,7 +113,7 @@ class AdministradoresController extends Controller
     }
 
     /**
-     * Deletes an existing Administradores model.
+     * Deletes an existing Sectores model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -109,26 +126,16 @@ class AdministradoresController extends Controller
         return $this->redirect(['index']);
     }
 
-    public function actionPerfil($id)
-    {
-        $model = $this->findModel($id);
-
-        return $this->render('perfil', [
-            'model' => $model,
-            
-        ]);
-    }
-
     /**
-     * Finds the Administradores model based on its primary key value.
+     * Finds the Sectores model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Administradores the loaded model
+     * @return Sectores the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Administradores::findOne($id)) !== null) {
+        if (($model = Sectores::findOne($id)) !== null) {
             return $model;
         }
 
