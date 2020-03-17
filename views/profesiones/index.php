@@ -10,29 +10,32 @@ use yii\grid\GridView;
 $this->title = 'Profesiones';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="profesiones-index">
+<main class="profesiones-index container">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="row">
+        <section class="col-12 shadow  p-3">
+        <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Create Profesiones', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+            <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+            <p>
+                <?= Html::a('Crear Profesiones', ['create'], ['class' => 'btn btn-success']) ?>
+            </p>
+            <?= GridView::widget([
+                'dataProvider' => $dataProvider,
+                'filterModel' => $searchModel,
+                'columns' => [
+        
+                    'pronom',
+                    'sector_id',
+                    ['class' => 'yii\grid\ActionColumn'],
+                ],
+            ]); ?>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+           
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+        </section>
+    </div>
 
-            'id',
-            'pronom',
-            'sector_id',
+   
 
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
-
-
-</div>
+</main>

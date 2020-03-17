@@ -5,16 +5,22 @@ use yii\bootstrap4\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Profesiones */
 
-$this->title = 'Create Profesiones';
+$this->title = 'Crear Profesiones';
 $this->params['breadcrumbs'][] = ['label' => 'Profesiones', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="profesiones-create">
+<main class="profesiones-create container">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="row">
+        <section class="col-12 shadow p-3">
 
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
+            <h1><?= Html::encode($this->title) ?></h1>
 
-</div>
+            <?= $this->render('_form', [
+                'model' => $model,
+            ]) ?>
+        </section>
+    </div>
+
+
+</main>
