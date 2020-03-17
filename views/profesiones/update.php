@@ -5,10 +5,10 @@ use yii\bootstrap4\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Profesiones */
 
-$this->title = 'Update Profesiones: ' . $model->id;
+$this->title = 'Modificar profesiones: ' . $model->pronom;
 $this->params['breadcrumbs'][] = ['label' => 'Profesiones', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = ['label' => $model->pronom, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = 'Modificar';
 ?>
 <main class="profesiones-update container">
 
