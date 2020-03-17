@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Sectores;
 use app\models\SectoresSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -24,6 +25,22 @@ class SectoresController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                ],
+            ],
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['create', 'update', 'index', 'delete' ],
+                'rules' => [
+
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return Yii::$app->user->identity->rol === '2';
+                            
+                        }
+                    ],
+                    
                 ],
             ],
         ];
