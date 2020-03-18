@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Profesiones;
 use app\models\ProfesionesSearch;
+use app\models\Sectores;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -88,8 +89,11 @@ class ProfesionesController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
+        $sectores = Sectores::lista();
+        
         return $this->render('create', [
             'model' => $model,
+            'sectores' => $sectores,
         ]);
     }
 
@@ -107,9 +111,10 @@ class ProfesionesController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
-
+        $sectores = Sectores::lista();
         return $this->render('update', [
             'model' => $model,
+            'sectores' => $sectores,
         ]);
     }
 

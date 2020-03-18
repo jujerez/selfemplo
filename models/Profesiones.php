@@ -46,8 +46,8 @@ class Profesiones extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'pronom' => 'Pronom',
-            'sector_id' => 'Sector ID',
+            'pronom' => 'Profesión',
+            'sector_id' => 'Sector',
         ];
     }
 

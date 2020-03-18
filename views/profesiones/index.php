@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'columns' => [
         
                     'pronom',
-                    'sector_id',
+                    'sector.secnom',
                     ['class' => 'yii\grid\ActionColumn'],
                 ],
             ]); ?>

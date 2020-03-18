@@ -19,6 +19,7 @@ $this->params['breadcrumbs'][] = 'Modificar';
 
             <?= $this->render('_form', [
                 'model' => $model,
+                'sectores' => $sectores,
             ]) ?>
         </div>
     </div>

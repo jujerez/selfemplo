@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attributes' => [
                     
                     'pronom',
-                    'sector_id',
+                    'sector.secnom',
                 ],
             ]) ?>
             <p>
