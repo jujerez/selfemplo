@@ -5,17 +5,24 @@ use yii\bootstrap4\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Provincias */
 
-$this->title = 'Update Provincias: ' . $model->id;
+$this->title = 'Modificar Provincia: ' . $model->nombre;
 $this->params['breadcrumbs'][] = ['label' => 'Provincias', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = ['label' => $model->nombre, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = 'Modificar';
 ?>
-<div class="provincias-update">
+<main class="provincias-update container">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="row">
+        <section class="col-12 shadow p-3">
 
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
+            <h1><?= Html::encode($this->title) ?></h1>
 
-</div>
+            <?= $this->render('_form', [
+                'model' => $model,
+            ]) ?>
+        </section>
+    </div>
+
+
+
+</main>
