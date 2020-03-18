@@ -18,8 +18,14 @@ class ProfesionesSearch extends Profesiones
     {
         return [
             [['id', 'sector_id'], 'integer'],
-            [['pronom'], 'safe'],
+            [['pronom', 'sector.secnom'], 'safe'],
         ];
+    }
+
+    public function attributes()
+    {
+        return array_merge(parent::attributes(), 
+        ['sector.secnom',]);
     }
 
     /**
@@ -40,7 +46,9 @@ class ProfesionesSearch extends Profesiones
      */
     public function search($params)
     {
-        $query = Profesiones::find();
+        //$query = Profesiones::find();
+        $query = Profesiones::find()
+        ->joinWith('sector s');
 
         // add conditions that should always apply here
 
@@ -62,7 +70,8 @@ class ProfesionesSearch extends Profesiones
             'sector_id' => $this->sector_id,
         ]);
 
-        $query->andFilterWhere(['ilike', 'pronom', $this->pronom]);
+        $query->andFilterWhere(['ilike', 'pronom', $this->pronom])
+        ->andFilterWhere(['ilike', 's.secnom', $this->getAttributes(['sector.secnom'])]);
 
         return $dataProvider;
     }
