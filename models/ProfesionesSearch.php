@@ -56,6 +56,13 @@ class ProfesionesSearch extends Profesiones
             'query' => $query,
         ]);
 
+        // ORDENACION 
+        $dataProvider->sort->attributes['sector.secnom'] = [
+            'asc' => ['s.secnom' => SORT_ASC],
+            'desc' => ['s.secnom' => SORT_DESC],
+            
+        ];
+
         $this->load($params);
 
         if (!$this->validate()) {
