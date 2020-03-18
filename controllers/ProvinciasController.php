@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Provincias;
 use app\models\ProvinciasSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -24,6 +25,23 @@ class ProvinciasController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                ],
+            ],
+
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['create', 'update', 'index', 'delete', ],
+                'rules' => [
+
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return Yii::$app->user->identity->rol === '2';
+                            
+                        }
+                    ],
+                    
                 ],
             ],
         ];
