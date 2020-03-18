@@ -31,9 +31,16 @@ $this->params['breadcrumbs'][] = $this->title;
                         <h3>Sectores</h3><hr>
                         <p><?= Html::a('Index', ['sectores/index'], ['class' =>'text-primary']) ?></p>
                         <p><?= Html::a('Crear', ['sectores/create'], ['class' =>'text-primary']) ?></p>
-                        <p><?= Html::a('Modificar', ['sectores/update'], ['class' =>'text-primary']) ?></p>
-                        
-                        
+                        <p><?= Html::a('Modificar', ['sectores/update'], ['class' =>'text-primary']) ?></p>     
+                    </div>
+                </div>
+
+                <div class="card bg-light">
+                    <div class="card-body text-center">
+                        <h3>Profesiones</h3><hr>
+                        <p><?= Html::a('Index', ['profesiones/index'], ['class' =>'text-primary']) ?></p>
+                        <p><?= Html::a('Crear', ['profesiones/create'], ['class' =>'text-primary']) ?></p>
+                        <p><?= Html::a('Modificar', ['profesiones/update'], ['class' =>'text-primary']) ?></p>     
                     </div>
                 </div>
 
