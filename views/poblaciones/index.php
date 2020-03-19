@@ -29,7 +29,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'columns' => [
                     
                     'nombre',
-                    'provincia.nombre',
+                
+                    [
+                        'attribute' => 'provincia.nombre',
+                        'format' => 'text',
+                        'label' => 'Provincia',
+                    ],
 
                     ['class' => 'yii\grid\ActionColumn'],
                 ],

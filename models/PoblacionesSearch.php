@@ -22,6 +22,7 @@ class PoblacionesSearch extends Poblaciones
         ];
     }
 
+
     public function attributes()
     {
        return array_merge(parent::attributes(), ['provincia.nombre']);
@@ -53,6 +54,13 @@ class PoblacionesSearch extends Poblaciones
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+
+        // ORDENACION 
+        $dataProvider->sort->attributes['provincia.nombre'] = [
+            'asc' => ['p.nombre' => SORT_ASC],
+            'desc' => ['p.nombre' => SORT_DESC],
+            
+        ];
 
         $this->load($params);
 
