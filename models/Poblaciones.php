@@ -49,7 +49,7 @@ class Poblaciones extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'nombre' => 'Población',
-            'provincia_id' => 'Provincia ID',
+            'provincia_id' => 'Provincia',
         ];
     }
 

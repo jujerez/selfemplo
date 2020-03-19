@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Poblaciones;
 use app\models\PoblacionesSearch;
+use app\models\Provincias;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -88,8 +89,11 @@ class PoblacionesController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
+        $provincias = Provincias::lista();
+        
         return $this->render('create', [
             'model' => $model,
+            'provincias' => $provincias,
         ]);
     }
 
@@ -108,8 +112,11 @@ class PoblacionesController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
+        $provincias = Provincias::lista();
+
         return $this->render('update', [
             'model' => $model,
+            'provincias' => $provincias,
         ]);
     }
 

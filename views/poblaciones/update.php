@@ -17,6 +17,7 @@ $this->params['breadcrumbs'][] = 'Modificar';
 
                 <?= $this->render('_form', [
                     'model' => $model,
+                    'provincias' => $provincias
                 ]) ?>
                 
             </section>

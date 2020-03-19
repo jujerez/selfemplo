@@ -14,7 +14,7 @@ use yii\bootstrap4\ActiveForm;
 
     <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'provincia_id')->textInput() ?>
+    <?= $form->field($model, 'provincia_id')->dropDownList($provincias) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
