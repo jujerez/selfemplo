@@ -34,7 +34,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attributes' => [
                    
                     'nombre',
-                    'provincia_id',
+                    [
+                        'attribute' => 'provincia.nombre',
+                        'format' => 'text',
+                        'label' => 'Provincia',
+                    ],
+
                 ],
             ]) ?>
         </section>
