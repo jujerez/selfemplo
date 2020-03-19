@@ -54,6 +54,15 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                 </div>
 
+                <div class="card bg-light">
+                    <div class="card-body text-center">
+                        <h3>Poblaciones</h3><hr>
+                        <p><?= Html::a('Index', ['poblaciones/index'], ['class' =>'text-primary']) ?></p>
+                        <p><?= Html::a('Crear', ['poblaciones/create'], ['class' =>'text-primary']) ?></p>
+                        <p><?= Html::a('Modificar', ['poblaciones/update'], ['class' =>'text-primary']) ?></p>     
+                    </div>
+                </div>
+
 
                 
 
