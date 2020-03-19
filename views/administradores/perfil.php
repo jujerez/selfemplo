@@ -20,6 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="card bg-light">
                     <div class="card-body text-center">
                         <h3>Mis datos</h3><hr>
+                        <p><?= Html::a('Index', ['administradores/index', 'id' => $model->usuario_id], ['class' =>'text-primary']) ?></p>
                         <p><?= Html::a('Modificar', ['administradores/update', 'id' => $model->usuario_id], ['class' =>'text-primary']) ?></p>
                         <p><?= Html::a('Ver', ['administradores/view', 'id' => $model->usuario_id], ['class' =>'text-primary']) ?></p>
                         
@@ -43,6 +44,16 @@ $this->params['breadcrumbs'][] = $this->title;
                         <p><?= Html::a('Modificar', ['profesiones/update'], ['class' =>'text-primary']) ?></p>     
                     </div>
                 </div>
+
+                <div class="card bg-light">
+                    <div class="card-body text-center">
+                        <h3>Provincias</h3><hr>
+                        <p><?= Html::a('Index', ['provincias/index'], ['class' =>'text-primary']) ?></p>
+                        <p><?= Html::a('Crear', ['provincias/create'], ['class' =>'text-primary']) ?></p>
+                        <p><?= Html::a('Modificar', ['provincias/update'], ['class' =>'text-primary']) ?></p>     
+                    </div>
+                </div>
+
 
                 
 
