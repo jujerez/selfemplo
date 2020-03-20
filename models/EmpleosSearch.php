@@ -64,8 +64,8 @@ class EmpleosSearch extends Empleos
           ->joinWith('empleador e')
           ->joinWith('provincia prov')
           ->joinWith('sector s');
-          
-          
+
+
 
         // add conditions that should always apply here
 
@@ -73,11 +73,11 @@ class EmpleosSearch extends Empleos
             'query' => $query,
         ]);
 
-        // ORDENACION 
+        // ORDENACION
         $dataProvider->sort->attributes['poblacion.nombre'] = [
             'asc' => ['p.nombre' => SORT_ASC],
             'desc' => ['p.nombre' => SORT_DESC],
-            'label' => 'Población'
+            'label' => 'Población',
         ];
 
         $dataProvider->sort->attributes['profesion.pronom'] = [
@@ -114,15 +114,18 @@ class EmpleosSearch extends Empleos
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            // 'created_at' => $this->created_at,
-            'poblacion_id' => $this->poblacion_id,
             'empleador_id' => $this->empleador_id,
             'profesion_id' => $this->profesion_id,
         ]);
-        //  var_dump($this->created_at);
-        //  var_dump(date('Y-m-d H:i:s',strtotime($this->created_at)+ 3600*24));  
-         
-        //  die();
+
+          $formateada = '';
+          if ($this->created_at != '') {
+            $formateada = date('Y-m-d H:i:s', strtotime($this->created_at));
+          }
+
+      
+         // \Yii::debug($this->created_at);
+    
         $query->andFilterWhere(['ilike', 'titulo', $this->titulo])
             ->andFilterWhere(['ilike', 'descripcion', $this->descripcion])
             ->andFilterWhere(['ilike', 'p.nombre', $this->getAttributes(['poblacion.nombre'])])
@@ -130,7 +133,7 @@ class EmpleosSearch extends Empleos
             ->andFilterWhere(['ilike', 'e.nombre', $this->getAttributes(['empleador.nombre'])])
             ->andFilterWhere(['ilike', 'prov.nombre', $this->getAttributes(['poblacion.provincia.nombre'])])
             ->andFilterWhere(['ilike', 's.secnom', $this->getAttributes(['profesion.sector.secnom'])])
-            ->andFilterWhere(['between', 'created_at', $this->created_at, date('Y-m-d H:i:s',strtotime($this->created_at)+ 3600*24)]);
+            ->andFilterWhere(['between', 'created_at',$formateada, date('Y-m-d H:i:s',strtotime($this->created_at)+ 3600*24-1)]);
 
         return $dataProvider;
     }
