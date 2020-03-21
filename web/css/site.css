@@ -109,7 +109,7 @@ a.desc:after {
     color: white;
     text-shadow: #444 0 1px 1px;
     margin: 0 auto;
-    margin-top: -55px;
+    margin-top: -65px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -189,8 +189,13 @@ a.desc:after {
     border-radius:0px;
     border: none;
    
+}
 
-
+.dropdown-p {
+    padding-top: 0.75rem;
+    padding-left: 1.5rem;
+    font-size: 0.8203125rem;
+    font-weight: 300;
 }
 
 

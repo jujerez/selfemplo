@@ -68,8 +68,10 @@ Icon::map($this);
                         Yii::$app->user->isGuest ? (['label' => 'Login', 'url' => ['/site/login']]) 
                         : (
                             Html::beginForm(['/site/logout'], 'post')
-                        . Html::submitButton(
-                                Icon::show('sign-out-alt') . 'Cerrar sesión (' . Yii::$app->user->identity->nombre . ')',
+                            . '<p class=\' dropdown-p\'>Logueado como ' . Yii::$app->user->identity->nombre . '</p>'
+                            . '<div class="dropdown-divider"></div>'  
+                            . Html::submitButton(
+                                Icon::show('sign-out-alt') . 'Cerrar sesión',
                                 ['class' => 'dropdown-item'],
                             )
                             . Html::endForm()
