@@ -24,9 +24,9 @@ use yii\helpers\Html;
                 <h3><?=$model->titulo?></h3>
                 <p class="card-text mb-auto"><?= Html::encode($model->descripcion) ?></p>
                 <p class="card-text mb-auto text-black-50">
-                    <b> <?=Icon::show('map-marker-alt') . Html::encode($model->poblacion->nombre).', '. 
+                     <?=Icon::show('map-marker-alt') . Html::encode($model->poblacion->nombre).', '. 
                         Html::encode($model->poblacion->provincia->nombre) ?>
-                    </b>
+                    
                 </p>
                 
                 <div class="pt-3">
