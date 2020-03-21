@@ -22,4 +22,6 @@ return [
         Module::FORMAT_TIME => 'php:H:i:s',
         Module::FORMAT_DATETIME => 'php:Y-m-d H:i:s',
     ],
+
+    'icon-framework' => 'fa', 
 ];

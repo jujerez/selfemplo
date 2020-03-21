@@ -9,9 +9,12 @@ use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
 use yii\bootstrap4\Breadcrumbs;
 use app\assets\AppAsset;
+use kartik\icons\Icon;
 use yii\bootstrap4\Button;
 
 AppAsset::register($this);
+
+Icon::map($this);  
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -46,6 +49,7 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => [
+            
             ['label' => 'Inicio', 'url' => ['/site/index']],
             ['label' => 'Empleos', 'url' => ['/empleos/index']],
 
@@ -59,13 +63,13 @@ AppAsset::register($this);
 
             !Yii::$app->user->isGuest 
             ? 
-                (['label' => 'Mi perfil', 
+                (['label' => Icon::show('user') . 'Mi perfil', 
                     'items' => [
                         Yii::$app->user->isGuest ? (['label' => 'Login', 'url' => ['/site/login']]) 
                         : (
                             Html::beginForm(['/site/logout'], 'post')
                         . Html::submitButton(
-                                'Cerrar sesión (' . Yii::$app->user->identity->nombre . ')',
+                                Icon::show('sign-out-alt') . 'Cerrar sesión (' . Yii::$app->user->identity->nombre . ')',
                                 ['class' => 'dropdown-item'],
                             )
                             . Html::endForm()
@@ -73,16 +77,17 @@ AppAsset::register($this);
 
                            
                             (Yii::$app->user->identity->rol == '0') 
-                            ? (['label' => 'Opciones mi perfil', 'url' => ['profesionales/perfil', 'id' => Yii::$app->user->identity->id],])
+                            ? (['label' =>  Icon::show('user-cog') . 'Opciones mi perfil', 'url' => ['profesionales/perfil', 'id' => Yii::$app->user->identity->id],])
                             : (Yii::$app->user->identity->rol == '1') 
-                                ? (['label' => 'Opciones mi perfil', 'url' => ['empleadores/perfil', 'id' => Yii::$app->user->identity->id],])
-                                : (['label' => 'Opciones administrador', 'url' => ['administradores/perfil', 'id' => Yii::$app->user->identity->id],]),
+                                ? (['label' => Icon::show('user-cog') . 'Opciones mi perfil', 'url' => ['empleadores/perfil', 'id' => Yii::$app->user->identity->id],])
+                                : (['label' => Icon::show('user-cog') . 'Opciones administrador', 'url' => ['administradores/perfil', 'id' => Yii::$app->user->identity->id],]),
                 
                         ],
                     ])
             : '',
             
         ],
+        'encodeLabels' => false
     ]);
     
     NavBar::end();
