@@ -1,4 +1,6 @@
 <?php
+
+use kartik\icons\Icon;
 use yii\helpers\Html;
 //$posts = $dataProvider->getModels();
 //Yii::debug($posts);
@@ -22,7 +24,7 @@ use yii\helpers\Html;
                 <h3><?=$model->titulo?></h3>
                 <p class="card-text mb-auto"><?= Html::encode($model->descripcion) ?></p>
                 <p class="card-text mb-auto text-black-50">
-                    Ubicación: <b><?= Html::encode($model->poblacion->nombre).', '. 
+                    <b> <?=Icon::show('map-marker-alt') . Html::encode($model->poblacion->nombre).', '. 
                         Html::encode($model->poblacion->provincia->nombre) ?>
                     </b>
                 </p>
@@ -55,7 +57,7 @@ use yii\helpers\Html;
 
 
             <div class="card-footer mt-3">
-                <span class="float-right text-muted"><?=Yii::$app->formatter->asDate($model->created_at)?></span>
+                <span class="float-right text-muted"><?= Icon::show('calendar-alt') . Yii::$app->formatter->asDate($model->created_at)?></span>
                 <span class="text-muted"><i class=""></i>Publicado por: <?= Html::encode($model->nombre)?></span>             
             </div>
         </div>
