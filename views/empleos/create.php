@@ -10,15 +10,20 @@ $this->params['breadcrumbs'][] = ['label' => 'Empleos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <main class="empleos-create container">
+    <div class="row">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+        <div class="col-12 shadow p-3">
 
-    <?= $this->render('_form', [
-        'model' => $model,
-        'provincias' => $provincias,
-        'poblaciones' => $poblaciones,
-        'sectores' => $sectores,
-        'profesiones' => $profesiones,
-    ]) ?>
+            <h1><?= Html::encode($this->title) ?></h1>
+
+            <?= $this->render('_form', [
+                'model' => $model,
+                'provincias' => $provincias,
+                'poblaciones' => $poblaciones,
+                'sectores' => $sectores,
+                'profesiones' => $profesiones,
+            ]) ?>
+        </div>
+    </div>
 
 </main>
