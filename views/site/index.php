@@ -9,7 +9,7 @@ $this->title = 'Selfemplo';
 <div class="site-index">
 
     <div class="jumbotron jumbotron-fluid  ">
-        <div class=" align-self-center ">
+        <div class="align-self-center ">
             <h1 class="display-4 ">Contrata  profesionales</h1>
             <p class="lead">Millones de personas utilizan selfemplo.com para hacer realidad sus ideas</p>
             <div class="mt-2">
@@ -24,40 +24,46 @@ $this->title = 'Selfemplo';
     </div>
 
 
-    <div class="body-content container">
+    <main class="body-content container mt-5">
+   
+        <div class="mb-5">
+            <section class="row justify-content-around">
+                <div class="col-md-12">
+                    <h2 class="text-center "><b>Encontrar un profesional de confianza nunca ha sido tan facil</b></h2>
+                    <p class="lead text-center">No pierdas el tiempo buscando en tablones de anuncios o preguntando a tus vecinos</p>
+                   
+                </div>
+                  
+                <div class="col-md-3 shadow">
+                    <div class="contact-box center-version text-center p-3">
+                        <?=Html::img('@web/img/form.png', ['class' => ['img-tarjeta'], 'alt' => 'Publica tu empleo'])?>
+                        <h3><strong>Publica tu empleo</strong></h3>
+            
+                        <p class="text-black-50">Indicanos que profesional buscas y a que sector pertenece</p>
+                
+                    </div>
+                </div>
+                <div class="col-md-3 shadow">
+                    <div class="contact-box center-version text-center p-3">
+                         <?=Html::img('@web/img/puja2.png', ['class' => ['img-tarjeta'], 'alt' => 'Recibe presupuestos'])?>
 
-        <div class="row">
-            <div class="col-xl-4">
-                <h2>Heading</h2>
+                        <h3><strong>Recibes presupuestos</strong></h3>
+            
+                        <p class="text-black-50">En poco tiempo recibiras pujas de diferentes profesionales</p>
+                
+                    </div>
+                </div>
+                <div class="col-md-3 shadow">
+                    <div class=" text-center p-3">
+                       
+                    <?=Html::img('@web/img/auction.png', ['class' => ['img-tarjeta'], 'alt' => 'Escoge un presupuesto'])?>
+                        <h3><strong>Escoge un presupuesto</strong></h3>
+                        <p class="text-black-50">Compara presupuestos y escoge el presupuesto que más te interese</p>
+                
+                    </div>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-info" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-xl-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-info" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-xl-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-info" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
-
-    </div>
+                </div>   
+            </section>
+    
+    </main>
 </div>
