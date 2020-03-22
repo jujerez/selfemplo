@@ -64,7 +64,7 @@ CREATE TABLE poblaciones
 DROP TABLE IF EXISTS profesionales CASCADE;
 CREATE TABLE profesionales
 (
-      usuario_id               BIGINT       REFERENCES usuarios(id)                                    
+      usuario_id               BIGINT       REFERENCES usuarios(id) ON DELETE CASCADE                              
     , nombre                   VARCHAR(255) NOT NULL
     , apellidos                VARCHAR(255) NOT NULL
     , telefono                 VARCHAR(255) NOT NULL
@@ -82,7 +82,7 @@ CREATE TABLE profesionales
 DROP TABLE IF EXISTS empleadores CASCADE;
 CREATE TABLE empleadores
 (
-      usuario_id          BIGINT       REFERENCES usuarios(id)                                    
+      usuario_id          BIGINT       REFERENCES usuarios(id) ON DELETE CASCADE                               
     , nombre              VARCHAR(255) NOT NULL
     , apellidos           VARCHAR(255) NOT NULL
     , telefono            VARCHAR(255) NOT NULL
@@ -98,7 +98,7 @@ CREATE TABLE empleadores
 DROP TABLE IF EXISTS administradores CASCADE;
 CREATE TABLE administradores
 (
-      usuario_id          BIGINT       REFERENCES usuarios(id)                                    
+      usuario_id          BIGINT       REFERENCES usuarios(id)     ON DELETE CASCADE                               
     , nombre              VARCHAR(255) NOT NULL
     , apellidos           VARCHAR(255) NOT NULL
     , telefono            VARCHAR(255) NOT NULL
@@ -137,9 +137,9 @@ CREATE TABLE presupuestos
   , duracion_estimada       INTERVAL
   , estado                  BOOLEAN       DEFAULT false
   , profesional_id          BIGINT        NOT NULL REFERENCES usuarios(id)
-                                          ON DELETE NO ACTION ON UPDATE CASCADE
+                                          ON DELETE CASCADE ON UPDATE CASCADE
   , empleo_id               BIGINT        NOT NULL REFERENCES empleos(id)
-                                          ON DELETE NO ACTION ON UPDATE CASCADE
+                                          ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- Tabla comentarios --
@@ -150,9 +150,9 @@ CREATE TABLE comentarios
   , texto           VARCHAR(255)  NOT NULL
   , created_at      TIMESTAMP(0)  NOT NULL DEFAULT CURRENT_TIMESTAMP
   , empleador_id    BIGINT        NOT NULL REFERENCES usuarios(id)
-                                  ON DELETE NO ACTION ON UPDATE CASCADE
+                                  ON DELETE CASCADE ON UPDATE CASCADE
   , profesional_id  BIGINT        NOT NULL REFERENCES usuarios(id)
-                                  ON DELETE NO ACTION ON UPDATE CASCADE
+                                  ON DELETE CASCADE ON UPDATE CASCADE
  
 );
 
@@ -166,9 +166,9 @@ CREATE TABLE votos
   , voto            SMALLINT      NOT NULL
   , created_at      TIMESTAMP(0)  NOT NULL DEFAULT CURRENT_TIMESTAMP
   , empleador_id    BIGINT        NOT NULL REFERENCES usuarios(id)
-                                  ON DELETE NO ACTION ON UPDATE CASCADE
+                                  ON DELETE CASCADE ON UPDATE CASCADE
   , profesional_id  BIGINT        NOT NULL REFERENCES usuarios(id)
-                                  ON DELETE NO ACTION ON UPDATE CASCADE
+                                  ON DELETE CASCADE ON UPDATE CASCADE
  
 );
 

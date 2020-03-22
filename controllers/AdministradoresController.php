@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Administradores;
 use app\models\AdministradoresSearch;
+use app\models\Usuarios;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -105,6 +106,8 @@ class AdministradoresController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
+        $usuarioId = Usuarios::findOne($id);
+        $usuarioId->delete();
 
         return $this->redirect(['index']);
     }
