@@ -7,6 +7,7 @@ use Yii;
 use app\models\Profesionales;
 use app\models\ProfesionalesSearch;
 use app\models\Provincias;
+use app\models\Usuarios;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -164,6 +165,9 @@ class ProfesionalesController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
+
+        $usuarioId = Usuarios::findOne($id);
+        $usuarioId->delete();
 
         return $this->redirect(['index']);
     }

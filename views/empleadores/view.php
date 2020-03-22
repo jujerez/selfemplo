@@ -35,13 +35,13 @@ $this->params['breadcrumbs'][] = $this->title;
     
             <p>
                 <?= Html::a('Modificar', ['update', 'id' => $model->usuario_id], ['class' => 'btn btn-primary']) ?>
-                <!-- <?= Html::a('Delete', ['delete', 'id' => $model->usuario_id], [
+                 <?= Html::a('Eliminar mi cuenta', ['delete', 'id' => $model->usuario_id], [
                     'class' => 'btn btn-danger',
                     'data' => [
-                        'confirm' => 'Are you sure you want to delete this item?',
+                        'confirm' => '¿Estas seguro que deseas eliminar su cuenta?, se eliminarán todos los datos relacionados con su cuenta.',
                         'method' => 'post',
                     ],
-                ]) ?> -->
+                ]) ?> 
             </p>
         </div>
 
