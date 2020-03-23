@@ -141,6 +141,16 @@ class ProfesionalesController extends Controller
             'poblaciones' => $poblaciones,
         ]);
     }
+
+    public function actionPerfil($id)
+    {
+        $model = $this->findModel($id);
+
+        return $this->render('perfil', [
+            'model' => $model,
+            
+        ]);
+    }
     /**
      * Metodo que devuelve las poblaciones en función de la provicia reciba por parametros,
      * en formato JSON

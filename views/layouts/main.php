@@ -65,7 +65,8 @@ Icon::map($this);
             ? 
                 (['label' => Icon::show('user') . 'Mi perfil', 
                     'items' => [
-                        Yii::$app->user->isGuest ? (['label' => 'Login', 'url' => ['/site/login']]) 
+                        Yii::$app->user->isGuest 
+                        ? (['label' => 'Login', 'url' => ['/site/login']]) 
                         : (
                             Html::beginForm(['/site/logout'], 'post')
                             . '<p class=\' dropdown-p\'>Logueado como ' . Yii::$app->user->identity->nombre . '</p>'
@@ -76,14 +77,20 @@ Icon::map($this);
                             )
                             . Html::endForm()
                             ),
-
                            
-                            (Yii::$app->user->identity->rol == '0') 
-                            ? (['label' =>  Icon::show('user-cog') . 'Opciones mi perfil', 'url' => ['profesionales/perfil', 'id' => Yii::$app->user->identity->id],])
-                            : (Yii::$app->user->identity->rol == '1') 
-                                ? (['label' => Icon::show('user-cog') . 'Opciones mi perfil', 'url' => ['empleadores/perfil', 'id' => Yii::$app->user->identity->id],])
-                                : (['label' => Icon::show('user-cog') . 'Opciones administrador', 'url' => ['administradores/perfil', 'id' => Yii::$app->user->identity->id],]),
-                
+                            Yii::$app->user->identity->rol == '0'
+                            ? (['label' =>  Icon::show('user-cog') . 'Opciones mi perfil', 
+                                'url' => ['profesionales/perfil', 'id' => Yii::$app->user->identity->id],])
+                            : '',
+                            Yii::$app->user->identity->rol == '1'
+                            ? (['label' => Icon::show('user-cog') . 'Opciones mi perfil', 
+                                'url' => ['empleadores/perfil', 'id' => Yii::$app->user->identity->id],])
+                            : '',
+
+                            Yii::$app->user->identity->rol == '2'
+                            ? (['label' => Icon::show('user-cog') . 'Opciones administrador', 
+                                'url' => ['administradores/perfil', 'id' => Yii::$app->user->identity->id],])
+                            : '',
                         ],
                     ])
             : '',
@@ -91,7 +98,7 @@ Icon::map($this);
         ],
         'encodeLabels' => false
     ]);
-    
+    \Yii::debug(Yii::$app->user->identity->rol);
     NavBar::end();
     ?>
 

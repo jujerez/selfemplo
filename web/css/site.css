@@ -194,6 +194,7 @@ a.desc:after {
 .dropdown-p {
     padding-top: 0.75rem;
     padding-left: 1.5rem;
+    padding-right: 1.5rem;
     font-size: 0.8203125rem;
     font-weight: 300;
 }
