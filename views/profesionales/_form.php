@@ -1,8 +1,10 @@
 <?php
 
+use kartik\select2\Select2;
 use yii\bootstrap4\Html;
 use yii\bootstrap4\ActiveForm;
 use yii\helpers\Url;
+use yii\web\JsExpression;
 use yii\web\View;
 
 /* @var $this yii\web\View */
@@ -20,12 +22,16 @@ if(isset(Yii::$app->request->get()['pro-mod'])) {
 }
 
 $url = Url::to(['profesionales/poblaciones']);
+//Yii::debug($model->provinci->id);
+Yii::debug($model->poblacion->id);
+$prov = $model->provinci->id;
+
 $js2 = <<<EOT
 
-    
-
     $('#profesionales-provincia').on('change', function(e) {
-        var provincia_id = $(this).val();
+        //var provincia_id = $(this).val();
+        var provincia_id = $prov;
+        
         $.ajax({
             method: 'GET',
             url: '$url',
@@ -41,14 +47,16 @@ $js2 = <<<EOT
                 }
             }   
         });
-    })
+    });
 
+    
+    
+ EOT;
 
-EOT;
-//$this->registerJs($js2, View::POS_LOAD);
+//$this->registerJs($js3, View::POS_LOAD);
 $this->registerJs($js2, View::POS_END);
-//$this->registerJs($js2, View::POS_READY);
-//$this->registerJs($js2);
+//$this->registerJs($js3, View::POS_READY);
+//$this->registerJs($js3);
 ?>
 
 <div class="profesionales-form">
@@ -65,9 +73,8 @@ $this->registerJs($js2, View::POS_END);
 
     <?= $form->field($model, 'slogan')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'provincia')->dropDownList($provincias) ?>
-
-    <?= $form->field($model, 'poblacion_id')->dropDownList($poblaciones) ?>
+    <?= $form->field($model, 'provincia')->dropDownList($provincias, ['value' => $model->provinci->id])?>
+    <?= $form->field($model, 'poblacion_id')->dropDownList($poblaciones)?>
 
     <?= $form->field($model, 'profesion_id')->textInput() ?>
 

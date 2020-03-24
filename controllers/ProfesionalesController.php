@@ -131,8 +131,8 @@ class ProfesionalesController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->usuario_id]);
         }
-        $provincias = Provincias::lista();
-        $provincia_id = key($provincias);      
+        $provincias = Provincias::lista();    
+        $provincia_id = $model->provinci->id;      
         $poblaciones = Poblaciones::lista($provincia_id);
 
         return $this->render('update', [
