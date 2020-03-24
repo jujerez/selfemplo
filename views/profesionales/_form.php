@@ -73,8 +73,21 @@ $this->registerJs($js2, View::POS_END);
 
     <?= $form->field($model, 'slogan')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'provincia')->dropDownList($provincias, ['value' => $model->provinci->id])?>
-    <?= $form->field($model, 'poblacion_id')->dropDownList($poblaciones)?>
+    <?= $form->field($model, 'provincia')->widget(Select2::className(), [
+                        'data' => $provincias,
+                        'options' => ['placeholder' => 'Selecciona una provincia', 'value' => $model->provinci->id ],
+                        'pluginOptions' => [
+                            'allowClear' => true
+                        ]
+                    ]); ?>
+                    
+    <?= $form->field($model, 'poblacion_id')->widget(Select2::className(), [
+                        'data' => $poblaciones,
+                        'options' => ['placeholder' => 'Selecciona una población'],
+                        'pluginOptions' => [
+                            'allowClear' => true
+                        ]
+                    ]); ?>
 
     <?= $form->field($model, 'profesion_id')->textInput() ?>
 
