@@ -8438,7 +8438,7 @@ INSERT INTO usuarios (nombre, email, password, rol )
          , ('admin', 'admin@gmail.com', crypt('admin', gen_salt('bf', 13)), 2)
          , ('garden', 'garden@gmail.com', crypt('garden', gen_salt('bf', 10)), 0)
          , ('tecnoelectro', 'tecnoelectro@gmail.com', crypt('tecnoelectro', gen_salt('bf', 10)), 0)
-         , ('admin2', 'admin2@gmail.com', crypt('admin2', gen_salt('bf', 10)), 0);
+         , ('admin2', 'admin2@gmail.com', crypt('admin2', gen_salt('bf', 10)), 2);
 
  
 
@@ -8453,7 +8453,7 @@ INSERT INTO empleadores (usuario_id, nombre, apellidos, telefono, direccion, pob
 
 INSERT INTO administradores (usuario_id, nombre, apellidos, telefono, direccion, poblacion_id)
   VALUES (3, 'Juan', 'Jerez','666111222','C/ Madrid nº 1',1807)
-        , (6, 'Ricardo', 'Perez', '777888999', 'C/ Ovido nº1', 1807)
+        , (6, 'Ricardo', 'Perez', '777888999', 'C/ Ovido nº1', 1807);
 
 INSERT INTO empleos (titulo, descripcion, poblacion_id, empleador_id, profesion_id )
   VALUES (    'Necesito un jardinero para cortar cesped'
