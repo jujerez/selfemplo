@@ -6,6 +6,7 @@ use Yii;
 use app\models\Administradores;
 use app\models\AdministradoresSearch;
 use app\models\Usuarios;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -25,6 +26,24 @@ class AdministradoresController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                ],
+            ],
+
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['index','create', 'update', 'view', 'perfil'],
+                'rules' => [
+                   
+                    [
+                        'allow' => true,
+                        'actions' => ['index','create','update', 'view', 'perfil'],
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action ) {
+                            return Yii::$app->user->identity->rol === '2';
+                        }
+                    ],
+
+                   
                 ],
             ],
         ];
