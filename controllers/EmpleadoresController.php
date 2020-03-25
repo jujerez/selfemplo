@@ -34,7 +34,7 @@ class EmpleadoresController extends Controller
 
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['create','index', 'update', 'view', ],
+                'only' => ['create','index', 'update', 'view', 'perfil'],
                 'rules' => [
                     // Solo usuarios-administradores pueden crear y ver index
                     [
@@ -48,7 +48,7 @@ class EmpleadoresController extends Controller
 
                     [
                         'allow' => true,
-                        'actions' => ['update', 'view'],
+                        'actions' => ['update', 'view', 'perfil'],
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action ) {
                             
