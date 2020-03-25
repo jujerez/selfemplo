@@ -98,7 +98,7 @@ Icon::map($this);
         ],
         'encodeLabels' => false
     ]);
-    \Yii::debug(Yii::$app->user->identity->rol);
+  
     NavBar::end();
     ?>
 
