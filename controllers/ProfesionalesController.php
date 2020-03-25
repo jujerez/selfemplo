@@ -39,7 +39,7 @@ class ProfesionalesController extends Controller
 
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['create','index','update','view'],
+                'only' => ['create','index','update','view', 'perfil'],
                 'rules' => [
                 
                     [
@@ -53,7 +53,7 @@ class ProfesionalesController extends Controller
                     
                     [
                         'allow' => true,
-                        'actions' => ['update', 'view'],
+                        'actions' => ['update', 'view', 'perfil'],
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action ) {
                             
