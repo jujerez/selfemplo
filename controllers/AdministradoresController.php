@@ -31,12 +31,12 @@ class AdministradoresController extends Controller
 
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['index','create', 'update'],
+                'only' => ['index','create', 'update', 'view'],
                 'rules' => [
                    
                     [
                         'allow' => true,
-                        'actions' => ['index','create','update'],
+                        'actions' => ['index','create','update','view'],
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action ) {
                             return Yii::$app->user->identity->rol === '2';
