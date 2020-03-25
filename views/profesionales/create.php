@@ -11,10 +11,18 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="profesionales-create container">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="row justify-content-around">
+        <div class="col-md-6 p-3">
 
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
+            <div class="shadow p-3">
+
+                <h1><?= Html::encode($this->title) ?></h1>
+
+                <?= $this->render('_form', [
+                    'model' => $model,
+                ]) ?>
+            </div>
+        </div>
+    </div>
 
 </div>

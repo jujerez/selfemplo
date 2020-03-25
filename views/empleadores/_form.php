@@ -1,5 +1,6 @@
 <?php
 
+use kartik\select2\Select2;
 use yii\bootstrap4\Html;
 use yii\bootstrap4\ActiveForm;
 use yii\helpers\Url;
@@ -64,9 +65,21 @@ use yii\web\View;
 
     <?= $form->field($model, 'direccion')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'provincia')->dropDownList($provincias) ?>
-
-    <?= $form->field($model, 'poblacion_id')->dropDownList($poblaciones) ?>
+    <?= $form->field($model, 'provincia')->widget(Select2::className(), [
+                        'data' => $provincias,
+                        'options' => ['placeholder' => 'Selecciona una provincia', 'value' => $model->provinci->id ],
+                        'pluginOptions' => [
+                            'allowClear' => true
+                        ]
+                    ]); ?>
+                    
+    <?= $form->field($model, 'poblacion_id')->widget(Select2::className(), [
+                        'data' => $poblaciones,
+                        'options' => ['placeholder' => 'Selecciona una población'],
+                        'pluginOptions' => [
+                            'allowClear' => true
+                        ]
+                    ]); ?>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>

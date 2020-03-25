@@ -65,6 +65,11 @@ class Empleadores extends \yii\db\ActiveRecord
         return $this->_provincia;
     }
 
+    public function getProvinci()
+    {
+        return $this->hasOne(Provincias::className(), ['id' => 'provincia_id'])->via('poblacion');
+    }
+
     /**
      * {@inheritdoc}
      */

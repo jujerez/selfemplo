@@ -126,7 +126,7 @@ class EmpleadoresController extends Controller
             return $this->redirect(['view', 'id' => $model->usuario_id]);
         }
         $provincias = Provincias::lista();
-        $provincia_id = key($provincias);      
+        $provincia_id = $model->provinci->id;      
         $poblaciones = Poblaciones::lista($provincia_id);
 
         return $this->render('update', [

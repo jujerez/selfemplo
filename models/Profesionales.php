@@ -24,6 +24,7 @@ use Yii;
 class Profesionales extends \yii\db\ActiveRecord
 {
     private $_provincia = null;
+   
     /**
      * {@inheritdoc}
      */
@@ -47,6 +48,7 @@ class Profesionales extends \yii\db\ActiveRecord
             [['usuario_id'], 'unique'],
             [['telefono'], 'match', 'pattern' =>'/(\+34|0034|34)?[ -]*(6|7)[ -]*([0-9][ -]*){8}/'],
             [['!provincia'], 'safe'],
+            [['!sector'], 'safe'],
             [['poblacion_id'], 'exist', 'skipOnError' => true, 'targetClass' => Poblaciones::className(), 'targetAttribute' => ['poblacion_id' => 'id']],
             [['profesion_id'], 'exist', 'skipOnError' => true, 'targetClass' => Profesiones::className(), 'targetAttribute' => ['profesion_id' => 'id']],
             [['usuario_id'], 'exist', 'skipOnError' => true, 'targetClass' => Usuarios::className(), 'targetAttribute' => ['usuario_id' => 'id']],
@@ -55,7 +57,7 @@ class Profesionales extends \yii\db\ActiveRecord
 
     public function attributes()
     {
-        return array_merge(parent::attributes(), ['provincia'], );
+        return array_merge(parent::attributes(), ['provincia'], ['sector']);
     }
 
     public function setProvincia($provincia)
@@ -71,6 +73,7 @@ class Profesionales extends \yii\db\ActiveRecord
         return $this->_provincia;
     }
 
+    
     /**
      * {@inheritdoc}
      */
@@ -85,8 +88,9 @@ class Profesionales extends \yii\db\ActiveRecord
             'slogan' => 'Slogan',
             'created_at' => 'Created At',
             'poblacion_id' => 'Población',
-            'profesion_id' => 'Profesion ID',
-            'provincia' => 'Provincia'
+            'profesion_id' => 'Profesión',
+            'provincia' => 'Provincia',
+            'sector' => 'Sector',
         ];
     }
 
@@ -118,6 +122,17 @@ class Profesionales extends \yii\db\ActiveRecord
     public function getUsuario()
     {
         return $this->hasOne(Usuarios::className(), ['id' => 'usuario_id'])->inverseOf('profesionales');
+    }
+
+
+    public function getProvinci()
+    {
+        return $this->hasOne(Provincias::className(), ['id' => 'provincia_id'])->via('poblacion');
+    }
+
+    public function getSecto()
+    {
+        return $this->hasOne(Sectores::className(), ['id' => 'sector_id'])->via('profesion');
     }
 
    

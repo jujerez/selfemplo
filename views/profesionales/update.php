@@ -9,14 +9,26 @@ $this->title = 'Modificar Perfil: ';
 $this->params['breadcrumbs'][] = ['label' => 'Mi perfil', 'url' => ['view', 'id' => $model->usuario_id]];
 $this->params['breadcrumbs'][] = 'Modificar';
 ?>
-<div class="profesionales-update container">
+<main class="profesionales-update container">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="row justify-content-around">
+        <div class="col-md-6 p-3">
 
-    <?= $this->render('_form', [
-        'model' => $model,
-        'provincias' => $provincias,
-        'poblaciones' => $poblaciones,
-    ]) ?>
+            <div class="shadow p-3">
 
-</div>
+                <h1><?= Html::encode($this->title) ?></h1>
+
+                <?= $this->render('_form', [
+                    'model' => $model,
+                    'provincias' => $provincias,
+                    'poblaciones' => $poblaciones,
+                    'sectores' => $sectores,
+                    'profesiones' => $profesiones,
+                ]) ?>
+            </div>
+
+        </div>
+    </div>
+
+
+</main>
