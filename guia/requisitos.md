@@ -919,23 +919,14 @@
 | **Entrega**     | v2             |
 | **Incidencia**  | [102](https://github.com/jujerez/selfemplo/issues/102) |
 
-| **R103**     | **Sección perfil profesionales**         |
+| **R103**     | **Control de acceso**         |
 | --------------: | :------------------- |
-| **Descripción** | El usuario-profesional tendrá un sección “Mi Perfil” con enlaces a todas las opciones disponibles              |
+| **Descripción** | Los usuarios no podrán eliminar, ver o modificar datos ajenos              |
 | **Prioridad**   | Importante           |
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-| **Incidencia**  | [103](https://github.com/jujerez/selfemplo/issues/103) |
-
-| **R104**     | **Sección perfil empleadores**         |
-| --------------: | :------------------- |
-| **Descripción** | El usuario-empleador tendrá un sección “Mi Perfil” con enlaces a todas las opciones disponibles              |
-| **Prioridad**   | Importante           |
-| **Tipo**        | Funcional                |
-| **Complejidad** | Fácil         |
-| **Entrega**     | v1             |
-| **Incidencia**  | [104](https://github.com/jujerez/selfemplo/issues/104) |
+| **Incidencia**  | [281](https://github.com/jujerez/selfemplo/issues/281) |
 
 
 ## Cuadro resumen
@@ -1044,5 +1035,4 @@
 | (**R100**) Imagen de perfil | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [100](https://github.com/jujerez/selfemplo/issues/100) |
 | (**R101**) Envío de e-mail a usuario-profesional | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [101](https://github.com/jujerez/selfemplo/issues/101) |
 | (**R102**) Envío de e-mail a usuario-empleador | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [102](https://github.com/jujerez/selfemplo/issues/102) |
-| (**R103**) Sección perfil profesionales | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [103](https://github.com/jujerez/selfemplo/issues/103) |
-| (**R104**) Sección perfil empleadores | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [104](https://github.com/jujerez/selfemplo/issues/104) |
+| (**R103**) Control de acceso | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [281](https://github.com/jujerez/selfemplo/issues/281) |
