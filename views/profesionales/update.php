@@ -17,6 +17,8 @@ $this->params['breadcrumbs'][] = 'Modificar';
         'model' => $model,
         'provincias' => $provincias,
         'poblaciones' => $poblaciones,
+        'sectores' => $sectores,
+        'profesiones' => $profesiones,
     ]) ?>
 
 </div>

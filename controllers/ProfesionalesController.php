@@ -6,7 +6,9 @@ use app\models\Poblaciones;
 use Yii;
 use app\models\Profesionales;
 use app\models\ProfesionalesSearch;
+use app\models\Profesiones;
 use app\models\Provincias;
+use app\models\Sectores;
 use app\models\Usuarios;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -135,10 +137,18 @@ class ProfesionalesController extends Controller
         $provincia_id = $model->provinci->id;      
         $poblaciones = Poblaciones::lista($provincia_id);
 
+        $sectores = Sectores::lista();    
+        $profesion_id = $model->secto->id;      
+        $profesiones = Profesiones::lista($profesion_id);
+
+
+
         return $this->render('update', [
             'model' => $model,
             'provincias' => $provincias,
             'poblaciones' => $poblaciones,
+            'sectores' => $sectores,
+            'profesiones' => $profesiones,
         ]);
     }
 
@@ -180,6 +190,20 @@ class ProfesionalesController extends Controller
         $usuarioId->delete();
 
         return $this->redirect(['index']);
+    }
+
+    /**
+     * Metodo que devuelve las profesiones en función del sector que reciba por parametros,
+     * en formato JSON
+     *
+     * @param  int $sector_id es el id del sector
+     * @return void
+     */
+    public function actionProfesiones($sector_id)
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        return Profesiones::lista($sector_id);
     }
 
     /**

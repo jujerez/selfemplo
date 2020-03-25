@@ -30,7 +30,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     'slogan',
                     'poblacion.nombre',
                     'poblacion.provincia.nombre',
-                    'profesion_id',
+                    'profesion.pronom',
+                    'secto.secnom'
+                    
                     
                 ],
             ]) ?>

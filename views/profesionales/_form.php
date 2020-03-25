@@ -22,8 +22,6 @@ if(isset(Yii::$app->request->get()['pro-mod'])) {
 }
 
 $url = Url::to(['profesionales/poblaciones']);
-//Yii::debug($model->provinci->id);
-Yii::debug($model->poblacion->id);
 $prov = $model->provinci->id;
 
 $js2 = <<<EOT
@@ -53,11 +51,39 @@ $js2 = <<<EOT
     
  EOT;
 
-//$this->registerJs($js3, View::POS_LOAD);
 $this->registerJs($js2, View::POS_END);
-//$this->registerJs($js3, View::POS_READY);
-//$this->registerJs($js3);
+
+$url3 = Url::to(['profesionales/profesiones']);
+$js3 = <<<EOT
+    
+    $('#profesionales-sector').on('change', function(e) {
+        var sector_id = $(this).val();
+        $.ajax({
+            method: 'GET',
+            url: '$url3',
+            data: {
+                sector_id: sector_id
+            },
+            success: function (data, code, jqXHR) {
+                var selec = $('#profesionales-profesion_id');
+                selec.empty();
+                for (var i in data) {
+                    selec.append(`<option value="\${i}">\${data[i]}</option>`);
+                    
+                }
+            }   
+        });
+    })
+EOT;
+
+$this->registerJs($js3, View::POS_END);
+
+var_dump($model->secto->id);
+
+
+
 ?>
+
 
 <div class="profesionales-form">
 
@@ -89,7 +115,20 @@ $this->registerJs($js2, View::POS_END);
                         ]
                     ]); ?>
 
-    <?= $form->field($model, 'profesion_id')->textInput() ?>
+    <?= $form->field($model, 'sector')->widget(Select2::className(), [
+                        'data' => $sectores,
+                        'options' => ['placeholder' => 'Selecciona un sector', 'value' => $model->secto->id,],
+                        'pluginOptions' => [
+                            'allowClear' => true
+                        ]
+                    ]); ?>
+    <?= $form->field($model, 'profesion_id')->widget(Select2::className(), [
+                        'data' => $profesiones,
+                        'options' => ['placeholder' => 'Selecciona una profesión',],
+                        'pluginOptions' => [
+                            'allowClear' => true
+                        ]
+                    ]); ?>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
