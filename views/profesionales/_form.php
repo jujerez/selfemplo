@@ -22,13 +22,12 @@ if(isset(Yii::$app->request->get()['pro-mod'])) {
 }
 
 $url = Url::to(['profesionales/poblaciones']);
-$prov = $model->provinci->id;
+
 
 $js2 = <<<EOT
 
     $('#profesionales-provincia').on('change', function(e) {
-        //var provincia_id = $(this).val();
-        var provincia_id = $prov;
+        var provincia_id = $(this).val();
         
         $.ajax({
             method: 'GET',
@@ -77,10 +76,6 @@ $js3 = <<<EOT
 EOT;
 
 $this->registerJs($js3, View::POS_END);
-
-var_dump($model->secto->id);
-
-
 
 ?>
 
