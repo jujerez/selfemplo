@@ -12,17 +12,21 @@ $this->params['breadcrumbs'][] = 'Modificar';
 <main class="profesionales-update container">
 
     <div class="row justify-content-around">
-        <div class="col-md-6 p-5 shadow">
+        <div class="col-md-6 p-3">
 
-            <h1><?= Html::encode($this->title) ?></h1>
+            <div class="shadow p-3">
 
-            <?= $this->render('_form', [
-                'model' => $model,
-                'provincias' => $provincias,
-                'poblaciones' => $poblaciones,
-                'sectores' => $sectores,
-                'profesiones' => $profesiones,
-            ]) ?>
+                <h1><?= Html::encode($this->title) ?></h1>
+
+                <?= $this->render('_form', [
+                    'model' => $model,
+                    'provincias' => $provincias,
+                    'poblaciones' => $poblaciones,
+                    'sectores' => $sectores,
+                    'profesiones' => $profesiones,
+                ]) ?>
+            </div>
+
         </div>
     </div>
 
