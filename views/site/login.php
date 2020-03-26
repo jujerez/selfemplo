@@ -9,15 +9,26 @@ use yii\bootstrap4\ActiveForm;
 
 $this->title = 'Iniciar sesión';
 $this->params['breadcrumbs'][] = $this->title;
+
+$js = <<<EOT
+        
+    $('.col-sm-10').removeClass('offset-sm-2');
+    
+EOT;
+
+$this->registerJs($js);
 ?>
 <div class="site-login container ">
     <div class="row justify-content-center align-items-center">
 
     
-        <div class="col-md-6 col-sm-12 borde-sombreado pt-3 m-3 redondeado gris">
-            <div class="col-12">
+        <div class="col-md-6 col-sm-12 borde-sombreado pt-3 m-3 gris">
+            <div class="col-12 p-4">
+                <div class="text-center pb-2">
+                <?=Html::img('@web/img/logo-login.png', ['class' => [''], 'alt' => 'Logotipo'])?>
+                </div>
 
-                <h1 class="text-center"><?= Html::encode($this->title) ?></h1>
+                <h2 class="text-center"><?= Html::encode($this->title) ?></h2>
                 <hr>
 
                 <?php $form = ActiveForm::begin([
@@ -41,13 +52,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                     
                     <div class="form-group">
-                        <div class="">
-                            <?= $form->field($model, 'recordarme',)->checkbox() ?>
-
-                            <?= Html::submitButton('Entrar', ['class' => 'btn btn-warning w-100', 'name' => 'login-button']) ?>
-                        </div>
                         
-    
+                        <?= $form->field($model, 'recordarme',)->checkbox() ?>
+
+                        <?= Html::submitButton('Entrar', ['class' => 'btn btn-primary w-100', 'name' => 'login-button']) ?>
+                        
                     </div>
 
                 <?php ActiveForm::end(); ?>
