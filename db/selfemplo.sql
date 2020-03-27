@@ -178,7 +178,7 @@ CREATE TABLE votos
 
 INSERT INTO sectores (secnom)
     VALUES ('Administración') 
-         , ('Agricultura/ Jardineria / Ganaderia') 
+         , ('Agricultura / Jardineria / Ganaderia') 
          , ('Grandes almacenes / Comercio') 
          , ('Salud / Deporte') 
          , ('Educación') 
@@ -191,9 +191,10 @@ INSERT INTO sectores (secnom)
          , ('Pesca y acuicultura') 
          , ('Industria quimica y vidrio') 
          , ('Otros servicios') 
-         , (' Informatica / Telecomunicaciones') 
+         , ('Informatica / Telecomunicaciones') 
          , ('Textil confeccion y piel') 
-         , ('Transporte y logistica');
+         , ('Transporte y logistica')
+         , ('Construcción');
 
 INSERT INTO profesiones (pronom, sector_id)
 VALUES ('Administrativo', 1)
@@ -251,7 +252,11 @@ VALUES ('Administrativo', 1)
        , ('Sastre', 16)
        , ('Camionero', 17)
        , ('Taxista', 17)
-       , ('Conductor de autobus', 17);
+       , ('Conductor de autobus', 17)
+       , ('Peón de Albañil', 18)
+       , ('Oficial de 2ª Albañil', 18)
+       , ('Oficial de 1ª Albañil', 18);
+       
 
 INSERT INTO provincias (id, nombre) 
   VALUES (1, 'Álava'),
@@ -8467,6 +8472,20 @@ INSERT INTO empleos (titulo, descripcion, poblacion_id, empleador_id, profesion_
            , 1807
            , 2
            , 31
+        )
+
+         , ('Informatico a domicilio'
+           , 'Es para formatear un portatil Acer, es del año 2019 y tiene Windows 10 profesional y ahora quiero la versión Enterprise ORIGINAL'
+           , 1807
+           , 2
+           , 52
+        )
+
+         , ('Tapia de bloques amarillos'
+           , 'Quiero tapiar una parcela de 500m2 de bloques amarillos lisos, yo compro el material que el albañil solicite, quiero saber el precio por horas'
+           , 1807
+           , 2
+           , 59
         );
 
 INSERT INTO presupuestos (precio, estado, duracion_estimada, profesional_id, empleo_id)
