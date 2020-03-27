@@ -173,18 +173,7 @@ a.desc:after {
 }
 
 .breadcrumb {
-    font-size:0.8203125rem;
-    font-weight:300;
-    text-transform:uppercase;
-    
-    display:-webkit-box;
-    display:-ms-flexbox;
-    display:flex;
-    -ms-flex-wrap:wrap;
-    flex-wrap:wrap;
-    padding:0.75rem 1rem;
-    margin-bottom:1rem;
-    list-style:none;
+
     background-color:transparent; 
     border-radius:0px;
     border: none;
