@@ -9,12 +9,52 @@ use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
 use yii\bootstrap4\Breadcrumbs;
 use app\assets\AppAsset;
+use kartik\dialog\Dialog;
 use kartik\icons\Icon;
-use yii\bootstrap4\Button;
 
 AppAsset::register($this);
 
-Icon::map($this);  
+Icon::map($this); 
+use kartik\dialog\DialogAsset;
+use yii\helpers\Url;
+
+DialogAsset::register($this);
+
+$url = Url::toRoute(['site/cookie',  'cadena' => 'politica'], $schema = true);
+
+$js = <<<EOT
+    $( document ).ready(function() {
+        krajeeDialogCust2.confirm("Utilizamos cookies para asegurar que damos la mejor experiencia al usuario en nuestra web. Si sigues utilizando este sitio asumiremos que estás de acuerdo.", function (result) {
+            if (result) {
+                window.location="$url";
+            } else {
+                window.location="http://google.es";
+            }
+        });
+    });
+    
+EOT;
+if (!isset($_COOKIE['politica'])) {
+
+    $this->registerJs($js);
+}
+
+echo Dialog::widget([
+    'libName' => 'krajeeDialogCust2', 
+    'options' => [
+        'draggable' => true, 
+        'closable' => false,
+        'size' => Dialog::SIZE_MEDIUM, 
+        'type' => Dialog::TYPE_INFO,
+        'title' => 'Politica de cookies',
+        'message' => 'Utilizamos cookies para asegurar que damos la mejor experiencia al usuario en nuestra web. Si sigues utilizando este sitio asumiremos que estás de acuerdo.',
+        'btnOKClass' => 'btn-primary',
+        'btnOKLabel' =>  'Vale',
+        'btnCancelClass' => 'btn-light',
+        'btnCancelLabel' =>  'No vale',
+
+    ], 
+ ]);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -33,6 +73,9 @@ Icon::map($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
+
+
+
 
 <div class="wrap">
     <?php
@@ -54,7 +97,7 @@ Icon::map($this);
             ['label' => 'Empleos', 'url' => ['/empleos/index']],
 
             Yii::$app->user->isGuest 
-            ? (['label' => 'Entrar', 'url' => ['site/login']])
+            ? (['label' => 'Entrar', 'url' => ['site/login'], 'options' => ['class' => 'entrar']])
             : '',
             Yii::$app->user->isGuest 
             ? (['label' => 'Registrarse', 'url' => ['usuarios/registrar']])
