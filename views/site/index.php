@@ -63,7 +63,8 @@ $this->title = 'Selfemplo';
                     </div>
 
                 </div>   
-        </section>
+            </section>
+        </div>
     
     </main>
 </div>
