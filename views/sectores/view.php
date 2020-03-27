@@ -36,8 +36,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 ]) ?>
             </p>
 
-    </section>
-        </div>
+        </section>
+    </div>
 
 
 </main>

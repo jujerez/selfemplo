@@ -21,4 +21,4 @@ $this->params['breadcrumbs'][] = $this->title;
         </section>
     </div>
 
-</div>
+</main>
