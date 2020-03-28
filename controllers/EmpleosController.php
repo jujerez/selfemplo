@@ -110,7 +110,7 @@ class EmpleosController extends Controller
         }
 
         $provincias = Provincias::lista();
-        $provincia_id = key($provincias);      
+        $provincia_id = key($provincias);       
         $poblaciones = Poblaciones::lista($provincia_id);
 
         $sectores = Sectores::lista();
@@ -142,11 +142,11 @@ class EmpleosController extends Controller
         }
 
         $provincias = Provincias::lista();
-        $provincia_id = key($provincias);      
+        $provincia_id = $model->poblacion->provincia->id;     
         $poblaciones = Poblaciones::lista($provincia_id);
 
         $sectores = Sectores::lista();
-        $sector_id = key($sectores);      
+        $sector_id = $model->profesion->sector->id;     
         $profesiones = Profesiones::lista($sector_id);
 
         return $this->render('update', [

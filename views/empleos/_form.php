@@ -1,5 +1,6 @@
 <?php
 
+use kartik\select2\Select2;
 use yii\bootstrap4\Html;
 use yii\bootstrap4\ActiveForm;
 use yii\helpers\Url;
@@ -56,10 +57,12 @@ $js2 = <<<EOT
         });
     })
 EOT;
-//$this->registerJs($js2, View::POS_LOAD);
+
 $this->registerJs($js2, View::POS_END);
-//$this->registerJs($js2, View::POS_READY);
-//$this->registerJs($js2);
+
+$provincia_id = $model->isNewRecord ? '1' : $model->poblacion->provincia->id;
+$sector_id = $model->isNewRecord ? '1' : $model->profesion->sector->id;
+
 ?>
 
 <div class="empleos-form">
@@ -73,21 +76,53 @@ $this->registerJs($js2, View::POS_END);
         [
           'spellcheck' => true, 
           'placeholder' => 'Describa su oferta lo más detallada posible',
+          'rows' => '10'
           
         ]
-        ) ?>
+    ) ?>
+    
+    <?= $form->field($model, 'provincia')->widget(Select2::className(), [
+            'data' => $provincias,
+            'options' => ['placeholder' => 'Selecciona una provincia', 'value' => $provincia_id ],
+            'pluginOptions' => [
+                'allowClear' => true
+            ]
+        ]); 
+    ?>
 
-    <?= $form->field($model, 'provincia')->dropDownList($provincias) ?>
+    <?= $form->field($model, 'poblacion_id')->widget(Select2::className(), [
+            'data' => $poblaciones,
+            'options' => ['placeholder' => 'Selecciona una población'],
+            'pluginOptions' => [
+                'allowClear' => true
+            ]
+        ]); 
+    ?>
 
-    <?= $form->field($model, 'poblacion_id')->dropDownList($poblaciones) ?>
 
     <?= Html::activeHiddenInput($model, 'empleador_id', ['value' => Yii::$app->user->identity->id]) ?>
     
-    <?= $form->field($model, 'sector')->dropDownList($sectores) ?>
-    <?= $form->field($model, 'profesion_id')->dropDownList($profesiones) ?>
+    <?= $form->field($model, 'sector')->widget(Select2::className(), [
+            'data' => $sectores,
+            'options' => ['placeholder' => 'Selecciona un sector', 'value' => $sector_id ],
+            'pluginOptions' => [
+                'allowClear' => true
+            ]
+        ]); 
+    ?>
+
+    <?= $form->field($model, 'profesion_id')->widget(Select2::className(), [
+            'data' => $profesiones,
+            'options' => ['placeholder' => 'Selecciona una profesión',],
+            'pluginOptions' => [
+                'allowClear' => true
+            ]
+        ]); 
+    ?>
+
 
     <div class="form-group">
-        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Publicar', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
