@@ -209,3 +209,7 @@ a.desc:after {
 .bootstrap-dialog .modal-header {
     border-radius: 0px !important;
 }
+
+.bootstrap-dialog.type-danger .modal-header {
+    background-color: #F04124!important;
+}

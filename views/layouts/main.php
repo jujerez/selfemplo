@@ -24,7 +24,7 @@ $url = Url::toRoute(['site/cookie',  'cadena' => 'politica'], $schema = true);
 
 $js = <<<EOT
     $( document ).ready(function() {
-        krajeeDialogCust2.confirm("Utilizamos cookies para asegurar que damos la mejor experiencia al usuario en nuestra web. Si sigues utilizando este sitio asumiremos que estás de acuerdo.", function (result) {
+        politica.confirm("Utilizamos cookies para asegurar que damos la mejor experiencia al usuario en nuestra web. Si sigues utilizando este sitio asumiremos que estás de acuerdo.", function (result) {
             if (result) {
                 window.location="$url";
             } else {
@@ -40,7 +40,7 @@ if (!isset($_COOKIE['politica'])) {
 }
 
 echo Dialog::widget([
-    'libName' => 'krajeeDialogCust2', 
+    'libName' => 'politica', 
     'options' => [
         'draggable' => true, 
         'closable' => false,
@@ -53,6 +53,21 @@ echo Dialog::widget([
         'btnCancelClass' => 'btn-light',
         'btnCancelLabel' =>  'No vale',
 
+    ], 
+ ]);
+
+ echo Dialog::widget([
+    'libName' => 'borrar', 
+    'options' => [
+        'draggable' => true, 
+        'closable' => false,
+        'size' => Dialog::SIZE_MEDIUM, 
+        'type' => Dialog::TYPE_DANGER,
+        'title' => 'Eliminar',
+        'btnOKClass' => 'btn-danger',
+        'btnOKLabel' =>  'Sí, estoy seguro',
+        'btnCancelClass' => 'btn-light',
+        'btnCancelLabel' =>  'No',
     ], 
  ]);
 ?>
