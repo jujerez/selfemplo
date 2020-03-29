@@ -9,7 +9,7 @@ use yii\helpers\Html;
 
 <div class="row">
     <div class="col-12">
-        <div class="card shadow  p-4 mb-2">
+        <div class="card shadow p-4 mb-2 ">
          
             <div class="card-header p-2">
                 <span class="text-success ">
