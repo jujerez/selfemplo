@@ -213,3 +213,45 @@ a.desc:after {
 .bootstrap-dialog.type-danger .modal-header {
     background-color: #F04124!important;
 }
+
+/* ANIMACIONES, TRANSFORMACIONES Y TRANSICIONES */
+.cartel:hover{
+    -webkit-animation: 1s cartel 1;
+	-webkit-transform-origin: top center;
+    animation: 1s cartel 1;
+    transform-origin: top center;
+}
+
+@keyframes cartel{
+	20%{
+        -webkit-transform: rotate(15deg);
+        transform: rotate(15deg);    
+	}
+
+	40%{
+		-webkit-transform: rotate(-10deg);
+		transform: rotate(-10deg);
+	}
+	60%{
+		-webkit-transform: rotate(5deg);
+		transform: rotate(5deg);
+	}
+	80%{
+		-webkit-transform: rotate(-3deg);
+		transform: rotate(-3deg);
+	}
+}
+
+.tran {
+    transition: all 1s ease;
+     
+}
+.tran:hover {
+    
+    /* -webkit-box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15) ;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15) ; */
+    background-color: rgb(245, 245, 245);
+
+}
+
+/* FIN ANIMACIONES, TRANSFORMACIONES Y TRANSICIONES */
