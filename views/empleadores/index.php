@@ -10,33 +10,41 @@ use yii\grid\GridView;
 $this->title = 'Empleadores';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="empleadores-index container">
+<main class="empleadores-index container">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="row">
+    <section class="col-12">
+        <div class="p-4 bg-light">
 
-    <p>
-        <?= Html::a('Create Empleadores', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+            <h1><?= Html::encode($this->title) ?></h1>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+            <p>
+                <?= Html::a('Create Empleadores', ['create'], ['class' => 'btn btn-success']) ?>
+            </p>
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-            'usuario_id',
-            'nombre',
-            'apellidos',
-            'telefono',
-            'direccion',
-            //'created_at',
-            //'poblacion_id',
+            <?= GridView::widget([
+                'dataProvider' => $dataProvider,
+                'filterModel' => $searchModel,
+                'columns' => [
+                    ['class' => 'yii\grid\SerialColumn'],
 
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+                    'usuario_id',
+                    'nombre',
+                    'apellidos',
+                    'telefono',
+                    'direccion',
+                    //'created_at',
+                    //'poblacion_id',
 
-
+                    ['class' => 'yii\grid\ActionColumn'],
+                ],
+            ]); ?>
+        </div>
+    </section>
 </div>
+
+
+
+</main>

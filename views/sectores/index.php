@@ -13,25 +13,26 @@ $this->params['breadcrumbs'][] = $this->title;
 <main class="sectores-index container">
 
     <div class="row">
-        <section class="col-12 shadow p-3">
-            <h1><?= Html::encode($this->title) ?></h1>
+        <section class="col-12">
+            <div class="p-4 bg-light">
 
-            <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+                <h1><?= Html::encode($this->title) ?></h1>
 
-            <?= GridView::widget([
-                'dataProvider' => $dataProvider,
-                'filterModel' => $searchModel,
-                'columns' => [
+                <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-                    'secnom',
+                <?= GridView::widget([
+                    'dataProvider' => $dataProvider,
+                    'filterModel' => $searchModel,
+                    'columns' => [
+                        'secnom',
+                        ['class' => 'yii\grid\ActionColumn'],
+                    ],
+                ]); ?>
 
-                    ['class' => 'yii\grid\ActionColumn'],
-                ],
-            ]); ?>
-
-            <p>
-                <?= Html::a('Crear sector', ['create'], ['class' => 'btn btn-success']) ?>
-            </p>
+                <p>
+                    <?= Html::a('Crear sector', ['create'], ['class' => 'btn btn-success']) ?>
+                </p>
+            </div>
         </section>
     </div>
 

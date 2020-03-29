@@ -9,12 +9,12 @@ $this->title = 'Create Profesionales';
 $this->params['breadcrumbs'][] = ['label' => 'Profesionales', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="profesionales-create container">
+<main class="profesionales-create container">
 
     <div class="row justify-content-around">
-        <div class="col-md-6 p-3">
+        <section class="col-12">
 
-            <div class="shadow p-3">
+            <div class="p-3 bg-light">
 
                 <h1><?= Html::encode($this->title) ?></h1>
 
@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'model' => $model,
                 ]) ?>
             </div>
-        </div>
+        </section>
     </div>
 
-</div>
+</main>

@@ -11,34 +11,38 @@ $this->params['breadcrumbs'][] = ['label' => 'Profesiones', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="profesiones-view container">
+<main class="profesiones-view container">
 
     <div class="row">
-        <div class="col-12 shadow">
+        <section class="col-12">
 
-            <h1><?= Html::encode($this->title) ?></h1>
+            <div class="p-4 bg-light">
 
-            <?= DetailView::widget([
-                'model' => $model,
-                'attributes' => [
-                    
-                    'pronom',
-                    'sector.secnom',
-                ],
-            ]) ?>
-            <p>
-                <?= Html::a('Modificar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-                <?= Html::a('Eliminar', ['delete', 'id' => $model->id], [
-                    'class' => 'btn btn-danger',
-                    'data' => [
-                        'borrar.confirm' => '¿Esta seguro de eliminar este elemento?',
-                        'method' => 'post',
+                <h1><?= Html::encode($this->title) ?></h1>
+    
+                <?= DetailView::widget([
+                    'model' => $model,
+                    'attributes' => [
+                        
+                        'pronom',
+                        'sector.secnom',
                     ],
                 ]) ?>
-            </p>
+                <p>
+                    <?= Html::a('Modificar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+                    <?= Html::a('Eliminar', ['delete', 'id' => $model->id], [
+                        'class' => 'btn btn-danger',
+                        'data' => [
+                            'borrar.confirm' => '¿Esta seguro de eliminar este elemento?',
+                            'method' => 'post',
+                        ],
+                    ]) ?>
+                </p>
+            </div>
 
-        </div>
+
+        </section>
     </div>
 
 
-</div>
+</main>

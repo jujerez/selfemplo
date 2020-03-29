@@ -9,12 +9,18 @@ $this->title = 'Modificar perfil: ' . $model->usuario_id;
 $this->params['breadcrumbs'][] = ['label' => 'Administradores', 'url' => ['index']];
 $this->params['breadcrumbs'][] = 'Modificar';
 ?>
-<div class="administradores-update">
+<main class="administradores-update">
+    <div class="row">
+        <section class="col-12">
+            <div class="p-4 bg-light">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+                <h1><?= Html::encode($this->title) ?></h1>
 
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
+                <?= $this->render('_form', [
+                    'model' => $model,
+                ]) ?>
+            </div>
+        </section>
+    </div>
 
-</div>
+</main>

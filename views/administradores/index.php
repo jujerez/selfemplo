@@ -10,33 +10,39 @@ use yii\grid\GridView;
 $this->title = 'Administradores';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="administradores-index container">
+<main class="administradores-index container">
+    <div class="row">
+        <section class="col-12">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+            <div class="p-4 bg-light">
 
-    <p>
-        <?= Html::a('Create Administradores', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+                <h1><?= Html::encode($this->title) ?></h1>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+                <p>
+                    <?= Html::a('Create Administradores', ['create'], ['class' => 'btn btn-success']) ?>
+                </p>
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+                <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-            'usuario_id',
-            'nombre',
-            'apellidos',
-            'telefono',
-            'direccion',
-            //'created_at',
-            //'poblacion_id',
+                <?= GridView::widget([
+                    'dataProvider' => $dataProvider,
+                    'filterModel' => $searchModel,
+                    'columns' => [
+                        ['class' => 'yii\grid\SerialColumn'],
+                        'nombre',
+                        'apellidos',
+                        'telefono',
+                        'direccion',
+                        'created_at:datetime',
+                        //'poblacion.nombre',
 
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+                        ['class' => 'yii\grid\ActionColumn'],
+                    ],
+                ]); ?>
+            </div>
+
+        </section>
+    </div>
 
 
-</div>
+</main>

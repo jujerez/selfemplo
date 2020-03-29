@@ -13,32 +13,35 @@ $this->params['breadcrumbs'][] = $this->title;
 <main class="poblaciones-index container">
 
     <div class="row">
-        <section class="col-12 shadow p-3">
+        <section class="col-12 ">
 
-            <h1><?= Html::encode($this->title) ?></h1>
+            <div class="p-4 bg-light">
 
-            <p>
-                <?= Html::a('Crear Población', ['create'], ['class' => 'btn btn-success']) ?>
-            </p>
+                <h1><?= Html::encode($this->title) ?></h1>
 
-            <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+                <p>
+                    <?= Html::a('Crear Población', ['create'], ['class' => 'btn btn-success']) ?>
+                </p>
 
-            <?= GridView::widget([
-                'dataProvider' => $dataProvider,
-                'filterModel' => $searchModel,
-                'columns' => [
+                <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
+                <?= GridView::widget([
+                    'dataProvider' => $dataProvider,
+                    'filterModel' => $searchModel,
+                    'columns' => [
+                        
+                        'nombre',
                     
-                    'nombre',
-                
-                    [
-                        'attribute' => 'provincia.nombre',
-                        'format' => 'text',
-                        'label' => 'Provincia',
-                    ],
+                        [
+                            'attribute' => 'provincia.nombre',
+                            'format' => 'text',
+                            'label' => 'Provincia',
+                        ],
 
-                    ['class' => 'yii\grid\ActionColumn'],
-                ],
-            ]); ?>
+                        ['class' => 'yii\grid\ActionColumn'],
+                    ],
+                ]); ?>
+            </div>
         </section>
     </div>
 

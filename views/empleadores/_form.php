@@ -82,7 +82,7 @@ use yii\web\View;
                     ]); ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton($model->isNewRecord ?'Guardar':'Modificar', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

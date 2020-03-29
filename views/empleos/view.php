@@ -15,33 +15,36 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="row">
 
-        <div class="col-12 shadow p-3">
+        <section class="col-12">
+            <div class="p-4 bg-light">
 
-            <h1><?= Html::encode($this->title) ?></h1>
-
-            <?= DetailView::widget([
-                'model' => $model,
-                'attributes' => [
-                    
-                    'titulo',
-                    'descripcion',
-                    'created_at:datetime',
-                    'poblacion.nombre',
-                    'empleador.nombre',
-                    'profesion.pronom',
-                ],
-                ]) ?>
-            <p>
-                <?= Html::a('Modificar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-                <?= Html::a('Eliminar', ['delete', 'id' => $model->id], [
-                    'class' => 'btn btn-danger',
-                    'data' => [
-                        'borrar.confirm' => '¿Estas seguro que deseas eliminar este empleo?',
-                        'method' => 'post',
+                <h1><?= Html::encode($this->title) ?></h1>
+    
+                <?= DetailView::widget([
+                    'model' => $model,
+                    'attributes' => [
+                                               
+                        'titulo',
+                        'descripcion',
+                        'created_at:datetime',
+                        'poblacion.nombre',
+                        'empleador.nombre',
+                        'profesion.pronom',
                     ],
-                ]) ?>
-            </p>
-        </div>
+                    ]) ?>
+                <p>
+                    <?= Html::a('Modificar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+                    <?= Html::a('Eliminar', ['delete', 'id' => $model->id], [
+                        'class' => 'btn btn-danger',
+                        'data' => [
+                            'borrar.confirm' => '¿Estas seguro que deseas eliminar este empleo?',
+                            'method' => 'post',
+                        ],
+                    ]) ?>
+                </p>
+            </div>
+
+        </section>
     </div>
 
 

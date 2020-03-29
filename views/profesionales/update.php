@@ -12,9 +12,9 @@ $this->params['breadcrumbs'][] = 'Modificar';
 <main class="profesionales-update container">
 
     <div class="row justify-content-around">
-        <div class="col-md-6 p-3">
+        <div class="col-12 ">
 
-            <div class="shadow p-3">
+            <div class="p-4 bg-light">
 
                 <h1><?= Html::encode($this->title) ?></h1>
 

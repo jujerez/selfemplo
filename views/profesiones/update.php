@@ -13,15 +13,18 @@ $this->params['breadcrumbs'][] = 'Modificar';
 <main class="profesiones-update container">
 
     <div class="row">
-        <div class="col-12 shadow p-3">
+        <section class="col-12">
+            <div class="p-4 bg-light">
 
-            <h1><?= Html::encode($this->title) ?></h1>
+                <h1><?= Html::encode($this->title) ?></h1>
 
-            <?= $this->render('_form', [
-                'model' => $model,
-                'sectores' => $sectores,
-            ]) ?>
-        </div>
+                <?= $this->render('_form', [
+                    'model' => $model,
+                    'sectores' => $sectores,
+                ]) ?>
+            </div>
+
+        </section>
     </div>
 
 

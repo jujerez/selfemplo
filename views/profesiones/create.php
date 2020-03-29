@@ -12,14 +12,19 @@ $this->params['breadcrumbs'][] = $this->title;
 <main class="profesiones-create container">
 
     <div class="row">
-        <section class="col-12 shadow p-3">
+        <section class="col-12 ">
 
-            <h1><?= Html::encode($this->title) ?></h1>
 
-            <?= $this->render('_form', [
-                'model' => $model,
-                'sectores' => $sectores,
-            ]) ?>
+            <div class="p-4 bg-light">
+
+                <h1><?= Html::encode($this->title) ?></h1>
+
+                <?= $this->render('_form', [
+                    'model' => $model,
+                    'sectores' => $sectores,
+                ]) ?>
+            </div>
+
         </section>
     </div>
 

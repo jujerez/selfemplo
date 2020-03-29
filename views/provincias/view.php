@@ -14,9 +14,9 @@ $this->params['breadcrumbs'][] = $this->title;
 <main class="provincias-view container">
 
     <div class="row">
-        <section class="col-12  shadow p-3">
+        <section class="col-12">
 
-            
+        <div class="p-4 bg-light">
 
             <h1><?= Html::encode($this->title) ?></h1>
         
@@ -37,6 +37,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                 ]) ?>
             </p>
+        </div>
+
             
 
         </section>

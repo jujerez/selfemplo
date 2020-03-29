@@ -9,18 +9,22 @@ $this->title = 'Crear Población';
 $this->params['breadcrumbs'][] = ['label' => 'Poblaciones', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="poblaciones-create container">
+<main class="poblaciones-create container">
     <div class="row">
-        <section class="col-12 shadow p-3">
-            
-            <h1><?= Html::encode($this->title) ?></h1>
+        <section class="col-12">
 
-            <?= $this->render('_form', [
-                'model' => $model,
-                'provincias' => $provincias,
-            ]) ?>
+            <div class="p-4 bg-light">
+
+                <h1><?= Html::encode($this->title) ?></h1>
+
+                <?= $this->render('_form', [
+                    'model' => $model,
+                    'provincias' => $provincias,
+                ]) ?>
+            </div>
+            
         </section>
     </div>
 
 
-</div>
+</main>

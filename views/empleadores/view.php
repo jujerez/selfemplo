@@ -11,40 +11,43 @@ $this->params['breadcrumbs'][] = ['label' => 'Mi perfil', 'url' => ['perfil', 'i
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="empleadores-view container">
+<main class="empleadores-view container">
 
     <div class="row justify-content-center align-content-center">
 
-        <div class="col-12 shadow p-3">
+        <section class="col-12">
+            <div class="p-4 shadow">
 
-            <h1><?= Html::encode($this->title) ?></h1>
-    
-            <?= DetailView::widget([
-                'model' => $model,
-                'attributes' => [
-                    
-                    'nombre',
-                    'apellidos',
-                    'telefono',
-                    'direccion',
-                    'poblacion.nombre',
-                    'provincia'
-                    
-                ],
-            ]) ?>
-    
-            <p>
-                <?= Html::a('Modificar', ['update', 'id' => $model->usuario_id], ['class' => 'btn btn-primary']) ?>
-                 <?= Html::a('Eliminar mi cuenta', ['delete', 'id' => $model->usuario_id], [
-                    'class' => 'btn btn-danger',
-                    'data' => [
-                        'borrar.confirm' => '¿Estas seguro que deseas eliminar su cuenta?, se eliminarán todos los datos relacionados con su cuenta.',
-                        'method' => 'post',
+                <h1><?= Html::encode($this->title) ?></h1>
+        
+                <?= DetailView::widget([
+                    'model' => $model,
+                    'attributes' => [
+                        
+                        'nombre',
+                        'apellidos',
+                        'telefono',
+                        'direccion',
+                        'poblacion.nombre',
+                        'provincia'
+                        
                     ],
-                ]) ?> 
-            </p>
-        </div>
+                ]) ?>
+        
+                <p>
+                    <?= Html::a('Modificar', ['update', 'id' => $model->usuario_id], ['class' => 'btn btn-primary']) ?>
+                     <?= Html::a('Eliminar mi cuenta', ['delete', 'id' => $model->usuario_id], [
+                        'class' => 'btn btn-danger',
+                        'data' => [
+                            'borrar.confirm' => '¿Estas seguro que deseas eliminar su cuenta?, se eliminarán todos los datos relacionados con su cuenta.',
+                            'method' => 'post',
+                        ],
+                    ]) ?> 
+                </p>
+            </div>
+
+        </section>
 
     </div>
 
-</div>
+</main>
