@@ -8,6 +8,7 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Poblaciones';
+$this->params['breadcrumbs'][] = ['label' => 'Perfil', 'url' => ['administradores/perfil', 'id' => Yii::$app->user->identity->id] ];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <main class="poblaciones-index container">

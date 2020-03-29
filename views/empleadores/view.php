@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row justify-content-center align-content-center">
 
         <section class="col-12">
-            <div class="p-4 shadow">
+            <div class="p-4 bg-light">
 
                 <h1><?= Html::encode($this->title) ?></h1>
         

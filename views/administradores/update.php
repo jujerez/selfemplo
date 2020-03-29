@@ -9,7 +9,7 @@ $this->title = 'Modificar perfil: ' . $model->usuario_id;
 $this->params['breadcrumbs'][] = ['label' => 'Administradores', 'url' => ['index']];
 $this->params['breadcrumbs'][] = 'Modificar';
 ?>
-<main class="administradores-update">
+<main class="administradores-update container">
     <div class="row">
         <section class="col-12">
             <div class="p-4 bg-light">

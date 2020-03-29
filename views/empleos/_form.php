@@ -122,7 +122,7 @@ $sector_id = $model->isNewRecord ? '1' : $model->profesion->sector->id;
 
 
     <div class="form-group">
-        <?= Html::submitButton('Publicar', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Publicar' : 'Modificar', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
