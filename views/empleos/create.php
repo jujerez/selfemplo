@@ -6,7 +6,7 @@ use yii\bootstrap4\Html;
 /* @var $model app\models\Empleos */
 
 $this->title = 'Publicar Empleo';
-$this->params['breadcrumbs'][] = ['label' => 'Empleos', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Perfil', 'url' => ['empleadores/perfil', 'id' => Yii::$app->user->identity->id] ];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <main class="empleos-create container">

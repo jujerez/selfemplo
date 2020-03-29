@@ -8438,7 +8438,7 @@ INSERT INTO poblaciones (id, provincia_id, nombre) VALUES (7607, 49, 'Burganes d
 
 
 INSERT INTO usuarios (nombre, email, password, rol )
-    VALUES ('juan',  'juan@gmail.com', crypt('juan', gen_salt('bf', 10)), 0)
+    VALUES ('juan',  'juan@gmail.com', crypt('juan', gen_salt('bf', 10)), 1)
          , ('pepe', 'pepe@gmail.com', crypt('pepe', gen_salt('bf', 10)), 1)
          , ('admin', 'admin@gmail.com', crypt('admin', gen_salt('bf', 13)), 2)
          , ('garden', 'garden@gmail.com', crypt('garden', gen_salt('bf', 10)), 0)
@@ -8449,12 +8449,12 @@ INSERT INTO usuarios (nombre, email, password, rol )
 
      
 INSERT INTO profesionales (usuario_id, nombre, apellidos, telefono, direccion, poblacion_id, profesion_id)
-  VALUES  (1, 'Juan Antonio', 'Jerez Rondán','666777888','C/ Jerez nº 1' ,1807, 49)
-        , (4, 'Fernando', 'Gomez Gozalez','666777889','C/ Oviedo nº 1' ,1808, 4)
+  VALUES  (4, 'Fernando', 'Gomez Gozalez','666777889','C/ Oviedo nº 1' ,1808, 4)
         , (5, 'Antonio', 'Gutierrez','766777898','C/ Salamanca nº 1' ,1809, 31);
 
 INSERT INTO empleadores (usuario_id, nombre, apellidos, telefono, direccion, poblacion_id)
-  VALUES (2, 'Pepe', 'Ortega','666987789', 'C/ Sevilla nº 3',1807);
+  VALUES (2, 'Pepe', 'Ortega','666987789', 'C/ Sevilla nº 3',1807)
+      , (1, 'Juan Antonio', 'Jerez Rondán','666777888','C/ Jerez nº 1' ,1807);
 
 INSERT INTO administradores (usuario_id, nombre, apellidos, telefono, direccion, poblacion_id)
   VALUES (3, 'Juan', 'Jerez','666111222','C/ Madrid nº 1',1807)
@@ -8477,26 +8477,26 @@ INSERT INTO empleos (titulo, descripcion, poblacion_id, empleador_id, profesion_
          , ('Informatico a domicilio'
            , 'Es para formatear un portatil Acer, es del año 2019 y tiene Windows 10 profesional y ahora quiero la versión Enterprise ORIGINAL'
            , 1807
-           , 2
+           , 1
            , 52
         )
 
          , ('Tapia de bloques amarillos'
            , 'Quiero tapiar una parcela de 500m2 de bloques amarillos lisos, yo compro el material que el albañil solicite, quiero saber el precio por horas'
            , 1807
-           , 2
+           , 1
            , 59
         );
 
 INSERT INTO presupuestos (precio, estado, duracion_estimada, profesional_id, empleo_id)
-   VALUES   (50.00, true, 'PT60M0S', 1, 1)
-          , (250.00, false, 'PT240M0S', 1, 2);
+   VALUES   (50.00, true, 'PT60M0S', 4, 1)
+          , (250.00, false, 'PT240M0S', 4, 1);
 
 INSERT INTO comentarios (texto, empleador_id, profesional_id)
-    VALUES('Un trabajo excelente y muy curioso, recomendado 100%', 2, 1);
+    VALUES('Un trabajo excelente y muy curioso, recomendado 100%', 2, 4);
 
 INSERT INTO votos (voto, empleador_id, profesional_id)
-    VALUES(5, 2, 1);
+    VALUES(5, 2, 4);
 
 
 
