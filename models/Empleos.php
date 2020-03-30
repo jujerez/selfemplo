@@ -14,7 +14,6 @@ use Yii;
  * @property int $poblacion_id
  * @property int $empleador_id
  * @property int $profesion_id
- *
  * @property Poblaciones $poblacion
  * @property Profesiones $profesion
  * @property Usuarios $empleador

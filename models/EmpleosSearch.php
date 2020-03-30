@@ -25,7 +25,8 @@ class EmpleosSearch extends Empleos
                     'created_at', 
                     'profesion.pronom', 
                     'poblacion.nombre', 
-                    'empleador.nombre', 
+                    'empleador.nombre',
+                    'empleador.empleadores.nombre',
                     'poblacion.provincia.nombre',
                     'profesion.sector.secnom'
                 ]
@@ -36,7 +37,7 @@ class EmpleosSearch extends Empleos
     public function attributes()
     {
         return array_merge(parent::attributes(), 
-        ['profesion.pronom', 'poblacion.nombre', 'empleador.nombre','poblacion.provincia.nombre','profesion.sector.secnom']);
+        ['profesion.pronom', 'poblacion.nombre', 'empleador.nombre','poblacion.provincia.nombre','profesion.sector.secnom', 'empleador.empleadores.nombre']);
     }
 
     /**
@@ -62,6 +63,7 @@ class EmpleosSearch extends Empleos
           ->joinWith('poblacion p')
           ->joinWith('profesion pro')
           ->joinWith('empleador e')
+          ->joinWith('empleador.empleadores emp')
           ->joinWith('provincia prov')
           ->joinWith('sector s');
 
@@ -114,7 +116,7 @@ class EmpleosSearch extends Empleos
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'empleador_id' => $this->empleador_id,
+            //'empleador_id' => $this->empleador_id,
             'profesion_id' => $this->profesion_id,
         ]);
 
@@ -131,6 +133,7 @@ class EmpleosSearch extends Empleos
             ->andFilterWhere(['ilike', 'p.nombre', $this->getAttributes(['poblacion.nombre'])])
             ->andFilterWhere(['ilike', 'pro.pronom', $this->getAttributes(['profesion.pronom'])])
             ->andFilterWhere(['ilike', 'e.nombre', $this->getAttributes(['empleador.nombre'])])
+            ->andFilterWhere(['ilike', 'emp.nombre', $this->getAttributes(['empleador.empleadores.nombre'])])
             ->andFilterWhere(['ilike', 'prov.nombre', $this->getAttributes(['poblacion.provincia.nombre'])])
             ->andFilterWhere(['ilike', 's.secnom', $this->getAttributes(['profesion.sector.secnom'])])
             ->andFilterWhere(['between', 'created_at',$formateada, date('Y-m-d H:i:s',strtotime($this->created_at)+ 3600*24-1)]);

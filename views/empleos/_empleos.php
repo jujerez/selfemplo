@@ -55,7 +55,6 @@ use yii\helpers\Html;
                 </div>
             </div>
 
-
             <div class="card-footer mt-3">
                 <span class="float-right text-muted"><?= Icon::show('calendar-alt') . Yii::$app->formatter->asDate($model->created_at)?></span>
                 <span class="text-muted"><i class=""></i>Publicado por: <?= Html::encode($model->nombre)?></span>             

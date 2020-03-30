@@ -22,8 +22,6 @@ use yii\bootstrap4\ActiveForm;
 
         <?= $form->field($model, 'descripcion') ?>
 
-        
-
         <?= $form->field($model, 'created_at')->widget(
             DatePicker::class, 
             [
@@ -41,7 +39,7 @@ use yii\bootstrap4\ActiveForm;
 
         <?= $form->field($model, 'poblacion.provincia.nombre')->label('Provincia') ?>
 
-        <?php echo $form->field($model, 'empleador.nombre')->label('Autor publicación') ?>
+        <?php echo $form->field($model, 'empleador.empleadores.nombre')->label('Autor publicación') ?>
 
         <?php echo $form->field($model, 'profesion.sector.secnom')->label('Sector') ?>
 
