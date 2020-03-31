@@ -25,9 +25,9 @@ $this->params['breadcrumbs'][] = $this->title;
        <aside class="col-3 bg-light p-4">
             <div class="sidebar">
                 <div class="img-perfil text-center">
-                    
+                <?= Html::img('@web/img/user.png', ['alt'=>$model->nombre, ]) ?>
                 </div>
-                <h3>Mis datos</h3><hr>
+                <h3 class="text-center"><?=$model->nombre?></h3><hr>
                 <p><?= Html::a('Modificar', ['empleadores/update', 'id' => $model->usuario_id], ['class' =>'btn btn-warning']) ?></p>
                 <p><?= Html::a('Ver', ['empleadores/view', 'id' => $model->usuario_id], ['class' =>'text-primary']) ?></p>
             </div>
