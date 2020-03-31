@@ -12,6 +12,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\Json;
 use yii\web\Response;
 
 /**
@@ -191,5 +192,10 @@ class EmpleadoresController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionTabsData() {
+        $html = $this->renderPartial('update');
+        return Json::encode($html);
     }
 }

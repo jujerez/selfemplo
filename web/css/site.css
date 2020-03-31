@@ -254,4 +254,13 @@ a.desc:after {
 
 }
 
-/* FIN ANIMACIONES, TRANSFORMACIONES Y TRANSICIONES */
+/* TABS*/
+.nav-tabs .nav-link {
+    border: 1px solid transparent;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    background-color: transparent;
+}
+.nav-tabs .nav-link.active {
+    background-color: #eee;
+}
