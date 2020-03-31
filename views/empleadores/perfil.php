@@ -49,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
        <div class="col-md-9 col-sm-12">
             
-            <ul class="nav nav-tabs" id="myTab" role="tablist" aria-orientation="vertical">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" 
                        id="home-tab" 
@@ -63,13 +63,25 @@ $this->params['breadcrumbs'][] = $this->title;
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" 
-                        id="profile-tab" 
+                        id="empleos-tab" 
                         data-toggle="tab" 
-                        href="#profile" 
+                        href="#empleos" 
                         role="tab" 
-                        aria-controls="profile" 
+                        aria-controls="empleos" 
                         aria-selected="false">
                         <i class="far fa-clipboard"></i> Empleos
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" 
+                        id="pre-tab" 
+                        data-toggle="tab" 
+                        href="#pre" 
+                        role="tab" 
+                        aria-controls="pre" 
+                        aria-selected="false">
+                        <i class="far fa-clipboard"></i> Presupuestos
                     </a>
                 </li>
                
@@ -82,11 +94,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
                             
                         <div class="card-body bg-light">
-                                <p><strong>Usuario:</strong> <?= $model->usuario->nombre?></p>
-                                <p><strong>Email:</strong> <?= $model->usuario->email?></p>
-                                <p><strong>Rol:</strong> Empleador</p>
-                                
-                                
+                            <p><strong>Usuario:</strong> <?= $model->usuario->nombre?></p>
+                            <p><strong>Email:</strong> <?= $model->usuario->email?></p>
+                            <p><strong>Rol:</strong> Empleador</p>         
                         </div>
    
                     </div>
@@ -103,56 +113,66 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <p><strong>Dirección:</strong> <?= Html::encode($model->direccion) ?></p>
                                 <p><strong>Fecha alta:</strong> <?= Yii::$app->formatter->asDate($model->created_at)?></p>
                                 <p><strong>Poblacion:</strong> <?= Html::encode($model->poblacion->nombre)?></p>
-                                <p><strong>Provincia:</strong> <?= Html::encode($model->provinci->nombre) ?></p>
-                                         
+                                <p><strong>Provincia:</strong> <?= Html::encode($model->provinci->nombre) ?></p>                                        
                         </div>
    
                     </div>
                 </div>
-                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="tab-pane fade" id="empleos" role="tabpanel" aria-labelledby="empleos-tab">
                     <div class="card mb-4">
                             <div class="card-header gris text-white">
                                 Mis empleos publicados
                             </div>
                                 
                             <div class="card-body bg-light">
-                            <?php
-                            $dataProvider = new ActiveDataProvider([
-                                'query' => Empleos::find()
-                                ->where(['empleador_id' => $model->usuario->id]),
-                            ]);
-                           
-                            $dataProvider->pagination = ['pageSize' => 5];
-                            Pjax::begin();
-                            echo ListView::widget([
-                              'dataProvider' => $dataProvider,
-                              'summary' => '',
-                              'itemView' => '_empleos',
-                              'layout' => '{items}
-                              
-                                <div class="row">
-                                    <div class="col-12">
-                                        {pager}
-                                    </div>
-                                </div>
-                              
-                              ',
-                          ]);
-                          Pjax::end();
-                          ?>
+                                <?php
+                                    $dataProvider = new ActiveDataProvider([
+                                        'query' => Empleos::find()
+                                        ->where(['empleador_id' => $model->usuario->id]),
+                                    ]);
+                            
+                                    $dataProvider->pagination = ['pageSize' => 5];
+                                    Pjax::begin();
+                                    echo ListView::widget([
+                                        'dataProvider' => $dataProvider,
+                                        'summary' => '',
+                                        'itemView' => '_empleos',
+                                        'layout' => '{items}
                                         
-                            </div>
-    
-                        </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    {pager}
+                                                </div>
+                                            </div>
+                                        
+                                        ',
+                                    ]);
+                                    Pjax::end();
+                                ?>
+                                        
+                            </div>  
                     </div>
                 </div>
-                <!-- <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">asdcasdc</div> -->
-            </div>
+                <div class="tab-pane fade" id="pre" role="tabpanel" aria-labelledby="pre-tab">
+                    <div class="card mb-4">
+                        <div class="card-header gris text-white-50">
+                            Presupuestos recibidos
+                        </div>
+                            
+                        <div class="card-body bg-light">
+                               
+                                
+                        </div>
    
-          
-            
-       </aside> 
-   </section>
+                    </div>
+
+                    
+                </div>
+
+            </div>                      
+                
+    </aside> 
+</section>
 
 </main>
 
