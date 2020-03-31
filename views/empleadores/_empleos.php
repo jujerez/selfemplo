@@ -13,7 +13,7 @@ use yii\bootstrap4\Html;
                 <span class="text-success ">
                     <?= Html::encode($model->profesion->pronom) ?>
                 </span>
-                <span class=" text-muted float-right">
+                <span class=" text-muted float-right d-none d-sm-none d-md-block">
                     <?= Html::encode($model->profesion->sector->secnom) ?>
                 </span>
             </div> 

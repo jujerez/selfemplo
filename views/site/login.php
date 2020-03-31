@@ -22,7 +22,7 @@ $this->registerJs($js);
     <div class="row justify-content-center align-items-center">
 
     
-        <div class="col-md-6 col-sm-12 borde-sombreado pt-3 m-3 gris">
+        <div class="col-md-6 col-sm-12 borde-sombreado pt-3 m-3 bg-light">
             <div class="col-12 p-4">
                 <div class="text-center pb-2">
                 <?=Html::img('@web/img/logo-login.png', ['class' => [''], 'alt' => 'Logotipo'])?>

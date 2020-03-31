@@ -22,18 +22,32 @@ $this->params['breadcrumbs'][] = $this->title;
 <main class="empleadores-view container">
 
    <section class="row justify-content-around">
-       <aside class="col-3 bg-light p-4">
-            <div class="sidebar">
-                <div class="img-perfil text-center">
+       <aside class="col-md-3 col-sm-12 ">
+            <div class="sidebar bg-light p-4 borde">
+                <div class="img-perfil text-center p-3">
                 <?= Html::img('@web/img/user.png', ['alt'=>$model->nombre, ]) ?>
                 </div>
-                <h3 class="text-center"><?=$model->nombre?></h3><hr>
-                <p><?= Html::a('Modificar', ['empleadores/update', 'id' => $model->usuario_id], ['class' =>'btn btn-warning']) ?></p>
-                <p><?= Html::a('Ver', ['empleadores/view', 'id' => $model->usuario_id], ['class' =>'text-primary']) ?></p>
+                <h3 class="text-center "><?=$model->nombre?></h3><hr>
+                <p><?= Html::a('Modificar', 
+                        ['empleadores/update', 'id' => $model->usuario_id], 
+                        ['class' =>'btn btn-sm btn-primary w-100']) 
+                    ?>
+                </p>
+                
+                <p><?=Html::a('Eliminar mi cuenta', 
+                        ['delete', 'id' => $model->usuario_id],
+                        ['class' => 'btn btn-sm btn-danger w-100 ', 
+                            'data' => [
+                                'confirm' => '¿Seguro que desea borrar este empleo?',
+                                'method' => 'post',
+                            ],
+                        ])
+                    ?>
+                </p>
             </div>
         </aside>
 
-       <div class="col-8">
+       <div class="col-md-9 col-sm-12">
             
             <ul class="nav nav-tabs" id="myTab" role="tablist" aria-orientation="vertical">
                 <li class="nav-item">
@@ -63,7 +77,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="perfil" role="tabpanel" aria-labelledby="perfil-tab">
                     <div class="card mb-4">
-                        <div class="card-header bg-info">
+                        <div class="card-header gris text-white-50">
                             Información Cuenta
                         </div>
                             
@@ -78,7 +92,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
 
                     <div class="card mb-4">
-                        <div class="card-header bg-info">
+                        <div class="card-header gris text-white-50">
                             Información Personal
                         </div>
                             
@@ -97,7 +111,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     <div class="card mb-4">
-                            <div class="card-header bg-info">
+                            <div class="card-header gris text-white">
                                 Mis empleos publicados
                             </div>
                                 
@@ -132,40 +146,12 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">asdcasdc</div>
+                <!-- <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">asdcasdc</div> -->
             </div>
    
           
-            <!-- <div class="card-columns">
-                <div class="card bg-light">
-                    <div class="card-body text-center">
-                        <h3>Mis datos</h3><hr>
-                        <p><?= Html::a('Modificar', ['empleadores/update', 'id' => $model->usuario_id], ['class' =>'text-primary']) ?></p>
-                        <p><?= Html::a('Ver', ['empleadores/view', 'id' => $model->usuario_id], ['class' =>'text-primary']) ?></p>
-                        
-                        
-                    </div>
-                </div>
-                <div class="card bg-light">
-                    <div class="card-body text-center">
-                        <h3>Empleos</h3><hr>
-                        <p><?= Html::a('Publicar Empleo', ['empleos/create'], ['class' =>'text-primary']) ?></p>
-                        <p><?= Html::a('Modificar Empleo', ['empleos/index'], ['class' =>'text-primary']) ?></p>
-                        <p><?= Html::a('Borrar Empleo', ['empleos/index'], ['class' =>'text-primary']) ?></p>
-                        
-                    </div>
-                </div>
-
-                <div class="card bg-light">
-                    <div class="card-body text-center">
-                        <h3>Presupuestos</h3><hr>
-                        <p><?= Html::a('Presupuestos recibidos', ['presupuestos/recibidos'], ['class' =>'text-primary']) ?></p>
-                        
-                    </div>
-                </div>
-
-            </div>
-       </aside> -->
+            
+       </aside> 
    </section>
 
 </main>
