@@ -937,6 +937,15 @@
 | **Entrega**     | v1             |
 | **Incidencia**  | [285](https://github.com/jujerez/selfemplo/issues/285) |
 
+| **R105**     | **Sección perfil profesionales**         |
+| --------------: | :------------------- |
+| **Descripción** | El usuario-profesional dispondrá de un sección en la que podrá  ver la información de su perfil, los presupuestos enviados y todas las opciones de configuración de su cuenta.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [287](https://github.com/jujerez/selfemplo/issues/287) |
+
 
 ## Cuadro resumen
 
@@ -1046,3 +1055,4 @@
 | (**R102**) Envío de e-mail a usuario-empleador | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [102](https://github.com/jujerez/selfemplo/issues/102) |
 | (**R103**) Control de acceso | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [281](https://github.com/jujerez/selfemplo/issues/281) |
 | (**R104**) Sección perfil empleadores | Importante | Funcional | Media | v1 | | **Incidencia**  | [285](https://github.com/jujerez/selfemplo/issues/285) |
+| (**R105**) Sección perfil profesionales | Importante | Funcional | Media | v1 | | **Incidencia**  | [287](https://github.com/jujerez/selfemplo/issues/287) |
