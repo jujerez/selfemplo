@@ -69,7 +69,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         role="tab" 
                         aria-controls="empleos" 
                         aria-selected="false">
-                        <i class="far fa-clipboard"></i> Empleos
+                        <i class="fas fa-clipboard-list"></i> Empleos
                     </a>
                 </li>
 
