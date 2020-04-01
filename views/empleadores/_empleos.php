@@ -7,7 +7,7 @@ use yii\bootstrap4\Html;
 
 <div class="row">
     <div class="col-12">
-        <div class="card shadow p-4 mb-2 cartel ">
+        <div class="card p-4 mb-2 sombra_movil ">
          
             <div class="card-header p-2">
                 <span class="text-success ">

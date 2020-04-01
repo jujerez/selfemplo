@@ -109,10 +109,10 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="card-body bg-light">
                                 <p><strong>Nombre:</strong> <?= Html::encode( $model->nombre) ?></p>
                                 <p><strong>Apellidos:</strong> <?= Html::encode($model->apellidos) ?></p>
-                                <p><strong>Telefono:</strong> <?= Html::encode($model->telefono) ?></p>
+                                <p><strong>Teléfono:</strong> <?= Html::encode($model->telefono) ?></p>
                                 <p><strong>Dirección:</strong> <?= Html::encode($model->direccion) ?></p>
                                 <p><strong>Fecha alta:</strong> <?= Yii::$app->formatter->asDate($model->created_at)?></p>
-                                <p><strong>Poblacion:</strong> <?= Html::encode($model->poblacion->nombre)?></p>
+                                <p><strong>Población:</strong> <?= Html::encode($model->poblacion->nombre)?></p>
                                 <p><strong>Provincia:</strong> <?= Html::encode($model->provinci->nombre) ?></p>                                        
                         </div>
    
