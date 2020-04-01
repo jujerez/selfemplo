@@ -120,7 +120,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
                 <div class="tab-pane fade" id="empleos" role="tabpanel" aria-labelledby="empleos-tab">
                     <div class="card mb-4">
-                            <div class="card-header gris text-white">
+                            <div class="card-header gris text-white-50">
                                 Mis empleos publicados
                             </div>
                                 
