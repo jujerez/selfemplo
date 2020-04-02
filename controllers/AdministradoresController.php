@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Administradores;
 use app\models\AdministradoresSearch;
+use app\models\ProfesionesSearch;
 use app\models\SectoresSearch;
 use app\models\Usuarios;
 use yii\filters\AccessControl;
@@ -139,11 +140,16 @@ class AdministradoresController extends Controller
         $searchModel = new SectoresSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        $proSearchModel = new ProfesionesSearch();
+        $proDataProvider = $proSearchModel->search(Yii::$app->request->queryParams);
+
 
         return $this->render('perfil', [
             'model' => $model,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'proSearchModel' => $proSearchModel,
+            'proDataProvider' => $proDataProvider,
             
         ]);
     }

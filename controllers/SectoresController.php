@@ -128,11 +128,12 @@ class SectoresController extends Controller
         ->count();
 
         if ($num_profesiones > 0) {
-            Yii::$app->session->setFlash('danger', 'Este sector tiene profesiones asociadas.');
+            Yii::$app->session->setFlash('info', 'Este sector no se puede borrar porque tiene profesiones asociadas.');
             return $this->redirect(Yii::$app->request->referrer);
         } else {
-
+            
             $this->findModel($id)->delete();
+            Yii::$app->session->setFlash('success', 'Sector eliminado con exito.');
             return $this->redirect(Yii::$app->request->referrer);
         }
 

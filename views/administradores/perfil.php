@@ -86,7 +86,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         role="tab" 
                         aria-controls="profesiones" 
                         aria-selected="false">
-                        <i class="far fa-clipboard"></i> Sectores
+                        <i class="far fa-clipboard"></i> Profesiones
                     </a>
                 </li>
                
@@ -152,17 +152,17 @@ $this->params['breadcrumbs'][] = $this->title;
                                                 
                                                 'update' => function ($url, $model, $key) {
                                                     return Html::a('Modificar', ['sectores/update', 'id' => $key], [
-                                                        'class' => 'btn btn-sm btn-warning',
-                                                        'style' => ['font-size'=>'10px'],
+                                                        'class' => 'btn btn-sm btn-primary',
+                                                        
                                                         
                                                     ]);
                                                 },
 
                                                 'delete' => function ($url, $model, $key) {
-                                                    Yii::debug($url);
+                                                   
                                                     return Html::a('Eliminar', $url,[
                                                         'class' => 'btn btn-sm btn-danger',
-                                                        'style' => ['font-size'=>'12px'],
+                                                        
                                                         'data-method' => 'POST',
                                                         'data-confirm' => '¿Está seguro que quiere elimnar este sector?',
                                                     ]);
@@ -191,40 +191,32 @@ $this->params['breadcrumbs'][] = $this->title;
                         </p>   
                             <?php
                               
-                                $dataProvider->pagination = ['pageSize' => 5];
+                                $proDataProvider->pagination = ['pageSize' => 5];
+                                Yii::debug($proDataProvider);
                                
                                 Pjax::begin();
                                 echo GridView::widget([
-                                    'dataProvider' => $dataProvider,
-                                    'filterModel' => $searchModel,
+                                    'dataProvider' => $proDataProvider,
+                                    'filterModel' => $proSearchModel,
                                     'columns' => [
-                                        'secnom',
+                                        'pronom',
                                         [
                                             'class' => 'yii\grid\ActionColumn',
-                                            'template' => '{view} {update} {delete}',
+                                            'template' => '{update} {delete}',
+                                            'controller' => 'profesiones',
                                             'buttons' => [
-                                                'view' => function ($url, $model, $key) {
-                                                    return Html::a('Ver', ['profesiones/view', 'id' => $key], [
-                                                        'class' => 'btn btn-sm btn-info',
-                                                        'style' => ['font-size'=>'10px'],
-                                                        
-                                                    ]);
-                                                },
-
+                                                
                                                 'update' => function ($url, $model, $key) {
                                                     return Html::a('Modificar', ['profesiones/update', 'id' => $key], [
-                                                        'class' => 'btn btn-sm btn-warning',
-                                                        'style' => ['font-size'=>'10px'],
-                                                        
+                                                        'class' => 'btn btn-sm btn-warning',   
                                                     ]);
                                                 },
 
                                                 'delete' => function ($url, $model, $key) {
-                                                    return Html::a('Eliminar', ['profesiones', 'id' => $key], [
+                                                    return Html::a('Eliminar', $url, [
                                                         'class' => 'btn btn-sm btn-danger',
-                                                        'style' => ['font-size'=>'12px'],
                                                         'data-method' => 'POST',
-                                                        'data-confirm' => '¿Está seguro que quiere elimnar esta profesión?',
+                                                        'data-confirm' => '¿Está seguro que quiere eliminar esta profesión?',
                                                     ]);
                                                 },
 

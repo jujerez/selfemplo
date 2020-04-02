@@ -126,7 +126,7 @@ class EmpleosSearch extends Empleos
           }
 
       
-         // \Yii::debug($this->created_at);
+        
     
         $query->andFilterWhere(['ilike', 'titulo', $this->titulo])
             ->andFilterWhere(['ilike', 'descripcion', $this->descripcion])
