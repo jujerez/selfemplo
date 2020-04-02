@@ -218,7 +218,7 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
 
     public function afterSave($insert, $changedAttributes)
     {
-        Yii::debug($insert);
+        
         if ($insert) {
             if ($this->rol == '0') {
                 $q = (new Profesionales([

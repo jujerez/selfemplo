@@ -2,8 +2,7 @@
 
 use kartik\icons\Icon;
 use yii\helpers\Html;
-//$posts = $dataProvider->getModels();
-//Yii::debug($posts);
+
 ?>
 
 

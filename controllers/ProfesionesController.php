@@ -127,9 +127,15 @@ class ProfesionesController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        if ($this->findModel($id)->delete()) {
 
-        return $this->redirect(['index']);
+            Yii::$app->session->setFlash('success', 'Profesión eliminada con exito.');
+            return $this->redirect(Yii::$app->request->referrer);
+        } else {
+            Yii::$app->session->setFlash('danger', 'Error al eliminar la profesión.');
+            return $this->redirect(Yii::$app->request->referrer);
+        }
+
     }
 
     /**

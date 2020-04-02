@@ -946,6 +946,15 @@
 | **Entrega**     | v1             |
 | **Incidencia**  | [287](https://github.com/jujerez/selfemplo/issues/287) |
 
+| **R106**     | **Sección perfil administradores**         |
+| --------------: | :------------------- |
+| **Descripción** | El usuario-administrador dispondrá de un sección en la que podrá  gestionar la aplicación .             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [289](https://github.com/jujerez/selfemplo/issues/289) |
+
 
 ## Cuadro resumen
 
@@ -1056,3 +1065,4 @@
 | (**R103**) Control de acceso | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [281](https://github.com/jujerez/selfemplo/issues/281) |
 | (**R104**) Sección perfil empleadores | Importante | Funcional | Media | v1 | | **Incidencia**  | [285](https://github.com/jujerez/selfemplo/issues/285) |
 | (**R105**) Sección perfil profesionales | Importante | Funcional | Media | v1 | | **Incidencia**  | [287](https://github.com/jujerez/selfemplo/issues/287) |
+| (**R106**) Sección perfil administradores | Importante | Funcional | Media | v1 | | **Incidencia**  | [289](https://github.com/jujerez/selfemplo/issues/289) |

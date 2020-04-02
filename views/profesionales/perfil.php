@@ -17,7 +17,6 @@ $this->params['breadcrumbs'][] = ['label' => 'Mi perfil', 'url' => ['perfil', 'i
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-
   
 <main class="empleadores-view container">
 
@@ -122,12 +121,9 @@ $this->params['breadcrumbs'][] = $this->title;
    
                     </div>     
                 </div>
-
-            </div>                      
-                
-    </aside> 
-</section>
-
+            </div>                                    
+        </aside> 
+    </section>
 </main>
 
     

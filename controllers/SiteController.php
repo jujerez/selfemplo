@@ -150,8 +150,6 @@ class SiteController extends Controller
     
     public function actionCookie($cadena='politica')
     {
-       
-        $valor = $cadena;
         // valido para 1 semana
         setcookie('politica', $cadena, time() + 60 * 60 * 24 * 7);
         return $this->goBack();

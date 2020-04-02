@@ -71,6 +71,11 @@ class Administradores extends \yii\db\ActiveRecord
         return $this->hasOne(Poblaciones::className(), ['id' => 'poblacion_id'])->inverseOf('administradores');
     }
 
+    public function getProvincia()
+    {
+        return $this->hasOne(Provincias::className(), ['id' => 'provincia_id'])->via('poblacion');
+    }
+
     /**
      * Gets query for [[Usuario]].
      *
