@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Administradores;
 use app\models\AdministradoresSearch;
+use app\models\SectoresSearch;
 use app\models\Usuarios;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -135,8 +136,14 @@ class AdministradoresController extends Controller
     {
         $model = $this->findModel($id);
 
+        $searchModel = new SectoresSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+
         return $this->render('perfil', [
             'model' => $model,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
             
         ]);
     }

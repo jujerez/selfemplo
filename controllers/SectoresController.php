@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Profesiones;
 use Yii;
 use app\models\Sectores;
 use app\models\SectoresSearch;
@@ -121,9 +122,20 @@ class SectoresController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        $num_profesiones = Profesiones::find()
+        ->where(['sector_id' => $id])
+        ->count();
+
+        if ($num_profesiones > 0) {
+            Yii::$app->session->setFlash('danger', 'Este sector tiene profesiones asociadas.');
+            return $this->redirect(Yii::$app->request->referrer);
+        } else {
+
+            $this->findModel($id)->delete();
+            return $this->redirect(Yii::$app->request->referrer);
+        }
+
     }
 
     /**
