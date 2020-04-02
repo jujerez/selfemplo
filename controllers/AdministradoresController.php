@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Administradores;
 use app\models\AdministradoresSearch;
+use app\models\PoblacionesSearch;
 use app\models\ProfesionesSearch;
 use app\models\ProvinciasSearch;
 use app\models\SectoresSearch;
@@ -147,6 +148,9 @@ class AdministradoresController extends Controller
         $provSearchModel = new ProvinciasSearch();
         $provDataProvider = $provSearchModel->search(Yii::$app->request->queryParams);
 
+        $pobSearchModel = new PoblacionesSearch();
+        $pobDataProvider = $pobSearchModel->search(Yii::$app->request->queryParams);
+
 
         return $this->render('perfil', [
             'model' => $model,
@@ -156,6 +160,8 @@ class AdministradoresController extends Controller
             'proDataProvider' => $proDataProvider,
             'provSearchModel' => $provSearchModel,
             'provDataProvider' => $provDataProvider,
+            'pobSearchModel' => $pobSearchModel,
+            'pobDataProvider' => $pobDataProvider,
             
         ]);
     }

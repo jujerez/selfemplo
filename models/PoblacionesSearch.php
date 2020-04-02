@@ -47,7 +47,7 @@ class PoblacionesSearch extends Poblaciones
     public function search($params)
     {
         
-        $query = Poblaciones::find()->joinWith('provincia p');
+        $query = Poblaciones::find()->alias('pob')->joinWith('provincia p');
 
         // add conditions that should always apply here
 
@@ -76,7 +76,7 @@ class PoblacionesSearch extends Poblaciones
             'provincia_id' => $this->provincia_id,
         ]);
 
-        $query->andFilterWhere(['ilike', 'nombre', $this->nombre])
+        $query->andFilterWhere(['ilike', 'pob.nombre', $this->nombre])
         ->andFilterWhere(['ilike', 'p.nombre', $this->getAttributes(['provincia.nombre'])]);
 
         return $dataProvider;

@@ -101,6 +101,18 @@ $this->params['breadcrumbs'][] = $this->title;
                         <i class="fas fa-city"></i> Provincias
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" 
+                        id="poblaciones-tab" 
+                        data-toggle="tab" 
+                        href="#poblaciones" 
+                        role="tab" 
+                        aria-controls="poblaciones" 
+                        aria-selected="false">
+                        <i class="fas fa-building"></i> Poblaciones
+                    </a>
+                </li>
                
             </ul>
             <div class="tab-content" id="myTabContent">
@@ -139,7 +151,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="tab-pane fade" id="sector" role="tabpanel" aria-labelledby="sector-tab">
                     <div class="card mb-4">
                         <div class="card-header gris text-white-50">
-                            Opciones sectores
+                            Lista de Sectores
                         </div>
                             
                         <div class="card-body bg-light">
@@ -194,7 +206,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="tab-pane fade" id="profesiones" role="tabpanel" aria-labelledby="profesiones-tab">
                     <div class="card mb-4">
                         <div class="card-header gris text-white-50">
-                            Sectores
+                            Lista de Profesiones
                         </div>
                             
                         <div class="card-body bg-light">
@@ -211,6 +223,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'dataProvider' => $proDataProvider,
                                     'filterModel' => $proSearchModel,
                                     'columns' => [
+                                        'sector.secnom',
                                         'pronom',
                                         [
                                             'class' => 'yii\grid\ActionColumn',
@@ -247,7 +260,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="tab-pane fade" id="provincias" role="tabpanel" aria-labelledby="provincias-tab">
                     <div class="card mb-4">
                         <div class="card-header gris text-white-50">
-                            Lista de  provincias
+                            Lista de provincias
                         </div>
                             
                         <div class="card-body bg-light">
@@ -264,6 +277,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'dataProvider' => $provDataProvider,
                                     'filterModel' => $provSearchModel,
                                     'columns' => [
+                                        
                                         'nombre',
                                         [
                                             'class' => 'yii\grid\ActionColumn',
@@ -295,82 +309,65 @@ $this->params['breadcrumbs'][] = $this->title;
    
                     </div>     
                 </div>
+            
+                <!--Tab Poblaciones-->
+                <div class="tab-pane fade" id="poblaciones" role="tabpanel" aria-labelledby="poblaciones-tab">
+                    <div class="card mb-4">
+                        <div class="card-header gris text-white-50">
+                            Lista de poblaciones
+                        </div>
+                            
+                        <div class="card-body bg-light">
+                        <p>
+                            <?= Html::a('Crear población', ['poblaciones/create'], ['class' => 'btn btn-success']) ?>
+                        </p>   
+                            <?php
+                              
+                                $pobDataProvider->pagination = ['pageSize' => 5];
+                               
+                                Pjax::begin();
+                                echo GridView::widget([
+                                    'dataProvider' => $pobDataProvider,
+                                    'filterModel' => $pobSearchModel,
+                                    'columns' => [
+                                        'provincia.nombre',
+                                        'nombre',
+                                        [
+                                            'class' => 'yii\grid\ActionColumn',
+                                            'template' => '{update} {delete}',
+                                            'controller' => 'poblaciones',
+                                            'buttons' => [
+                                                
+                                                'update' => function ($url, $model, $key) {
+                                                    return Html::a('Modificar', ['poblaciones/update', 'id' => $key], [
+                                                        'class' => 'btn btn-sm btn-primary',   
+                                                    ]);
+                                                },
+
+                                                'delete' => function ($url, $model, $key) {
+                                                    return Html::a('Eliminar', $url, [
+                                                        'class' => 'btn btn-sm btn-danger',
+                                                        'data-method' => 'POST',
+                                                        'data-confirm' => '¿Está seguro que quiere eliminar esta población?',
+                                                    ]);
+                                                },
+
+                                            ],
+                                        ],
+                                    ],
+                                ]); 
+                                Pjax::end();
+                            ?>   
+                        </div>
+   
+                    </div>     
+                </div>
                 <!---->
             </div>                                    
         </aside> 
     </section>
 </main>
 
-    
-
-
-
-
-
-
-
-
-
-<main class="administradores-perfil container">
-
-   <section class="row">
-       <div class="col">
-           <h1>Administrador</h1>
-            <div class="card-columns">
-                <div class="card bg-light">
-                    <div class="card-body text-center">
-                        <h3>Mis datos</h3><hr>
-                        <p><?= Html::a('Index', ['administradores/index', 'id' => $model->usuario_id], ['class' =>'text-primary']) ?></p>
-                        <p><?= Html::a('Modificar', ['administradores/update', 'id' => $model->usuario_id], ['class' =>'text-primary']) ?></p>
-                        <p><?= Html::a('Ver', ['administradores/view', 'id' => $model->usuario_id], ['class' =>'text-primary']) ?></p>
-                        
-                        
-                    </div>
-                </div>
-                <div class="card bg-light">
-                    <div class="card-body text-center">
-                        <h3>Sectores</h3><hr>
-                        <p><?= Html::a('Index', ['sectores/index'], ['class' =>'text-primary']) ?></p>
-                        <p><?= Html::a('Crear', ['sectores/create'], ['class' =>'text-primary']) ?></p>
-                        <p><?= Html::a('Modificar', ['sectores/update'], ['class' =>'text-primary']) ?></p>     
-                    </div>
-                </div>
-
-                <div class="card bg-light">
-                    <div class="card-body text-center">
-                        <h3>Profesiones</h3><hr>
-                        <p><?= Html::a('Index', ['profesiones/index'], ['class' =>'text-primary']) ?></p>
-                        <p><?= Html::a('Crear', ['profesiones/create'], ['class' =>'text-primary']) ?></p>
-                        <p><?= Html::a('Modificar', ['profesiones/update'], ['class' =>'text-primary']) ?></p>     
-                    </div>
-                </div>
-
-                <div class="card bg-light">
-                    <div class="card-body text-center">
-                        <h3>Provincias</h3><hr>
-                        <p><?= Html::a('Index', ['provincias/index'], ['class' =>'text-primary']) ?></p>
-                        <p><?= Html::a('Crear', ['provincias/create'], ['class' =>'text-primary']) ?></p>
-                        <p><?= Html::a('Modificar', ['provincias/update'], ['class' =>'text-primary']) ?></p>     
-                    </div>
-                </div>
-
-                <div class="card bg-light">
-                    <div class="card-body text-center">
-                        <h3>Poblaciones</h3><hr>
-                        <p><?= Html::a('Index', ['poblaciones/index'], ['class' =>'text-primary']) ?></p>
-                        <p><?= Html::a('Crear', ['poblaciones/create'], ['class' =>'text-primary']) ?></p>
-                        <p><?= Html::a('Modificar', ['poblaciones/update'], ['class' =>'text-primary']) ?></p>     
-                    </div>
-                </div>
-
-
-                
-
-            </div>
-       </div>
-   </section>
-
-</main>
 
     
 
