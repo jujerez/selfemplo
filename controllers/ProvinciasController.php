@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Poblaciones;
 use Yii;
 use app\models\Provincias;
 use app\models\ProvinciasSearch;
@@ -122,9 +123,20 @@ class ProvinciasController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        
+        $num_poblaciones = Poblaciones::find()
+        ->where(['provincia_id' => $id])
+        ->count();
 
-        return $this->redirect(['index']);
+        if ($num_poblaciones > 0) {
+            Yii::$app->session->setFlash('danger', 'Esta provincia no se puede borrar porque tiene poblaciones asociadas.');
+            return $this->redirect(Yii::$app->request->referrer);
+        } else {
+            
+            $this->findModel($id)->delete();
+            Yii::$app->session->setFlash('success', 'Provincia eliminada con exito.');
+            return $this->redirect(Yii::$app->request->referrer);
+        }
     }
 
     /**

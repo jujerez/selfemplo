@@ -74,7 +74,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         role="tab" 
                         aria-controls="sector" 
                         aria-selected="false">
-                        <i class="far fa-clipboard"></i> Sectores
+                        <i class="fas fa-industry"></i> Sectores
                     </a>
                 </li>
 
@@ -86,7 +86,19 @@ $this->params['breadcrumbs'][] = $this->title;
                         role="tab" 
                         aria-controls="profesiones" 
                         aria-selected="false">
-                        <i class="far fa-clipboard"></i> Profesiones
+                        <i class="fas fa-user-tie"></i> Profesiones
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" 
+                        id="provincias-tab" 
+                        data-toggle="tab" 
+                        href="#provincias" 
+                        role="tab" 
+                        aria-controls="provincias" 
+                        aria-selected="false">
+                        <i class="fas fa-city"></i> Provincias
                     </a>
                 </li>
                
@@ -208,7 +220,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                 
                                                 'update' => function ($url, $model, $key) {
                                                     return Html::a('Modificar', ['profesiones/update', 'id' => $key], [
-                                                        'class' => 'btn btn-sm btn-warning',   
+                                                        'class' => 'btn btn-sm btn-primary',   
                                                     ]);
                                                 },
 
@@ -217,6 +229,59 @@ $this->params['breadcrumbs'][] = $this->title;
                                                         'class' => 'btn btn-sm btn-danger',
                                                         'data-method' => 'POST',
                                                         'data-confirm' => '¿Está seguro que quiere eliminar esta profesión?',
+                                                    ]);
+                                                },
+
+                                            ],
+                                        ],
+                                    ],
+                                ]); 
+                                Pjax::end();
+                            ?>   
+                        </div>
+   
+                    </div>     
+                </div>
+            
+                <!--Tab Provincias-->
+                <div class="tab-pane fade" id="provincias" role="tabpanel" aria-labelledby="provincias-tab">
+                    <div class="card mb-4">
+                        <div class="card-header gris text-white-50">
+                            Lista de  provincias
+                        </div>
+                            
+                        <div class="card-body bg-light">
+                        <p>
+                            <?= Html::a('Crear provincia', ['profesiones/create'], ['class' => 'btn btn-success']) ?>
+                        </p>   
+                            <?php
+                              
+                                $proDataProvider->pagination = ['pageSize' => 5];
+                                Yii::debug($proDataProvider);
+                               
+                                Pjax::begin();
+                                echo GridView::widget([
+                                    'dataProvider' => $provDataProvider,
+                                    'filterModel' => $provSearchModel,
+                                    'columns' => [
+                                        'nombre',
+                                        [
+                                            'class' => 'yii\grid\ActionColumn',
+                                            'template' => '{update} {delete}',
+                                            'controller' => 'provincias',
+                                            'buttons' => [
+                                                
+                                                'update' => function ($url, $model, $key) {
+                                                    return Html::a('Modificar', ['provincias/update', 'id' => $key], [
+                                                        'class' => 'btn btn-sm btn-primary',   
+                                                    ]);
+                                                },
+
+                                                'delete' => function ($url, $model, $key) {
+                                                    return Html::a('Eliminar', $url, [
+                                                        'class' => 'btn btn-sm btn-danger',
+                                                        'data-method' => 'POST',
+                                                        'data-confirm' => '¿Está seguro que quiere eliminar esta provincia?',
                                                     ]);
                                                 },
 

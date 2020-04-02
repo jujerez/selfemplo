@@ -6,6 +6,7 @@ use Yii;
 use app\models\Administradores;
 use app\models\AdministradoresSearch;
 use app\models\ProfesionesSearch;
+use app\models\ProvinciasSearch;
 use app\models\SectoresSearch;
 use app\models\Usuarios;
 use yii\filters\AccessControl;
@@ -143,6 +144,9 @@ class AdministradoresController extends Controller
         $proSearchModel = new ProfesionesSearch();
         $proDataProvider = $proSearchModel->search(Yii::$app->request->queryParams);
 
+        $provSearchModel = new ProvinciasSearch();
+        $provDataProvider = $provSearchModel->search(Yii::$app->request->queryParams);
+
 
         return $this->render('perfil', [
             'model' => $model,
@@ -150,6 +154,8 @@ class AdministradoresController extends Controller
             'dataProvider' => $dataProvider,
             'proSearchModel' => $proSearchModel,
             'proDataProvider' => $proDataProvider,
+            'provSearchModel' => $provSearchModel,
+            'provDataProvider' => $provDataProvider,
             
         ]);
     }
