@@ -35,7 +35,7 @@ class PresupuestosController extends Controller
                 
                     [
                         'allow' => true,
-                        'actions' => ['create', 'index'],
+                        'actions' => ['create'],
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action ) {
                             return Yii::$app->user->identity->rol === '0';

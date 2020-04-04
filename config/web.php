@@ -51,6 +51,7 @@ $config = [
         'db' => $db,
         'formatter' => [
             'timeZone' => 'Europe/Madrid',
+            
         ],
         /*
         'urlManager' => [

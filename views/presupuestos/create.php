@@ -5,16 +5,24 @@ use yii\bootstrap4\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Presupuestos */
 
-$this->title = 'Create Presupuestos';
+$this->title = 'Crear Presupuesto';
 $this->params['breadcrumbs'][] = ['label' => 'Presupuestos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="presupuestos-create">
+<main class="presupuestos-create container">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="row">
+        <section class="col-12">
+            <div class="p-4 bg-light">
 
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
+                <h1><?= Html::encode($this->title) ?></h1>
+
+                <?= $this->render('_form', [
+                    'model' => $model,
+                ]) ?>
+            </div>
+        </section>
+    </div>
+
 
 </div>

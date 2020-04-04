@@ -30,7 +30,7 @@ use yii\helpers\Html;
                 
                 <div class="pt-3">
                 
-                    <?=Html::a('Enviar presupuesto', ['presupuestos/create', 'id' => $key], ['class' => 'btn btn-sm btn-success'])?>
+                    <?=Html::a('Enviar presupuesto', ['presupuestos/create', 'id' => $key,], ['class' => 'btn btn-sm btn-success'])?>
                     
                 </div>
             </div>

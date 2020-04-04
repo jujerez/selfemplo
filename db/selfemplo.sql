@@ -134,7 +134,8 @@ CREATE TABLE presupuestos
 (
     id                      BIGSERIAL     PRIMARY KEY
   , precio                  NUMERIC(10,2) NOT NULL
-  , duracion_estimada       INTERVAL
+  , duracion_estimada       FLOAT
+  , detalles                TEXT
   , estado                  BOOLEAN       DEFAULT false
   , profesional_id          BIGINT        NOT NULL REFERENCES usuarios(id)
                                           ON DELETE CASCADE ON UPDATE CASCADE
@@ -8489,8 +8490,8 @@ INSERT INTO empleos (titulo, descripcion, poblacion_id, empleador_id, profesion_
         );
 
 INSERT INTO presupuestos (precio, estado, duracion_estimada, profesional_id, empleo_id)
-   VALUES   (50.00, true, 'PT60M0S', 4, 1)
-          , (250.00, false, 'PT240M0S', 4, 1);
+   VALUES   (50.00, true, 1, 4, 1)
+          , (250.00, false, 10, 4, 1);
 
 INSERT INTO comentarios (texto, empleador_id, profesional_id)
     VALUES('Un trabajo excelente y muy curioso, recomendado 100%', 2, 4);
