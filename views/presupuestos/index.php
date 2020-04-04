@@ -10,7 +10,7 @@ use yii\grid\GridView;
 $this->title = 'Presupuestos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="presupuestos-index">
+<main class="presupuestos-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -38,4 +38,4 @@ $this->params['breadcrumbs'][] = $this->title;
     ]); ?>
 
 
-</div>
+</main>
