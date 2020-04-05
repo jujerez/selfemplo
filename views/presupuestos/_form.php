@@ -18,21 +18,6 @@ $empleo_id = Yii::$app->request->get('id');
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'precio')->widget(MaskMoney::classname(), [ 
-
-       
-        'pluginOptions' => [
-            'prefix' => 'Total: ',
-            'suffix' => ' €',
-            'thousands' => '.',
-            'decimal' => ',',
-            'precision' => 2,
-            'allowNegative' => false,
-        ],
-    
-    ]);
-  ?>
-  
     <?= $form->field($model, 'duracion_estimada')->widget(MaskMoney::classname(), [ 
 
         'options' => [
@@ -46,8 +31,8 @@ $empleo_id = Yii::$app->request->get('id');
             'precision' => 1
         ],
 
-    ]);?> 
-  
+    ]);
+    ?> 
     <?= $form->field($model, 'detalles')->textarea(
         [
             'spellcheck' => true, 
@@ -55,6 +40,21 @@ $empleo_id = Yii::$app->request->get('id');
             'rows' => '10'
         ]) 
     ?>
+    <?= $form->field($model, 'precio')->widget(MaskMoney::classname(), [    
+        'pluginOptions' => [
+            'prefix' => 'Total: ',
+            'suffix' => ' €',
+            'thousands' => '.',
+            'decimal' => ',',
+            'precision' => 2,
+            'allowNegative' => false,
+        ],
+    
+        ]);
+    ?>
+    
+  
+  
     <?= $form->field($model, 'profesional_id')->hiddenInput(['value'=> Yii::$app->user->identity->id])->label(false) ?>
 
     <?= $form->field($model, 'empleo_id')->hiddenInput(['value' => $empleo_id,])->label(false) ?>

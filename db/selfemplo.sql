@@ -137,6 +137,7 @@ CREATE TABLE presupuestos
   , duracion_estimada       FLOAT
   , detalles                TEXT
   , estado                  BOOLEAN       DEFAULT false
+  , created_at              TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
   , profesional_id          BIGINT        NOT NULL REFERENCES usuarios(id)
                                           ON DELETE CASCADE ON UPDATE CASCADE
   , empleo_id               BIGINT        NOT NULL REFERENCES empleos(id)

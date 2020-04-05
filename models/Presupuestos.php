@@ -40,6 +40,7 @@ class Presupuestos extends \yii\db\ActiveRecord
             [['duracion_estimada',], 'number', 'min' => 0.1],
             [['detalles'], 'string'],
             [['estado'], 'boolean'],
+            [['created_at'], 'safe'],
             [['profesional_id', 'empleo_id'], 'default', 'value' => null],
             [['profesional_id', 'empleo_id'], 'integer'],
             [['empleo_id'], 'exist', 'skipOnError' => true, 'targetClass' => Empleos::className(), 'targetAttribute' => ['empleo_id' => 'id']],
@@ -55,11 +56,12 @@ class Presupuestos extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'precio' => 'Precio',
-            'duracion_estimada' => 'Duracion Estimada',
+            'duracion_estimada' => 'Duración Estimada',
             'detalles' => 'Detalles',
-            'estado' => 'Estado',
+            'estado' => 'Aprobado',
             'profesional_id' => 'Profesional ID',
             'empleo_id' => 'Empleo ID',
+            'created_at' => 'Fecha de publicación',
         ];
     }
 
