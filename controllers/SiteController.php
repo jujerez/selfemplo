@@ -150,9 +150,9 @@ class SiteController extends Controller
     
     public function actionCookie($cadena='politica')
     {
-        // valido para 1 semana
+        
         setcookie('politica', $cadena, time() + 60 * 60 * 24 * 7);
-        return $this->goBack();
+        return $this->redirect(Yii::$app->request->referrer);
          
     }
 

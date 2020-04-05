@@ -337,3 +337,17 @@ a.desc:after {
 .gris {
     background-color: #5F7D95;
 }
+
+/*Presupuesto*/
+p.cabecera {
+   margin: 0px; 
+   font-style: italic;
+}
+
+.total {
+    font-size: 1.5em;
+}
+
+.header-presupuesto {
+    background-color: white!important;
+}

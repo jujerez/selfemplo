@@ -27,12 +27,13 @@ use yii\helpers\Html;
                         Html::encode($model->poblacion->provincia->nombre) ?>
                     
                 </p>
-                
-                <div class="pt-3">
-                
-                    <?=Html::a('Enviar presupuesto', ['presupuestos/create', 'id' => $key], ['class' => 'btn btn-sm btn-success'])?>
-                    
-                </div>
+                <?php if (Yii::$app->user->isGuest || Yii::$app->user->identity->rol != '1') : ?>
+                    <div class="pt-3">
+
+                        <?=Html::a('Enviar presupuesto', ['presupuestos/create', 'id' => $key,], ['class' => 'btn btn-sm btn-success'])?>
+                        
+                    </div>
+                <?php endif ?>
             </div>
 
             <div class="card-footer mt-3">
