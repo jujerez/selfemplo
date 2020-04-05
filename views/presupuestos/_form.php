@@ -10,7 +10,6 @@ use yii\web\View;
 /* @var $form yii\bootstrap4\ActiveForm */
 
 $empleo_id = Yii::$app->request->get('id');
-
 ?>
 
 <div class="presupuestos-form">
