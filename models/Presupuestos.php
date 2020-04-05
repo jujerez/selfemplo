@@ -75,6 +75,8 @@ class Presupuestos extends \yii\db\ActiveRecord
         return $this->hasOne(Empleos::className(), ['id' => 'empleo_id'])->inverseOf('presupuestos');
     }
 
+   
+
     /**
      * Gets query for [[Profesional]].
      *
@@ -83,5 +85,10 @@ class Presupuestos extends \yii\db\ActiveRecord
     public function getProfesional()
     {
         return $this->hasOne(Usuarios::className(), ['id' => 'profesional_id'])->inverseOf('presupuestos');
+    }
+
+    public function getEmpleador()
+    {
+        return $this->hasOne(Empleadores::className(), ['usuario_id' => 'empleador_id'])->via('empleo');
     }
 }

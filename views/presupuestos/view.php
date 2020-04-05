@@ -20,8 +20,8 @@ $this->params['breadcrumbs'][] = $this->title;
             <h2 class="p-2">Presupuesto</h2>
             <div class="card shadow p-4 mb-2 ">
             
-                <div class="card-header p-2 d-flex justify-content-between">
-                    <span class="text-left ">
+                <div class="card-header header-presupuesto p-2 d-flex justify-content-between">
+                    <span class="text-left text-muted">
                         <p class="cabecera"> Nombre: <?= Html::encode($model->profesional->profesionales->nombre) ?></p>
                         <p class="cabecera"> Telefono: <?= Html::encode($model->profesional->profesionales->telefono) ?></p>
                         <p class="cabecera"> Email: <?= Html::encode($model->profesional->email) ?></p>
@@ -29,6 +29,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         
                     
                     <span class=" text-muted float-right d-none d-sm-none d-md-block">
+                    
+                        <p class="cabecera"> Cliente: <?= $model->empleador->nombre?></p>
                         <?= Icon::show('calendar-alt') . Yii::$app->formatter->asDate($model->created_at)?>
                     </span>
                 </div> 
