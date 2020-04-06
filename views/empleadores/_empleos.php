@@ -29,7 +29,7 @@ use yii\bootstrap4\Html;
                 <div class="pt-3">
                       
                     <?=Html::a('Modificar', 
-                        ['empleos/update', 'id' => $key, 'idu' => Yii::$app->user->identity->id],
+                        ['empleos/update', 'id' => $key,],
                         ['class' => 'btn btn-sm btn-warning']
                     )?>
                         

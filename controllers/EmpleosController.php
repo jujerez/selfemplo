@@ -45,8 +45,20 @@ class EmpleosController extends Controller
                         'actions' => ['update'],
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action ) {
-                            return Yii::$app->user->identity->rol === '1' 
-                            && Yii::$app->request->get('idu') == Yii::$app->user->identity->id;
+                            $empleo =Yii::$app->request->get('id');
+                            $filas = Empleos::find()
+                            ->select('id')
+                            ->where(['empleador_id' => Yii::$app->user->identity->id])
+                            ->all();
+                            foreach ($filas as $fila => $value) {
+                                
+                                if ($value['id'] == $empleo && Yii::$app->user->identity->rol === '1') {
+                                    return true;
+                                }
+                            
+                            }
+                    
+                            return false;
                             
                         }
                     ],
