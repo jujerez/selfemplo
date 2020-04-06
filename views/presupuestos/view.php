@@ -49,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             </div>
                 <p>
-                    <?= Html::a('Modificar presupuesto', ['update', 'id' => $model->id], ['class' => 'btn btn-sm btn-success']) ?>
+                    <?= Html::a('Modificar presupuesto', ['update', 'id' => $model->id,], ['class' => 'btn btn-sm btn-success']) ?>
                     <?= Html::a('Eliminar presupuesto', ['delete', 'id' => $model->id], [
                         'class' => 'btn btn-sm btn-danger',
                         'data' => [
