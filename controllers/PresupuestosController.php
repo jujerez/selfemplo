@@ -53,12 +53,11 @@ class PresupuestosController extends Controller
                             ->where(['profesional_id' => Yii::$app->user->identity->id])
                             ->all();
                             foreach ($filas as $fila => $value) {
-
-                                return $value['id'] == $presupuesto && Yii::$app->user->identity->rol === '0';
+                                
+                                if ($value['id'] == $presupuesto && Yii::$app->user->identity->rol === '0') {
+                                    return true;
+                                }
                             
-                            //    if($value['id'] == $presupuesto && Yii::$app->user->identity->rol === '0' ){
-                            //         return true;
-                            //    }
                             }
                     
                             return false;
