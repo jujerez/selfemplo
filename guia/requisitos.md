@@ -955,6 +955,15 @@
 | **Entrega**     | v1             |
 | **Incidencia**  | [289](https://github.com/jujerez/selfemplo/issues/289) |
 
+| **R107**     | **Ver presupuestos**         |
+| --------------: | :------------------- |
+| **Descripción** | El usuario-profesional una vez creado el presupuesto podrá ver los presupuestos desde la sección “mi perfil”.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v2             |
+| **Incidencia**  | [293](https://github.com/jujerez/selfemplo/issues/293) |
+
 
 ## Cuadro resumen
 
@@ -1066,3 +1075,4 @@
 | (**R104**) Sección perfil empleadores | Importante | Funcional | Media | v1 | | **Incidencia**  | [285](https://github.com/jujerez/selfemplo/issues/285) |
 | (**R105**) Sección perfil profesionales | Importante | Funcional | Media | v1 | | **Incidencia**  | [287](https://github.com/jujerez/selfemplo/issues/287) |
 | (**R106**) Sección perfil administradores | Importante | Funcional | Media | v1 | | **Incidencia**  | [289](https://github.com/jujerez/selfemplo/issues/289) |
+| (**R107**) Ver presupuestos | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [293](https://github.com/jujerez/selfemplo/issues/293) |
