@@ -111,7 +111,9 @@ class PresupuestosController extends Controller
         $model = new Presupuestos();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            
+            Yii::$app->session->setFlash('success', 'El presupuesto se creo correctamente.');
+            return $this->redirect(['profesionales/perfil', 'id' => Yii::$app->user->identity->id]);
         }
 
         return $this->render('create', [
@@ -131,7 +133,9 @@ class PresupuestosController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->setFlash('success', 'El presupuesto se modifico correctamente.');
+            return $this->redirect(['profesionales/perfil', 'id' => Yii::$app->user->identity->id]);
+            
             
         }
 
@@ -149,9 +153,18 @@ class PresupuestosController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        if($model->estado) {
+            Yii::$app->session->setFlash('danger', 'El presupuesto no se puede eliminar porque ya ha sido aceptado.');
+            return $this->redirect(Yii::$app->request->referrer);
+        } else {
+            
+            $this->findModel($id)->delete();
+            Yii::$app->session->setFlash('success', 'El presupuesto se elimino correctamente.');
+            return $this->redirect(Yii::$app->request->referrer);
+        }
 
-        return $this->redirect(['index']);
+
     }
 
     /**
