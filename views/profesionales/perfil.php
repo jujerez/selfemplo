@@ -1,6 +1,7 @@
 <?php
 
 use app\models\Empleos;
+use app\models\Presupuestos;
 use kartik\tabs\TabsX;
 use yii\bootstrap4\Html;
 use yii\data\ActiveDataProvider;
@@ -115,7 +116,30 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
                             
                         <div class="card-body bg-light">
-                               
+                        <?php
+                                $dataProvider = new ActiveDataProvider([
+                                    'query' => Presupuestos::find()
+                                    ->where(['profesional_id' => $model->usuario->id]),
+                                ]);
+                        
+                                $dataProvider->pagination = ['pageSize' => 5];
+                                Pjax::begin();
+                                echo ListView::widget([
+                                    'dataProvider' => $dataProvider,
+                                    'summary' => '',
+                                    'itemView' => '_presupuestos',
+                                    'layout' => '{items}
+                                    
+                                        <div class="row">
+                                            <div class="col-12">
+                                                {pager}
+                                            </div>
+                                        </div>
+                                    
+                                    ',
+                                ]);
+                                Pjax::end();
+                                ?>   
                                 
                         </div>
    

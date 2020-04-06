@@ -351,3 +351,7 @@ p.cabecera {
 .header-presupuesto {
     background-color: white!important;
 }
+
+h1.presupuesto {
+    font-size: 1.7em;
+}
