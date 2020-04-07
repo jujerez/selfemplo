@@ -8,6 +8,10 @@ $js = <<<EOT
     $('.icono-share').on('click', function(){
 
         $('.icono-share').addClass('click');
+        setTimeout(function(){
+            
+            $('.icono-share').removeClass('click');
+        }, 2000);
     });
   
 EOT;
@@ -43,14 +47,14 @@ $this->registerJs($js);
                     <?=Html::a(
                          Html::img('https://simplesharebuttons.com/images/somacro/facebook.png', ['alt'=>'Facebook', 'class' => ['icono-share ']]), 
                          'http://www.facebook.com/sharer.php?u=https://selfemplo.herokuapp.com/index.php?r=empleos%2Findex',
-                         ['title' => 'Compartir en Facebook', 'target' => '_blank']
+                         ['title' => 'Compartir en Facebook',]
                         ) 
                     ?>
 
                     <?=Html::a(
                          Html::img('https://simplesharebuttons.com/images/somacro/twitter.png', ['alt'=>'Twitter', 'class' => ['icono-share ']]), 
                          'https://twitter.com/share?url=https://libraryii.herokuapp.com/index.php?r=empleos%2Findex',
-                         ['title' => 'Compartir en Twitter', 'target' => '_blank']
+                         ['title' => 'Compartir en Twitter', ]
                         ) 
                     ?>
                         
