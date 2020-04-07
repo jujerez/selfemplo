@@ -3,6 +3,17 @@
 use kartik\icons\Icon;
 use yii\helpers\Html;
 
+$js = <<<EOT
+        
+    $('.icono-share').on('click', function(){
+
+        $('.icono-share').addClass('click');
+    });
+  
+EOT;
+
+$this->registerJs($js);
+
 ?>
 
 
@@ -27,6 +38,23 @@ use yii\helpers\Html;
                         Html::encode($model->poblacion->provincia->nombre) ?>
                     
                 </p>
+                <div class="share pt-2">
+
+                    <?=Html::a(
+                         Html::img('https://simplesharebuttons.com/images/somacro/facebook.png', ['alt'=>'Facebook', 'class' => ['icono-share ']]), 
+                         'http://www.facebook.com/sharer.php?u=https://selfemplo.herokuapp.com/index.php?r=empleos%2Findex',
+                         ['title' => 'Compartir en Facebook', 'target' => '_blank']
+                        ) 
+                    ?>
+
+                    <?=Html::a(
+                         Html::img('https://simplesharebuttons.com/images/somacro/twitter.png', ['alt'=>'Twitter', 'class' => ['icono-share ']]), 
+                         'https://twitter.com/share?url=https://libraryii.herokuapp.com/index.php?r=empleos%2Findex',
+                         ['title' => 'Compartir en Twitter', 'target' => '_blank']
+                        ) 
+                    ?>
+                        
+                </div>
                 <?php if (Yii::$app->user->isGuest || Yii::$app->user->identity->rol != '1') : ?>
                     <div class="pt-3">
 
@@ -34,6 +62,7 @@ use yii\helpers\Html;
                         
                     </div>
                 <?php endif ?>
+                
             </div>
 
             <div class="card-footer mt-3">

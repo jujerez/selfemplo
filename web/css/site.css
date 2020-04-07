@@ -303,6 +303,20 @@ a.desc:after {
 
 }
 
+.click:hover{
+	-webkit-animation: 0.7s click 1;
+	animation: 0.7s click 1;
+}
+
+@keyframes click{
+	25%, 75%{
+		-webkit-transform:scale(0.8);
+	}
+	50%{
+		-webkit-transform:scale(1.1);
+	}
+}
+
 /* TABS*/
 .nav-tabs .nav-link {
     border: 1px solid transparent;
@@ -355,3 +369,11 @@ p.cabecera {
 h1.presupuesto {
     font-size: 1.7em;
 }
+
+.share img {
+    padding-right: 0.5em;
+    width: 35px;
+   	
+    
+}
+
