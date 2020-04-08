@@ -1,10 +1,13 @@
 <?php
 
+use app\components\Util;
 use app\models\Empleos;
 use kartik\tabs\TabsX;
 use yii\bootstrap4\Html;
 use yii\data\ActiveDataProvider;
+use yii\helpers\FileHelper;
 use yii\helpers\Url;
+use yii\widgets\ActiveForm;
 use yii\widgets\DetailView;
 use yii\widgets\ListView;
 use yii\widgets\Pjax;
@@ -16,6 +19,8 @@ $this->title = $model->nombre;
 $this->params['breadcrumbs'][] = ['label' => 'Mi perfil', 'url' => ['perfil', 'id' => $model->usuario_id] ];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
+$imagen = Url::to('@app/web/img/' . $model->usuario_id . '.png');
+!file_exists($imagen) ? $user = '@web/img/user.png' : $user = '@web/img/'. $model->usuario_id .'.png';  
 ?>
 
   
@@ -25,7 +30,9 @@ $this->params['breadcrumbs'][] = $this->title;
        <aside class="col-md-3 col-sm-12 ">
             <div class="sidebar bg-light p-4 borde">
                 <div class="img-perfil text-center p-3">
-                <?= Html::img('@web/img/user.png', ['alt'=>$model->nombre, ]) ?>
+                
+                <?=  Html::img($user, ['alt'=>$model->nombre,]); ?>
+
                 </div>
                 <h3 class="text-center "><?=$model->nombre?></h3><hr>
                 <p><?= Html::a('Modificar', 
@@ -44,6 +51,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         ])
                     ?>
                 </p>
+
+               
             </div>
         </aside>
 
