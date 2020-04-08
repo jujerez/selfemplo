@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Administradores;
 use app\models\AdministradoresSearch;
+use app\models\ImagenForm;
 use app\models\PoblacionesSearch;
 use app\models\ProfesionesSearch;
 use app\models\ProvinciasSearch;
@@ -14,6 +15,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * AdministradoresController implements the CRUD actions for Administradores model.
@@ -138,6 +140,16 @@ class AdministradoresController extends Controller
     public function actionPerfil($id)
     {
         $model = $this->findModel($id);
+        $model2 = new ImagenForm();
+
+        if (Yii::$app->request->isPost) {
+            $model2->imagen = UploadedFile::getInstance($model2, 'imagen');
+            if ($model2->upload($id)) {
+                Yii::$app->session->setFlash('success', 'La imagen de perfil se ha modificado correctamente.');
+                return $this->redirect(Yii::$app->request->referrer);
+                
+            }
+        }
 
         $searchModel = new SectoresSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -154,6 +166,7 @@ class AdministradoresController extends Controller
 
         return $this->render('perfil', [
             'model' => $model,
+            'model2' => $model2,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'proSearchModel' => $proSearchModel,
