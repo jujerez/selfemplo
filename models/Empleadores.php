@@ -122,6 +122,8 @@ class Empleadores extends \yii\db\ActiveRecord
         
     }
 
+  
+
     public function getImagen()
     {
         if ($this->_imagen !== null) {
