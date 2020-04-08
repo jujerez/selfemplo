@@ -377,4 +377,12 @@ h1.presupuesto {
    	
     
 }
+/*Subida de archivos*/
+.input-group {
+    flex-direction: column;
+}
+
+.input-group-append {
+    justify-content: space-between!important;
+}
 

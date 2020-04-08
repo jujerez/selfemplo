@@ -2,6 +2,7 @@
 
 use app\components\Util;
 use app\models\Empleos;
+use kartik\file\FileInput;
 use kartik\tabs\TabsX;
 use yii\bootstrap4\Html;
 use yii\data\ActiveDataProvider;
@@ -36,18 +37,30 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                 </div>
                 <h3 class="text-center "><?=$model->nombre?></h3><hr>
                 <!--Formulario modificar una imagen-->
-                <div class="modificar-imagen " style="overflow:hidden">
-
-                    <?php $form = ActiveForm::begin() ?>
-
-                    <?= $form->field($model2, 'imagen')->fileInput()->label(false) ?>
-
-                    <div class="form-group">
-                        <?= Html::submitButton('Enviar', ['class' => 'btn btn-sm btn-success w-100']) ?>
-                    </div>
+                <div class="modificar-imagen " >
+                    <p class="text-center">Cambiar imagen perfil</p>
+                    <?php $form = ActiveForm::begin() ?>      
+                    <?= $form->field($model2, 'imagen')->widget(FileInput::classname(), [
+                        'options' => [
+                            'accept' => 'image/*',
+                           
+                        ],
+                        'pluginOptions' => [
+                            'showPreview' => false,
+                            'showCaption' => true,
+                            'showRemove' => true,
+                            'showUpload' => true,
+                            'browseClass' => 'btn btn-sm btn-success',
+                            'mainClass' => 'input-group-sm',
+                            
+                        ]
+                        
+                        ])->label(false);
+                    ?>
 
                     <?php ActiveForm::end() ?>
-                </div>
+                </div><hr>
+                
                 <p><?= Html::a('Modificar cuenta', 
                         ['empleadores/update', 'id' => $model->usuario_id], 
                         ['class' =>'btn btn-sm btn-primary w-100']) 
@@ -139,6 +152,8 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                         </div>
    
                     </div>
+
+                    
                 </div>
                 <div class="tab-pane fade" id="empleos" role="tabpanel" aria-labelledby="empleos-tab">
                     <div class="card mb-4">

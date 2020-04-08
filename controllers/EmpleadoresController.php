@@ -178,7 +178,9 @@ class EmpleadoresController extends Controller
         if (Yii::$app->request->isPost) {
             $model2->imagen = UploadedFile::getInstance($model2, 'imagen');
             if ($model2->upload($id)) {
-                return $this->redirect('empleadores/perfil');
+                Yii::$app->session->setFlash('success', 'La imagen de perfil se ha modificado correctamente.');
+                return $this->redirect(Yii::$app->request->referrer);
+                
             }
         }
 
