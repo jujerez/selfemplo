@@ -378,7 +378,7 @@ h1.presupuesto {
     
 }
 /*Subida de archivos*/
-.input-group {
+.modificar-imagen .input-group {
     flex-direction: column;
 }
 
