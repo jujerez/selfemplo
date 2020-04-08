@@ -19,8 +19,8 @@ $this->title = $model->nombre;
 $this->params['breadcrumbs'][] = ['label' => 'Mi perfil', 'url' => ['perfil', 'id' => $model->usuario_id] ];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
-$imagen = Url::to('@app/web/img/' . $model->usuario_id . '.png');
-!file_exists($imagen) ? $user = '@web/img/user.png' : $user = '@web/img/'. $model->usuario_id .'.png';  
+$imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
+!file_exists($imagen) ? $user = '@web/img/user.png' : $user = '@web/img/'. $model->usuario_id .'.jpg';  
 ?>
 
   
