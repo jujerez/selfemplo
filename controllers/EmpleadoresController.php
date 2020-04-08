@@ -173,28 +173,23 @@ class EmpleadoresController extends Controller
     public function actionPerfil($id)
     {
         $model = $this->findModel($id);
+        $model2 = new ImagenForm();
+
+        if (Yii::$app->request->isPost) {
+            $model2->imagen = UploadedFile::getInstance($model2, 'imagen');
+            if ($model2->upload($id)) {
+                return $this->redirect('empleadores/perfil');
+            }
+        }
 
         return $this->render('perfil', [
             'model' => $model,
+            'model2' => $model2,
             
         ]);
     }
 
-    public function actionImagen($id)
-    {
-        $model = new ImagenForm();
-
-        if (Yii::$app->request->isPost) {
-            $model->imagen = UploadedFile::getInstance($model, 'imagen');
-            if ($model->upload($id)) {
-                return $this->redirect('perfil');
-            }
-        }
-
-        return $this->render('imagen', [
-            'model' => $model,
-        ]);
-    }
+    
 
     /**
      * Finds the Empleadores model based on its primary key value.

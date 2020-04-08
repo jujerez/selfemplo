@@ -31,11 +31,24 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
             <div class="sidebar bg-light p-4 borde">
                 <div class="img-perfil text-center p-3">
                 
-                <?=  Html::img($user, ['alt'=>$model->nombre,]); ?>
+                    <?=  Html::img($user, ['alt'=>$model->nombre,]); ?>
 
                 </div>
                 <h3 class="text-center "><?=$model->nombre?></h3><hr>
-                <p><?= Html::a('Modificar', 
+                <!--Formulario modificar una imagen-->
+                <div class="modificar-imagen " style="overflow:hidden">
+
+                    <?php $form = ActiveForm::begin() ?>
+
+                    <?= $form->field($model2, 'imagen')->fileInput()->label(false) ?>
+
+                    <div class="form-group">
+                        <?= Html::submitButton('Enviar', ['class' => 'btn btn-sm btn-success w-100']) ?>
+                    </div>
+
+                    <?php ActiveForm::end() ?>
+                </div>
+                <p><?= Html::a('Modificar cuenta', 
                         ['empleadores/update', 'id' => $model->usuario_id], 
                         ['class' =>'btn btn-sm btn-primary w-100']) 
                     ?>
@@ -52,7 +65,7 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                     ?>
                 </p>
 
-               
+         
             </div>
         </aside>
 

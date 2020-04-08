@@ -128,7 +128,7 @@ class Empleadores extends \yii\db\ActiveRecord
             return $this->_imagen;
         }
 
-        $this->setImagen(Yii::getAlias('@img/' . $this->id . '.jpg'));
+        $this->setImagen(Yii::getAlias('@img/' . $this->usuario_id . '.jpg'));
         return $this->_imagen;
     }
 
@@ -144,7 +144,7 @@ class Empleadores extends \yii\db\ActiveRecord
             return $this->_imagenUrl;
         }
 
-        $this->setImagenUrl(Yii::getAlias('@imgUrl/' . $this->id . '.jpg'));
+        $this->setImagenUrl(Yii::getAlias('@imgUrl/' . $this->usuario_id . '.jpg'));
         return $this->_imagenUrl;
     }
 
