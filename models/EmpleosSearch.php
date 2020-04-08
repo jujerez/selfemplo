@@ -59,7 +59,7 @@ class EmpleosSearch extends Empleos
     public function search($params)
     {
         $query = Empleos::find();
-        $query = Empleos::find()
+        $query = Empleos::find()->alias('emple')
           ->joinWith('poblacion p')
           ->joinWith('profesion pro')
           ->joinWith('empleador e')
@@ -136,7 +136,7 @@ class EmpleosSearch extends Empleos
             ->andFilterWhere(['ilike', 'emp.nombre', $this->getAttributes(['empleador.empleadores.nombre'])])
             ->andFilterWhere(['ilike', 'prov.nombre', $this->getAttributes(['poblacion.provincia.nombre'])])
             ->andFilterWhere(['ilike', 's.secnom', $this->getAttributes(['profesion.sector.secnom'])])
-            ->andFilterWhere(['between', 'created_at',$formateada, date('Y-m-d H:i:s',strtotime($this->created_at)+ 3600*24-1)]);
+            ->andFilterWhere(['between', 'emple.created_at',$formateada, date('Y-m-d H:i:s',strtotime($this->created_at)+ 3600*24-1)]);
 
         return $dataProvider;
     }
