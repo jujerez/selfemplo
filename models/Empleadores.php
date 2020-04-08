@@ -21,6 +21,8 @@ use Yii;
 class Empleadores extends \yii\db\ActiveRecord
 {
     private $_provincia = null;
+    private $_imagen = null;
+    private $_imagenUrl = null;
     /**
      * {@inheritdoc}
      */
@@ -118,5 +120,38 @@ class Empleadores extends \yii\db\ActiveRecord
         
          return $nombre;
         
+    }
+
+  
+
+    public function getImagen()
+    {
+        if ($this->_imagen !== null) {
+            return $this->_imagen;
+        }
+
+        $this->setImagen(Yii::getAlias('@img/' . $this->usuario_id . '.jpg'));
+        return $this->_imagen;
+    }
+
+
+    public function setImagen($imagen)
+    {
+        $this->_imagen = $imagen;
+    }
+
+    public function getImagenUrl()
+    {
+        if ($this->_imagenUrl !== null) {
+            return $this->_imagenUrl;
+        }
+
+        $this->setImagenUrl(Yii::getAlias('@imgUrl/' . $this->usuario_id . '.jpg'));
+        return $this->_imagenUrl;
+    }
+
+    public function setImagenUrl($imagenUrl)
+    {
+        $this->_imagenUrl = $imagenUrl;
     }
 }

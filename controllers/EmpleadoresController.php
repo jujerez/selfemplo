@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Empleadores;
 use app\models\EmpleadoresSearch;
+use app\models\ImagenForm;
 use app\models\Poblaciones;
 use app\models\Provincias;
 use app\models\Usuarios;
@@ -14,6 +15,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\Json;
 use yii\web\Response;
+use yii\web\UploadedFile;
 
 /**
  * EmpleadoresController implements the CRUD actions for Empleadores model.
@@ -171,12 +173,25 @@ class EmpleadoresController extends Controller
     public function actionPerfil($id)
     {
         $model = $this->findModel($id);
+        $model2 = new ImagenForm();
+
+        if (Yii::$app->request->isPost) {
+            $model2->imagen = UploadedFile::getInstance($model2, 'imagen');
+            if ($model2->upload($id)) {
+                Yii::$app->session->setFlash('success', 'La imagen de perfil se ha modificado correctamente.');
+                return $this->redirect(Yii::$app->request->referrer);
+                
+            }
+        }
 
         return $this->render('perfil', [
             'model' => $model,
+            'model2' => $model2,
             
         ]);
     }
+
+    
 
     /**
      * Finds the Empleadores model based on its primary key value.

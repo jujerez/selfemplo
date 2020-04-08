@@ -1,10 +1,14 @@
 <?php
 
+use app\components\Util;
 use app\models\Empleos;
+use kartik\file\FileInput;
 use kartik\tabs\TabsX;
 use yii\bootstrap4\Html;
 use yii\data\ActiveDataProvider;
+use yii\helpers\FileHelper;
 use yii\helpers\Url;
+use yii\widgets\ActiveForm;
 use yii\widgets\DetailView;
 use yii\widgets\ListView;
 use yii\widgets\Pjax;
@@ -16,6 +20,8 @@ $this->title = $model->nombre;
 $this->params['breadcrumbs'][] = ['label' => 'Mi perfil', 'url' => ['perfil', 'id' => $model->usuario_id] ];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
+$imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
+!file_exists($imagen) ? $user = '@web/img/user.png' : $user = '@web/img/'. $model->usuario_id .'.jpg';  
 ?>
 
   
@@ -25,10 +31,37 @@ $this->params['breadcrumbs'][] = $this->title;
        <aside class="col-md-3 col-sm-12 ">
             <div class="sidebar bg-light p-4 borde">
                 <div class="img-perfil text-center p-3">
-                <?= Html::img('@web/img/user.png', ['alt'=>$model->nombre, ]) ?>
+                
+                    <?=  Html::img($user, ['alt'=>$model->nombre,]); ?>
+
                 </div>
                 <h3 class="text-center "><?=$model->nombre?></h3><hr>
-                <p><?= Html::a('Modificar', 
+                <!--Formulario modificar una imagen-->
+                <div class="modificar-imagen " >
+                    <p class="text-center">Cambiar imagen perfil</p>
+                    <?php $form = ActiveForm::begin() ?>      
+                    <?= $form->field($model2, 'imagen')->widget(FileInput::classname(), [
+                        'options' => [
+                            'accept' => 'image/*',
+                           
+                        ],
+                        'pluginOptions' => [
+                            'showPreview' => false,
+                            'showCaption' => true,
+                            'showRemove' => true,
+                            'showUpload' => true,
+                            'browseClass' => 'btn btn-sm btn-success',
+                            'mainClass' => 'input-group-sm',
+                            
+                        ]
+                        
+                        ])->label(false);
+                    ?>
+
+                    <?php ActiveForm::end() ?>
+                </div><hr>
+                
+                <p><?= Html::a('Modificar cuenta', 
                         ['empleadores/update', 'id' => $model->usuario_id], 
                         ['class' =>'btn btn-sm btn-primary w-100']) 
                     ?>
@@ -44,6 +77,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         ])
                     ?>
                 </p>
+
+         
             </div>
         </aside>
 
@@ -117,6 +152,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
    
                     </div>
+
+                    
                 </div>
                 <div class="tab-pane fade" id="empleos" role="tabpanel" aria-labelledby="empleos-tab">
                     <div class="card mb-4">
