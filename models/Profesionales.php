@@ -83,7 +83,7 @@ class Profesionales extends \yii\db\ActiveRecord
     {
         return [
             'usuario_id' => 'Usuario ID',
-            'nombre' => 'Nombre',
+            'nombre' => 'Profesional',
             'apellidos' => 'Apellidos',
             'telefono' => 'Teléfono',
             'direccion' => 'Dirección',
