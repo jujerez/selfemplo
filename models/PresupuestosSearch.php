@@ -19,9 +19,18 @@ class PresupuestosSearch extends Presupuestos
         return [
             [['id', 'profesional_id', 'empleo_id'], 'integer'],
             [['precio'], 'number'],
-            [['duracion_estimada'], 'safe'],
+            [['detalles'], 'string'],
+            [['duracion_estimada'], 'number'],
             [['estado'], 'string'],
+            [['profesional.profesionales.nombre'], 'safe'],
+            [['empleo.titulo'], 'safe'],
         ];
+    }
+
+    public function attributes()
+    {
+        return array_merge(parent::attributes(), 
+        ['profesional.profesionales.nombre', 'empleo.titulo']);
     }
 
     /**
@@ -42,13 +51,29 @@ class PresupuestosSearch extends Presupuestos
      */
     public function search($params)
     {
-        $query = Presupuestos::find();
+        $query = Presupuestos::find()
+        ->joinWith('profesional.profesionales p')
+        ->joinWith('empleo e');
+
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+
+        // ORDENACION
+        $dataProvider->sort->attributes['profesional.profesionales.nombre'] = [
+            'asc' => ['p.nombre' => SORT_ASC],
+            'desc' => ['p.nombre' => SORT_DESC],
+            
+        ];
+
+        $dataProvider->sort->attributes['empleo.titulo'] = [
+            'asc' => ['e.titulo' => SORT_ASC],
+            'desc' => ['e.titulo' => SORT_DESC],
+            
+        ];
 
         $this->load($params);
 
@@ -63,11 +88,15 @@ class PresupuestosSearch extends Presupuestos
             'id' => $this->id,
             'precio' => $this->precio,
             'estado' => $this->estado,
+            'detalles' => $this->detalles,
+            'duracion_estimada' => $this->duracion_estimada,
             'profesional_id' => $this->profesional_id,
             'empleo_id' => $this->empleo_id,
         ]);
 
-        $query->andFilterWhere(['ilike', 'duracion_estimada', $this->duracion_estimada]);
+        $query->andFilterWhere(['ilike', 'detalles', $this->detalles])
+        ->andFilterWhere(['ilike', 'p.nombre', $this->getAttributes(['profesional.profesionales.nombre'])])
+        ->andFilterWhere(['ilike', 'e.titulo', $this->getAttributes(['empleo.titulo'])]);
 
         return $dataProvider;
     }

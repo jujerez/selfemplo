@@ -150,7 +150,7 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                         role="tab" 
                         aria-controls="presupuestos" 
                         aria-selected="false">
-                        <i class="fas fa-building"></i> Presupuestos
+                        <i class="far fa-clipboard"></i> Presupuestos
                     </a>
                 </li>
                
@@ -406,13 +406,11 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                  <div class="tab-pane fade" id="presupuestos" role="tabpanel" aria-labelledby="presupuestos-tab">
                     <div class="card mb-4">
                         <div class="card-header gris text-white-50">
-                            Lista de provincias
+                            Lista de presupuestos
                         </div>
                             
                         <div class="card-body bg-light">
-                        <p>
-                            <?= Html::a('Crear provincia', ['profesiones/create'], ['class' => 'btn btn-success']) ?>
-                        </p>   
+                       
                             <?php
                               
                                 $proDataProvider->pagination = ['pageSize' => 5];
@@ -426,7 +424,7 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                                         
                                         'precio',
                                         'duracion_estimada',
-                                        'detalles:html',
+                                        'detalles',
                                         [
                                             'attribute' => 'estado',
                                             'format' => 'text',
