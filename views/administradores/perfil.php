@@ -424,7 +424,7 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                                         
                                         'precio',
                                         'duracion_estimada',
-                                        'detalles',
+                                        
                                         [
                                             'attribute' => 'estado',
                                             'format' => 'text',
@@ -441,7 +441,7 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                                         
                                         [
                                             'class' => 'yii\grid\ActionColumn',
-                                            'template' => '{update} {delete}',
+                                            'template' => '{update} {delete} {view}',
                                             'controller' => 'presupuestos',
                                             'buttons' => [
                                                 
@@ -456,6 +456,12 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                                                         'class' => 'btn btn-sm btn-danger',
                                                         'data-method' => 'POST',
                                                         'data-confirm' => '¿Está seguro que quiere eliminar esta provincia?',
+                                                    ]);
+                                                },
+
+                                                'view' => function ($url, $model, $key) {
+                                                    return Html::a('Ver', ['presupuestos/view', 'id' => $key], [
+                                                        'class' => 'btn btn-sm btn-info',   
                                                     ]);
                                                 },
 
