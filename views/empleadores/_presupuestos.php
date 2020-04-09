@@ -39,7 +39,7 @@ use yii\bootstrap4\Html;
                         <span class="badge badge-pill badge-info text-uppercase">Pendiente</span>
 
                     <?php endif ?>  
-                    </h4>
+                    
                 </div>
 
                 <div class="card-footer d-flex justify-content-between mt-3">
@@ -49,10 +49,10 @@ use yii\bootstrap4\Html;
                        
                 </div>
                         <p>
-                            <?= Html::a('Modificar presupuesto', ['presupuestos/update', 'id' => $model->id,], ['class' => 'btn btn-sm btn-success']) ?>
+                            <?= Html::a('Aceptar presupuesto', ['presupuestos/update', 'id' => $model->id,], ['class' => 'btn btn-sm btn-success']) ?>
                            
                             
-                            <?= Html::a('Eliminar presupuesto', ['presupuestos/delete', 'id' => $model->id], [
+                            <?= Html::a('Rechazar presupuesto', ['presupuestos/delete', 'id' => $model->id], [
                                 'class' => 'btn btn-sm btn-danger',
                                 
                                 'data' => [

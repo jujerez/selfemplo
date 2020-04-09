@@ -128,7 +128,10 @@ CREATE TABLE empleos
                                 ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+
+
 -- Tabla presupuestos --
+/* Estados: 0 Rechazado, 1 Aceptado, 2 Pendiente*/
 DROP TABLE IF EXISTS presupuestos CASCADE;
 CREATE TABLE presupuestos
 (
@@ -136,8 +139,8 @@ CREATE TABLE presupuestos
   , precio                  NUMERIC(10,2) NOT NULL
   , duracion_estimada       FLOAT
   , detalles                TEXT
-  , estado                  BOOLEAN       DEFAULT false
-  , created_at              TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+  , estado                  VARCHAR(1)    NOT NULL DEFAULT '2'   
+  , created_at              TIMESTAMP(0)  NOT NULL DEFAULT CURRENT_TIMESTAMP
   , profesional_id          BIGINT        NOT NULL REFERENCES usuarios(id)
                                           ON DELETE CASCADE ON UPDATE CASCADE
   , empleo_id               BIGINT        NOT NULL REFERENCES empleos(id)
@@ -8491,8 +8494,8 @@ INSERT INTO empleos (titulo, descripcion, poblacion_id, empleador_id, profesion_
         );
 
 INSERT INTO presupuestos (precio, estado, duracion_estimada, profesional_id, empleo_id)
-   VALUES   (50.00, true, 1, 4, 1)
-          , (250.00, false, 10, 4, 1);
+   VALUES   (50.00, '1', 1, 4, 1)
+          , (250.00, '2', 10, 4, 1);
 
 INSERT INTO comentarios (texto, empleador_id, profesional_id)
     VALUES('Un trabajo excelente y muy curioso, recomendado 100%', 2, 4);

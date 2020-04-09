@@ -20,7 +20,7 @@ class PresupuestosSearch extends Presupuestos
             [['id', 'profesional_id', 'empleo_id'], 'integer'],
             [['precio'], 'number'],
             [['duracion_estimada'], 'safe'],
-            [['estado'], 'boolean'],
+            [['estado'], 'string'],
         ];
     }
 
