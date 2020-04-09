@@ -973,6 +973,15 @@
 | **Entrega**     | v2             |
 | **Incidencia**  | [298](https://github.com/jujerez/selfemplo/issues/298) |
 
+| **R109**     | **Aceptar presupuestos**         |
+| --------------: | :------------------- |
+| **Descripción** | El usuario-empleador podrá mediante botones aceptar o rechazar un presupuesto             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v2             |
+| **Incidencia**  | [301](https://github.com/jujerez/selfemplo/issues/301) |
+
 
 ## Cuadro resumen
 
@@ -1086,3 +1095,4 @@
 | (**R106**) Sección perfil administradores | Importante | Funcional | Media | v1 | | **Incidencia**  | [289](https://github.com/jujerez/selfemplo/issues/289) |
 | (**R107**) Ver presupuestos | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [293](https://github.com/jujerez/selfemplo/issues/293) |
 | (**R108**) Ver presupuestos | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [298](https://github.com/jujerez/selfemplo/issues/298) |
+| (**R109**) Aceptar presupuestos | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [301](https://github.com/jujerez/selfemplo/issues/301) |
