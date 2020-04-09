@@ -31,8 +31,15 @@ use yii\bootstrap4\Html;
                     <p class="card-text mb-auto"><?= nl2br(Html::encode($model->detalles)) ?></p>
                     <p class="card-text mb-auto">Duración: <?= Html::encode($model->duracion_estimada)?> horas</p>     
                      
-                       
-                    </h4>
+                    <?php if($model->estado=='0'):?>
+                        <span class="text-danger text-uppercase">Rechazado</span>
+                    <?php elseif($model->estado=='1'):?>
+                        <span class="text-success text-uppercase">Aceptado</span>
+                    <?php else:?>
+                        <span class="text-info text-uppercase">Pendiente</span>
+
+                    <?php endif ?>  
+                    
                 </div>
 
                 <div class="card-footer d-flex justify-content-between mt-3">
