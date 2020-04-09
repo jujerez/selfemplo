@@ -47,12 +47,19 @@ class PresupuestosController extends Controller
                         'actions' => ['update'],
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action ) {
+
+                            if( Yii::$app->user->identity->rol == '2' ) {
+                                return true;
+                            }
+                            
                             $presupuesto =Yii::$app->request->get('id');
                             $filas = Presupuestos::find()
                             ->select('id')
                             ->where(['profesional_id' => Yii::$app->user->identity->id])
                             ->all();
                             foreach ($filas as $fila => $value) {
+
+                               
                                 
                                 if ($value['id'] == $presupuesto && Yii::$app->user->identity->rol === '0') {
                                     return true;
