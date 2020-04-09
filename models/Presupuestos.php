@@ -11,7 +11,7 @@ use Yii;
  * @property float $precio
  * @property float|null $duracion_estimada
  * @property string|null $detalles
- * @property bool|null $estado
+ * @property string $estado
  * @property int $profesional_id
  * @property int $empleo_id
  *
@@ -39,7 +39,7 @@ class Presupuestos extends \yii\db\ActiveRecord
             [['precio',], 'number', 'min' => 0.01],
             [['duracion_estimada',], 'number', 'min' => 0.1],
             [['detalles'], 'string'],
-            [['estado'], 'boolean'],
+            [['estado'], 'string', 'max' => 1],
             [['created_at'], 'safe'],
             [['profesional_id', 'empleo_id'], 'default', 'value' => null],
             [['profesional_id', 'empleo_id'], 'integer'],
@@ -58,7 +58,7 @@ class Presupuestos extends \yii\db\ActiveRecord
             'precio' => 'Precio',
             'duracion_estimada' => 'Duración Estimada',
             'detalles' => 'Detalles',
-            'estado' => 'Aprobado',
+            'estado' => 'Estados',
             'profesional_id' => 'Profesional ID',
             'empleo_id' => 'Empleo ID',
             'created_at' => 'Fecha de publicación',

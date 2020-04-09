@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'precio',
             'duracion_estimada',
-            'estado:boolean',
+            'estado',
             'profesional_id',
             //'empleo_id',
 

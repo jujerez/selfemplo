@@ -31,14 +31,7 @@ use yii\bootstrap4\Html;
                     <p class="card-text mb-auto"><?= nl2br(Html::encode($model->detalles)) ?></p>
                     <p class="card-text mb-auto">Duración: <?= Html::encode($model->duracion_estimada)?> horas</p>     
                      
-                        <?php if($model->estado=='0'):?>
-                            <span class="text-danger text-uppercase">Rechazado</span>
-                        <?php elseif($model->estado=='1'):?>
-                            <span class="text-success text-uppercase">Aceptado</span>
-                        <?php else:?>
-                            <span class="text-success text-uppercase">Pendiente</span>
-
-                        <?php endif ?>
+                       
                     </h4>
                 </div>
 
@@ -49,10 +42,10 @@ use yii\bootstrap4\Html;
                        
                 </div>
                         <p>
-                            <?= Html::a('Modificar presupuesto', ['presupuestos/update', 'id' => $model->id,], ['class' => 'btn btn-sm btn-success']) ?>
+                            <?= Html::a('Aceptar presupuesto', ['presupuestos/update', 'id' => $model->id,], ['class' => 'btn btn-sm btn-success']) ?>
                            
                             
-                            <?= Html::a('Eliminar presupuesto', ['presupuestos/delete', 'id' => $model->id], [
+                            <?= Html::a('Rechazar presupuesto', ['presupuestos/delete', 'id' => $model->id], [
                                 'class' => 'btn btn-sm btn-danger',
                                 
                                 'data' => [
