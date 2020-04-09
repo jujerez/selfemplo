@@ -34,7 +34,7 @@
 | **Prioridad**   | Mínimo           |
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
-| **Entrega**     | v1             |
+| **Entrega**     | v3             |
 | **Incidencia**  | [4](https://github.com/jujerez/selfemplo/issues/4) |
 
 | **R5**     | **README.md**         |
@@ -964,6 +964,15 @@
 | **Entrega**     | v2             |
 | **Incidencia**  | [293](https://github.com/jujerez/selfemplo/issues/293) |
 
+| **R108**     | **Ver presupuestos**         |
+| --------------: | :------------------- |
+| **Descripción** | El usuario-empleador dispondrá de un sección en la que podrá  ver los presupuestos recibidos             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v2             |
+| **Incidencia**  | [298](https://github.com/jujerez/selfemplo/issues/298) |
+
 
 ## Cuadro resumen
 
@@ -972,7 +981,7 @@
 | (**R1**) Requisitos como incidencias | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [1](https://github.com/jujerez/selfemplo/issues/1) |
 | (**R2**) Código fuente | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [2](https://github.com/jujerez/selfemplo/issues/2) |
 | (**R3**) Estilo del código | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [3](https://github.com/jujerez/selfemplo/issues/3) |
-| (**R4**) Tres lanzamientos | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [4](https://github.com/jujerez/selfemplo/issues/4) |
+| (**R4**) Tres lanzamientos | Mínimo | Técnico | Fácil | v3 | | **Incidencia**  | [4](https://github.com/jujerez/selfemplo/issues/4) |
 | (**R5**) README.md | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [5](https://github.com/jujerez/selfemplo/issues/5) |
 | (**R6**) Documentación | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [6](https://github.com/jujerez/selfemplo/issues/6) |
 | (**R7**) Incidencias en GitHub | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [7](https://github.com/jujerez/selfemplo/issues/7) |
@@ -1076,3 +1085,4 @@
 | (**R105**) Sección perfil profesionales | Importante | Funcional | Media | v1 | | **Incidencia**  | [287](https://github.com/jujerez/selfemplo/issues/287) |
 | (**R106**) Sección perfil administradores | Importante | Funcional | Media | v1 | | **Incidencia**  | [289](https://github.com/jujerez/selfemplo/issues/289) |
 | (**R107**) Ver presupuestos | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [293](https://github.com/jujerez/selfemplo/issues/293) |
+| (**R108**) Ver presupuestos | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [298](https://github.com/jujerez/selfemplo/issues/298) |
