@@ -30,7 +30,7 @@ class PresupuestosController extends Controller
 
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['create','update'],
+                'only' => ['create','update', 'view', 'delete'],
                 'rules' => [
                 
                     [
@@ -44,16 +44,21 @@ class PresupuestosController extends Controller
 
                     [
                         'allow' => true,
-                        'actions' => ['update'],
+                        'actions' => ['update', 'view', 'delete' ],
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action ) {
+
+                            if( Yii::$app->user->identity->rol == '2' ) {
+                                return true;
+                            }
+
                             $presupuesto =Yii::$app->request->get('id');
                             $filas = Presupuestos::find()
                             ->select('id')
                             ->where(['profesional_id' => Yii::$app->user->identity->id])
                             ->all();
                             foreach ($filas as $fila => $value) {
-                                
+
                                 if ($value['id'] == $presupuesto && Yii::$app->user->identity->rol === '0') {
                                     return true;
                                 }
@@ -63,8 +68,7 @@ class PresupuestosController extends Controller
                             return false;
                         }
                     ],
-                    
-                    
+                                 
                 ],
             ],
 
@@ -84,9 +88,7 @@ class PresupuestosController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
-    }
-
-  
+    } 
 
     /**
      * Displays a single Presupuestos model.

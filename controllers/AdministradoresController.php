@@ -7,6 +7,7 @@ use app\models\Administradores;
 use app\models\AdministradoresSearch;
 use app\models\ImagenForm;
 use app\models\PoblacionesSearch;
+use app\models\PresupuestosSearch;
 use app\models\ProfesionesSearch;
 use app\models\ProvinciasSearch;
 use app\models\SectoresSearch;
@@ -163,6 +164,9 @@ class AdministradoresController extends Controller
         $pobSearchModel = new PoblacionesSearch();
         $pobDataProvider = $pobSearchModel->search(Yii::$app->request->queryParams);
 
+        $presSearchModel = new PresupuestosSearch();
+        $presDataProvider = $presSearchModel->search(Yii::$app->request->queryParams);
+
 
         return $this->render('perfil', [
             'model' => $model,
@@ -175,6 +179,8 @@ class AdministradoresController extends Controller
             'provDataProvider' => $provDataProvider,
             'pobSearchModel' => $pobSearchModel,
             'pobDataProvider' => $pobDataProvider,
+            'presDataProvider' => $presDataProvider,
+            'presSearchModel' => $presSearchModel,
             
         ]);
     }

@@ -141,6 +141,18 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                         <i class="fas fa-building"></i> Poblaciones
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" 
+                        id="presupuestos-tab" 
+                        data-toggle="tab" 
+                        href="#presupuestos" 
+                        role="tab" 
+                        aria-controls="presupuestos" 
+                        aria-selected="false">
+                        <i class="far fa-clipboard"></i> Presupuestos
+                    </a>
+                </li>
                
             </ul>
             <div class="tab-content" id="myTabContent">
@@ -377,6 +389,79 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                                                         'class' => 'btn btn-sm btn-danger',
                                                         'data-method' => 'POST',
                                                         'data-confirm' => '¿Está seguro que quiere eliminar esta población?',
+                                                    ]);
+                                                },
+
+                                            ],
+                                        ],
+                                    ],
+                                ]); 
+                                Pjax::end();
+                            ?>   
+                        </div>
+   
+                    </div>     
+                </div>
+                 <!--Tab Presupuestos-->
+                 <div class="tab-pane fade" id="presupuestos" role="tabpanel" aria-labelledby="presupuestos-tab">
+                    <div class="card mb-4">
+                        <div class="card-header gris text-white-50">
+                            Lista de presupuestos
+                        </div>
+                            
+                        <div class="card-body bg-light">
+                       
+                            <?php
+                              
+                                $proDataProvider->pagination = ['pageSize' => 5];
+                                Yii::debug($proDataProvider);
+                               
+                                Pjax::begin();
+                                echo GridView::widget([
+                                    'dataProvider' => $presDataProvider,
+                                    'filterModel' => $presSearchModel,
+                                    'columns' => [
+                                        
+                                        'precio',
+                                        'duracion_estimada',
+                                        
+                                        [
+                                            'attribute' => 'estado',
+                                            'format' => 'text',
+                                            'label' => 'Estados',
+                                            'value' => function ($model) {
+                                                return $model->estado == '0' 
+                                                ? 'Rechazado'
+                                                : $model->estado == '1' ? 'Aceptado' : 'Pendiente'; 
+                                            }
+                                            
+                                        ], 
+                                        'empleo.titulo',
+                                        'profesional.profesionales.nombre',
+                                        
+                                        [
+                                            'class' => 'yii\grid\ActionColumn',
+                                            'template' => '{update} {delete} {view}',
+                                            'controller' => 'presupuestos',
+                                            'buttons' => [
+                                                
+                                                'update' => function ($url, $model, $key) {
+                                                    return Html::a('Modificar', ['presupuestos/update', 'id' => $key], [
+                                                        'class' => 'btn btn-sm btn-primary',   
+                                                    ]);
+                                                },
+
+                                                'delete' => function ($url, $model, $key) {
+                                                    return Html::a('Eliminar', $url, [
+                                                        'class' => 'btn btn-sm btn-danger',
+                                                        'data-method' => 'POST',
+                                                        'data-confirm' => '¿Está seguro que quiere eliminar esta provincia?',
+                                                    ]);
+                                                },
+
+                                                'view' => function ($url, $model, $key) {
+                                                    return Html::a('Ver', ['presupuestos/view', 'id' => $key], [
+                                                        'class' => 'btn btn-sm btn-info',   
                                                     ]);
                                                 },
 
