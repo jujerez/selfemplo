@@ -32,9 +32,9 @@ use yii\bootstrap4\Html;
                     <p class="card-text mb-auto">Duración: <?= Html::encode($model->duracion_estimada)?> horas</p>     
                      
                     <?php if($model->estado=='0'):?>
-                        <span class="badge badge-pill badge-info text-uppercase">Rechazado</span>
+                        <span class="badge badge-pill badge-danger text-uppercase">Rechazado</span>
                     <?php elseif($model->estado=='1'):?>
-                        <span class="badge badge-pill  badge-info text-uppercase">Aceptado</span>
+                        <span class="badge badge-pill  badge-success text-uppercase">Aceptado</span>
                     <?php else:?>
                         <span class="badge badge-pill badge-info text-uppercase">Pendiente</span>
 
