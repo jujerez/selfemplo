@@ -133,17 +133,22 @@ class PresupuestosController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        if($model->estado == '1') {
+            Yii::$app->session->setFlash('danger', 'El presupuesto no se puede modificar porque ya ha sido aceptado.');
+            return $this->redirect(Yii::$app->request->referrer);
+        } else {
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('success', 'El presupuesto se modifico correctamente.');
-            return $this->redirect(['profesionales/perfil', 'id' => Yii::$app->user->identity->id]);
-            
-            
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                Yii::$app->session->setFlash('success', 'El presupuesto se modifico correctamente.');
+                return $this->redirect(['profesionales/perfil', 'id' => Yii::$app->user->identity->id]);
+                
+                
+            }
+
+            return $this->render('update', [
+                'model' => $model,
+            ]);
         }
-
-        return $this->render('update', [
-            'model' => $model,
-        ]);
     }
 
     /**
