@@ -169,6 +169,12 @@ class PresupuestosController extends Controller
 
     }
 
+    /**
+     * Función que cambia el estado de un presupuesto a "Aceptado"
+     *
+     * @param integer $id , es el id del presupuesto 
+     * @return void
+     */
     public function actionAceptar($id)
     {
         $model = $this->findModel($id);
@@ -185,6 +191,30 @@ class PresupuestosController extends Controller
             return $this->redirect(Yii::$app->request->referrer);
         }
 
+    }
+
+
+     /**
+     * Función que cambia el estado de un presupuesto a "Rechazado"
+     *
+     * @param integer $id , es el id del presupuesto 
+     * @return void
+     */
+    public function actionRechazar($id)
+    {
+        $model = $this->findModel($id);
+        $model->estado = '0';
+        $model->save();
+
+        if($model->estado == '0') {
+            Yii::$app->session->setFlash('success', '!Presupuesto rechazado correctamente!.');
+            return $this->redirect(Yii::$app->request->referrer);
+        } else {
+            
+            $this->findModel($id)->delete();
+            Yii::$app->session->setFlash('danger', 'Ocurrio un error, intentelo más tarde o contacte con el administrador');
+            return $this->redirect(Yii::$app->request->referrer);
+        }
 
     }
 
