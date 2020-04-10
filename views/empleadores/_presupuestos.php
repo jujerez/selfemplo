@@ -32,9 +32,9 @@ use yii\bootstrap4\Html;
                     <p class="card-text mb-auto">Duración: <?= Html::encode($model->duracion_estimada)?> horas</p>     
                      
                     <?php if($model->estado=='0'):?>
-                        <span class="badge badge-pill badge-info text-uppercase">Rechazado</span>
+                        <span class="badge badge-pill badge-danger text-uppercase">Rechazado</span>
                     <?php elseif($model->estado=='1'):?>
-                        <span class="badge badge-pill  badge-info text-uppercase">Aceptado</span>
+                        <span class="badge badge-pill  badge-success text-uppercase">Aceptado</span>
                     <?php else:?>
                         <span class="badge badge-pill badge-info text-uppercase">Pendiente</span>
 
@@ -49,14 +49,23 @@ use yii\bootstrap4\Html;
                        
                 </div>
                         <p>
-                            <?= Html::a('Aceptar presupuesto', ['presupuestos/aceptar', 'id' => $model->id,], ['class' => 'btn btn-sm btn-success']) ?>
+                            <?= Html::a('Aceptar presupuesto', ['presupuestos/aceptar', 'id' => $model->id,], [
+                                'class' => 'btn btn-sm btn-success',
+                                'data' => [
+                                    'confirm' => '¿Estas seguro que deseas aceptar el presupuesto?',
+                                    'method' => 'post',
+                                    'controller' => 'presupuestos',
+                                ],
+
+                            ]) ?>
+                            
                            
                             
                             <?= Html::a('Rechazar presupuesto', ['presupuestos/rechazar', 'id' => $model->id], [
                                 'class' => 'btn btn-sm btn-danger',
                                 
                                 'data' => [
-                                    'confirm' => '¿Estas seguro que deseas eliminar el presupuesto?',
+                                    'confirm' => '¿Estas seguro que deseas rechazar el presupuesto?',
                                     'method' => 'post',
                                     'controller' => 'presupuestos',
                                 ],
