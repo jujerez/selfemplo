@@ -156,7 +156,7 @@ class PresupuestosController extends Controller
     public function actionDelete($id)
     {
         $model = $this->findModel($id);
-        if($model->estado) {
+        if($model->estado == '1') {
             Yii::$app->session->setFlash('danger', 'El presupuesto no se puede eliminar porque ya ha sido aceptado.');
             return $this->redirect(Yii::$app->request->referrer);
         } else {
@@ -166,6 +166,77 @@ class PresupuestosController extends Controller
             return $this->redirect(Yii::$app->request->referrer);
         }
 
+
+    }
+
+    /**
+     * Función que cambia el estado de un presupuesto a "Aceptado"
+     *
+     * @param integer $id , es el id del presupuesto 
+     * @return void
+     */
+    public function actionAceptar($id, $ide)
+    {
+        $aceptados = Presupuestos::find()
+        ->where(['empleo_id' => $ide])
+        ->andWhere(['estado' => '1'])
+        ->count();
+        
+        if ($aceptados > 0) {
+            Yii::$app->session->setFlash('danger', 'No se puede aceptar más de un presupuesto para el mismo empleo.');
+            return $this->redirect(Yii::$app->request->referrer);  
+        } else {
+
+            $model = $this->findModel($id);
+            $model->estado = '1';
+            $model->save();
+    
+            if($model->estado == '1') {
+                Yii::$app->session->setFlash('success', '!Presupuesto aceptado!.');
+                return $this->redirect(Yii::$app->request->referrer);
+            } else {
+                
+                $this->findModel($id)->delete();
+                Yii::$app->session->setFlash('danger', 'Ocurrio un error, intentelo más tarde o contacte con el administrador');
+                return $this->redirect(Yii::$app->request->referrer);
+            }
+        }
+
+
+    }
+
+
+     /**
+     * Función que cambia el estado de un presupuesto a "Rechazado"
+     *
+     * @param integer $id , es el id del presupuesto 
+     * @return void
+     */
+    public function actionRechazar($id)
+    {
+        $aceptados = Presupuestos::find()
+        ->where(['empleo_id' => $id])
+        ->andWhere(['estado' => '1'])
+        ->count();
+
+        if ($aceptados > 0) {
+            Yii::$app->session->setFlash('danger', 'No se puede rechazar un presupuesto que se ha aceptado previamente.');
+            return $this->redirect(Yii::$app->request->referrer);  
+        }
+
+        $model = $this->findModel($id);
+        $model->estado = '0';
+        $model->save();
+
+        if($model->estado == '0') {
+            Yii::$app->session->setFlash('success', '!Presupuesto rechazado correctamente!.');
+            return $this->redirect(Yii::$app->request->referrer);
+        } else {
+            
+            $this->findModel($id)->delete();
+            Yii::$app->session->setFlash('danger', 'Ocurrio un error, intentelo más tarde o contacte con el administrador');
+            return $this->redirect(Yii::$app->request->referrer);
+        }
 
     }
 
