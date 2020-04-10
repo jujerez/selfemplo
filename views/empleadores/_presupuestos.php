@@ -49,10 +49,10 @@ use yii\bootstrap4\Html;
                        
                 </div>
                         <p>
-                            <?= Html::a('Aceptar presupuesto', ['presupuestos/update', 'id' => $model->id,], ['class' => 'btn btn-sm btn-success']) ?>
+                            <?= Html::a('Aceptar presupuesto', ['presupuestos/aceptar', 'id' => $model->id,], ['class' => 'btn btn-sm btn-success']) ?>
                            
                             
-                            <?= Html::a('Rechazar presupuesto', ['presupuestos/delete', 'id' => $model->id], [
+                            <?= Html::a('Rechazar presupuesto', ['presupuestos/rechazar', 'id' => $model->id], [
                                 'class' => 'btn btn-sm btn-danger',
                                 
                                 'data' => [

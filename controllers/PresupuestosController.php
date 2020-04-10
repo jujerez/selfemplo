@@ -156,13 +156,32 @@ class PresupuestosController extends Controller
     public function actionDelete($id)
     {
         $model = $this->findModel($id);
-        if($model->estado) {
+        if($model->estado == '1') {
             Yii::$app->session->setFlash('danger', 'El presupuesto no se puede eliminar porque ya ha sido aceptado.');
             return $this->redirect(Yii::$app->request->referrer);
         } else {
             
             $this->findModel($id)->delete();
             Yii::$app->session->setFlash('success', 'El presupuesto se elimino correctamente.');
+            return $this->redirect(Yii::$app->request->referrer);
+        }
+
+
+    }
+
+    public function actionAceptar($id)
+    {
+        $model = $this->findModel($id);
+        $model->estado = '1';
+        $model->save();
+
+        if($model->estado == '1') {
+            Yii::$app->session->setFlash('success', '!Presupuesto aceptado!.');
+            return $this->redirect(Yii::$app->request->referrer);
+        } else {
+            
+            $this->findModel($id)->delete();
+            Yii::$app->session->setFlash('danger', 'Ocurrio un error, intentelo más tarde o contacte con el administrador');
             return $this->redirect(Yii::$app->request->referrer);
         }
 
