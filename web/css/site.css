@@ -386,3 +386,12 @@ h1.presupuesto {
     justify-content: space-between!important;
 }
 
+.list-group-item-action {
+    color: #5F7D95;
+}
+
+.list-group-item-action:hover {
+    color: #008cba;
+    text-decoration: underline;
+}
+

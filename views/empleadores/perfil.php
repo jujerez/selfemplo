@@ -61,23 +61,30 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
 
                     <?php ActiveForm::end() ?>
                 </div><hr>
-                
-                <p><?= Html::a('Modificar cuenta', 
-                        ['empleadores/update', 'id' => $model->usuario_id], 
-                        ['class' =>'btn btn-sm btn-primary w-100']) 
-                    ?>
-                </p>
-                
-                <p><?=Html::a('Eliminar mi cuenta', 
-                        ['delete', 'id' => $model->usuario_id],
-                        ['class' => 'btn btn-sm btn-danger w-100 ', 
-                            'data' => [
-                                'confirm' => '¿Seguro que desea eliminar su cuenta?, se eliminarán todos los datos relacionados con su cuenta',
-                                'method' => 'post',
-                            ],
-                        ])
-                    ?>
-                </p>
+                <div class="list-group">
+                    <?= Html::a('Publicar empleo', 
+                            ['empleos/create', 'id' => $model->usuario_id], 
+                            ['class' =>'list-group-item list-group-item-action']) 
+                        ?>
+                    
+                    
+                    <?= Html::a('Modificar cuenta', 
+                            ['empleadores/update', 'id' => $model->usuario_id], 
+                            ['class' =>'list-group-item list-group-item-action']) 
+                        ?>
+                    
+                    
+                    <?=Html::a('Eliminar mi cuenta', 
+                            ['delete', 'id' => $model->usuario_id],
+                            ['class' => 'list-group-item list-group-item-action', 
+                                'data' => [
+                                    'confirm' => '¿Seguro que desea eliminar su cuenta?, se eliminarán todos los datos relacionados con su cuenta',
+                                    'method' => 'post',
+                                ],
+                            ])
+                        ?>
+                    
+                </div>
 
          
             </div>
