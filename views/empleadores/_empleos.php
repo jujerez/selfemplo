@@ -34,7 +34,7 @@ use yii\bootstrap4\Html;
                     )?>
                         
                     <?=Html::a('Borrar', 
-                        ['delete', 'id' => $model->id],
+                        ['empleos/delete', 'id' => $model->id],
                         ['class' => 'btn btn-sm btn-danger', 
                             'data' => [
                                 'confirm' => '¿Seguro que desea borrar este empleo?',
