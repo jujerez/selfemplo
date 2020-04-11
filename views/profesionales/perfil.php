@@ -26,7 +26,7 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
 <main class="empleadores-view container">
 
    <section class="row justify-content-around">
-       <aside class="col-md-3 col-sm-12 ">
+       <aside class="col-md-4 col-sm-12 col-lg-3">
             <div class="sidebar bg-light p-4 borde">
                 <div class="img-perfil text-center p-3">
                 <?= Html::img($user, ['alt'=>$model->nombre, ]) ?>
@@ -57,7 +57,7 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                 </div><hr>
                 <div class="list-group">
 
-                    <?= Html::a('Modificar', 
+                    <?= Html::a('Modificar mi cuenta', 
                             ['profesionales/update', 'id' => $model->usuario_id], 
                             ['class' =>'list-group-item list-group-item-action']) 
                     ?>
@@ -77,7 +77,7 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
             </div>
         </aside>
 
-       <div class="col-md-9 col-sm-12">
+       <div class="col-md-8 col-sm-12 col-lg-9">
             
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
