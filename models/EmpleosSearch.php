@@ -75,6 +75,10 @@ class EmpleosSearch extends Empleos
             'query' => $query,
         ]);
 
+        $dataProvider->setSort([
+            'defaultOrder' => ['created_at' => SORT_DESC],
+        ]);
+
         // ORDENACION
         $dataProvider->sort->attributes['poblacion.nombre'] = [
             'asc' => ['p.nombre' => SORT_ASC],
@@ -103,6 +107,8 @@ class EmpleosSearch extends Empleos
             'desc' => ['prov.nombre' => SORT_DESC],
             'label' => 'Provincia',
         ];
+
+        
 
 
         $this->load($params);
