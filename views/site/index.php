@@ -34,7 +34,7 @@ $this->title = 'Selfemplo';
                    
                 </div>
                   
-                <div class="col-md-3 shadow cartel ">
+                <div class="col-md-3 shadow cartel d-flex justify-content-center">
                     <div class="contact-box center-version text-center p-3">
                         <?=Html::img('@web/img/form.png', ['class' => ['img-tarjeta'], 'alt' => 'Publica tu empleo'])?>
                         <h3><strong>Publica tu empleo</strong></h3>
@@ -43,7 +43,7 @@ $this->title = 'Selfemplo';
                 
                     </div>
                 </div>
-                <div class="col-md-3 shadow cartel ">
+                <div class="col-md-3 shadow cartel d-flex justify-content-center">
                     <div class="contact-box center-version text-center p-3">
                          <?=Html::img('@web/img/puja2.png', ['class' => ['img-tarjeta'], 'alt' => 'Recibe presupuestos'])?>
 
@@ -53,7 +53,7 @@ $this->title = 'Selfemplo';
                 
                     </div>
                 </div>
-                <div class="col-md-3 shadow cartel ">
+                <div class="col-md-3 shadow cartel d-flex justify-content-center">
                     <div class=" text-center p-3">
                        
                     <?=Html::img('@web/img/auction.png', ['class' => ['img-tarjeta'], 'alt' => 'Escoge un presupuesto'])?>
