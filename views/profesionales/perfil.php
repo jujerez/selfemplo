@@ -55,22 +55,25 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
 
                     <?php ActiveForm::end() ?>
                 </div><hr>
-                <p><?= Html::a('Modificar', 
-                        ['profesionales/update', 'id' => $model->usuario_id], 
-                        ['class' =>'btn btn-sm btn-primary w-100']) 
+                <div class="list-group">
+
+                    <?= Html::a('Modificar', 
+                            ['profesionales/update', 'id' => $model->usuario_id], 
+                            ['class' =>'list-group-item list-group-item-action']) 
                     ?>
-                </p>
+                    
+                    
+                    <?=Html::a('Eliminar mi cuenta', 
+                            ['delete', 'id' => $model->usuario_id],
+                            ['class' => 'list-group-item list-group-item-action', 
+                                'data' => [
+                                    'confirm' => '¿Seguro que desea eliminar su cuenta?, se eliminarán todos los datos relacionados con su cuenta',
+                                    'method' => 'post',
+                                ],
+                            ])
+                    ?>
+                </div>
                 
-                <p><?=Html::a('Eliminar mi cuenta', 
-                        ['delete', 'id' => $model->usuario_id],
-                        ['class' => 'btn btn-sm btn-danger w-100 ', 
-                            'data' => [
-                                'confirm' => '¿Seguro que desea eliminar su cuenta?, se eliminarán todos los datos relacionados con su cuenta',
-                                'method' => 'post',
-                            ],
-                        ])
-                    ?>
-                </p>
             </div>
         </aside>
 
