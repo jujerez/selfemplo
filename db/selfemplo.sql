@@ -8444,9 +8444,9 @@ INSERT INTO poblaciones (id, provincia_id, nombre) VALUES (7607, 49, 'Burganes d
 
 INSERT INTO usuarios (nombre, email, password, rol )
     VALUES ('juan',  'juan@gmail.com', crypt('juan', gen_salt('bf', 10)), 1)
-         , ('pepe', 'pepe@gmail.com', crypt('pepe', gen_salt('bf', 10)), 1)
+         , ('pepe', 'rubioxp1@gmail.com', crypt('pepe', gen_salt('bf', 10)), 1)
          , ('admin', 'admin@gmail.com', crypt('admin', gen_salt('bf', 13)), 2)
-         , ('garden', 'garden@gmail.com', crypt('garden', gen_salt('bf', 10)), 0)
+         , ('jardin', 'juanantonio.jerez@iesdonana.org', crypt('jardin', gen_salt('bf', 10)), 0)
          , ('tecnoelectro', 'tecnoelectro@gmail.com', crypt('tecnoelectro', gen_salt('bf', 10)), 0)
          , ('admin2', 'admin2@gmail.com', crypt('admin2', gen_salt('bf', 10)), 2);
 

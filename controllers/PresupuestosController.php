@@ -2,13 +2,17 @@
 
 namespace app\controllers;
 
+use app\models\Empleos;
 use Yii;
 use app\models\Presupuestos;
 use app\models\PresupuestosSearch;
+use app\models\Usuarios;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\Html;
+use yii\helpers\Url;
 
 /**
  * PresupuestosController implements the CRUD actions for Presupuestos model.
@@ -111,9 +115,37 @@ class PresupuestosController extends Controller
     public function actionCreate()
     {
         $model = new Presupuestos();
+        
+       
+
+
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            
+
+            $empleador_id = Empleos::find()
+            ->select('empleador_id, titulo')
+            ->where(['id' => Yii::$app->request->post()['Presupuestos']['empleo_id']])
+            ->one();
+    
+            $email_empleador = Usuarios::find()
+            ->select('email')
+            ->where(['id' => $empleador_id->empleador_id])
+            ->one();
+
+            var_dump($email_empleador->email);
+        
+            Yii::$app->mailer->compose()
+            ->setFrom(Yii::$app->params['smtpUsername'])
+            ->setTo($email_empleador->email)
+            ->setSubject($empleador_id->titulo)
+            ->setHtmlBody(
+                'Su empleo: <b>' .$empleador_id->titulo . ' </b>ha recibido un presupuesto <br>'. 
+                Html::a('Haz click aquí para ver el presupuesto recibido',
+                        Url::to(['empleadores/perfil', 'id'=>$empleador_id], true)
+                    ),
+            )
+            ->send();
+          
             Yii::$app->session->setFlash('success', 'El presupuesto se creo correctamente.');
             return $this->redirect(['profesionales/perfil', 'id' => Yii::$app->user->identity->id]);
         }
