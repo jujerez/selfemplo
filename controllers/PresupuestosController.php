@@ -29,6 +29,7 @@ class PresupuestosController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                    
                 ],
             ],
 
@@ -131,8 +132,6 @@ class PresupuestosController extends Controller
             ->select('email')
             ->where(['id' => $empleador_id->empleador_id])
             ->one();
-
-            var_dump($email_empleador->email);
         
             Yii::$app->mailer->compose()
             ->setFrom(Yii::$app->params['smtpUsername'])
@@ -210,14 +209,19 @@ class PresupuestosController extends Controller
      * Función que cambia el estado de un presupuesto a "Aceptado"
      *
      * @param integer $id , es el id del presupuesto 
+     * @param integer $ide , es el id del empleo
      * @return void
      */
-    public function actionAceptar($id, $ide)
+    public function actionAceptar($id, $ide, $email)
     {
         $aceptados = Presupuestos::find()
         ->where(['empleo_id' => $ide])
         ->andWhere(['estado' => '1'])
         ->count();
+
+        $empleo = Empleos::find()
+        ->where(['id' => $ide])
+        ->one();
         
         if ($aceptados > 0) {
             Yii::$app->session->setFlash('danger', 'No se puede aceptar más de un presupuesto para el mismo empleo.');
@@ -229,11 +233,23 @@ class PresupuestosController extends Controller
             $model->save();
     
             if($model->estado == '1') {
+
+                Yii::$app->mailer->compose()
+                ->setFrom(Yii::$app->params['smtpUsername'])
+                ->setTo($email)
+                ->setSubject($empleo->titulo)
+                ->setHtmlBody(
+                    'Su presupuesto para el empleo: '.$empleo->titulo.' ha sido aceptado <br>'. 
+                    Html::a('Haz click aquí para ver el presupuesto recibido',
+                            Url::to(['profesionales/perfil', 'id'=>$model->profesional_id], true)
+                        ),
+                )
+                ->send();
+
                 Yii::$app->session->setFlash('success', '!Presupuesto aceptado!.');
                 return $this->redirect(Yii::$app->request->referrer);
             } else {
                 
-                $this->findModel($id)->delete();
                 Yii::$app->session->setFlash('danger', 'Ocurrio un error, intentelo más tarde o contacte con el administrador');
                 return $this->redirect(Yii::$app->request->referrer);
             }
