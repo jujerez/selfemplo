@@ -49,7 +49,7 @@ use yii\bootstrap4\Html;
                        
                 </div>
                         <p>
-                            <?= Html::a('Aceptar presupuesto', ['presupuestos/aceptar', 'id' => $model->id, 'ide' => $model->empleo->id], [
+                            <?= Html::a('Aceptar presupuesto', ['presupuestos/aceptar', 'id' => $model->id, 'ide' => $model->empleo->id, 'email' => $model->profesional->email], [
                                 'class' => 'btn btn-sm btn-success',
                                 'data' => [
                                     'confirm' => '¿Estas seguro que deseas aceptar el presupuesto?',
