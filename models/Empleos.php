@@ -21,7 +21,7 @@ use Yii;
  */
 class Empleos extends \yii\db\ActiveRecord
 {
-    
+   private  $_precio_medio = null;
     /**
      * {@inheritdoc}
      */
@@ -112,7 +112,18 @@ class Empleos extends \yii\db\ActiveRecord
         return $this->hasOne(Sectores::className(), ['id' => 'sector_id'])->via('profesion');
     }
 
-    
+    public function setPrecioMedio($precio_medio)
+    {
+        $this->_precio_medio = $precio_medio;
+    }
+
+    public function getPrecioMedio()
+    {
+        if ($this->_precio_medio === null && !$this->isNewRecord) {
+            $this->setPrecioMedio($this->getPrecio());
+        }
+        return $this->_precio_medio;
+    }
 
     /**
      * Metodo que devuelve el nombre del empleador
@@ -129,6 +140,23 @@ class Empleos extends \yii\db\ActiveRecord
         ->one();
 
         return $query['nombre'];
+    }
+
+     /**
+     * Metodo que devuelve el precio medio de un presupuesto
+     *
+     * @return string 
+     */
+    public function getPrecio() {
+
+        $query = (new \yii\db\Query())
+        ->select('AVG(precio) AS precio_medio')
+        ->from('empleos e')
+        ->join('left join', 'presupuestos p', 'e.id = p.empleo_id')
+        ->where(['e.id' => $this->id])
+        ->one();
+
+        return $query['precio_medio'];
     }
     
 

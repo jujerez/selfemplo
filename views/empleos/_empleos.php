@@ -42,6 +42,8 @@ $this->registerJs($js);
                         Html::encode($model->poblacion->provincia->nombre) ?>
                     
                 </p>
+                
+                
                 <div class="share pt-2">
 
                     <?=Html::a(
@@ -58,6 +60,12 @@ $this->registerJs($js);
                         ) 
                     ?>
                         
+                </div>
+
+                <div class="pt-3 justify-content-center ">
+
+                    <?php $model->precioMedio != null ?: $model->precioMedio = '0' ?> 
+                    <span class=" p-2 badge badge-pill badge-success text-uppercase text-center">Precio medio: <?=Yii::$app->formatter->asDecimal($model->precioMedio). ' €'?></span>
                 </div>
                 <?php if (Yii::$app->user->isGuest || Yii::$app->user->identity->rol != '1') : ?>
                     <div class="pt-3">
