@@ -30,6 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'poblacion.nombre',
                         'empleador.nombre',
                         'profesion.pronom',
+                        'precioMedio'
                     ],
                     ]) ?>
                 <p>
