@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <!-- <?= Html::a('Eliminar mi cuenta', ['delete', 'id' => $model->usuario_id], [
                         'class' => 'btn btn-danger',
                         'data' => [
-                            'borrar.confirm' => '¿Estas seguro que deseas eliminar su cuenta?, se eliminarán todos los datos relacionados con su cuenta',
+                            'confirm' => '¿Estas seguro que deseas eliminar su cuenta?, se eliminarán todos los datos relacionados con su cuenta',
                             'method' => 'post',
                         ],
                     ]) ?> -->

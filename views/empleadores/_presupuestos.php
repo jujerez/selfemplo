@@ -1,7 +1,10 @@
 <?php
 
+use app\components\Util;
+use kartik\dialog\Dialog;
 use kartik\icons\Icon;
 use yii\bootstrap4\Html;
+
 
 ?>
 <main class="presupuestos-view container">
@@ -49,18 +52,19 @@ use yii\bootstrap4\Html;
                        
                 </div>
                         <p>
-                            <?= Html::a('Aceptar presupuesto', ['presupuestos/aceptar', 'id' => $model->id, 'ide' => $model->empleo->id, 'email' => $model->profesional->email], [
-                                'class' => 'btn btn-sm btn-success',
+                          
+                            <?= Html::a('Aceptar ', ['presupuestos/aceptar', 'id' => $model->id, 'ide' => $model->empleo->id, 'email' => $model->profesional->email], [
+                                'class' => 'btn btn-sm btn-success confirmar',
                                 'data' => [
                                     'confirm' => '¿Estas seguro que deseas aceptar el presupuesto?',
                                     'method' => 'post',
                                     'controller' => 'presupuestos',
+                                    
                                 ],
-                            ]) ?>
+                            ]) ?> 
                             
                            
-                            
-                            <?= Html::a('Rechazar presupuesto', ['presupuestos/rechazar', 'id' => $model->id], [
+                            <?= Html::a('Rechazar ', ['presupuestos/rechazar', 'id' => $model->id], [
                                 'class' => 'btn btn-sm btn-danger',
                                 
                                 'data' => [

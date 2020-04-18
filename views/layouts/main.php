@@ -9,6 +9,7 @@ use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
 use yii\bootstrap4\Breadcrumbs;
 use app\assets\AppAsset;
+use app\components\Util;
 use kartik\dialog\Dialog;
 use kartik\icons\Icon;
 
@@ -18,7 +19,7 @@ Icon::map($this);
 use kartik\dialog\DialogAsset;
 use yii\helpers\Url;
 
-DialogAsset::register($this);
+// DialogAsset::register($this);
 
 $url = Url::toRoute(['site/cookie',  'cadena' => 'politica'], $schema = true);
 
@@ -38,38 +39,8 @@ if (!isset($_COOKIE['politica'])) {
 
     $this->registerJs($js);
 }
-
-echo Dialog::widget([
-    'libName' => 'politica', 
-    'options' => [
-        'draggable' => true, 
-        'closable' => false,
-        'size' => Dialog::SIZE_MEDIUM, 
-        'type' => Dialog::TYPE_INFO,
-        'title' => 'Politica de cookies',
-        'message' => 'Utilizamos cookies para asegurar que damos la mejor experiencia al usuario en nuestra web. Si sigues utilizando este sitio asumiremos que estás de acuerdo.',
-        'btnOKClass' => 'btn-primary',
-        'btnOKLabel' =>  'Vale',
-        'btnCancelClass' => 'btn-light',
-        'btnCancelLabel' =>  'No vale',
-
-    ], 
- ]);
-
- echo Dialog::widget([
-    'libName' => 'borrar', 
-    'options' => [
-        'draggable' => true, 
-        'closable' => false,
-        'size' => Dialog::SIZE_MEDIUM, 
-        'type' => Dialog::TYPE_DANGER,
-        'title' => 'Eliminar',
-        'btnOKClass' => 'btn-danger',
-        'btnOKLabel' =>  'Sí, estoy seguro',
-        'btnCancelClass' => 'btn-light',
-        'btnCancelLabel' =>  'No',
-    ], 
- ]);
+Util::dialogoPolitica();
+//Util::dialogo();
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
