@@ -3,6 +3,7 @@
 use app\models\Empleos;
 use app\models\Presupuestos;
 use kartik\file\FileInput;
+use kartik\icons\Icon;
 use kartik\tabs\TabsX;
 use yii\bootstrap4\Html;
 use yii\data\ActiveDataProvider;
@@ -57,13 +58,13 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                 </div><hr>
                 <div class="list-group">
 
-                    <?= Html::a('Modificar mi cuenta', 
+                    <?= Html::a(Icon::show('user-cog') .' ' .'Modificar mi cuenta', 
                             ['profesionales/update', 'id' => $model->usuario_id], 
                             ['class' =>'list-group-item list-group-item-action']) 
                     ?>
                     
                     
-                    <?=Html::a('Eliminar mi cuenta', 
+                    <?=Html::a(Icon::show('user-slash') .' ' .'Eliminar mi cuenta', 
                             ['delete', 'id' => $model->usuario_id],
                             ['class' => 'list-group-item list-group-item-action', 
                                 'data' => [
