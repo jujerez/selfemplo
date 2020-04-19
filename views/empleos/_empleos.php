@@ -44,28 +44,35 @@ $this->registerJs($js);
                 </p>
                 
                 
-                <div class="share pt-2">
+                
 
-                    <?=Html::a(
-                         Html::img('https://simplesharebuttons.com/images/somacro/facebook.png', ['alt'=>'Facebook', 'class' => ['icono-share ']]), 
-                         'http://www.facebook.com/sharer.php?u=https://selfemplo.herokuapp.com/index.php?r=empleos%2Findex',
-                         ['title' => 'Compartir en Facebook',]
-                        ) 
-                    ?>
+                <div class="pt-3 d-flex justify-content-between">
 
-                    <?=Html::a(
-                         Html::img('https://simplesharebuttons.com/images/somacro/twitter.png', ['alt'=>'Twitter', 'class' => ['icono-share ']]), 
-                         'https://twitter.com/share?url=https://libraryii.herokuapp.com/index.php?r=empleos%2Findex',
-                         ['title' => 'Compartir en Twitter', ]
-                        ) 
-                    ?>
-                        
-                </div>
+                    <div class="share">
 
-                <div class="pt-3 justify-content-center ">
+                        <?=Html::a(
+                            Html::img('https://simplesharebuttons.com/images/somacro/facebook.png', ['alt'=>'Facebook', 'class' => ['icono-share ']]), 
+                            'http://www.facebook.com/sharer.php?u=https://selfemplo.herokuapp.com/index.php?r=empleos%2Findex',
+                            ['title' => 'Compartir en Facebook',]
+                            ) 
+                        ?>
 
-                    <?php $model->precioMedio != null ?: $model->precioMedio = '0' ?> 
-                    <span class=" p-2 badge badge-pill badge-success text-uppercase text-center">Precio medio: <?=Yii::$app->formatter->asDecimal($model->precioMedio). ' €'?></span>
+                        <?=Html::a(
+                            Html::img('https://simplesharebuttons.com/images/somacro/twitter.png', ['alt'=>'Twitter', 'class' => ['icono-share ']]), 
+                            'https://twitter.com/share?url=https://libraryii.herokuapp.com/index.php?r=empleos%2Findex',
+                            ['title' => 'Compartir en Twitter', ]
+                            ) 
+                        ?>
+                            
+                    </div>
+
+                    <div>
+    
+                        <?php $model->precioMedio != null ?: $model->precioMedio = '0' ?> 
+                        <span class=" p-2 badge badge-pill badge-success text-uppercase text-center">
+                            Precio medio: <?=Yii::$app->formatter->asDecimal($model->precioMedio). ' €'?>
+                        </span>
+                    </div>
                 </div>
                 <?php if (Yii::$app->user->isGuest || Yii::$app->user->identity->rol != '1') : ?>
                     <div class="pt-3">
