@@ -5,6 +5,7 @@ use app\models\Sectores;
 use app\models\SectoresSearch;
 use app\models\Usuarios;
 use kartik\file\FileInput;
+use kartik\icons\Icon;
 use kartik\tabs\TabsX;
 use yii\bootstrap4\Html;
 use yii\data\ActiveDataProvider;
@@ -61,13 +62,13 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                 </div><hr>
                 <div class="list-group">
 
-                    <?= Html::a('Modificar', 
+                    <?= Html::a(Icon::show('user-cog') .' ' .'Modificar', 
                             ['administradores/update', 'id' => $model->usuario_id], 
                             ['class' =>'list-group-item list-group-item-action']) 
                     ?>
                     
                     
-                    <?=Html::a('Eliminar mi cuenta', 
+                    <?=Html::a(Icon::show('user-slash') .' ' .'Eliminar mi cuenta', 
                             ['delete', 'id' => $model->usuario_id],
                             ['class' => 'list-group-item list-group-item-action', 
                                 'data' => [
