@@ -12,6 +12,7 @@ use app\models\ProfesionesSearch;
 use app\models\ProvinciasSearch;
 use app\models\SectoresSearch;
 use app\models\Usuarios;
+use app\models\UsuariosSearch;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -167,6 +168,9 @@ class AdministradoresController extends Controller
         $presSearchModel = new PresupuestosSearch();
         $presDataProvider = $presSearchModel->search(Yii::$app->request->queryParams);
 
+        $usuSearchModel = new UsuariosSearch();
+        $usuDataProvider = $usuSearchModel->search(Yii::$app->request->queryParams);
+
 
         return $this->render('perfil', [
             'model' => $model,
@@ -181,6 +185,8 @@ class AdministradoresController extends Controller
             'pobDataProvider' => $pobDataProvider,
             'presDataProvider' => $presDataProvider,
             'presSearchModel' => $presSearchModel,
+            'usuDataProvider' => $usuDataProvider,
+            'usuSearchModel' => $usuSearchModel,
             
         ]);
     }

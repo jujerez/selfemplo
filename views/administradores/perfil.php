@@ -157,9 +157,22 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                         <i class="far fa-clipboard"></i> Presupuestos
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" 
+                        id="usuarios-tab" 
+                        data-toggle="tab" 
+                        href="#usuarios" 
+                        role="tab" 
+                        aria-controls="usuarios" 
+                        aria-selected="false">
+                        <i class="fas fa-users"></i> Usuarios
+                    </a>
+                </li>
                
             </ul>
             <div class="tab-content" id="myTabContent">
+                <!-- Tab info-->
                 <div class="tab-pane fade show active" id="perfil" role="tabpanel" aria-labelledby="perfil-tab">
                     <div class="card mb-4">
                         <div class="card-header gris text-white-50">
@@ -471,6 +484,65 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
 
                                             ],
                                         ],
+                                    ],
+                                ]); 
+                                Pjax::end();
+                            ?>   
+                        </div>
+   
+                    </div>     
+                </div>
+
+                <!-- Tab usuarios-->
+                <div class="tab-pane fade" id="usuarios" role="tabpanel" aria-labelledby="usuarios-tab">
+                    <div class="card mb-4">
+                        <div class="card-header gris text-white-50">
+                            Lista de presupuestos
+                        </div>
+                            
+                        <div class="card-body bg-light">
+                       
+                            <?php
+                              
+                                $proDataProvider->pagination = ['pageSize' => 5];
+                                Yii::debug($proDataProvider);
+                               
+                                Pjax::begin();
+                                echo GridView::widget([
+                                    'dataProvider' => $usuDataProvider,
+                                    'filterModel' => $usuSearchModel,
+                                    'columns' => [
+                                        
+                                        'nombre',
+                                        'email',
+                                        'rol',
+                                        [
+                                            'attribute' => 'rol',
+                                            'format' => 'text',
+                                            'label' => 'Rol',
+                                            'value' => function ($model) {
+                                                return $model->rol == '0' 
+                                                ? 'Profesional'
+                                                : $model->rol == '1' ? 'Empleador' : 'Administrador'; 
+                                            }
+                                            
+                                        ],
+                                        [
+                                            'class' => 'yii\grid\ActionColumn',
+                                            'template' => '{banear}',
+                                            //'controller' => 'usuarios',
+                                            'buttons' => [
+                                                
+                                                'banear' => function ($url, $model, $key) {
+                                                    return Html::a('Banear', ['usuarios/banear', 'id' => $key], [
+                                                        'class' => 'btn btn-sm btn-primary',   
+                                                    ]);
+                                                },
+
+                                                
+
+                                            ],
+                                        ], 
                                     ],
                                 ]); 
                                 Pjax::end();
