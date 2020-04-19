@@ -67,7 +67,7 @@ class EmpleosController extends Controller
                         'actions' => ['create'],
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action ) {
-                            return Yii::$app->user->identity->rol === '2';
+                            return Yii::$app->user->identity->rol === '1';
                                     
                         }
                     ], 
@@ -126,6 +126,7 @@ class EmpleosController extends Controller
         $model = new Empleos();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('info', 'Su empleo se revisará y se publicará en menos de 24h');
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
