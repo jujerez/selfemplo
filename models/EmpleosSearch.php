@@ -65,7 +65,8 @@ class EmpleosSearch extends Empleos
           ->joinWith('empleador e')
           ->joinWith('empleador.empleadores emp')
           ->joinWith('provincia prov')
-          ->joinWith('sector s');
+          ->joinWith('sector s')
+          ->where(['moderado' =>  true]);
 
 
 

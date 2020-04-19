@@ -225,6 +225,21 @@ class EmpleosController extends Controller
         return Profesiones::lista($sector_id);
     }
 
+    /**
+     * Metodo que cambia el estado de un empleo para que sea publicado en el tablón de empleo
+     *
+     * @param int $id, es el id del empleo
+     * @return void
+     */
+    public function actionValidar($id)
+    {
+        $model = $this->findModel($id);
+        $model->moderado = true;
+        $model->save();
+        Yii::$app->session->setFlash('success', 'Empleo moderado correctamente');
+        return $this->redirect(Yii::$app->request->referrer);
+    }
+
 
     /**
      * Finds the Empleos model based on its primary key value.
