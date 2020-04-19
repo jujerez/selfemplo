@@ -40,7 +40,7 @@ if (!isset($_COOKIE['politica'])) {
     $this->registerJs($js);
 }
 Util::dialogoPolitica();
-//Util::dialogo();
+Util::dialogo();
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

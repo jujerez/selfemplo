@@ -19,7 +19,7 @@ class Util
             'dialogDefaults' => [
                 Dialog::DIALOG_CONFIRM => [
                     'type' => Dialog::TYPE_DANGER,
-                    'title' => Icon::show('trash-alt'). ' ' . 'Eliminar',
+                    'title' => Icon::show('check-circle'). '' .' Confirma la acción' ,
                     'btnOKLabel' => 'Si',
                     'btnCancelLabel' => 'No',
                     'btnOKClass' => 'btn-danger',
