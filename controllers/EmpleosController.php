@@ -36,7 +36,7 @@ class EmpleosController extends Controller
 
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['create', 'update', 'delete', ],
+                'only' => ['create', 'update', 'delete', 'validar' ],
                 'rules' => [
 
                     // propio empleador
@@ -67,10 +67,22 @@ class EmpleosController extends Controller
                         'actions' => ['create'],
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action ) {
-                            return Yii::$app->user->identity->rol === '1';
+                            return Yii::$app->user->identity->rol === '2';
                                     
                         }
                     ], 
+                    // Solo administradores pueden moderar un empleo
+                    [
+                        'allow' => true,
+                        'actions' => ['validar'],
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action ) {
+                            return Yii::$app->user->identity->rol === '2';
+                                    
+                        }
+                    ], 
+
+
                 ],
             ],
         ];
