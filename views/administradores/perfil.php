@@ -178,7 +178,7 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                         role="tab" 
                         aria-controls="mod-emple" 
                         aria-selected="false">
-                        <i class="fas "></i> Moderaciones empleos
+                        <i class="fas fa-check-circle"></i> Moderaciones empleos
                     </a>
                 </li>
                

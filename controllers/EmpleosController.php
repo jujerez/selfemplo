@@ -36,13 +36,13 @@ class EmpleosController extends Controller
 
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['create', 'update',],
+                'only' => ['create', 'update', 'delete', ],
                 'rules' => [
 
                     // propio empleador
                     [
                         'allow' => true,
-                        'actions' => ['update'],
+                        'actions' => ['update','delete'],
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action ) {
                             $empleo =Yii::$app->request->get('id');
@@ -70,12 +70,7 @@ class EmpleosController extends Controller
                             return Yii::$app->user->identity->rol === '1';
                                     
                         }
-                    ],
-
-                   
-
-        
-                   
+                    ], 
                 ],
             ],
         ];
