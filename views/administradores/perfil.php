@@ -551,6 +551,8 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                                                     ]);
                                                 },
 
+                                               
+
                                                 
 
                                             ],
@@ -598,12 +600,22 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                                         
                                         [
                                             'class' => 'yii\grid\ActionColumn',
-                                            'template' => '{validar}',
+                                            'template' => '{validar} {delete}' ,
                                             'buttons' => [
                                                 
                                                 'validar' => function ($url, $model, $key) {
                                                     return Html::a('Validar', ['empleos/validar', 'id' => $key], [
-                                                        'class' => 'btn btn-sm btn-primary',   
+                                                        'class' => 'btn btn-sm btn-primary', 
+                                                        
+                                                        'data-confirm' => '¿Está seguro que quiere validar este empleo?',  
+                                                    ]);
+                                                },
+
+                                                'delete' => function ($url, $model, $key) {
+                                                    return Html::a('Eliminar', ['empleos/delete', 'id' => $key], [
+                                                        'class' => 'btn btn-sm btn-danger',
+                                                        'data-method' => 'POST',
+                                                        'data-confirm' => '¿Está seguro que quiere eliminar este empleo?',   
                                                     ]);
                                                 },
 

@@ -45,6 +45,9 @@ class EmpleosController extends Controller
                         'actions' => ['update','delete'],
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action ) {
+                            if ( Yii::$app->user->identity->rol === '2') {
+                                return true;
+                            }
                             $empleo =Yii::$app->request->get('id');
                             $filas = Empleos::find()
                             ->select('id')
@@ -52,7 +55,7 @@ class EmpleosController extends Controller
                             ->all();
                             foreach ($filas as $fila => $value) {
                                 
-                                if ($value['id'] == $empleo && Yii::$app->user->identity->rol === '1') {
+                                if ($value['id'] == $empleo && Yii::$app->user->identity->rol === '1' ) {
                                     return true;
                                 }
                             
