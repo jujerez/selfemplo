@@ -159,6 +159,7 @@ class EmpleosController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('info', 'Su empleo se revisará y se publicará en menos de 24h');
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
