@@ -194,6 +194,12 @@ class EmpleosController extends Controller
      */
     public function actionDelete($id)
     {
+        if (Yii::$app->user->identity->rol === '2') {
+            $this->findModel($id)->delete();
+            Yii::$app->session->setFlash('success', 'Empleo eliminado correctamente');
+            return $this->redirect(Yii::$app->request->referrer);
+        }
+
         $num_presupuestos = Presupuestos::find()
         ->where(['empleo_id' => $id])
         ->count();
