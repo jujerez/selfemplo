@@ -169,6 +169,18 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                         <i class="fas fa-users"></i> Usuarios
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" 
+                        id="mod-emple-tab" 
+                        data-toggle="tab" 
+                        href="#mod-emple" 
+                        role="tab" 
+                        aria-controls="mod-emple" 
+                        aria-selected="false">
+                        <i class="fas fa-check-circle"></i> Moderaciones empleos
+                    </a>
+                </li>
                
             </ul>
             <div class="tab-content" id="myTabContent">
@@ -539,7 +551,73 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                                                     ]);
                                                 },
 
+                                               
+
                                                 
+
+                                            ],
+                                        ], 
+                                    ],
+                                ]); 
+                                Pjax::end();
+                            ?>   
+                        </div>
+   
+                    </div>     
+                </div>
+                <!---->
+                <!-- Tab moderaciones empleos-->
+                <div class="tab-pane fade" id="mod-emple" role="tabpanel" aria-labelledby="mod-emple-tab">
+                    <div class="card mb-4">
+                        <div class="card-header gris text-white-50">
+                            Lista de empleos a moderar
+                        </div>
+                            
+                        <div class="card-body bg-light">
+                       
+                            <?php
+                              
+                                $query = Empleos::find()->where(['moderado' =>  false]);
+
+                                $dataProvider = new ActiveDataProvider([
+                                    'query' => $query,
+                                ]);
+                        
+                                $dataProvider->setSort([
+                                    'defaultOrder' => ['created_at' => SORT_DESC],
+                                ]);
+
+                                $dataProvider->pagination = ['pageSize' => 5];
+                               
+                                Pjax::begin();
+                                echo GridView::widget([
+                                    'dataProvider' => $dataProvider,
+                                    //'filterModel' => $SearchModel,
+                                    'columns' => [
+                                        
+                                        'titulo',
+                                        'descripcion',
+                                        
+                                        [
+                                            'class' => 'yii\grid\ActionColumn',
+                                            'template' => '{validar} {delete}' ,
+                                            'buttons' => [
+                                                
+                                                'validar' => function ($url, $model, $key) {
+                                                    return Html::a('Validar', ['empleos/validar', 'id' => $key], [
+                                                        'class' => 'btn btn-sm btn-primary', 
+                                                        
+                                                        'data-confirm' => '¿Está seguro que quiere validar este empleo?',  
+                                                    ]);
+                                                },
+
+                                                'delete' => function ($url, $model, $key) {
+                                                    return Html::a('Eliminar', ['empleos/delete', 'id' => $key], [
+                                                        'class' => 'btn btn-sm btn-danger',
+                                                        'data-method' => 'POST',
+                                                        'data-confirm' => '¿Está seguro que quiere eliminar este empleo?',   
+                                                    ]);
+                                                },
 
                                             ],
                                         ], 

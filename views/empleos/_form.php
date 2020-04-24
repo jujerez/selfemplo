@@ -101,6 +101,7 @@ $sector_id = $model->isNewRecord ? '1' : $model->profesion->sector->id;
 
 
     <?= Html::activeHiddenInput($model, 'empleador_id', ['value' => Yii::$app->user->identity->id]) ?>
+    <?= Html::activeHiddenInput($model, 'moderado', ['value' => '0']) ?> 
     
     <?= $form->field($model, 'sector')->widget(Select2::className(), [
             'data' => $sectores,

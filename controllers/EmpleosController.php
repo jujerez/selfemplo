@@ -36,15 +36,18 @@ class EmpleosController extends Controller
 
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['create', 'update',],
+                'only' => ['create', 'update', 'delete', 'validar' ],
                 'rules' => [
 
                     // propio empleador
                     [
                         'allow' => true,
-                        'actions' => ['update'],
+                        'actions' => ['update','delete'],
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action ) {
+                            if ( Yii::$app->user->identity->rol === '2') {
+                                return true;
+                            }
                             $empleo =Yii::$app->request->get('id');
                             $filas = Empleos::find()
                             ->select('id')
@@ -52,7 +55,7 @@ class EmpleosController extends Controller
                             ->all();
                             foreach ($filas as $fila => $value) {
                                 
-                                if ($value['id'] == $empleo && Yii::$app->user->identity->rol === '1') {
+                                if ($value['id'] == $empleo && Yii::$app->user->identity->rol === '1' ) {
                                     return true;
                                 }
                             
@@ -70,12 +73,19 @@ class EmpleosController extends Controller
                             return Yii::$app->user->identity->rol === '1';
                                     
                         }
-                    ],
+                    ], 
+                    // Solo administradores pueden moderar un empleo
+                    [
+                        'allow' => true,
+                        'actions' => ['validar'],
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action ) {
+                            return Yii::$app->user->identity->rol === '2';
+                                    
+                        }
+                    ], 
 
-                   
 
-        
-                   
                 ],
             ],
         ];
@@ -119,6 +129,7 @@ class EmpleosController extends Controller
         $model = new Empleos();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('info', 'Su empleo se revisará y se publicará en menos de 24h');
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -151,6 +162,7 @@ class EmpleosController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('info', 'Su empleo se revisará y se publicará en menos de 24h');
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -182,6 +194,12 @@ class EmpleosController extends Controller
      */
     public function actionDelete($id)
     {
+        if (Yii::$app->user->identity->rol === '2') {
+            $this->findModel($id)->delete();
+            Yii::$app->session->setFlash('success', 'Empleo eliminado correctamente');
+            return $this->redirect(Yii::$app->request->referrer);
+        }
+
         $num_presupuestos = Presupuestos::find()
         ->where(['empleo_id' => $id])
         ->count();
@@ -223,6 +241,21 @@ class EmpleosController extends Controller
         Yii::$app->response->format = Response::FORMAT_JSON;
 
         return Profesiones::lista($sector_id);
+    }
+
+    /**
+     * Metodo que cambia el estado de un empleo para que sea publicado en el tablón de empleo
+     *
+     * @param int $id, es el id del empleo
+     * @return void
+     */
+    public function actionValidar($id)
+    {
+        $model = $this->findModel($id);
+        $model->moderado = true;
+        $model->save();
+        Yii::$app->session->setFlash('success', 'Empleo moderado correctamente');
+        return $this->redirect(Yii::$app->request->referrer);
     }
 
 

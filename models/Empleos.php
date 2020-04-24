@@ -10,6 +10,7 @@ use Yii;
  * @property int $id
  * @property string $titulo
  * @property string $descripcion
+ * @property bool $moderado 
  * @property string $created_at
  * @property int $poblacion_id
  * @property int $empleador_id
@@ -41,6 +42,7 @@ class Empleos extends \yii\db\ActiveRecord
             [['poblacion_id', 'empleador_id', 'profesion_id'], 'default', 'value' => null],
             [['poblacion_id', 'empleador_id', 'profesion_id'], 'integer'],
             [['titulo'], 'string', 'max' => 255],
+            [['moderado'], 'boolean'], 
             [['!provincia'], 'safe'],
             [['!sector'], 'safe'],
             [['descripcion'], 'string'],
@@ -61,6 +63,7 @@ class Empleos extends \yii\db\ActiveRecord
             'descripcion' => 'Descripción',
             'created_at' => 'Fecha de publicación',
             'poblacion_id' => 'Población',
+            'moderado' => 'Moderado',
             'empleador_id' => 'Empleador ID',
             'profesion_id' => 'Profesion ',
             'sector' => 'Sector al que pertenece el profesional'
