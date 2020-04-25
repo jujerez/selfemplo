@@ -52,8 +52,8 @@
 | **Prioridad**   | Mínimo           |
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
-| **Entrega**     | v1             |
-| **Incidencia**  | [6](https://github.com/jujerez/selfemplo/issues/6) |
+| **Entrega**     | v3             |
+| **Incidencia**  | [310](https://github.com/jujerez/selfemplo/issues/310) |
 
 | **R7**     | **Incidencias en GitHub**         |
 | --------------: | :------------------- |
@@ -97,8 +97,8 @@
 | **Prioridad**   | Mínimo           |
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
-| **Entrega**     | v1             |
-| **Incidencia**  | [11](https://github.com/jujerez/selfemplo/issues/11) |
+| **Entrega**     | v3             |
+| **Incidencia**  | [311](https://github.com/jujerez/selfemplo/issues/311) |
 
 | **R12**     | **Validación de formularios**         |
 | --------------: | :------------------- |
@@ -223,8 +223,8 @@
 | **Prioridad**   | Mínimo           |
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
-| **Entrega**     | v1             |
-| **Incidencia**  | [25](https://github.com/jujerez/selfemplo/issues/25) |
+| **Entrega**     | v3             |
+| **Incidencia**  | [312](https://github.com/jujerez/selfemplo/issues/312) |
 
 | **R26**     | **Code Climate**         |
 | --------------: | :------------------- |
@@ -232,8 +232,8 @@
 | **Prioridad**   | Mínimo           |
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
-| **Entrega**     | v1             |
-| **Incidencia**  | [26](https://github.com/jujerez/selfemplo/issues/26) |
+| **Entrega**     | v3             |
+| **Incidencia**  | [313](https://github.com/jujerez/selfemplo/issues/313) |
 
 | **R27**     | **Aplicación escalable**         |
 | --------------: | :------------------- |
@@ -295,8 +295,8 @@
 | **Prioridad**   | Mínimo           |
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
-| **Entrega**     | v1             |
-| **Incidencia**  | [33](https://github.com/jujerez/selfemplo/issues/33) |
+| **Entrega**     | v3             |
+| **Incidencia**  | [314](https://github.com/jujerez/selfemplo/issues/314) |
 
 | **R34**     | **Validación HTML5, CSS3 y accesibilidad**         |
 | --------------: | :------------------- |
@@ -340,8 +340,8 @@
 | **Prioridad**   | Mínimo           |
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
-| **Entrega**     | v1             |
-| **Incidencia**  | [38](https://github.com/jujerez/selfemplo/issues/38) |
+| **Entrega**     | v3             |
+| **Incidencia**  | [315](https://github.com/jujerez/selfemplo/issues/315) |
 
 | **R39**     | **Crear base de datos**         |
 | --------------: | :------------------- |
@@ -1001,12 +1001,12 @@
 | (**R3**) Estilo del código | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [3](https://github.com/jujerez/selfemplo/issues/3) |
 | (**R4**) Tres lanzamientos | Mínimo | Técnico | Fácil | v3 | | **Incidencia**  | [307](https://github.com/jujerez/selfemplo/issues/307) |
 | (**R5**) README.md | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [5](https://github.com/jujerez/selfemplo/issues/5) |
-| (**R6**) Documentación | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [6](https://github.com/jujerez/selfemplo/issues/6) |
+| (**R6**) Documentación | Mínimo | Técnico | Fácil | v3 | | **Incidencia**  | [310](https://github.com/jujerez/selfemplo/issues/310) |
 | (**R7**) Incidencias en GitHub | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [7](https://github.com/jujerez/selfemplo/issues/7) |
 | (**R8**) Etiquetas e hitos | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [8](https://github.com/jujerez/selfemplo/issues/8) |
 | (**R9**) Rama master | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [9](https://github.com/jujerez/selfemplo/issues/9) |
 | (**R10**) Gestión del proyecto | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [10](https://github.com/jujerez/selfemplo/issues/10) |
-| (**R11**) Final de cada iteración | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [11](https://github.com/jujerez/selfemplo/issues/11) |
+| (**R11**) Final de cada iteración | Mínimo | Técnico | Fácil | v3 | | **Incidencia**  | [311](https://github.com/jujerez/selfemplo/issues/311) |
 | (**R12**) Validación de formularios | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [12](https://github.com/jujerez/selfemplo/issues/12) |
 | (**R13**) Gestión de ventanas | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [13](https://github.com/jujerez/selfemplo/issues/13) |
 | (**R14**) Manejo de eventos | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [14](https://github.com/jujerez/selfemplo/issues/14) |
@@ -1020,20 +1020,20 @@
 | (**R22**) Yii2 Framework | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [22](https://github.com/jujerez/selfemplo/issues/22) |
 | (**R23**) PostgreSQL | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [23](https://github.com/jujerez/selfemplo/issues/23) |
 | (**R24**) Heroku | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [24](https://github.com/jujerez/selfemplo/issues/24) |
-| (**R25**) Codeception | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [25](https://github.com/jujerez/selfemplo/issues/25) |
-| (**R26**) Code Climate | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [26](https://github.com/jujerez/selfemplo/issues/26) |
+| (**R25**) Codeception | Mínimo | Técnico | Fácil | v3 | | **Incidencia**  | [312](https://github.com/jujerez/selfemplo/issues/312) |
+| (**R26**) Code Climate | Mínimo | Técnico | Fácil | v3 | | **Incidencia**  | [313](https://github.com/jujerez/selfemplo/issues/313) |
 | (**R27**) Aplicación escalable | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [27](https://github.com/jujerez/selfemplo/issues/27) |
 | (**R28**) Tecnología AJAX | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [28](https://github.com/jujerez/selfemplo/issues/28) |
 | (**R29**) Etiquetas semánticas de HTML5 | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [29](https://github.com/jujerez/selfemplo/issues/29) |
 | (**R30**) Presentación mediante CSS | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [30](https://github.com/jujerez/selfemplo/issues/30) |
 | (**R31**) Diseño flexible | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [31](https://github.com/jujerez/selfemplo/issues/31) |
 | (**R32**) Transiciones, transformaciones, animaciones y contenido multimedia | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [32](https://github.com/jujerez/selfemplo/issues/32) |
-| (**R33**) Uso de microdatos | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [33](https://github.com/jujerez/selfemplo/issues/33) |
+| (**R33**) Uso de microdatos | Mínimo | Técnico | Fácil | v3 | | **Incidencia**  | [314](https://github.com/jujerez/selfemplo/issues/314) |
 | (**R34**) Validación HTML5, CSS3 y accesibilidad | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [34](https://github.com/jujerez/selfemplo/issues/34) |
 | (**R35**) Diseño para varias resoluciones | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [35](https://github.com/jujerez/selfemplo/issues/35) |
 | (**R36**) Varios navegadores | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [36](https://github.com/jujerez/selfemplo/issues/36) |
 | (**R37**) Despliegue en un Host | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [37](https://github.com/jujerez/selfemplo/issues/37) |
-| (**R38**) Despliegue en un servidor local | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [38](https://github.com/jujerez/selfemplo/issues/38) |
+| (**R38**) Despliegue en un servidor local | Mínimo | Técnico | Fácil | v3 | | **Incidencia**  | [315](https://github.com/jujerez/selfemplo/issues/315) |
 | (**R39**) Crear base de datos | Importante | Técnico | Media | v1 | | **Incidencia**  | [39](https://github.com/jujerez/selfemplo/issues/39) |
 | (**R40**) Alta de usuario | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [40](https://github.com/jujerez/selfemplo/issues/40) |
 | (**R41**) Verificación de usuario | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [41](https://github.com/jujerez/selfemplo/issues/41) |
