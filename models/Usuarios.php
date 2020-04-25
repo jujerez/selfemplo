@@ -15,6 +15,7 @@ use yii\web\IdentityInterface;
  * @property string $rol
  * @property string|null $token_acti
  * @property string|null $auth_key
+ * @property string|null $banned_at
  *
  * @property Administradores $administradores
  * @property Comentarios[] $comentarios
@@ -51,6 +52,7 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
             [['password_repeat'], 'required', 'on' => self::SCENARIO_CREAR],
             [['email'], 'required', 'on' => self::SCENARIO_CREAR],
             [['password_repeat'], 'compare', 'compareAttribute' => 'password'],
+            [['banned_at'], 'safe'], 
         ];
     }
 
@@ -68,7 +70,8 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
             'rol' => 'Rol',
             'token_acti' => 'Token Acti',
             'auth_key' => 'Auth Key',
-        ];
+            'banned_at' => 'Baneado',
+        ]; 
     }
 
     /**

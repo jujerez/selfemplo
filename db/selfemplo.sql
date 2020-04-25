@@ -16,6 +16,7 @@ CREATE TABLE usuarios
     , rol                VARCHAR(255) NOT NULL   
     , token_acti         VARCHAR(255)
     , auth_key           VARCHAR(255)
+    , banned_at          TIMESTAMP(0)
 ); 
 
 

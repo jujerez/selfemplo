@@ -82,7 +82,13 @@ class LoginForm extends Model
     public function login()
     {
         if ($this->validate()) {
-            return Yii::$app->user->login($this->getUser(), $this->recordarme ? 3600*24*30 : 0);
+            if ($this->getUser()->banned_at === null) {
+                
+                return Yii::$app->user->login($this->getUser(), $this->recordarme ? 3600*24*30 : 0);
+            } else {
+                Yii::$app->session->setFlash('danger', 'Usuario banneado, solicite activación al administrador');
+                    return false; 
+            }
         }
         return false;
     }
