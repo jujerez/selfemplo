@@ -2,6 +2,7 @@
 
 /* @var $this yii\web\View */
 
+use rootlocal\widgets\wow\WowWidget;
 use yii\helpers\Html;
 
 $this->title = 'Selfemplo';
@@ -10,12 +11,13 @@ $this->title = 'Selfemplo';
 
     <div class="jumbotron jumbotron-fluid  ">
         <div class="align-self-center ">
-            <h1 class="display-4 ">Contrata  profesionales</h1>
+            
+            <h1 class="display-4 wow rubberBand" >Contrata  profesionales</h1>
             <p class="lead">Millones de personas utilizan selfemplo.com para hacer realidad sus ideas</p>
             <div class="mt-2">
             
-                <?= Html::a('Quiero contratar', ['/empleos/create'], ['class' => 'btn  btn-warning']) ?> 
-                <?= Html::a('Quiero trabajar', ['/empleos/index'], ['class' => 'btn  btn-outline-light']) ?> 
+                <?= Html::a('Quiero contratar', ['/empleos/create'], ['class' => 'btn  btn-warning wow bounceInLeft']) ?> 
+                <?= Html::a('Quiero trabajar', ['/empleos/index'], ['class' => 'btn  btn-outline-light wow bounceInRight']) ?> 
                 
             </div>
 
@@ -29,12 +31,12 @@ $this->title = 'Selfemplo';
         <div class="mb-5">
             <section class="row justify-content-around">
                 <div class="col-md-12">
-                    <h2 class="text-center "><b>Encontrar un profesional de confianza nunca ha sido tan facil</b></h2>
+                    <h2 class="text-center wow bounceInDown "><b>Encontrar un profesional de confianza nunca ha sido tan facil</b></h2>
                     <p class="lead text-center">No pierdas el tiempo buscando en tablones de anuncios o preguntando a tus vecinos</p>
                    
                 </div>
                   
-                <div class="col-md-3 shadow cartel d-flex justify-content-center">
+                <div class="col-md-3 shadow cartel d-flex justify-content-center wow bounceInLeft" data-wow-delay="0.2s">
                     <div class="contact-box center-version text-center p-3">
                         <?=Html::img('@web/img/form.png', ['class' => ['img-tarjeta'], 'alt' => 'Publica tu empleo'])?>
                         <h3><strong>Publica tu empleo</strong></h3>
@@ -43,7 +45,7 @@ $this->title = 'Selfemplo';
                 
                     </div>
                 </div>
-                <div class="col-md-3 shadow cartel d-flex justify-content-center">
+                <div class="col-md-3 shadow cartel d-flex justify-content-center wow bounceInLeft" data-wow-delay="0.6s">
                     <div class="contact-box center-version text-center p-3">
                          <?=Html::img('@web/img/puja2.png', ['class' => ['img-tarjeta'], 'alt' => 'Recibe presupuestos'])?>
 
@@ -53,7 +55,7 @@ $this->title = 'Selfemplo';
                 
                     </div>
                 </div>
-                <div class="col-md-3 shadow cartel d-flex justify-content-center">
+                <div class="col-md-3 shadow cartel d-flex justify-content-center wow bounceInLeft" data-wow-delay="1s">
                     <div class=" text-center p-3">
                        
                     <?=Html::img('@web/img/auction.png', ['class' => ['img-tarjeta'], 'alt' => 'Escoge un presupuesto'])?>

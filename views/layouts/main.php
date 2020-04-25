@@ -17,6 +17,7 @@ AppAsset::register($this);
 
 Icon::map($this); 
 use kartik\dialog\DialogAsset;
+use rootlocal\widgets\wow\WowWidget;
 use yii\helpers\Url;
 
 // DialogAsset::register($this);
@@ -41,6 +42,7 @@ if (!isset($_COOKIE['politica'])) {
 }
 Util::dialogoPolitica();
 Util::dialogo();
+WowWidget::widget();
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

@@ -22,13 +22,16 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/bootstrap.min.css',
         'css/site.css',
+        'css/animate.css'
     ];
     public $js = [
+
     ];
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap4\BootstrapAsset',
         'yii\bootstrap4\BootstrapPluginAsset',
         'xtetis\bootstrap4glyphicons\assets\GlyphiconAsset',
+        
     ];
 }

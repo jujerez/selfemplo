@@ -4,8 +4,23 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4c489b919e8e08232c256fe1c96a5923",
+    "content-hash": "4e83894646cfc2e8c794e1545900f551",
     "packages": [
+        {
+            "name": "bower-asset/animate.css",
+            "version": "3.7.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/daneden/animate.css.git",
+                "reference": "ab5fe9dae4fdb936eee698ce1850a263008f0a99"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/daneden/animate.css/zipball/ab5fe9dae4fdb936eee698ce1850a263008f0a99",
+                "reference": "ab5fe9dae4fdb936eee698ce1850a263008f0a99"
+            },
+            "type": "bower-asset"
+        },
         {
             "name": "bower-asset/inputmask",
             "version": "3.3.11",
@@ -80,6 +95,24 @@
                 "reference": "38c8d3131a82567bfef18da09f7f4db68c84f8a3"
             },
             "type": "bower-asset"
+        },
+        {
+            "name": "bower-asset/wow",
+            "version": "1.1.2",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:matthieua/WOW.git",
+                "reference": "535597ab3d6dfe3f7bfd76281c991e042fdeca25"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/matthieua/WOW/zipball/535597ab3d6dfe3f7bfd76281c991e042fdeca25",
+                "reference": "535597ab3d6dfe3f7bfd76281c991e042fdeca25"
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "bower-asset/yii2-pjax",
@@ -1098,6 +1131,50 @@
             "license": [
                 "MIT"
             ]
+        },
+        {
+            "name": "rootlocal/yii2-wow",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rootlocal/yii2-wow.git",
+                "reference": "301baefdabb4257e27a623ce3f364dcfed4070e6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rootlocal/yii2-wow/zipball/301baefdabb4257e27a623ce3f364dcfed4070e6",
+                "reference": "301baefdabb4257e27a623ce3f364dcfed4070e6",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/animate.css": "~3.7",
+                "bower-asset/wow": "~1.1",
+                "php": ">=7.1",
+                "yiisoft/yii2": "~2.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "rootlocal\\widgets\\wow\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD 3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Zakharov",
+                    "email": "sys@eml.ru"
+                }
+            ],
+            "description": "Yii2 WOW. Reveal CSS animation as you scroll down a page",
+            "keywords": [
+                "Animate.css",
+                "wow",
+                "yii2"
+            ],
+            "time": "2020-04-20T21:42:37+00:00"
         },
         {
             "name": "select2/select2",
