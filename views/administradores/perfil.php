@@ -244,7 +244,7 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                                             'buttons' => [
                                                 
                                                 'update' => function ($url, $model, $key) {
-                                                    return Html::a('Modificar', ['sectores/update', 'id' => $key], [
+                                                    return Html::a(Icon::show('pencil-alt'). '' .' Modificar', ['sectores/update', 'id' => $key], [
                                                         'class' => 'btn btn-sm btn-primary',
                                                         
                                                         
@@ -301,7 +301,7 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                                             'buttons' => [
                                                 
                                                 'update' => function ($url, $model, $key) {
-                                                    return Html::a('Modificar', ['profesiones/update', 'id' => $key], [
+                                                    return Html::a(Icon::show('pencil-alt'). '' .' Modificar', ['profesiones/update', 'id' => $key], [
                                                         'class' => 'btn btn-sm btn-primary',   
                                                     ]);
                                                 },
@@ -355,7 +355,7 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                                             'buttons' => [
                                                 
                                                 'update' => function ($url, $model, $key) {
-                                                    return Html::a('Modificar', ['provincias/update', 'id' => $key], [
+                                                    return Html::a(Icon::show('pencil-alt'). '' .' Modificar', ['provincias/update', 'id' => $key], [
                                                         'class' => 'btn btn-sm btn-primary',   
                                                     ]);
                                                 },
@@ -408,7 +408,7 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                                             'buttons' => [
                                                 
                                                 'update' => function ($url, $model, $key) {
-                                                    return Html::a('Modificar', ['poblaciones/update', 'id' => $key], [
+                                                    return Html::a(Icon::show('pencil-alt'). '' .' Modificar', ['poblaciones/update', 'id' => $key], [
                                                         'class' => 'btn btn-sm btn-primary',   
                                                     ]);
                                                 },
@@ -475,7 +475,7 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                                             'buttons' => [
                                                 
                                                 'update' => function ($url, $model, $key) {
-                                                    return Html::a('Modificar', ['presupuestos/update', 'id' => $key], [
+                                                    return Html::a(Icon::show('pencil-alt'). '' .' Modificar', ['presupuestos/update', 'id' => $key], [
                                                         'class' => 'btn btn-sm btn-primary',   
                                                     ]);
                                                 },

@@ -49,7 +49,7 @@ use yii\bootstrap4\Html;
                        
                 </div>
                         <p>
-                            <?= Html::a('Modificar presupuesto', ['presupuestos/update', 'id' => $model->id,], ['class' => 'btn btn-sm btn-success']) ?>
+                            <?= Html::a(Icon::show('pencil-alt'). '' .' Modificar', ['presupuestos/update', 'id' => $model->id,], ['class' => 'btn btn-sm btn-success']) ?>
                            
                             
                             <?= Html::a(Icon::show('trash-alt'). '' .' Eliminar', ['presupuestos/delete', 'id' => $model->id], [

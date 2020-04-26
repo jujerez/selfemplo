@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ]) ?>
 
                 <p>
-                    <?= Html::a('Modificar mis datos', ['update', 'id' => $model->usuario_id], ['class' => 'btn btn-primary']) ?>
+                    <?= Html::a(Icon::show('pencil-alt'). '' .' Modificar mis datos', ['update', 'id' => $model->usuario_id], ['class' => 'btn btn-primary']) ?>
                     <?= Html::a(Icon::show('trash-alt'). '' .' Eliminar', ['delete', 'id' => $model->usuario_id], [
                         'class' => 'btn btn-danger',
                         'data' => [
