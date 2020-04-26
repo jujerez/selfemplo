@@ -1,5 +1,6 @@
 <?php
 
+use kartik\icons\Icon;
 use yii\bootstrap4\Html;
 use yii\widgets\DetailView;
 
@@ -39,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <p>
                     <?= Html::a('Modificar mis datos', ['update', 'id' => $model->usuario_id], ['class' => 'btn btn-primary']) ?>
-                    <?= Html::a('Eliminar mi cuenta', ['delete', 'id' => $model->usuario_id], [
+                    <?= Html::a(Icon::show('trash-alt'). '' .' Eliminar', ['delete', 'id' => $model->usuario_id], [
                         'class' => 'btn btn-danger',
                         'data' => [
                             'confirm' => '¿Estas seguro que deseas eliminar su cuenta? se eliminarán todos los datos relacionados con su cuenta',

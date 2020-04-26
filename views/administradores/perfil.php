@@ -253,7 +253,7 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
 
                                                 'delete' => function ($url, $model, $key) {
                                                    
-                                                    return Html::a('Eliminar', $url,[
+                                                    return Html::a( Icon::show('trash-alt'). '' .' Eliminar', $url,[
                                                         'class' => 'btn btn-sm btn-danger',
                                                         
                                                         'data-method' => 'POST',
@@ -307,7 +307,7 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                                                 },
 
                                                 'delete' => function ($url, $model, $key) {
-                                                    return Html::a('Eliminar', $url, [
+                                                    return Html::a(Icon::show('trash-alt'). '' .' Eliminar', $url, [
                                                         'class' => 'btn btn-sm btn-danger',
                                                         'data-method' => 'POST',
                                                         'data-confirm' => '¿Está seguro que quiere eliminar esta profesión?',
@@ -361,7 +361,7 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                                                 },
 
                                                 'delete' => function ($url, $model, $key) {
-                                                    return Html::a('Eliminar', $url, [
+                                                    return Html::a(Icon::show('trash-alt'). '' .' Eliminar', $url, [
                                                         'class' => 'btn btn-sm btn-danger',
                                                         'data-method' => 'POST',
                                                         'data-confirm' => '¿Está seguro que quiere eliminar esta provincia?',
@@ -414,7 +414,7 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                                                 },
 
                                                 'delete' => function ($url, $model, $key) {
-                                                    return Html::a('Eliminar', $url, [
+                                                    return Html::a(Icon::show('trash-alt'). '' .' Eliminar', $url, [
                                                         'class' => 'btn btn-sm btn-danger',
                                                         'data-method' => 'POST',
                                                         'data-confirm' => '¿Está seguro que quiere eliminar esta población?',
@@ -481,7 +481,7 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                                                 },
 
                                                 'delete' => function ($url, $model, $key) {
-                                                    return Html::a('Eliminar', $url, [
+                                                    return Html::a(Icon::show('trash-alt'). '' .' Eliminar', $url, [
                                                         'class' => 'btn btn-sm btn-danger',
                                                         'data-method' => 'POST',
                                                         'data-confirm' => '¿Está seguro que quiere eliminar esta provincia?',
@@ -643,7 +643,7 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                                                 },
 
                                                 'delete' => function ($url, $model, $key) {
-                                                    return Html::a('Eliminar', ['empleos/delete', 'id' => $key], [
+                                                    return Html::a(Icon::show('trash-alt'). '' .' Eliminar', ['empleos/delete', 'id' => $key], [
                                                         'class' => 'btn btn-sm btn-danger',
                                                         'data-method' => 'POST',
                                                         'data-confirm' => '¿Está seguro que quiere eliminar este empleo?',   
