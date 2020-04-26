@@ -50,7 +50,7 @@ use yii\bootstrap4\Html;
                 </div>
                         <p>
                             
-                            <?= Html::a('Aceptar ', ['presupuestos/aceptar', 'id' => $model->id, 'ide' => $model->empleo->id, 'email' => $model->profesional->email], [
+                            <?= Html::a(Icon::show('check'). '' .' Aceptar', ['presupuestos/aceptar', 'id' => $model->id, 'ide' => $model->empleo->id, 'email' => $model->profesional->email], [
                                 'class' => 'btn btn-sm btn-success',
                                 'data' => [
                                     'confirm' => '¿Estas seguro que deseas aceptar el presupuesto?',
@@ -61,7 +61,7 @@ use yii\bootstrap4\Html;
                             ]) ?> 
                             
                            
-                            <?= Html::a('Rechazar ', ['presupuestos/rechazar', 'id' => $model->id], [
+                            <?= Html::a(Icon::show('times'). '' .' Rechazar', ['presupuestos/rechazar', 'id' => $model->id], [
                                 'class' => 'btn btn-sm btn-danger',
                                 
                                 'data' => [
