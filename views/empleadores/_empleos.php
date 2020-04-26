@@ -28,12 +28,12 @@ use yii\bootstrap4\Html;
                 </p>
                 <div class="pt-3">
                       
-                    <?=Html::a('Modificar', 
+                    <?=Html::a(Icon::show('pencil-alt'). '' .' Modificar', 
                         ['empleos/update', 'id' => $key,],
                         ['class' => 'btn btn-sm btn-warning']
                     )?>
                         
-                    <?=Html::a('Borrar', 
+                    <?=Html::a(Icon::show('trash-alt'). '' .' Eliminar', 
                         ['empleos/delete', 'id' => $model->id],
                         ['class' => 'btn btn-sm btn-danger', 
                             'data' => [

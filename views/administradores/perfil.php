@@ -244,7 +244,7 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                                             'buttons' => [
                                                 
                                                 'update' => function ($url, $model, $key) {
-                                                    return Html::a('Modificar', ['sectores/update', 'id' => $key], [
+                                                    return Html::a(Icon::show('pencil-alt'). '' .' Modificar', ['sectores/update', 'id' => $key], [
                                                         'class' => 'btn btn-sm btn-primary',
                                                         
                                                         
@@ -253,7 +253,7 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
 
                                                 'delete' => function ($url, $model, $key) {
                                                    
-                                                    return Html::a('Eliminar', $url,[
+                                                    return Html::a( Icon::show('trash-alt'). '' .' Eliminar', $url,[
                                                         'class' => 'btn btn-sm btn-danger',
                                                         
                                                         'data-method' => 'POST',
@@ -301,13 +301,13 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                                             'buttons' => [
                                                 
                                                 'update' => function ($url, $model, $key) {
-                                                    return Html::a('Modificar', ['profesiones/update', 'id' => $key], [
+                                                    return Html::a(Icon::show('pencil-alt'). '' .' Modificar', ['profesiones/update', 'id' => $key], [
                                                         'class' => 'btn btn-sm btn-primary',   
                                                     ]);
                                                 },
 
                                                 'delete' => function ($url, $model, $key) {
-                                                    return Html::a('Eliminar', $url, [
+                                                    return Html::a(Icon::show('trash-alt'). '' .' Eliminar', $url, [
                                                         'class' => 'btn btn-sm btn-danger',
                                                         'data-method' => 'POST',
                                                         'data-confirm' => '¿Está seguro que quiere eliminar esta profesión?',
@@ -355,13 +355,13 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                                             'buttons' => [
                                                 
                                                 'update' => function ($url, $model, $key) {
-                                                    return Html::a('Modificar', ['provincias/update', 'id' => $key], [
+                                                    return Html::a(Icon::show('pencil-alt'). '' .' Modificar', ['provincias/update', 'id' => $key], [
                                                         'class' => 'btn btn-sm btn-primary',   
                                                     ]);
                                                 },
 
                                                 'delete' => function ($url, $model, $key) {
-                                                    return Html::a('Eliminar', $url, [
+                                                    return Html::a(Icon::show('trash-alt'). '' .' Eliminar', $url, [
                                                         'class' => 'btn btn-sm btn-danger',
                                                         'data-method' => 'POST',
                                                         'data-confirm' => '¿Está seguro que quiere eliminar esta provincia?',
@@ -408,13 +408,13 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                                             'buttons' => [
                                                 
                                                 'update' => function ($url, $model, $key) {
-                                                    return Html::a('Modificar', ['poblaciones/update', 'id' => $key], [
+                                                    return Html::a(Icon::show('pencil-alt'). '' .' Modificar', ['poblaciones/update', 'id' => $key], [
                                                         'class' => 'btn btn-sm btn-primary',   
                                                     ]);
                                                 },
 
                                                 'delete' => function ($url, $model, $key) {
-                                                    return Html::a('Eliminar', $url, [
+                                                    return Html::a(Icon::show('trash-alt'). '' .' Eliminar', $url, [
                                                         'class' => 'btn btn-sm btn-danger',
                                                         'data-method' => 'POST',
                                                         'data-confirm' => '¿Está seguro que quiere eliminar esta población?',
@@ -475,13 +475,13 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                                             'buttons' => [
                                                 
                                                 'update' => function ($url, $model, $key) {
-                                                    return Html::a('Modificar', ['presupuestos/update', 'id' => $key], [
+                                                    return Html::a(Icon::show('pencil-alt'). '' .' Modificar', ['presupuestos/update', 'id' => $key], [
                                                         'class' => 'btn btn-sm btn-primary',   
                                                     ]);
                                                 },
 
                                                 'delete' => function ($url, $model, $key) {
-                                                    return Html::a('Eliminar', $url, [
+                                                    return Html::a(Icon::show('trash-alt'). '' .' Eliminar', $url, [
                                                         'class' => 'btn btn-sm btn-danger',
                                                         'data-method' => 'POST',
                                                         'data-confirm' => '¿Está seguro que quiere eliminar esta provincia?',
@@ -489,7 +489,7 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                                                 },
 
                                                 'view' => function ($url, $model, $key) {
-                                                    return Html::a('Ver', ['presupuestos/view', 'id' => $key], [
+                                                    return Html::a(Icon::show('eye'). '' .' Ver', ['presupuestos/view', 'id' => $key], [
                                                         'class' => 'btn btn-sm btn-info',   
                                                     ]);
                                                 },
@@ -527,7 +527,29 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                                         
                                         'nombre',
                                         'email',
-                                        'rol',
+                                        
+                                        [
+                                            'attribute' => 'banned_at',
+                                            'format' => 'text',
+                                            'label' => 'Baneado',
+                                            'value' => function ($model) {
+                                                return $model->banned_at === null
+                                                ? 'Activo'
+                                                : 'Baneado';
+                                            },
+                                            'contentOptions'=>function($model, $key, $index, $column) { 
+
+                                                if ($model->banned_at === null) {
+
+                                                    return ['style' => 'color:green'];
+
+                                                } else {
+                                                    
+                                                    return ['style' => 'color:red'];  
+                                                }
+                                    
+                                            },
+                                        ],
                                         [
                                             'attribute' => 'rol',
                                             'format' => 'text',
@@ -541,19 +563,28 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                                         ],
                                         [
                                             'class' => 'yii\grid\ActionColumn',
-                                            'template' => '{banear}',
+                                            'template' => '{banear} {desbanear}',
                                             //'controller' => 'usuarios',
                                             'buttons' => [
-                                                
+
                                                 'banear' => function ($url, $model, $key) {
-                                                    return Html::a('Banear', ['usuarios/banear', 'id' => $key], [
-                                                        'class' => 'btn btn-sm btn-primary',   
-                                                    ]);
+                                                    if ($model->banned_at === null) {
+
+                                                        return Html::a(Icon::show('user-ninja'). '' .'Banear', ['usuarios/banear', 'id' => $key], [
+                                                            'class' => 'btn btn-sm btn-danger',   
+                                                        ]);
+                                                    }
                                                 },
-
-                                               
-
+                                        
                                                 
+                                                'desbanear' => function ($url, $model, $key) {
+                                                    if ($model->banned_at !== null) {
+                                                        return Html::a(Icon::show('check-circle'). '' .'Activar', ['usuarios/desbanear', 'id' => $key], [
+                                                            'class' => 'btn btn-sm btn-primary',
+                                                        ]);
+                                                    }
+                                                },
+    
 
                                             ],
                                         ], 
@@ -604,7 +635,7 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                                             'buttons' => [
                                                 
                                                 'validar' => function ($url, $model, $key) {
-                                                    return Html::a('Validar', ['empleos/validar', 'id' => $key], [
+                                                    return Html::a(Icon::show('check-circle'). '' .' Validar', ['empleos/validar', 'id' => $key], [
                                                         'class' => 'btn btn-sm btn-primary', 
                                                         
                                                         'data-confirm' => '¿Está seguro que quiere validar este empleo?',  
@@ -612,7 +643,7 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                                                 },
 
                                                 'delete' => function ($url, $model, $key) {
-                                                    return Html::a('Eliminar', ['empleos/delete', 'id' => $key], [
+                                                    return Html::a(Icon::show('trash-alt'). '' .' Eliminar', ['empleos/delete', 'id' => $key], [
                                                         'class' => 'btn btn-sm btn-danger',
                                                         'data-method' => 'POST',
                                                         'data-confirm' => '¿Está seguro que quiere eliminar este empleo?',   

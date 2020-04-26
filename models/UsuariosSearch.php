@@ -18,7 +18,7 @@ class UsuariosSearch extends Usuarios
     {
         return [
             [['id'], 'integer'],
-            [['nombre', 'email', 'password', 'rol', 'token_acti', 'auth_key'], 'safe'],
+            [['nombre', 'email', 'password', 'rol', 'banned_at', 'token_acti', 'auth_key'], 'safe'],
         ];
     }
 

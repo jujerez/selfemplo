@@ -1,5 +1,6 @@
 <?php
 
+use kartik\icons\Icon;
 use yii\bootstrap4\Html;
 use yii\widgets\DetailView;
 
@@ -32,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         ],
                     ]) ?>
                 <p>
-                    <?= Html::a('Modificar mis datos', ['update', 'id' => $model->usuario_id], ['class' => 'btn btn-primary']) ?>
+                    <?= Html::a(Icon::show('pencil-alt'). '' .' Modificar mis datos', ['update', 'id' => $model->usuario_id], ['class' => 'btn btn-primary']) ?>
                     <!-- <?= Html::a('Eliminar mi cuenta', ['delete', 'id' => $model->usuario_id], [
                         'class' => 'btn btn-danger',
                         'data' => [
