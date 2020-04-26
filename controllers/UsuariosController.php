@@ -19,16 +19,25 @@ class UsuariosController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['registrar'],
+                'only' => ['registrar', 'banear', 'desbanear'],
                 'rules' => [
-                    // allow authenticated users
+                    
                     [
                         'allow' => true,
                         'roles' => ['?'],
                     ],
-                    // everything else is denied by default
+                    [
+                        'allow' => true,
+                        'actions' => ['bannear','desbanear'],
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action ) {
+                            return Yii::$app->user->identity->rol === '2';
+                        }
+                    ]
                 ],
             ],
+
+            
         ];
     }
 
@@ -98,30 +107,32 @@ class UsuariosController extends Controller
     }
 
     /**
-     * Metodo para banner a un usuario, asigna la fecha actual al atributo banned_at
+     * Metodo para bannear a un usuario, asigna la fecha actual al atributo banned_at
      *
      * @param integer $id, es el id del usuario a bannear
      * @return void
      */
     public function actionBanear($id)
     {
-     
+        $session = Yii::$app->session;
         $model = $this->findModel($id); 
         if ($model->banned_at !== null) {
             Yii::$app->session->setFlash('info', 'El usuario ya está banneado.');
                 return $this->redirect(Yii::$app->request->referrer);
         }
     
-        $model->banned_at = date('Y-m-d H:i:s');
-        if ($model->save()) {
+        $model->banned_at = date('Y-m-d H:i:s');     
+        $model->auth_key = Yii::$app->security->generateRandomString();
 
+        if ($model->save()) {
+            
             Yii::$app->session->setFlash('success', 'Usuario banneado correctamente.');
             return $this->redirect(Yii::$app->request->referrer);
         }
     }
 
     /**
-     * Metodo para banner a un usuario, asigna la fecha actual al atributo banned_at
+     * Metodo para desbannear a un usuario, elimina la fecha de banneo
      *
      * @param integer $id, es el id del usuario a bannear
      * @return void

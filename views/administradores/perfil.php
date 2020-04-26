@@ -489,7 +489,7 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                                                 },
 
                                                 'view' => function ($url, $model, $key) {
-                                                    return Html::a('Ver', ['presupuestos/view', 'id' => $key], [
+                                                    return Html::a(Icon::show('eye'). '' .' Ver', ['presupuestos/view', 'id' => $key], [
                                                         'class' => 'btn btn-sm btn-info',   
                                                     ]);
                                                 },
@@ -635,7 +635,7 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                                             'buttons' => [
                                                 
                                                 'validar' => function ($url, $model, $key) {
-                                                    return Html::a('Validar', ['empleos/validar', 'id' => $key], [
+                                                    return Html::a(Icon::show('check-circle'). '' .' Validar', ['empleos/validar', 'id' => $key], [
                                                         'class' => 'btn btn-sm btn-primary', 
                                                         
                                                         'data-confirm' => '¿Está seguro que quiere validar este empleo?',  
