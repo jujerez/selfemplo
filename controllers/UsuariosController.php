@@ -121,6 +121,29 @@ class UsuariosController extends Controller
     }
 
     /**
+     * Metodo para banner a un usuario, asigna la fecha actual al atributo banned_at
+     *
+     * @param integer $id, es el id del usuario a bannear
+     * @return void
+     */
+    public function actionDesbanear($id)
+    {
+     
+        $model = $this->findModel($id); 
+        if ($model->banned_at === null) {
+            Yii::$app->session->setFlash('info', 'El usuario ya está activo.');
+                return $this->redirect(Yii::$app->request->referrer);
+        }
+    
+        $model->banned_at = '';
+        if ($model->save()) {
+
+            Yii::$app->session->setFlash('success', 'Usuario desbaneado correctamente.');
+            return $this->redirect(Yii::$app->request->referrer);
+        }
+    }
+
+    /**
      * Finds the Profesionales model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id

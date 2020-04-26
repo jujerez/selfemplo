@@ -527,7 +527,29 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                                         
                                         'nombre',
                                         'email',
-                                        'rol',
+                                        
+                                        [
+                                            'attribute' => 'banned_at',
+                                            'format' => 'text',
+                                            'label' => 'Baneado',
+                                            'value' => function ($model) {
+                                                return $model->banned_at === null
+                                                ? 'Activo'
+                                                : 'Baneado';
+                                            },
+                                            'contentOptions'=>function($model, $key, $index, $column) { 
+
+                                                if ($model->banned_at === null) {
+
+                                                    return ['style' => 'color:green'];
+
+                                                } else {
+                                                    
+                                                    return ['style' => 'color:red'];  
+                                                }
+                                    
+                                            },
+                                        ],
                                         [
                                             'attribute' => 'rol',
                                             'format' => 'text',
@@ -541,19 +563,28 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                                         ],
                                         [
                                             'class' => 'yii\grid\ActionColumn',
-                                            'template' => '{banear}',
+                                            'template' => '{banear} {desbanear}',
                                             //'controller' => 'usuarios',
                                             'buttons' => [
-                                                
+
                                                 'banear' => function ($url, $model, $key) {
-                                                    return Html::a('Banear', ['usuarios/banear', 'id' => $key], [
-                                                        'class' => 'btn btn-sm btn-primary',   
-                                                    ]);
+                                                    if ($model->banned_at === null) {
+
+                                                        return Html::a(Icon::show('user-ninja'). '' .'Banear', ['usuarios/banear', 'id' => $key], [
+                                                            'class' => 'btn btn-sm btn-danger',   
+                                                        ]);
+                                                    }
                                                 },
-
-                                               
-
+                                        
                                                 
+                                                'desbanear' => function ($url, $model, $key) {
+                                                    if ($model->banned_at !== null) {
+                                                        return Html::a(Icon::show('check-circle'). '' .'Activar', ['usuarios/desbanear', 'id' => $key], [
+                                                            'class' => 'btn btn-sm btn-primary',
+                                                        ]);
+                                                    }
+                                                },
+    
 
                                             ],
                                         ], 
