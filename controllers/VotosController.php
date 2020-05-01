@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\Empleadores;
+use app\models\Profesionales;
 use Yii;
 use app\models\Votos;
 use app\models\VotosSearch;
@@ -62,8 +64,9 @@ class VotosController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($pro)
     {
+        $profesional = Profesionales::find()->where(['usuario_id' => $pro])->one();
         $model = new Votos();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -72,6 +75,8 @@ class VotosController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'profesional' => $profesional,
+            
         ]);
     }
 
