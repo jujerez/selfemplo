@@ -8,7 +8,7 @@ use Yii;
  * This is the model class for table "votos".
  *
  * @property int $id
- * @property int $voto
+ * @property float $voto
  * @property string $created_at
  * @property int $empleador_id
  * @property int $profesional_id
@@ -34,7 +34,7 @@ class Votos extends \yii\db\ActiveRecord
         return [
             [['voto', 'empleador_id', 'profesional_id'], 'required'],
             [['voto', 'empleador_id', 'profesional_id'], 'default', 'value' => null],
-            [['voto', 'empleador_id', 'profesional_id'], 'integer'],
+            [['voto', ], 'number', 'min' => 0.1],
             [['created_at'], 'safe'],
             [['empleador_id'], 'exist', 'skipOnError' => true, 'targetClass' => Usuarios::className(), 'targetAttribute' => ['empleador_id' => 'id']],
             [['profesional_id'], 'exist', 'skipOnError' => true, 'targetClass' => Usuarios::className(), 'targetAttribute' => ['profesional_id' => 'id']],

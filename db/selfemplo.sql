@@ -170,7 +170,7 @@ DROP TABLE IF EXISTS votos CASCADE;
 CREATE TABLE votos
 (
     id              BIGSERIAL     PRIMARY KEY
-  , voto            SMALLINT      NOT NULL
+  , voto            FLOAT         NOT NULL
   , created_at      TIMESTAMP(0)  NOT NULL DEFAULT CURRENT_TIMESTAMP
   , empleador_id    BIGINT        NOT NULL REFERENCES usuarios(id)
                                   ON DELETE CASCADE ON UPDATE CASCADE
@@ -8503,7 +8503,7 @@ INSERT INTO comentarios (texto, empleador_id, profesional_id)
     VALUES('Un trabajo excelente y muy curioso, recomendado 100%', 2, 4);
 
 INSERT INTO votos (voto, empleador_id, profesional_id)
-    VALUES(5, 2, 4);
+    VALUES(4.5, 2, 4);
 
 
 
