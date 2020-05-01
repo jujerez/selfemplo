@@ -83,8 +83,7 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                                     'method' => 'post',
                                 ],
                             ])
-                        ?>
-                    
+                        ?>                
                 </div>
 
          
@@ -238,6 +237,7 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
 
                     
                 </div>
+               
 
             </div>                      
                 

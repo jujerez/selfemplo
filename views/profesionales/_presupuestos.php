@@ -40,7 +40,22 @@ use yii\bootstrap4\Html;
 
                     <?php endif ?>  
                     </h4>
+                    <p class="pt-2">
+                        <?= Html::a(Icon::show('pencil-alt'). '' .' Modificar', ['presupuestos/update', 'id' => $model->id,], ['class' => 'btn btn-sm btn-primary']) ?>
+                        
+                        
+                        <?= Html::a(Icon::show('trash-alt'). '' .' Eliminar', ['presupuestos/delete', 'id' => $model->id], [
+                            'class' => 'btn btn-sm btn-danger',
+                            
+                            'data' => [
+                                'confirm' => '¿Estas seguro que deseas eliminar el presupuesto?',
+                                'method' => 'post',
+                                'controller' => 'presupuestos',
+                            ],
+                        ]) ?> 
+                    </p>    
                 </div>
+
 
                 <div class="card-footer d-flex justify-content-between mt-3">
                     
@@ -48,20 +63,7 @@ use yii\bootstrap4\Html;
                     <span class="total float-right"><b><?= Html::encode($model->precio)?> €</b></span>
                        
                 </div>
-                        <p>
-                            <?= Html::a(Icon::show('pencil-alt'). '' .' Modificar', ['presupuestos/update', 'id' => $model->id,], ['class' => 'btn btn-sm btn-success']) ?>
-                           
-                            
-                            <?= Html::a(Icon::show('trash-alt'). '' .' Eliminar', ['presupuestos/delete', 'id' => $model->id], [
-                                'class' => 'btn btn-sm btn-danger',
-                                
-                                'data' => [
-                                    'confirm' => '¿Estas seguro que deseas eliminar el presupuesto?',
-                                    'method' => 'post',
-                                    'controller' => 'presupuestos',
-                                ],
-                            ]) ?> 
-                        </p>          
+                             
             </div>
         </section>
     </div>

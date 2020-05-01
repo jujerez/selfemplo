@@ -38,18 +38,10 @@ use yii\bootstrap4\Html;
                     <?php else:?>
                         <span class="p-2 badge badge-pill badge-info text-uppercase">Pendiente</span>
 
-                    <?php endif ?>  
-                    
-                </div>
+                    <?php endif ?> 
 
-                <div class="card-footer d-flex justify-content-between mt-3">
-                    
-                    <span class="total"><b>TOTAL</b></span>             
-                    <span class="total float-right"><b><?= Html::encode($model->precio)?> €</b></span>
-                       
-                </div>
-                        <p>
-                            
+                    <p class="pt-2">
+                        <?php if($model->estado=='2'):?>
                             <?= Html::a(Icon::show('check'). '' .' Aceptar', ['presupuestos/aceptar', 'id' => $model->id, 'ide' => $model->empleo->id, 'email' => $model->profesional->email], [
                                 'class' => 'btn btn-sm btn-success',
                                 'data' => [
@@ -71,7 +63,31 @@ use yii\bootstrap4\Html;
                                     'controller' => 'presupuestos',
                                 ],
                             ]) ?> 
-                        </p>          
+                        <?php elseif($model->estado=='1'):?>
+                            <?= Html::a(Icon::show('star-half-alt'). '' .' Puntuar',
+                                    [
+                                        'votos/create', 
+                                        'pro' => $model->profesional->profesionales->usuario_id,
+                                        'pre' => $model->id,
+                                        
+                                    ], 
+                                    [
+                                        'class' => 'btn btn-sm btn-primary',
+                                    ])
+                            ?> 
+                            
+                        <?php endif ?>
+                    </p>     
+                    
+                </div>
+
+                <div class="card-footer d-flex justify-content-between mt-3">
+                    
+                    <span class="total"><b>TOTAL</b></span>             
+                    <span class="total float-right"><b><?= Html::encode($model->precio)?> €</b></span>
+                       
+                </div>
+                         
             </div>
         </section>
     </div>

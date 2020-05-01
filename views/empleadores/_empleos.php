@@ -30,7 +30,7 @@ use yii\bootstrap4\Html;
                       
                     <?=Html::a(Icon::show('pencil-alt'). '' .' Modificar', 
                         ['empleos/update', 'id' => $key,],
-                        ['class' => 'btn btn-sm btn-warning']
+                        ['class' => 'btn btn-sm btn-primary']
                     )?>
                         
                     <?=Html::a(Icon::show('trash-alt'). '' .' Eliminar', 
