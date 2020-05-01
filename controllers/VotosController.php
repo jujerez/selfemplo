@@ -3,10 +3,12 @@
 namespace app\controllers;
 
 use app\models\Empleadores;
+use app\models\Presupuestos;
 use app\models\Profesionales;
 use Yii;
 use app\models\Votos;
 use app\models\VotosSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -26,6 +28,45 @@ class VotosController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                ],
+            ],
+
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['create',],
+                'rules' => [
+                
+                    [
+                        'allow' => true,
+                        'actions' => ['create',],
+                        'roles' => ['@'],
+                        // Solo puede votar el empleador que recibe el presupuesto
+                        'matchCallback' => function ($rule, $action ) {
+
+                            $empleador = Yii::$app->user->identity->id;
+                            $presupuesto =Yii::$app->request->get('pre');
+                            $rol = Yii::$app->user->identity->rol;
+
+                            $filas = Presupuestos::find()->alias('p')
+                              ->select('p.id')
+                              ->joinWith('empleo e')
+                              ->where(['e.empleador_id'=> $empleador])
+                              ->all();
+
+                              foreach ($filas as $fila => $value) {
+                                
+                                if ($value['id'] == $presupuesto && Yii::$app->user->identity->rol === '1' ) {
+                                    return true;
+                                }
+                            
+                            }
+
+                            
+                            return false;
+                        }
+                    ],
+                    
+                   
                 ],
             ],
         ];
