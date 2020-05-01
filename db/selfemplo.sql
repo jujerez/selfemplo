@@ -176,6 +176,8 @@ CREATE TABLE votos
                                   ON DELETE CASCADE ON UPDATE CASCADE
   , profesional_id  BIGINT        NOT NULL REFERENCES usuarios(id)
                                   ON DELETE CASCADE ON UPDATE CASCADE
+  , presupuesto_id  BIGINT        NOT NULL REFERENCES presupuestos(id)
+                                  ON DELETE CASCADE ON UPDATE CASCADE
  
 );
 
@@ -8493,17 +8495,25 @@ INSERT INTO empleos (titulo, descripcion, poblacion_id, empleador_id, profesion_
            , 1807
            , 1
            , 59
+        )
+
+        , ('Alicatar una cocina'
+           , 'Necesito un albañil para alicatar una cocina de 9m2 de construcción nueva'
+           , 1807
+           , 2
+           , 59
         );
 
 INSERT INTO presupuestos (precio, estado, duracion_estimada, profesional_id, empleo_id)
    VALUES   (50.00, '1', 1, 4, 1)
-          , (250.00, '2', 10, 4, 1);
+          , (250.00, '0', 10, 4, 1)
+          , (600.00, '2', 2, 4, 5);
 
 INSERT INTO comentarios (texto, empleador_id, profesional_id)
     VALUES('Un trabajo excelente y muy curioso, recomendado 100%', 2, 4);
 
-INSERT INTO votos (voto, empleador_id, profesional_id)
-    VALUES(4.5, 2, 4);
+INSERT INTO votos (voto, empleador_id, profesional_id, presupuesto_id)
+    VALUES(4.5, 2, 4, 1);
 
 
 

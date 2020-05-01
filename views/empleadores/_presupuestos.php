@@ -76,6 +76,7 @@ use yii\bootstrap4\Html;
                                     [
                                         'votos/create', 
                                         'pro' => $model->profesional->profesionales->usuario_id,
+                                        'pre' => $model->id,
                                         
                                     ], 
                                     [

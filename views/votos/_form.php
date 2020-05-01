@@ -16,8 +16,6 @@ $empleador = Yii::$app->user->identity->id;
 ?>
 <style>
 
-
-
 .panel {
     box-shadow: 0 2px 0 rgba(0,0,0,0.075);
     border-radius: 0;
@@ -84,6 +82,8 @@ $empleador = Yii::$app->user->identity->id;
                         <?= $form->field($model, 'profesional_id')->hiddenInput(['value'=> $profesional->usuario_id])->label(false) ?>
 
                         <?= $form->field($model, 'empleador_id')->hiddenInput(['value'=> $empleador])->label(false) ?>
+
+                        <?= $form->field($model, 'presupuesto_id')->hiddenInput(['value'=> $presupuesto])->label(false) ?>
 
                         <div class="form-group">
                             <?= Html::submitButton('Votar', ['class' => 'btn btn-success']) ?>

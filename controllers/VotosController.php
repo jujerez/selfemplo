@@ -64,8 +64,17 @@ class VotosController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate($pro)
+    public function actionCreate($pro, $pre)
     {
+        
+        $c = Votos::find()->where(['presupuesto_id' => $pre])->count();
+        if ($c > 0) {
+            Yii::$app->session->setFlash('danger', 'Ya has votado a este profesional por ese empleo.');
+            return $this->redirect(Yii::$app->request->referrer);
+        }
+
+       
+
         $profesional = Profesionales::find()->where(['usuario_id' => $pro])->one();
         $model = new Votos();
 
@@ -76,6 +85,8 @@ class VotosController extends Controller
         return $this->render('create', [
             'model' => $model,
             'profesional' => $profesional,
+            'presupuesto' => $pre,
+            
             
         ]);
     }
