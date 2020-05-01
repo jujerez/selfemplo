@@ -79,7 +79,8 @@ class VotosController extends Controller
         $model = new Votos();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->setFlash('success', 'Su puntuación ha sido registrada correctamente.');
+            return $this->redirect(Yii::$app->request->referrer);
         }
 
         return $this->render('create', [

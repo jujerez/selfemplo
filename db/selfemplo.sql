@@ -8504,10 +8504,34 @@ INSERT INTO empleos (titulo, descripcion, poblacion_id, empleador_id, profesion_
            , 59
         );
 
-INSERT INTO presupuestos (precio, estado, duracion_estimada, profesional_id, empleo_id)
-   VALUES   (50.00, '1', 1, 4, 1)
-          , (250.00, '0', 10, 4, 1)
-          , (600.00, '2', 2, 4, 5);
+INSERT INTO presupuestos (precio, estado, duracion_estimada, detalles, profesional_id, empleo_id)
+   VALUES   (
+              50.00, 
+              '1', 
+              2, 
+             'Alquiler de maquinaria: 20€
+              Mano de obra 15€/h',
+              4,
+              1
+            )
+          , (
+              60.00, 
+              '0', 
+              10,
+              'Alquiler de maquinaria: 30€
+               Mano de obra 15€/h', 
+               4, 
+               1
+            )
+          , (
+              540.00, 
+              '2', 
+              40, 
+              'Alquiler de maquinarias: 60€
+               Precio de la hora: 12€', 
+              4, 
+              5
+            );
 
 INSERT INTO comentarios (texto, empleador_id, profesional_id)
     VALUES('Un trabajo excelente y muy curioso, recomendado 100%', 2, 4);
