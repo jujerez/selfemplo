@@ -75,6 +75,18 @@ use yii\bootstrap4\Html;
                                         'class' => 'btn btn-sm btn-primary',
                                     ])
                             ?> 
+
+                            <?= Html::a(Icon::show('comments'). '' .' Comentar',
+                                    [
+                                        'comentarios/create', 
+                                        'pro' => $model->profesional->profesionales->usuario_id,
+                                        'pre' => $model->id,
+                                        
+                                    ], 
+                                    [
+                                        'class' => 'btn btn-sm btn-primary',
+                                    ])
+                            ?> 
                             
                         <?php endif ?>
                     </p>     
