@@ -86,7 +86,7 @@ $empleador = Yii::$app->user->identity->id;
                         <?= $form->field($model, 'presupuesto_id')->hiddenInput(['value'=> $presupuesto])->label(false) ?>
 
                         <div class="form-group">
-                            <?= Html::submitButton('Votar', ['class' => 'btn btn-success']) ?>
+                            <?= Html::submitButton('Puntuar', ['class' => 'btn btn-success']) ?>
                         </div>
 
                     <?php ActiveForm::end(); ?>

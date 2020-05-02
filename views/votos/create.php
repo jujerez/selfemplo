@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Votos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
-<div class="votos-create container">
+<section class="votos-create container">
 
     <h1 class="text-center"><?= Html::encode($this->title) ?></h1>
 
@@ -21,4 +21,4 @@ $this->params['breadcrumbs'][] = $this->title;
         
     ]) ?>
 
-</div>
+</section>
