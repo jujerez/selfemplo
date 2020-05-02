@@ -160,6 +160,9 @@ CREATE TABLE comentarios
                                   ON DELETE CASCADE ON UPDATE CASCADE
   , profesional_id  BIGINT        NOT NULL REFERENCES usuarios(id)
                                   ON DELETE CASCADE ON UPDATE CASCADE
+  , presupuesto_id  BIGINT        NOT NULL REFERENCES presupuestos(id)
+                                  ON DELETE CASCADE ON UPDATE CASCADE
+ 
  
 );
 
@@ -8533,8 +8536,8 @@ INSERT INTO presupuestos (precio, estado, duracion_estimada, detalles, profesion
               5
             );
 
-INSERT INTO comentarios (texto, empleador_id, profesional_id)
-    VALUES('Un trabajo excelente y muy curioso, recomendado 100%', 2, 4);
+INSERT INTO comentarios (texto, empleador_id, profesional_id, presupuesto_id)
+    VALUES('Un trabajo excelente y muy curioso, recomendado 100%', 2, 4,1);
 
 INSERT INTO votos (voto, empleador_id, profesional_id, presupuesto_id)
     VALUES(4.5, 2, 4, 1);
