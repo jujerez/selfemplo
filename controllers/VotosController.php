@@ -2,12 +2,14 @@
 
 namespace app\controllers;
 
+use app\models\Comentarios;
 use app\models\Empleadores;
 use app\models\Presupuestos;
 use app\models\Profesionales;
 use Yii;
 use app\models\Votos;
 use app\models\VotosSearch;
+use yii\base\Model;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -118,18 +120,24 @@ class VotosController extends Controller
 
         $profesional = Profesionales::find()->where(['usuario_id' => $pro])->one();
         $model = new Votos();
+        $model2 = new Comentarios();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && 
+            $model2->load(Yii::$app->request->post()) && Model::validateMultiple([$model, $model2])) {
+
+            $model->save(false);
+            $model2->save(false);  
+
             Yii::$app->session->setFlash('success', 'Su puntuación ha sido registrada correctamente.');
-            return $this->redirect(Yii::$app->request->referrer);
+            return $this->redirect(['empleadores/perfil', 'id' => Yii::$app->user->identity->id]);
         }
 
         return $this->render('create', [
             'model' => $model,
+            'model2' => $model2,
             'profesional' => $profesional,
             'presupuesto' => $pre,
-            
-            
+                        
         ]);
     }
 

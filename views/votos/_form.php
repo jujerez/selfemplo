@@ -79,11 +79,22 @@ $empleador = Yii::$app->user->identity->id;
                             ]
                         ])->label(false); ?>
 
+                        <?= $form->field($model2, 'texto')->textArea([
+                            'maxlength' => true,
+                            'spellcheck' => true,  
+                            'placeholder' => 'Sea breve y conciso',
+                            'rows' => '3'
+                            ]) 
+                        ?>
+
                         <?= $form->field($model, 'profesional_id')->hiddenInput(['value'=> $profesional->usuario_id])->label(false) ?>
+                        <?= $form->field($model2, 'profesional_id')->hiddenInput(['value'=> $profesional->usuario_id])->label(false) ?>
 
                         <?= $form->field($model, 'empleador_id')->hiddenInput(['value'=> $empleador])->label(false) ?>
+                        <?= $form->field($model2, 'empleador_id')->hiddenInput(['value'=> $empleador])->label(false) ?>
 
                         <?= $form->field($model, 'presupuesto_id')->hiddenInput(['value'=> $presupuesto])->label(false) ?>
+                        <?= $form->field($model2, 'presupuesto_id')->hiddenInput(['value'=> $presupuesto])->label(false) ?>
 
                         <div class="form-group">
                             <?= Html::submitButton('Puntuar', ['class' => 'btn btn-success']) ?>
