@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Comentarios;
 use app\models\ComentariosSearch;
+use app\models\Profesionales;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -62,16 +63,19 @@ class ComentariosController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($pro, $pre)
     {
         $model = new Comentarios();
-
+        $profesional = Profesionales::find()->where(['usuario_id' => $pro])->one();
+     
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
             'model' => $model,
+            'profesional' => $profesional,
+            'presupuesto' => $pre
         ]);
     }
 

@@ -8,13 +8,16 @@ use yii\bootstrap4\Html;
 $this->title = 'Create Comentarios';
 $this->params['breadcrumbs'][] = ['label' => 'Comentarios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
-<div class="comentarios-create">
+<div class="comentarios-create container">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
         'model' => $model,
+        'profesional' => $profesional,
+        'presupuesto' => $presupuesto,
     ]) ?>
 
 </div>
