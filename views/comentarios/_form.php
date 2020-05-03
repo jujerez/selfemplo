@@ -13,7 +13,9 @@ $imagen = Url::to('@app/web/img/' . $profesional->usuario_id . '.jpg');
 !file_exists($imagen) ? $user = '@web/img/user.png' : $user = '@web/img/'. $profesional->usuario_id .'.jpg';
 $empleador = Yii::$app->user->identity->id;
 
+
 ?>
+
 <style>
 
 .panel {
@@ -45,6 +47,7 @@ $empleador = Yii::$app->user->identity->id;
 } 
 
 </style>
+
 <div class="votos-form mod">
 
     <div class="row  justify-content-center ">
@@ -62,42 +65,21 @@ $empleador = Yii::$app->user->identity->id;
                 <div class="pt-2 pb-2">
                     <?php $form = ActiveForm::begin(); ?>
 
-                        <?= $form->field($model, 'voto')->widget(StarRating::classname(), [
-                            'value' => 2.5,
-                            
-                            'pluginOptions' => [
-                                'step' => 1,
-                                'starCaptions' => [
-                                    1 => 'Pesimo',
-                                    2 => 'Malo',
-                                    3 => 'Regular',
-                                    4 => 'Bueno',
-                                    5 => 'Excelente',
-                                    
-                                ],
-                                
-                            ]
-                        ])->label(false); ?>
-
-                        <?= $form->field($model2, 'texto')->textArea([
+                        <?= $form->field($model, 'texto')->textArea([
                             'maxlength' => true,
                             'spellcheck' => true,  
                             'placeholder' => 'Sea breve y conciso',
                             'rows' => '3'
-                            ]) 
-                        ?>
+                            ]) ?>
 
                         <?= $form->field($model, 'profesional_id')->hiddenInput(['value'=> $profesional->usuario_id])->label(false) ?>
-                        <?= $form->field($model2, 'profesional_id')->hiddenInput(['value'=> $profesional->usuario_id])->label(false) ?>
 
                         <?= $form->field($model, 'empleador_id')->hiddenInput(['value'=> $empleador])->label(false) ?>
-                        <?= $form->field($model2, 'empleador_id')->hiddenInput(['value'=> $empleador])->label(false) ?>
 
                         <?= $form->field($model, 'presupuesto_id')->hiddenInput(['value'=> $presupuesto])->label(false) ?>
-                        <?= $form->field($model2, 'presupuesto_id')->hiddenInput(['value'=> $presupuesto])->label(false) ?>
 
                         <div class="form-group">
-                            <?= Html::submitButton('Valorar', ['class' => 'btn btn-success']) ?>
+                            <?= Html::submitButton('Comentar', ['class' => 'btn btn-success']) ?>
                         </div>
 
                     <?php ActiveForm::end(); ?>
@@ -111,3 +93,5 @@ $empleador = Yii::$app->user->identity->id;
 
     
 </div>
+
+

@@ -42,7 +42,7 @@ use yii\bootstrap4\Html;
 
                     <p class="pt-2">
                         <?php if($model->estado=='2'):?>
-                            <?= Html::a(Icon::show('check'). '' .' Aceptar', ['presupuestos/aceptar', 'id' => $model->id, 'ide' => $model->empleo->id, 'email' => $model->profesional->email], [
+                            <?= Html::a(Icon::show('hands-helping'). '' .' Aceptar', ['presupuestos/aceptar', 'id' => $model->id, 'ide' => $model->empleo->id, 'email' => $model->profesional->email], [
                                 'class' => 'btn btn-sm btn-success',
                                 'data' => [
                                     'confirm' => '¿Estas seguro que deseas aceptar el presupuesto?',
@@ -64,7 +64,7 @@ use yii\bootstrap4\Html;
                                 ],
                             ]) ?> 
                         <?php elseif($model->estado=='1'):?>
-                            <?= Html::a(Icon::show('star-half-alt'). '' .' Puntuar',
+                            <?= Html::a(Icon::show('star-half-alt'). '' .' Valorar',
                                     [
                                         'votos/create', 
                                         'pro' => $model->profesional->profesionales->usuario_id,
@@ -75,6 +75,8 @@ use yii\bootstrap4\Html;
                                         'class' => 'btn btn-sm btn-primary',
                                     ])
                             ?> 
+
+                            
                             
                         <?php endif ?>
                     </p>     
