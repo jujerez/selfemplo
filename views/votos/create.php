@@ -5,7 +5,7 @@ use yii\bootstrap4\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Votos */
 
-$this->title = 'Puntuar';
+$this->title = 'Valorar';
 $this->params['breadcrumbs'][] = ['label' => 'Votos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
