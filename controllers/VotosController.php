@@ -112,7 +112,7 @@ class VotosController extends Controller
         
         $c = Votos::find()->where(['presupuesto_id' => $pre])->count();
         if ($c > 0) {
-            Yii::$app->session->setFlash('danger', 'Ya has votado a este profesional por ese empleo.');
+            Yii::$app->session->setFlash('danger', 'Ya has valorado a este profesional por ese empleo.');
             return $this->redirect(Yii::$app->request->referrer);
         }
 
@@ -128,7 +128,7 @@ class VotosController extends Controller
             $model->save(false);
             $model2->save(false);  
 
-            Yii::$app->session->setFlash('success', 'Su puntuación ha sido registrada correctamente.');
+            Yii::$app->session->setFlash('success', 'Su valoración ha sido registrada correctamente.');
             return $this->redirect(['empleadores/perfil', 'id' => Yii::$app->user->identity->id]);
         }
 
