@@ -395,3 +395,13 @@ h1.presupuesto {
     text-decoration: underline;
 }
 
+.svg-inline--fa.fa-w-18 {
+    width: 0.8em;
+}
+
+.borde-gris {
+    border: 1px solid #ccc;
+}
+
+
+

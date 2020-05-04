@@ -70,7 +70,7 @@ CREATE TABLE profesionales
     , apellidos                VARCHAR(255) NOT NULL
     , telefono                 VARCHAR(255) NOT NULL
     , direccion                VARCHAR(255) 
-    , slogan                   VARCHAR(255)
+    , presentacion                   VARCHAR(255)
     , created_at               TIMESTAMP(0) DEFAULT CURRENT_TIMESTAMP
     , poblacion_id             BIGINT       NOT NULL REFERENCES poblaciones (id)
                                             ON DELETE CASCADE ON UPDATE CASCADE
@@ -8460,9 +8460,9 @@ INSERT INTO usuarios (nombre, email, password, rol )
  
 
      
-INSERT INTO profesionales (usuario_id, nombre, apellidos, telefono, direccion, poblacion_id, profesion_id)
-  VALUES  (4, 'Fernando', 'Gomez Gozalez','666777889','C/ Oviedo nº 1' ,1808, 4)
-        , (5, 'Antonio', 'Gutierrez','766777898','C/ Salamanca nº 1' ,1809, 31);
+INSERT INTO profesionales (usuario_id, nombre, apellidos, telefono, direccion, presentacion, poblacion_id, profesion_id)
+  VALUES  (4, 'Fernando', 'Gomez Gozalez','666777889','C/ Oviedo nº 1', 'Soy una persona educada, seria y entregada a mi trabajo' ,1808, 4)
+        , (5, 'Antonio', 'Gutierrez','766777898','C/ Salamanca nº 1', '' ,1809, 31);
 
 INSERT INTO empleadores (usuario_id, nombre, apellidos, telefono, direccion, poblacion_id)
   VALUES (2, 'Pepe', 'Ortega','666987789', 'C/ Sevilla nº 3',1807)
@@ -8540,7 +8540,7 @@ INSERT INTO comentarios (texto, empleador_id, profesional_id, presupuesto_id)
     VALUES('Un trabajo excelente y muy curioso, recomendado 100%', 2, 4,1);
 
 INSERT INTO votos (voto, empleador_id, profesional_id, presupuesto_id)
-    VALUES(4.5, 2, 4, 1);
+    VALUES(4.0, 2, 4, 1);
 
 
 

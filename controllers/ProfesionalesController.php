@@ -174,6 +174,17 @@ class ProfesionalesController extends Controller
             
         ]);
     }
+
+    public function actionPerfilPublico($id) 
+    {
+        $model = $this->findModel($id);
+
+        return $this->render('perfil-publico', [
+            'model' => $model,
+            
+            
+        ]);
+    }
     /**
      * Metodo que devuelve las poblaciones en función de la provicia reciba por parametros,
      * en formato JSON
