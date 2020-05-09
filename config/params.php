@@ -24,4 +24,17 @@ return [
     ],
 
     'icon-framework' => 'fa', 
+
+    'googleMapsUrlOptions' => [
+        'key' => getenv('API_KEY'),
+        'version' => '3.40',
+        'language' => 'es', 
+        
+    ],
+
+    'googleMapsOptions' => [
+        'mapTypeId' => 'roadmap',
+        'tilt' => 45,
+        'zoom' => 5,
+    ],
 ];

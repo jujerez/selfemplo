@@ -7,6 +7,7 @@ use kartik\file\FileInput;
 use kartik\icons\Icon;
 use kartik\rating\StarRating;
 use kartik\tabs\TabsX;
+use yii2mod\google\maps\markers\GoogleMaps;
 use yii\bootstrap4\Html;
 use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
@@ -33,6 +34,8 @@ $media = (new \yii\db\Query())
     ->where(['profesional_id' => $model->usuario_id])
     ->one();
 
+
+
 ?>
   
 <main class="empleadores-view container">
@@ -55,8 +58,14 @@ $media = (new \yii\db\Query())
                     ],
                 ]) ?>
                 </div>
-                
+                <div class="text-center pt-5">
+
+                    <?= Html::a('Solicitar servicio', ['empleos/create',], 
+                        ['class' => 'btn btn-lg btn-primary']) 
+                    ?>
+                </div>    
             </div>
+
         </aside>
 
        <section class="col-md-8 col-sm-12 col-lg-8">
@@ -64,8 +73,26 @@ $media = (new \yii\db\Query())
                <h2>Así es <?=$model->nombre?></h2>
                <p class="borde-gris p-3"><?= $model->presentacion ?: 'Este usuario todavia no ha puesto su carta de presentación' ?> </p> 
            </article>
-           <article class="area-trabajo">
-                
+           <article class="area-trabajo pt-5">
+                <h2>Mi area de trabajo</h2>
+                <div id="map">
+
+                    <?= GoogleMaps::widget([
+                           
+                        'wrapperHeight' => '350px',
+
+                        'userLocations' => [
+                            [
+                                'location' => [
+                                    'address' => '',
+                                    'country' => $model->poblacion->nombre
+                                ],      
+                            ],
+                            
+                        ],
+   
+                    ])?>
+                </div>
            </article>
                                         
         </section> 
