@@ -335,7 +335,7 @@ a.desc:after {
 
 /*Sidebar*/
 .sidebar {
-    height: 100vh;
+    min-height: 100vh;
 }
 .borde {
     border: 1px solid rgba(0,0,0,0.125);

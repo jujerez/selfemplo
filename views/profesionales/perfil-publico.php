@@ -41,7 +41,7 @@ $media = (new \yii\db\Query())
 <main class="empleadores-view container">
 
    <section class="row justify-content-around">
-       <aside class="col-md-4 col-sm-12 col-lg-4">
+       <aside class="col-md-4 col-sm-12 col-lg-4 mb-4">
             <div class="sidebar shadow p-4 ">
                 <div class="img-perfil text-center p-3">
                 <?= Html::img($user, ['alt'=>$model->nombre, ]) ?>
