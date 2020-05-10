@@ -48,7 +48,7 @@ $media = (new \yii\db\Query())
                 <h3 class="text-center "><?=$model->nombre?></h3>
                 <span class="text-muted">Es de <?=$model->poblacion->nombre?></span><br>
                 <span class="text-muted">Registrado el  <?= Yii::$app->formatter->asDate($model->created_at)?></span><br>
-                <?= $num_val .' valoraciones' . StarRating::widget([
+                <?= $num_val . ($num_val > 1 ? ' valoraciones' : ' valoración') . StarRating::widget([
                     'name' => 'rating',
                     'value' => $media['media'],
                     'pluginOptions' => [
@@ -74,7 +74,7 @@ $media = (new \yii\db\Query())
                <p class="borde-gris p-3"><?= $model->presentacion ?: 'Este usuario todavia no ha puesto su carta de presentación' ?> </p> 
            </article>
            <article class="area-trabajo pt-5">
-                <h2>Mi area de trabajo</h2>
+                <h2><i class="fas fa-map-marked-alt"></i> Mi area de trabajo</h2>
                 <div id="map">
 
                     <?= GoogleMaps::widget([
