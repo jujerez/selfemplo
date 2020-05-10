@@ -40,6 +40,8 @@ if (!isset($_COOKIE['politica'])) {
 
     $this->registerJs($js);
 }
+
+
 Util::dialogoPolitica();
 Util::dialogo();
 WowWidget::widget();
@@ -55,10 +57,6 @@ WowWidget::widget();
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"> 
-    <script
-			  src="https://code.jquery.com/jquery-3.4.1.slim.js"
-			  integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI="
-			  crossorigin="anonymous"></script>
 </head>
 <body>
 <?php $this->beginBody() ?>

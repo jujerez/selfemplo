@@ -41,7 +41,8 @@ use yii\bootstrap4\Html;
                     <?php endif ?>  
                     </h4>
                     <p class="pt-2">
-                        <?= Html::a(Icon::show('pencil-alt'). '' .' Modificar', ['presupuestos/update', 'id' => $model->id,], ['class' => 'btn btn-sm btn-primary']) ?>
+                        <?= Html::a(Icon::show('pencil-alt'). '' .' Modificar', ['presupuestos/update', 'id' => $model->id,], 
+                        ['class' => 'btn btn-sm btn-primary']) ?>
                         
                         
                         <?= Html::a(Icon::show('trash-alt'). '' .' Eliminar', ['presupuestos/delete', 'id' => $model->id], [

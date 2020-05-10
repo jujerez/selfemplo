@@ -12,7 +12,7 @@ use Yii;
  * @property string $apellidos
  * @property string $telefono
  * @property string|null $direccion
- * @property string|null $slogan
+ * @property string|null $presentacion
  * @property string $created_at
  * @property int $poblacion_id
  * @property int $profesion_id
@@ -46,7 +46,7 @@ class Profesionales extends \yii\db\ActiveRecord
             [['usuario_id', 'poblacion_id', 'profesion_id'], 'default', 'value' => null],
             [['usuario_id', 'poblacion_id', 'profesion_id'], 'integer'],
             [['created_at'], 'safe'],
-            [['nombre', 'apellidos', 'telefono', 'direccion', 'slogan'], 'string', 'max' => 255],
+            [['nombre', 'apellidos', 'telefono', 'direccion', 'presentacion'], 'string', 'max' => 255],
             [['usuario_id'], 'unique'],
             [['telefono'], 'match', 'pattern' =>'/(\+34|0034|34)?[ -]*(6|7)[ -]*([0-9][ -]*){8}/'],
             [['!provincia'], 'safe'],
@@ -87,7 +87,7 @@ class Profesionales extends \yii\db\ActiveRecord
             'apellidos' => 'Apellidos',
             'telefono' => 'Teléfono',
             'direccion' => 'Dirección',
-            'slogan' => 'Slogan',
+            'presentacion' => 'Presentacion',
             'created_at' => 'Created At',
             'poblacion_id' => 'Población',
             'profesion_id' => 'Profesión',
