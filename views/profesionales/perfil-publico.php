@@ -20,7 +20,7 @@ use yii\widgets\Pjax;
 /* @var $model app\models\Empleadores */
 
 $this->title = $model->nombre;
-$this->params['breadcrumbs'][] = ['label' => 'Mi perfil', 'url' => ['perfil', 'id' => $model->usuario_id] ];
+$this->params['breadcrumbs'][] = ['label' => 'Profesionales', 'url' => ['perfil', 'id' => $model->usuario_id] ];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
@@ -58,7 +58,7 @@ $media = (new \yii\db\Query())
                     ],
                 ]) ?>
                 </div>
-                <div class="text-center pt-5">
+                <div class="text-center pt-3">
 
                     <?= Html::a('Solicitar servicio', ['empleos/create',], 
                         ['class' => 'btn btn-lg btn-primary']) 
