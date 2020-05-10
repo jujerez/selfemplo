@@ -35,6 +35,6 @@ return [
     'googleMapsOptions' => [
         'mapTypeId' => 'roadmap',
         'tilt' => 45,
-        'zoom' => 5,
+        'zoom' => 100,
     ],
 ];
