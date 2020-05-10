@@ -991,6 +991,15 @@
 | **Entrega**     | v2             |
 | **Incidencia**  | [308](https://github.com/jujerez/selfemplo/issues/308) |
 
+| **R111**     | **Área de trabajo**         |
+| --------------: | :------------------- |
+| **Descripción** | La sección de perfil público de un usuario-profesional dispondrá de un mapa para mostrar el área de trabajo de este usuario, para ello se hará uso de la API de Google.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [320](https://github.com/jujerez/selfemplo/issues/320) |
+
 
 ## Cuadro resumen
 
@@ -1106,3 +1115,4 @@
 | (**R108**) Ver presupuestos | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [298](https://github.com/jujerez/selfemplo/issues/298) |
 | (**R109**) Aceptar presupuestos | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [301](https://github.com/jujerez/selfemplo/issues/301) |
 | (**R110**) Moderaciones de empleos | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [308](https://github.com/jujerez/selfemplo/issues/308) |
+| (**R111**) Área de trabajo | Importante | Funcional | Media | v3 | | **Incidencia**  | [320](https://github.com/jujerez/selfemplo/issues/320) |
