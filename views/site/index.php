@@ -2,6 +2,7 @@
 
 /* @var $this yii\web\View */
 
+
 use rootlocal\widgets\wow\WowWidget;
 use yii\helpers\Html;
 
@@ -26,9 +27,9 @@ $this->title = 'Selfemplo';
     </div>
 
 
-    <main class="body-content container mt-5">
+    <main class="body-content container-fluid mt-5">
    
-        <div class="mb-5">
+        <div class="mb-5 container">
             <section class="row justify-content-around">
                 <div class="col-md-12">
                     <h2 class="text-center wow bounceInDown "><b>Encontrar un profesional de confianza nunca ha sido tan facil</b></h2>
@@ -67,6 +68,32 @@ $this->title = 'Selfemplo';
                 </div>   
             </section>
         </div>
+            <!--SECCION OPINIONES-->
+        
+        <section class="row justify-content-around bg-light mt-5 p-5 jumbotron-fluid shadow">
+            <div class="container">
+                <div class="row justify-content-around">
+                      
+                        <div class="col-md-6">
+                            <h2 class=" wow bounceInUp " ><b>¿Eres un profesional y buscas nuevos clientes y trabajos?</b></h2>
+                            <p class="lead">En Selfemplo tenemos muchos clientes que buscan profesionales en su zona, por todo el país.
+
+Regístrate y contacta con personas que buscan profesionales en reformas, limpieza, obras, deportes, asesoría, clases particulares, etc.</p>
+                            <?= Html::a('Registrarme', ['usuarios/registrar'], ['class' => 'btn  btn-lg btn-primary wow rollIn', 'data-wow-delay' => "0.5s"]) ?> 
+                        </div>
+
+                        <div class="col-md-6">
+                            <?= Html::img('@web/img/profesionales.png', ['class'=>'img-responssive w-100', 'alt' => 'profesionales'])?>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+                
+            
+        </section>
+
+        
     
     </main>
 </div>
