@@ -184,6 +184,23 @@ CREATE TABLE votos
  
 );
 
+-- Tabla valoraciones --
+DROP TABLE IF EXISTS valoraciones CASCADE;
+CREATE TABLE valoraciones
+(
+    id              BIGSERIAL     PRIMARY KEY
+  , voto            FLOAT         NOT NULL
+  , comentario      VARCHAR(255)  NOT NULL
+  , created_at      TIMESTAMP(0)  NOT NULL DEFAULT CURRENT_TIMESTAMP
+  , empleador_id    BIGINT        NOT NULL REFERENCES usuarios(id)
+                                  ON DELETE CASCADE ON UPDATE CASCADE
+  , profesional_id  BIGINT        NOT NULL REFERENCES usuarios(id)
+                                  ON DELETE CASCADE ON UPDATE CASCADE
+  , presupuesto_id  BIGINT        NOT NULL REFERENCES presupuestos(id)
+                                  ON DELETE CASCADE ON UPDATE CASCADE
+ 
+);
+
 
 
 -- ************** INSERCIONES ******************* --
