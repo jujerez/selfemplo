@@ -8553,11 +8553,15 @@ INSERT INTO presupuestos (precio, estado, duracion_estimada, detalles, profesion
               5
             );
 
-INSERT INTO comentarios (texto, empleador_id, profesional_id, presupuesto_id)
-    VALUES('Un trabajo excelente y muy curioso, recomendado 100%', 2, 4,1);
+-- INSERT INTO comentarios (texto, empleador_id, profesional_id, presupuesto_id)
+--     VALUES('Un trabajo excelente y muy curioso, recomendado 100%', 2, 4,1);
 
-INSERT INTO votos (voto, empleador_id, profesional_id, presupuesto_id)
-    VALUES(4.0, 2, 4, 1);
+-- INSERT INTO votos (voto, empleador_id, profesional_id, presupuesto_id)
+--     VALUES(4.0, 2, 4, 1);
+
+INSERT INTO valoraciones (voto, comentario, empleador_id, profesional_id, presupuesto_id)
+    VALUES(4.0, 'Un trabajo excelente y muy curioso, recomendado 100%', 2, 4, 1);
+
 
 
 

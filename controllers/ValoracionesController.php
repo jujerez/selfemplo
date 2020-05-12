@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Presupuestos;
+use app\models\Profesionales;
 use Yii;
 use app\models\Valoraciones;
 use app\models\ValoracionesSearch;
@@ -104,16 +105,26 @@ class ValoracionesController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($pro, $pre)
     {
+        $c = Valoraciones::find()->where(['presupuesto_id' => $pre])->count();
+        if ($c > 0) {
+            Yii::$app->session->setFlash('danger', 'Ya has valorado a este profesional por ese empleo.');
+            return $this->redirect(Yii::$app->request->referrer);
+        }
+
+        $profesional = Profesionales::find()->where(['usuario_id' => $pro])->one();
         $model = new Valoraciones();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->setFlash('success', 'Su valoración ha sido registrada correctamente.');
+            return $this->redirect(['empleadores/perfil', 'id' => Yii::$app->user->identity->id]);
         }
 
         return $this->render('create', [
             'model' => $model,
+            'profesional' => $profesional,
+            'presupuesto' => $pre,
         ]);
     }
 
