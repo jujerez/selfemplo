@@ -7,6 +7,7 @@ use app\models\Profesionales;
 use Yii;
 use app\models\Valoraciones;
 use app\models\ValoracionesSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -29,45 +30,45 @@ class ValoracionesController extends Controller
                 ],
             ],
 
-            'access' => [
-                'class' => AccessControl::class,
-                'only' => ['create',],
-                'rules' => [
+        //     'access' => [
+        //         'class' => AccessControl::class,
+        //         'only' => ['create',],
+        //         'rules' => [
                 
-                    [
-                        'allow' => true,
-                        'actions' => ['create',],
-                        'roles' => ['@'],
-                        // Solo puede valorar el empleador que recibe el presupuesto
-                        'matchCallback' => function ($rule, $action ) {
+        //             [
+        //                 'allow' => true,
+        //                 'actions' => ['create',],
+        //                 'roles' => ['@'],
+        //                 // Solo puede valorar el empleador que recibe el presupuesto
+        //                 'matchCallback' => function ($rule, $action ) {
 
-                            $empleador = Yii::$app->user->identity->id;
-                            $presupuesto =Yii::$app->request->get('pre');
-                            $rol = Yii::$app->user->identity->rol;
+        //                     $empleador = Yii::$app->user->identity->id;
+        //                     $presupuesto =Yii::$app->request->get('pre');
+        //                     $rol = Yii::$app->user->identity->rol;
 
-                            $filas = Presupuestos::find()->alias('p')
-                              ->select('p.id')
-                              ->joinWith('empleo e')
-                              ->where(['e.empleador_id'=> $empleador])
-                              ->all();
+        //                     $filas = Presupuestos::find()->alias('p')
+        //                       ->select('p.id')
+        //                       ->joinWith('empleo e')
+        //                       ->where(['e.empleador_id'=> $empleador])
+        //                       ->all();
 
-                              foreach ($filas as $fila => $value) {
+        //                       foreach ($filas as $fila => $value) {
                                 
-                                if ($value['id'] == $presupuesto && Yii::$app->user->identity->rol === '1' ) {
-                                    return true;
-                                }
+        //                         if ($value['id'] == $presupuesto && Yii::$app->user->identity->rol === '1' ) {
+        //                             return true;
+        //                         }
                             
-                            }
+        //                     }
 
                             
-                            return false;
-                        }
-                    ],
+        //                     return false;
+        //                 }
+        //             ],
                     
                    
-                ],
-            ],
-        ];
+        //         ],
+        //     ],
+         ];
 
 
     }
