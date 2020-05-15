@@ -66,7 +66,7 @@ use yii\bootstrap4\Html;
                         <?php elseif($model->estado=='1'):?>
                             <?= Html::a(Icon::show('star-half-alt'). '' .' Valorar',
                                     [
-                                        'votos/create', 
+                                        'valoraciones/create', 
                                         'pro' => $model->profesional->profesionales->usuario_id,
                                         'pre' => $model->id,
                                         
