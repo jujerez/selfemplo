@@ -17,6 +17,7 @@ $media = (new \yii\db\Query())
     ->from('valoraciones')   
     ->where(['profesional_id' => $model->profesional_id])
     ->one();
+
 ?>
 
 <article class="row">
