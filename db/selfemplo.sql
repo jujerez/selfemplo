@@ -8518,12 +8518,24 @@ INSERT INTO presupuestos (precio, estado, duracion_estimada, detalles, profesion
                Precio de la hora: 12€', 
               4, 
               5
-            );
+            )
+          , (
+            35.00,
+            '1',
+            1,
+            'Formateo: 25€
+             Desplazamiento: 10€,
+            ',
+            5,
+            3
+
+          );
 
 
 
 INSERT INTO valoraciones (voto, comentario, empleador_id, profesional_id, presupuesto_id)
-    VALUES(4.0, 'Un trabajo excelente y muy curioso, recomendado 100%', 2, 4, 1);
+    VALUES(4.0, 'Un trabajo excelente y muy curioso, recomendado 100%', 2, 4, 1)
+         ,(5.0, 'Un profesional como la copa de un pino :), un artista !!', 1, 5, 4);
 
 
 
