@@ -349,6 +349,12 @@ a.desc:after {
  height: 120px;
 }
 
+img.perfil {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+}
+
 .gris {
     background-color: #5F7D95;
 }

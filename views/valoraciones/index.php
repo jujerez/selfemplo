@@ -2,6 +2,7 @@
 
 use yii\bootstrap4\Html;
 use yii\grid\GridView;
+use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ValoracionesSearch */
@@ -10,33 +11,21 @@ use yii\grid\GridView;
 $this->title = 'Valoraciones';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="valoraciones-index">
+<main class="valoraciones-index container">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <section class="row">
 
-    <p>
-        <?= Html::a('Create Valoraciones', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+        <div class="col-12">
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+        <?= ListView::widget([
+                'dataProvider' => $dataProvider,
+                'itemView' => '_valoraciones',
+                'summary' => '',
+                'layout' => "{summary}\n{items}\n{pager}\n",
+                
+            ]); ?>
+        </div>
+    
+    </section>
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'voto',
-            'comentario',
-            'created_at',
-            'empleador_id',
-            //'profesional_id',
-            //'presupuesto_id',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
-
-
-</div>
+</main>

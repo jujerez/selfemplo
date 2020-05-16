@@ -5,7 +5,7 @@ use yii\bootstrap4\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Valoraciones */
 
-$this->title = 'Create Valoraciones';
+$this->title = 'Valorar ';
 $this->params['breadcrumbs'][] = ['label' => 'Valoraciones', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

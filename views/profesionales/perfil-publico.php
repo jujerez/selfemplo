@@ -2,6 +2,7 @@
 
 use app\models\Empleos;
 use app\models\Presupuestos;
+use app\models\Valoraciones;
 use app\models\Votos;
 use kartik\file\FileInput;
 use kartik\icons\Icon;
@@ -26,16 +27,13 @@ $this->params['breadcrumbs'][] = $this->title;
 $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
 !file_exists($imagen) ? $user = '@web/img/user.png' : $user = '@web/img/'. $model->usuario_id .'.jpg';
 
-$num_val = Votos::find()->where(['profesional_id' => $model->usuario_id])->count();
+$num_val = Valoraciones::find()->where(['profesional_id' => $model->usuario_id])->count();
 
 $media = (new \yii\db\Query())
     ->select('AVG(voto) AS media')
-    ->from('votos')   
+    ->from('valoraciones')   
     ->where(['profesional_id' => $model->usuario_id])
     ->one();
-
-
-
 ?>
   
 <main class="empleadores-view container">
