@@ -79,7 +79,8 @@ $this->title = 'Selfemplo';
                             <p class="lead">En Selfemplo tenemos muchos clientes que buscan profesionales en su zona, por todo el país.
 
 Regístrate y contacta con personas que buscan profesionales en reformas, limpieza, obras, deportes, asesoría, clases particulares, etc.</p>
-                            <?= Html::a('Registrarme', ['usuarios/registrar'], ['class' => 'btn  btn-lg btn-primary wow rollIn', 'data-wow-delay' => "0.5s"]) ?> 
+                            
+                            <?= Html::a('Ver comentarios', ['valoraciones/index'], ['class' => 'btn  btn-lg btn-info wow rollIn', 'data-wow-delay' => "0.6s"]) ?> 
                         </div>
 
                         <div class="col-md-6">

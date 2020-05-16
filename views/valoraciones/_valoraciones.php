@@ -39,8 +39,8 @@ $media = (new \yii\db\Query())
                 </div>
 
                 <div class="col-md-10">              
-                   <p><?= $empleador ?> opina sobre <?= Html::a($profesional, ['profesionales/perfil-publico', 'id' => $model->profesional_id]) ?></p>
-                   <p><?=$model->comentario?></p>
+                   <p><?= $empleador ?> opina sobre <?= Html::a($profesional, ['profesionales/perfil-publico', 'id' => $model->profesional_id]) ?>:</p>
+                   <p><i><?=$model->comentario?></i></p>
                    <p>Puntuación de <?=$empleador?> :
                    <?= StarRating::widget([
                         'name' => 'rating',
