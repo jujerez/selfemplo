@@ -44,7 +44,7 @@ class EmpleadoresController extends Controller
                         'allow' => true,
                         'actions' => ['create', 'index'],
                         'roles' => ['@'],
-                        'matchCallback' => function ($rule, $action ) {
+                        'matchCallback' => function () {
                             return Yii::$app->user->identity->rol === '2';
                         }
                     ],
@@ -53,7 +53,7 @@ class EmpleadoresController extends Controller
                         'allow' => true,
                         'actions' => ['update', 'view', 'perfil'],
                         'roles' => ['@'],
-                        'matchCallback' => function ($rule, $action ) {
+                        'matchCallback' => function () {
                             
                             
                             return (Yii::$app->request->get('id') == Yii::$app->user->identity->id

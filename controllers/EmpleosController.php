@@ -44,7 +44,7 @@ class EmpleosController extends Controller
                         'allow' => true,
                         'actions' => ['update','delete'],
                         'roles' => ['@'],
-                        'matchCallback' => function ($rule, $action ) {
+                        'matchCallback' => function () {
                             if ( Yii::$app->user->identity->rol === '2') {
                                 return true;
                             }
@@ -69,7 +69,7 @@ class EmpleosController extends Controller
                         'allow' => true,
                         'actions' => ['create'],
                         'roles' => ['@'],
-                        'matchCallback' => function ($rule, $action ) {
+                        'matchCallback' => function () {
                             return Yii::$app->user->identity->rol === '1';
                                     
                         }
@@ -79,7 +79,7 @@ class EmpleosController extends Controller
                         'allow' => true,
                         'actions' => ['validar'],
                         'roles' => ['@'],
-                        'matchCallback' => function ($rule, $action ) {
+                        'matchCallback' => function () {
                             return Yii::$app->user->identity->rol === '2';
                                     
                         }

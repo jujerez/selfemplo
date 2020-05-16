@@ -53,6 +53,18 @@ $media = (new \yii\db\Query())
                         ],
                     ]) ?>
                    </p>
+
+
+                   <?php if (Yii::$app->user->identity->rol === '2'): ?>
+
+                    <?= Html::a(Icon::show('trash-alt'). '' .' Eliminar', ['valoraciones/delete', 'id' => $model->id], [
+                        'class' => 'btn btn-danger',
+                        'data' => [
+                            'confirm' => '¿Esta seguro que desea eliminar esta valoración?',
+                            'method' => 'post',
+                        ],
+                    ]) ?>
+                   <?php endif ?>
                 </div>
                     
                 
