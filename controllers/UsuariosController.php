@@ -30,7 +30,7 @@ class UsuariosController extends Controller
                         'allow' => true,
                         'actions' => ['bannear','desbanear'],
                         'roles' => ['@'],
-                        'matchCallback' => function ($rule, $action ) {
+                        'matchCallback' => function () {
                             return Yii::$app->user->identity->rol === '2';
                         }
                     ]

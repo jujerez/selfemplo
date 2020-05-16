@@ -40,7 +40,7 @@ class ValoracionesController extends Controller
                         'actions' => ['create',],
                         'roles' => ['@'],
                         // Solo puede valorar el empleador que recibe el presupuesto
-                        'matchCallback' => function ($rule, $action ) {
+                        'matchCallback' => function () {
 
                             $empleador = Yii::$app->user->identity->id;
                             $presupuesto =Yii::$app->request->get('pre');

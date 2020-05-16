@@ -37,7 +37,7 @@ class ProfesionesController extends Controller
                     [
                         'allow' => true,
                         'roles' => ['@'],
-                        'matchCallback' => function ($rule, $action) {
+                        'matchCallback' => function () {
                             return Yii::$app->user->identity->rol === '2';
                             
                         }

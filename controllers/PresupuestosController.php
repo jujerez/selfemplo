@@ -42,7 +42,7 @@ class PresupuestosController extends Controller
                         'allow' => true,
                         'actions' => ['create'],
                         'roles' => ['@'],
-                        'matchCallback' => function ($rule, $action ) {
+                        'matchCallback' => function () {
                             return Yii::$app->user->identity->rol === '0';
                         }
                     ],
@@ -51,7 +51,7 @@ class PresupuestosController extends Controller
                         'allow' => true,
                         'actions' => ['update', 'view', 'delete' ],
                         'roles' => ['@'],
-                        'matchCallback' => function ($rule, $action ) {
+                        'matchCallback' => function () {
 
                             if( Yii::$app->user->identity->rol == '2' ) {
                                 return true;

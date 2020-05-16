@@ -46,7 +46,7 @@ class AdministradoresController extends Controller
                         'allow' => true,
                         'actions' => ['index','create','update', 'view', 'perfil'],
                         'roles' => ['@'],
-                        'matchCallback' => function ($rule, $action ) {
+                        'matchCallback' => function () {
                             return Yii::$app->user->identity->rol === '2';
                         }
                     ],
