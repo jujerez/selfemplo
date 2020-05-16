@@ -32,7 +32,7 @@ class ValoracionesController extends Controller
 
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['create',],
+                'only' => ['create', 'delete'],
                 'rules' => [
                 
                     [
@@ -52,16 +52,24 @@ class ValoracionesController extends Controller
                               ->where(['e.empleador_id'=> $empleador])
                               ->all();
 
-                              foreach ($filas as $fila => $value) {
+                            foreach ($filas as $fila => $value) {
                                 
-                                if ($value['id'] == $presupuesto && Yii::$app->user->identity->rol === '1' ) {
+                                if ($value['id'] == $presupuesto && Yii::$app->user->identity->rol === '1') {
                                     return true;
-                                }
-                            
-                            }
-
-                            
+                                }      
+                            }              
                             return false;
+                        }
+                    ],
+
+                    [
+                        'allow' => true,
+                        'actions' => ['delete',],
+                        'roles' => ['@'],
+                        // Administrador solo puede eliminar una valoración
+                        'matchCallback' => function () {
+   
+                            return Yii::$app->user->identity->rol === '2';       
                         }
                     ],
                     

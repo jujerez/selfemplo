@@ -54,6 +54,7 @@ $media = (new \yii\db\Query())
                     ]) ?>
                    </p>
 
+
                    <?php if (Yii::$app->user->identity->rol === '2'): ?>
 
                     <?= Html::a(Icon::show('trash-alt'). '' .' Eliminar', ['valoraciones/delete', 'id' => $model->id], [
