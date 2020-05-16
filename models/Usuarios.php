@@ -18,14 +18,14 @@ use yii\web\IdentityInterface;
  * @property string|null $banned_at
  *
  * @property Administradores $administradores
- * @property Comentarios[] $comentarios
- * @property Comentarios[] $comentarios0
+ 
  * @property Empleadores $empleadores
  * @property Empleos[] $empleos
  * @property Presupuestos[] $presupuestos
  * @property Profesionales $profesionales
- * @property Votos[] $votos
- * @property Votos[] $votos0
+ * @property Valoraciones[] $valoraciones
+ * @property Valoraciones[] $valoraciones0
+
  */
 class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
 {
@@ -81,28 +81,10 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
      */
     public function getAdministradores()
     {
-        return $this->hasOne(Administradores::className(), ['usuario_id' => 'id']);
+        return $this->hasOne(Administradores::className(), ['usuario_id' => 'id'])->inverseOf('usuario');
     }
 
-    /**
-     * Gets query for [[Comentarios]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getComentarios()
-    {
-        return $this->hasMany(Comentarios::className(), ['empleador_id' => 'id']);
-    }
-
-    /**
-     * Gets query for [[Comentarios0]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getComentarios0()
-    {
-        return $this->hasMany(Comentarios::className(), ['profesional_id' => 'id']);
-    }
+    
 
     /**
      * Gets query for [[Empleadores]].
@@ -111,7 +93,7 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
      */
     public function getEmpleadores()
     {
-        return $this->hasOne(Empleadores::className(), ['usuario_id' => 'id']);
+        return $this->hasOne(Empleadores::className(), ['usuario_id' => 'id'])->inverseOf('usuario');
     }
 
     /**
@@ -121,7 +103,7 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
      */
     public function getEmpleos()
     {
-        return $this->hasMany(Empleos::className(), ['empleador_id' => 'id']);
+        return $this->hasMany(Empleos::className(), ['empleador_id' => 'id'])->inverseOf('empleador');
     }
 
     /**
@@ -131,7 +113,7 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
      */
     public function getPresupuestos()
     {
-        return $this->hasMany(Presupuestos::className(), ['profesional_id' => 'id']);
+        return $this->hasMany(Presupuestos::className(), ['profesional_id' => 'id'])->inverseOf('profesional');
     }
 
     /**
@@ -141,27 +123,27 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
      */
     public function getProfesionales()
     {
-        return $this->hasOne(Profesionales::className(), ['usuario_id' => 'id']);
+        return $this->hasOne(Profesionales::className(), ['usuario_id' => 'id'])->inverseOf('usuario');
     }
 
     /**
-     * Gets query for [[Votos]].
+     * Gets query for [[Valoraciones]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getVotos()
+    public function getValoraciones()
     {
-        return $this->hasMany(Votos::className(), ['empleador_id' => 'id']);
+        return $this->hasMany(Valoraciones::className(), ['empleador_id' => 'id'])->inverseOf('profesional');
     }
 
     /**
-     * Gets query for [[Votos0]].
+     * Gets query for [[Valoraciones0]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getVotos0()
+    public function getValoraciones0()
     {
-        return $this->hasMany(Votos::className(), ['profesional_id' => 'id']);
+        return $this->hasMany(Valoraciones::className(), ['profesional_id' => 'id'])->inverseOf('empleador');
     }
 
     public static function findIdentity($id)

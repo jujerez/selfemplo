@@ -14,7 +14,7 @@ use yii\bootstrap4\Html;
             
                 <div class="card-header header-presupuesto p-2 d-flex justify-content-between">
                     <span class="text-left text-muted">
-                        <p class="cabecera"> Nombre: <?= Html::a($model->profesional->profesionales->nombre, ['profesionales/perfil-publico', 'id' => 4]) ?></p>
+                        <p class="cabecera"> Nombre: <?= Html::a($model->profesional->profesionales->nombre, ['profesionales/perfil-publico', 'id' => $model->profesional_id]) ?></p>
                         <p class="cabecera"> Telefono: <?= Html::encode($model->profesional->profesionales->telefono) ?></p>
                         <p class="cabecera"> Email: <?= Html::encode($model->profesional->email) ?></p>
                     </span>
@@ -66,7 +66,7 @@ use yii\bootstrap4\Html;
                         <?php elseif($model->estado=='1'):?>
                             <?= Html::a(Icon::show('star-half-alt'). '' .' Valorar',
                                     [
-                                        'votos/create', 
+                                        'valoraciones/create', 
                                         'pro' => $model->profesional->profesionales->usuario_id,
                                         'pre' => $model->id,
                                         

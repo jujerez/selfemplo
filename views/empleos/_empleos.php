@@ -21,7 +21,7 @@ $this->registerJs($js);
 ?>
 
 
-<div class="row">
+<article class="row">
     <div class="col-12">
         <div class="card shadow p-4 mb-2 ">
          
@@ -90,4 +90,4 @@ $this->registerJs($js);
             </div>
         </div>
     </div>
-</div>
+</article>

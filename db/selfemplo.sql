@@ -149,31 +149,15 @@ CREATE TABLE presupuestos
                                           ON DELETE CASCADE ON UPDATE CASCADE
 );
 
--- Tabla comentarios --
-DROP TABLE IF EXISTS comentarios CASCADE;
-CREATE TABLE comentarios
-(
-    id              BIGSERIAL     PRIMARY KEY
-  , texto           VARCHAR(255)  NOT NULL
-  , created_at      TIMESTAMP(0)  NOT NULL DEFAULT CURRENT_TIMESTAMP
-  , empleador_id    BIGINT        NOT NULL REFERENCES usuarios(id)
-                                  ON DELETE CASCADE ON UPDATE CASCADE
-  , profesional_id  BIGINT        NOT NULL REFERENCES usuarios(id)
-                                  ON DELETE CASCADE ON UPDATE CASCADE
-  , presupuesto_id  BIGINT        NOT NULL REFERENCES presupuestos(id)
-                                  ON DELETE CASCADE ON UPDATE CASCADE
- 
- 
-);
 
 
-
--- Tabla votos --
-DROP TABLE IF EXISTS votos CASCADE;
-CREATE TABLE votos
+-- Tabla valoraciones --
+DROP TABLE IF EXISTS valoraciones CASCADE;
+CREATE TABLE valoraciones
 (
     id              BIGSERIAL     PRIMARY KEY
   , voto            FLOAT         NOT NULL
+  , comentario      VARCHAR(255)  NOT NULL
   , created_at      TIMESTAMP(0)  NOT NULL DEFAULT CURRENT_TIMESTAMP
   , empleador_id    BIGINT        NOT NULL REFERENCES usuarios(id)
                                   ON DELETE CASCADE ON UPDATE CASCADE
@@ -8534,13 +8518,25 @@ INSERT INTO presupuestos (precio, estado, duracion_estimada, detalles, profesion
                Precio de la hora: 12€', 
               4, 
               5
-            );
+            )
+          , (
+            35.00,
+            '1',
+            1,
+            'Formateo: 25€
+             Desplazamiento: 10€,
+            ',
+            5,
+            3
 
-INSERT INTO comentarios (texto, empleador_id, profesional_id, presupuesto_id)
-    VALUES('Un trabajo excelente y muy curioso, recomendado 100%', 2, 4,1);
+          );
 
-INSERT INTO votos (voto, empleador_id, profesional_id, presupuesto_id)
-    VALUES(4.0, 2, 4, 1);
+
+
+INSERT INTO valoraciones (voto, comentario, empleador_id, profesional_id, presupuesto_id)
+    VALUES(4.0, 'Un trabajo excelente y muy curioso, recomendado 100%', 2, 4, 1)
+         ,(5.0, 'Un profesional como la copa de un pino :), un artista !!', 1, 5, 4);
+
 
 
 
