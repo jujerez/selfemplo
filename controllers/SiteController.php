@@ -9,6 +9,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\DonarForm;
 
 class SiteController extends Controller
 {
@@ -155,6 +156,72 @@ class SiteController extends Controller
         return $this->redirect(Yii::$app->request->referrer);
          
     }
+
+    public function actionDonar() 
+    {
+        $model = new DonarForm();
+
+        
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $cantidad = Yii::$app->request->post()['DonarForm']['cantidad'];
+
+            $params = [
+                'method'=>'paypal',
+                'intent'=>'sale',
+                'order'=>[
+                    'description'=>'Donación',
+                    'subtotal'=>$cantidad,
+                    'shippingCost'=>0,
+                    'total'=>$cantidad,
+                    'currency'=>'EUR', 
+    
+                    'items'=>[
+                        [
+                            'name'=>'Item one',
+                            'price'=>$cantidad,
+                            'quantity'=>1,
+                            'currency'=>'EUR'
+                        ],
+                    ]
+                ]
+            ];
+            
+            Yii::$app->PayPalRestApi->checkOut($params);
+            
+        }
+
+        return $this->render('donar', [
+            'model' => $model,
+        ]);
+
+
+    }
+
+    public function actionConfirmar()
+    {
+        return $this->render('confirmar', [
+            'hola' => 'hola',
+        ]);
+    }
+
+    
+    public function actionMakePayment()
+    {
+       //$cantidad = Yii::$app->request->post()['DonarForm']['cantidad'];
+       $params = [
+           'order'=>[
+               'description'=>'Donacion',
+               'subtotal'=>20,
+               'shippingCost'=>0,
+               'total'=>20,
+               'currency'=>'EUR',
+           ]
+       ];
+     // In case of payment success this will return the payment object that contains all information about the order
+     // In case of failure it will return Null
+     return  Yii::$app->PayPalRestApi->processPayment($params);
+
+   }
 
 
 }

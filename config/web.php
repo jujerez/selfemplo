@@ -19,6 +19,12 @@ $config = [
     ],
     'language' => 'es-ES',
     'components' => [
+
+        'PayPalRestApi'=>[
+            'class'=>'bitcko\paypalrestapi\PayPalRestApi',
+            'redirectUrl'=>'site/confirmar', // Redirect Url after payment
+        ],
+
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'gShr5RKDOaIp2-Dr_IKR4xCAwhaGg7nS',
