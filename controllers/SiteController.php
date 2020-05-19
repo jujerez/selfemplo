@@ -207,7 +207,8 @@ class SiteController extends Controller
     
     public function actionMakePayment()
     {
-       //$cantidad = Yii::$app->request->post()['DonarForm']['cantidad'];
+      
+     
        $params = [
            'order'=>[
                'description'=>'Donacion',
@@ -219,7 +220,11 @@ class SiteController extends Controller
        ];
      // In case of payment success this will return the payment object that contains all information about the order
      // In case of failure it will return Null
-     return  Yii::$app->PayPalRestApi->processPayment($params);
+        //return  Yii::$app->PayPalRestApi->processPayment($params);
+
+        return $this->render('make-payment', [
+            'pago' => Yii::$app->PayPalRestApi->processPayment($params),
+        ]);
 
    }
 

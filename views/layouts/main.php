@@ -22,7 +22,7 @@ use yii\helpers\Url;
 
 // DialogAsset::register($this);
 
-$url = Url::toRoute(['site/cookie',  'cadena' => 'politica'], $schema = true);
+$url = Url::to(['site/cookie',  'cadena' => 'politica']);
 
 $js = <<<EOT
     $( document ).ready(function() {

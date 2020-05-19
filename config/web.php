@@ -22,7 +22,7 @@ $config = [
 
         'PayPalRestApi'=>[
             'class'=>'bitcko\paypalrestapi\PayPalRestApi',
-            'redirectUrl'=>'site/confirmar', // Redirect Url after payment
+            'redirectUrl'=>'/confirmar', // Redirect Url after payment
         ],
 
         'request' => [
@@ -63,14 +63,17 @@ $config = [
             'timeZone' => 'Europe/Madrid',
             
         ],
-        /*
+        
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'confirmar' => 'site/make-payment',
+                'cookie'=> 'site/cookie',
+
             ],
         ],
-        */
+        
     ],
     'container' => [
         'definitions' => [
