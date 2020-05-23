@@ -10,7 +10,7 @@ use yii\base\Model;
  */
 class DonarForm extends Model
 {
-    public $nombre;
+    
     public $cantidad;
     
     /**
@@ -20,9 +20,7 @@ class DonarForm extends Model
     {
         return [
             
-            [['nombre', 'cantidad'], 'required'],
-            
-            [['nombre'], 'string'],
+            [['cantidad'], 'required'],
             [['cantidad',], 'number', 'min' => 0.1],
         ];
     }

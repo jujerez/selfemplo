@@ -10,6 +10,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\DonarForm;
+use yii\helpers\Json;
 
 class SiteController extends Controller
 {
@@ -164,6 +165,7 @@ class SiteController extends Controller
         
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $cantidad = Yii::$app->request->post()['DonarForm']['cantidad'];
+            setcookie('total', $cantidad, time() + 60 );
 
             $params = [
                 'method'=>'paypal',
@@ -197,36 +199,29 @@ class SiteController extends Controller
 
     }
 
-    public function actionConfirmar()
-    {
-        return $this->render('confirmar', [
-            'hola' => 'hola',
-        ]);
-    }
-
     
     public function actionMakePayment()
     {
       
-     
-       $params = [
-           'order'=>[
-               'description'=>'Donacion',
-               'subtotal'=>20,
-               'shippingCost'=>0,
-               'total'=>20,
-               'currency'=>'EUR',
-           ]
-       ];
-     // In case of payment success this will return the payment object that contains all information about the order
-     // In case of failure it will return Null
-        //return  Yii::$app->PayPalRestApi->processPayment($params);
+        $params = [
+            'order'=>[
+                'description'=>'Donación',
+                'subtotal'=>20,
+                'shippingCost'=>0,
+                'total'=>20,
+                'currency'=>'EUR',
+            ]
+        ];
+        // In case of payment success this will return the payment object that contains all information about the order
+        // In case of failure it will return Null
+ 
+        $response = Json::decode(Yii::$app->PayPalRestApi->processPayment($params));
 
         return $this->render('make-payment', [
-            'pago' => Yii::$app->PayPalRestApi->processPayment($params),
+            'response' => $response
         ]);
 
-   }
+    }
 
 
 }

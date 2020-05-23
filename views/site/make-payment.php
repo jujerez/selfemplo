@@ -9,10 +9,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="row">
         <div class="col-12">
-            <?php
-            var_dump($pago);
-            ?>
-            <h1>Gracias por su donacion </h1>
+           
+            <h1>¡Gracias por su donación! </h1>
         </div>
     </div>
 </div>

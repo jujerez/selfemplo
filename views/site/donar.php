@@ -12,12 +12,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <section class="row justify-content-center">
         <div class="col-md-6 p-3 shadow">
-            <h1><i class="fab fa-paypal"></i> Donación PayPal</h1>
+            <h1><i class="fab fa-paypal text-primary"></i> Donación PayPal</h1>
 
             <?php $form = ActiveForm::begin(); ?>
         
-                <?= $form->field($model, 'nombre')->textInput();?>
-        
+             
                 <?= $form->field($model, 'cantidad')->widget(MaskMoney::classname(), [ 
         
                     'options' => [
@@ -35,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ?> 
  
                 <div class="form-group">
-                    <?= Html::submitButton('<i class="fab fa-paypal"></i> PayPal Donate', ['class' => 'btn btn-warning']) ?>
+                    <?= Html::submitButton('<i class="fab fa-paypal" ></i> PayPal Donate', ['class' => 'btn btn-warning']) ?>
                 </div>
         
             <?php ActiveForm::end(); ?>
