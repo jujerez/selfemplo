@@ -75,22 +75,22 @@ $this->title = 'Selfemplo';
             <div class="container">
                 <div class="row justify-content-around">
                       
-                        <div class="col-md-6">
-                            <h2 class=" " ><b>¿Eres un profesional y buscas nuevos clientes y trabajos?</b></h2>
-                            <p class="lead">En Selfemplo tenemos muchos clientes que buscan profesionales en su zona, por todo el país.
+                    <div class="col-md-6">
+                        <h2 class=" " ><b>¿Eres un profesional y buscas nuevos clientes y trabajos?</b></h2>
+                        <p class="lead">En Selfemplo tenemos muchos clientes que buscan profesionales en su zona, por todo el país.
 
-                            Regístrate y contacta con personas que buscan profesionales en reformas, limpieza, obras, deportes, asesoría, clases particulares, etc.</p>
-                            
-                            <?= Html::a('Ver comentarios', ['valoraciones/index'], ['class' => 'btn  btn-lg btn-info wow rollIn', 'data-wow-delay' => "0.6s"]) ?> 
-                        </div>
-
-                        <div class="col-md-6">
-                            <?= Html::img('@web/img/profesionales.png', ['class'=>'img-responssive w-100', 'alt' => 'profesionales'])?>
-                        </div>
-                       
+                        Regístrate y contacta con personas que buscan profesionales en reformas, limpieza, obras, deportes, asesoría, clases particulares, etc.</p>
+                        
+                        <?= Html::a('Ver comentarios', ['valoraciones/index'], ['class' => 'btn  btn-lg btn-info wow rollIn', 'data-wow-delay' => "0.6s"]) ?> 
                     </div>
+
+                    <div class="col-md-6">
+                        <?= Html::img('@web/img/profesionales.png', ['class'=>'img-responssive w-100', 'alt' => 'profesionales'])?>
+                    </div>
+                       
                 </div>
             </div>
+            
                 
             
         </section>
