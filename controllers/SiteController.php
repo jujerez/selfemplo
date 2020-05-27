@@ -9,6 +9,8 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\DonarForm;
+use yii\helpers\Json;
 
 class SiteController extends Controller
 {
@@ -154,6 +156,71 @@ class SiteController extends Controller
         setcookie('politica', $cadena, time() + 60 * 60 * 24 * 7);
         return $this->redirect(Yii::$app->request->referrer);
          
+    }
+
+    public function actionDonar() 
+    {
+        $model = new DonarForm();
+
+        
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $cantidad = Yii::$app->request->post()['DonarForm']['cantidad'];
+            setcookie('total', $cantidad, time() + 60 );
+
+            $params = [
+                'method'=>'paypal',
+                'intent'=>'sale',
+                'order'=>[
+                    'description'=>'Donación',
+                    'subtotal'=>$cantidad,
+                    'shippingCost'=>0,
+                    'total'=>$cantidad,
+                    'currency'=>'EUR', 
+    
+                    'items'=>[
+                        [
+                            'name'=>'Item one',
+                            'price'=>$cantidad,
+                            'quantity'=>1,
+                            'currency'=>'EUR'
+                        ],
+                    ]
+                ]
+            ];
+            
+            Yii::$app->PayPalRestApi->checkOut($params);
+            
+        }
+
+        return $this->render('donar', [
+            'model' => $model,
+        ]);
+
+
+    }
+
+    
+    public function actionMakePayment()
+    {
+      
+        $params = [
+            'order'=>[
+                'description'=>'Donación',
+                'subtotal'=>20,
+                'shippingCost'=>0,
+                'total'=>20,
+                'currency'=>'EUR',
+            ]
+        ];
+        // In case of payment success this will return the payment object that contains all information about the order
+        // In case of failure it will return Null
+ 
+        $response = Json::decode(Yii::$app->PayPalRestApi->processPayment($params));
+
+        return $this->render('make-payment', [
+            'response' => $response
+        ]);
+
     }
 
 

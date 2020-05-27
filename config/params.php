@@ -3,7 +3,10 @@
 use kartik\datecontrol\Module;
 
 return [
-    'adminEmail' => 'admin@example.com',
+    'adminEmail' => getenv('PAYPAL_EMAIL') ,
+    'payPalClientId' => getenv('PAYPAL_ID') ,
+    'payPalClientSecret' => getenv('PAYPAL_SECRET'),
+
     'senderEmail' => 'noreply@example.com',
     'senderName' => 'Example.com mailer',
     'smtpUsername' => 'yiijjujerez@gmail.com',

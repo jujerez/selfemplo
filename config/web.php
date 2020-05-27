@@ -19,6 +19,12 @@ $config = [
     ],
     'language' => 'es-ES',
     'components' => [
+
+        'PayPalRestApi'=>[
+            'class'=>'bitcko\paypalrestapi\PayPalRestApi',
+            'redirectUrl'=>'/confirmar', // Redirect Url after payment
+        ],
+
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'gShr5RKDOaIp2-Dr_IKR4xCAwhaGg7nS',
@@ -57,14 +63,17 @@ $config = [
             'timeZone' => 'Europe/Madrid',
             
         ],
-        /*
+        
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'confirmar' => 'site/make-payment',
+                'cookie'=> 'site/cookie',
+
             ],
         ],
-        */
+        
     ],
     'container' => [
         'definitions' => [
