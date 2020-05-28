@@ -17,7 +17,7 @@ body {
 }
 
 .footer {
-    height: 60px;
+    height: auto;
     background-color: #f5f5f5;
     border-top: 1px solid #ddd;
     padding-top: 20px;
@@ -193,6 +193,8 @@ a.desc:after {
     h3 {
          font-size: 1.3em; 
     }
+
+    
 }
 
 
@@ -407,6 +409,27 @@ h1.presupuesto {
 
 .borde-gris {
     border: 1px solid #ccc;
+}
+
+footer a {
+    color: #ccc;  
+    font-size: 1.5em; 
+}
+
+footer p {
+    
+    margin-bottom: 0.5em;
+}
+
+footer a:hover {
+    color: #ccc;
+    font-size: 1.5em;
+    text-decoration: none;
+    
+}
+
+body {
+    overflow-x: hidden;
 }
 
 
