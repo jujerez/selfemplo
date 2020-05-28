@@ -6,6 +6,7 @@
 
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
+use yii\helpers\Url;
 
 $this->title = 'Iniciar sesión';
 $this->params['breadcrumbs'][] = $this->title;
@@ -58,6 +59,8 @@ $this->registerJs($js);
                         <?= Html::submitButton('Entrar', ['class' => 'btn btn-primary w-100', 'name' => 'login-button']) ?>
                         
                     </div>
+
+                    <p><?=Html::a('Registrarme ahora',Url::to(['usuarios/registrar']))?></p>
 
                 <?php ActiveForm::end(); ?>
             </div>
