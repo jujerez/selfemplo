@@ -76,7 +76,7 @@ $this->title = 'Selfemplo';
                 <div class="row justify-content-around">
                       
                     <div class="col-md-6">
-                        <h2 class=" " ><b>¿Eres un profesional y buscas nuevos clientes y trabajos?</b></h2>
+                        <h2 class=" " ><strong>¿Eres un profesional y buscas nuevos clientes y trabajos?</strong></h2>
                         <p class="lead">En Selfemplo tenemos muchos clientes que buscan profesionales en su zona, por todo el país.
 
                         Regístrate y contacta con personas que buscan profesionales en reformas, limpieza, obras, deportes, asesoría, clases particulares, etc.</p>

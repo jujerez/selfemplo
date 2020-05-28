@@ -60,8 +60,8 @@ use yii\bootstrap4\Html;
 
                 <div class="card-footer d-flex justify-content-between mt-3">
                     
-                    <span class="total"><b>TOTAL</b></span>             
-                    <span class="total float-right"><b><?= Html::encode($model->precio)?> €</b></span>
+                    <span class="total"><strong>TOTAL</strong></span>             
+                    <span class="total float-right"><strong><?= Html::encode($model->precio)?> €</strong></span>
                        
                 </div>
                              

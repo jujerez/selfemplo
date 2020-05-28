@@ -138,7 +138,7 @@ class PresupuestosController extends Controller
             ->setTo($email_empleador->email)
             ->setSubject($empleador_id->titulo)
             ->setHtmlBody(
-                'Su empleo: <b>' .$empleador_id->titulo . ' </b>ha recibido un presupuesto <br>'. 
+                'Su empleo: <strong>' .$empleador_id->titulo . ' </strong>ha recibido un presupuesto <br>'. 
                 Html::a('Haz click aquí para ver el presupuesto recibido',
                         Url::to(['empleadores/perfil', 'id'=>$empleador_id], true)
                     ),
