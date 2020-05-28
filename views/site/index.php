@@ -32,7 +32,7 @@ $this->title = 'Selfemplo';
         <div class="mb-5 container">
             <section class="row justify-content-around">
                 <div class="col-md-12">
-                    <h2 class="text-center wow bounceInDown "><b>Encontrar un profesional de confianza nunca ha sido tan facil</b></h2>
+                    <h2 class="text-center wow bounceInDown "><strong>Encontrar un profesional de confianza nunca ha sido tan facil</strong></h2>
                     <p class="lead text-center">No pierdas el tiempo buscando en tablones de anuncios o preguntando a tus vecinos</p>
                    
                 </div>
