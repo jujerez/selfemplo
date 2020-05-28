@@ -28,9 +28,10 @@ class UsuariosController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['bannear','desbanear'],
+                        'actions' => ['banear','desbanear'],
                         'roles' => ['@'],
                         'matchCallback' => function () {
+                            
                             return Yii::$app->user->identity->rol === '2';
                         }
                     ]
@@ -114,6 +115,7 @@ class UsuariosController extends Controller
      */
     public function actionBanear($id)
     {
+        
         $session = Yii::$app->session;
         $model = $this->findModel($id); 
         if ($model->banned_at !== null) {
