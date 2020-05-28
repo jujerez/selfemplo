@@ -65,7 +65,7 @@ $sector_id = $model->isNewRecord ? '1' : $model->profesion->sector->id;
 
 ?>
 
-<div class="empleos-form">
+<section class="empleos-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
@@ -80,46 +80,60 @@ $sector_id = $model->isNewRecord ? '1' : $model->profesion->sector->id;
           
         ]
     ) ?>
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <?= $form->field($model, 'provincia')->widget(Select2::className(), [
+                    'data' => $provincias,
+                    'options' => ['placeholder' => 'Selecciona una provincia', 'value' => $provincia_id ],
+                    'pluginOptions' => [
+                        'allowClear' => true
+                    ]
+                ]); 
+            ?>
+        </div>
     
-    <?= $form->field($model, 'provincia')->widget(Select2::className(), [
-            'data' => $provincias,
-            'options' => ['placeholder' => 'Selecciona una provincia', 'value' => $provincia_id ],
-            'pluginOptions' => [
-                'allowClear' => true
-            ]
-        ]); 
-    ?>
-
-    <?= $form->field($model, 'poblacion_id')->widget(Select2::className(), [
-            'data' => $poblaciones,
-            'options' => ['placeholder' => 'Selecciona una población'],
-            'pluginOptions' => [
-                'allowClear' => true
-            ]
-        ]); 
-    ?>
-
+        <div class="col-md-6">
+            <?= $form->field($model, 'poblacion_id')->widget(Select2::className(), [
+                    'data' => $poblaciones,
+                    'options' => ['placeholder' => 'Selecciona una población'],
+                    'pluginOptions' => [
+                        'allowClear' => true
+                    ]
+                ]); 
+            ?>
+        </div> 
+    </div>
 
     <?= Html::activeHiddenInput($model, 'empleador_id', ['value' => Yii::$app->user->identity->id]) ?>
     <?= Html::activeHiddenInput($model, 'moderado', ['value' => '0']) ?> 
     
-    <?= $form->field($model, 'sector')->widget(Select2::className(), [
-            'data' => $sectores,
-            'options' => ['placeholder' => 'Selecciona un sector', 'value' => $sector_id ],
-            'pluginOptions' => [
-                'allowClear' => true
-            ]
-        ]); 
-    ?>
+    <div class="row">
+        <div class="col-md-6">
 
-    <?= $form->field($model, 'profesion_id')->widget(Select2::className(), [
-            'data' => $profesiones,
-            'options' => ['placeholder' => 'Selecciona una profesión',],
-            'pluginOptions' => [
-                'allowClear' => true
-            ]
-        ]); 
-    ?>
+            <?= $form->field($model, 'sector')->widget(Select2::className(), [
+                    'data' => $sectores,
+                    'options' => ['placeholder' => 'Selecciona un sector', 'value' => $sector_id ],
+                    'pluginOptions' => [
+                        'allowClear' => true
+                    ]
+                ]); 
+            ?>
+        </div>
+        <div class="col-md-6">
+
+            <?= $form->field($model, 'profesion_id')->widget(Select2::className(), [
+                    'data' => $profesiones,
+                    'options' => ['placeholder' => 'Selecciona una profesión',],
+                    'pluginOptions' => [
+                        'allowClear' => true
+                    ]
+                ]); 
+            ?>
+        </div>
+    </div>
+
 
 
     <div class="form-group">
