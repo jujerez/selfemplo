@@ -2,6 +2,7 @@
 
 use kartik\icons\Icon;
 use yii\bootstrap4\Html;
+use yii\helpers\Url;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
@@ -22,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
             
                 <div class="card-header header-presupuesto p-2 d-flex justify-content-between">
                     <span class="text-left text-muted">
-                        <p class="cabecera"> Nombre: <?= Html::encode($model->profesional->profesionales->nombre) ?></p>
+                        <p class="cabecera"> Nombre: <?= Html::a($model->profesional->profesionales->nombre, ['profesionales/perfil-publico', 'id' => $model->profesional_id]) ?></p>
                         <p class="cabecera"> Telefono: <?= Html::encode($model->profesional->profesionales->telefono) ?></p>
                         <p class="cabecera"> Email: <?= Html::encode($model->profesional->email) ?></p>
                     </span>
