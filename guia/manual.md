@@ -15,7 +15,7 @@ Una vez loguado en el menu desaparece los enlaces "Entrar", "Regitrarse" y apare
 
 ***
 
-### Página de "Iniciar sesión"
+### Página de Logueo
 Esta página muestra un formulario de acceso a usuarios registrados
 
 ![Página de login](images/manual/login.png)
@@ -137,6 +137,20 @@ Aquí podemos crear una valoración, este página es solo accesible para los usu
 Esta página es solo accesible para los usuarios-empleadores y consiste en rellenar un formulario
 
 ![Página crear valoración](images/manual/crear-valoracion.png)
+
+***
+o
+### Página para crear un presupuesto
+Esta página es solo accesible para los usuarios-profesionales y solo hay que rellenar el formulario.
+
+![Página crear valoración](images/manual/crear-presupuesto.png)
+
+***
+
+### Página para hacer una donación
+Esta página es solo accesible para los usuarios-profesionales y solo hay que rellenar el formulario.
+
+![Página hacer donación](images/manual/donacion.png)
 
 ***
 
