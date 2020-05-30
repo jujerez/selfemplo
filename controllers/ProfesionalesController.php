@@ -98,7 +98,7 @@ class ProfesionalesController extends Controller
         $model->provincia = $model->getNom()['nombre'];
         
         return $this->render('view', [
-            'model' => $model,      
+            'model' => $model,
         ]);
     }
 
@@ -135,15 +135,13 @@ class ProfesionalesController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->usuario_id]);
         }
-        $provincias = Provincias::lista();    
-        $provincia_id = $model->provinci->id;      
+        $provincias = Provincias::lista();
+        $provincia_id = $model->provinci->id;
         $poblaciones = Poblaciones::lista($provincia_id);
 
-        $sectores = Sectores::lista();    
-        $profesion_id = $model->secto->id;      
+        $sectores = Sectores::lista();
+        $profesion_id = $model->secto->id;
         $profesiones = Profesiones::lista($profesion_id);
-
-
 
         return $this->render('update', [
             'model' => $model,
@@ -164,7 +162,6 @@ class ProfesionalesController extends Controller
             if ($model2->upload($id)) {
                 Yii::$app->session->setFlash('success', 'La imagen de perfil se ha modificado correctamente.');
                 return $this->redirect(Yii::$app->request->referrer);
-                
             }
         }
 
@@ -175,7 +172,7 @@ class ProfesionalesController extends Controller
         ]);
     }
 
-    public function actionPerfilPublico($id) 
+    public function actionPerfilPublico($id)
     {
         $model = $this->findModel($id);
 
