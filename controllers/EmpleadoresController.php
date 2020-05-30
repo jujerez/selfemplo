@@ -129,7 +129,7 @@ class EmpleadoresController extends Controller
             return $this->redirect(['view', 'id' => $model->usuario_id]);
         }
         $provincias = Provincias::lista();
-        $provincia_id = $model->provinci->id;      
+        $provincia_id = $model->provinci->id;
         $poblaciones = Poblaciones::lista($provincia_id);
 
         return $this->render('update', [
@@ -180,7 +180,6 @@ class EmpleadoresController extends Controller
             if ($model2->upload($id)) {
                 Yii::$app->session->setFlash('success', 'La imagen de perfil se ha modificado correctamente.');
                 return $this->redirect(Yii::$app->request->referrer);
-                
             }
         }
 
@@ -209,7 +208,8 @@ class EmpleadoresController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    public function actionTabsData() {
+    public function actionTabsData()
+    {
         $html = $this->renderPartial('update');
         return Json::encode($html);
     }
