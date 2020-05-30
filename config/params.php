@@ -6,8 +6,8 @@ return [
     'adminEmail' => getenv('PAYPAL_EMAIL') ,
     'payPalClientId' => getenv('PAYPAL_ID') ,
     'payPalClientSecret' => getenv('PAYPAL_SECRET'),
-    'senderEmail' => 'noreply@example.com',
-    'senderName' => 'Example.com mailer',
+    // 'senderEmail' => 'noreply@example.com',
+    // 'senderName' => 'Example.com mailer',
     'smtpUsername' => 'yiijjujerez@gmail.com',
     'bsVersion' => '4.x', // this will set globally `bsVersion` to Bootstrap 4.x for all Krajee Extensions
     'dateControlDisplay' => [
