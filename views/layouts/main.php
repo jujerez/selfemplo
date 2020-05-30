@@ -149,9 +149,9 @@ WowWidget::widget();
         <div class="row justify-content-around align-content-center">
             <div class="col-md-12">
 
-                <p class="text-center"> <?=Html::a('<em class="fab fa-paypal" ></em> Donar',Url::to(['site/donar']))?>
+                <p class="text-center"> <?=Html::a('<em class="fab fa-paypal" ></em> Donar',Url::to(['site/donar']))?> </p>
                 <p class="text-center text-white">&copy; Selfemplo <?= date('Y')?> | Todos los derechos reservados</p>
-            </p>
+                
             </div>
         </div>
 

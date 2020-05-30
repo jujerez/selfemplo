@@ -1,8 +1,21 @@
 # Anexos
 
-Documentos específicos vinculados a determinados requisitos funcionales o
-técnicos ("prueba del seis" y similares).
+### **([R34](https://github.com/jujerez/selfemplo/issues/34)) Validación HTML5, CSS3 y accesibilidad**
+---
+### Validación de HTML y CSS
 
-Poner cada uno en un apartado separado, indicando en el título de cada apartado
-el código y la descripción corta del requisito asociado (por ejemplo,
-**(RF24) Prueba del seis**).
+**HTML**
+
+![Validación HTML](images/anexo/validacion_html.png)
+
+[Enlace a la validación HTML]()
+
+**CSS**
+
+![Validación CSS](images/anexo/validacion_css.png)
+
+[Enlace a la validación CSS]()
+
+**Accesibilidad**
+
+---
