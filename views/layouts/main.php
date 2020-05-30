@@ -70,7 +70,7 @@ WowWidget::widget();
         'brandLabel' => Html::img('@web/img/selfemployed.png', ['alt'=>Yii::$app->name, 'style'=>['height'=>'40px']]),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-light bg-light navbar-expand-md shadow fixed-top ',
+            'class' => 'navbar-light bg-light navbar-expand-md shadow fixed',
         ],
         'collapseOptions' => [
             'class' => 'justify-content-end',
