@@ -149,7 +149,6 @@ class AdministradoresController extends Controller
             if ($model2->upload($id)) {
                 Yii::$app->session->setFlash('success', 'La imagen de perfil se ha modificado correctamente.');
                 return $this->redirect(Yii::$app->request->referrer);
-                
             }
         }
 

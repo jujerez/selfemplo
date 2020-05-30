@@ -39,7 +39,6 @@ class ProvinciasController extends Controller
                         'roles' => ['@'],
                         'matchCallback' => function () {
                             return Yii::$app->user->identity->rol === '2';
-                            
                         }
                     ],
                     
@@ -132,7 +131,6 @@ class ProvinciasController extends Controller
             Yii::$app->session->setFlash('danger', 'Esta provincia no se puede borrar porque tiene poblaciones asociadas.');
             return $this->redirect(Yii::$app->request->referrer);
         } else {
-            
             $this->findModel($id)->delete();
             Yii::$app->session->setFlash('success', 'Provincia eliminada con exito.');
             return $this->redirect(Yii::$app->request->referrer);

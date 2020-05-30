@@ -52,8 +52,7 @@ class PresupuestosController extends Controller
                         'actions' => ['update', 'view', 'delete' ],
                         'roles' => ['@'],
                         'matchCallback' => function () {
-
-                            if( Yii::$app->user->identity->rol == '2' ) {
+                            if (Yii::$app->user->identity->rol == '2') {
                                 return true;
                             }
 
@@ -63,13 +62,10 @@ class PresupuestosController extends Controller
                             ->where(['profesional_id' => Yii::$app->user->identity->id])
                             ->all();
                             foreach ($filas as $fila => $value) {
-
                                 if ($value['id'] == $presupuesto && Yii::$app->user->identity->rol === '0') {
                                     return true;
                                 }
-                            
                             }
-                    
                             return false;
                         }
                     ],
@@ -93,7 +89,7 @@ class PresupuestosController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
-    } 
+    }
 
     /**
      * Displays a single Presupuestos model.
@@ -117,12 +113,7 @@ class PresupuestosController extends Controller
     {
         $model = new Presupuestos();
         
-       
-
-
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-
             $empleador_id = Empleos::find()
             ->select('empleador_id, titulo')
             ->where(['id' => Yii::$app->request->post()['Presupuestos']['empleo_id']])
@@ -137,12 +128,7 @@ class PresupuestosController extends Controller
             ->setFrom(Yii::$app->params['smtpUsername'])
             ->setTo($email_empleador->email)
             ->setSubject($empleador_id->titulo)
-            ->setHtmlBody(
-                'Su empleo: <strong>' .$empleador_id->titulo . ' </strong>ha recibido un presupuesto <br>'. 
-                Html::a('Haz click aquí para ver el presupuesto recibido',
-                        Url::to(['empleadores/perfil', 'id'=>$empleador_id], true)
-                    ),
-            )
+            ->setHtmlBody('Su empleo: <strong>' . $empleador_id->titulo . ' </strong>ha recibido un presupuesto <br>' . Html::a('Haz click aquí para ver el presupuesto recibido', Url::to(['empleadores/perfil', 'id'=>$empleador_id], true)))
             ->send();
           
             Yii::$app->session->setFlash('success', 'El presupuesto se creo correctamente.');
@@ -164,16 +150,13 @@ class PresupuestosController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        if($model->estado == '1') {
+        if ($model->estado == '1') {
             Yii::$app->session->setFlash('danger', 'El presupuesto no se puede modificar porque ya ha sido aceptado.');
             return $this->redirect(Yii::$app->request->referrer);
         } else {
-
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
                 Yii::$app->session->setFlash('success', 'El presupuesto se modifico correctamente.');
                 return $this->redirect(['profesionales/perfil', 'id' => Yii::$app->user->identity->id]);
-                
-                
             }
 
             return $this->render('update', [
@@ -192,23 +175,20 @@ class PresupuestosController extends Controller
     public function actionDelete($id)
     {
         $model = $this->findModel($id);
-        if($model->estado == '1') {
+        if ($model->estado == '1') {
             Yii::$app->session->setFlash('danger', 'El presupuesto no se puede eliminar porque ya ha sido aceptado.');
             return $this->redirect(Yii::$app->request->referrer);
         } else {
-            
             $this->findModel($id)->delete();
             Yii::$app->session->setFlash('success', 'El presupuesto se elimino correctamente.');
             return $this->redirect(Yii::$app->request->referrer);
         }
-
-
     }
 
     /**
      * Función que cambia el estado de un presupuesto a "Aceptado"
      *
-     * @param integer $id , es el id del presupuesto 
+     * @param integer $id , es el id del presupuesto
      * @param integer $ide , es el id del empleo
      * @return void
      */
@@ -225,44 +205,35 @@ class PresupuestosController extends Controller
         
         if ($aceptados > 0) {
             Yii::$app->session->setFlash('danger', 'No se puede aceptar más de un presupuesto para el mismo empleo.');
-            return $this->redirect(Yii::$app->request->referrer);  
+            return $this->redirect(Yii::$app->request->referrer);
         } else {
-
             $model = $this->findModel($id);
             $model->estado = '1';
             $model->save();
     
-            if($model->estado == '1') {
-
+            if ($model->estado == '1') {
                 Yii::$app->mailer->compose()
                 ->setFrom(Yii::$app->params['smtpUsername'])
                 ->setTo($email)
                 ->setSubject($empleo->titulo)
-                ->setHtmlBody(
-                    'Su presupuesto para el empleo: '.$empleo->titulo.' ha sido aceptado <br>'. 
-                    Html::a('Haz click aquí para ver el presupuesto recibido',
-                            Url::to(['profesionales/perfil', 'id'=>$model->profesional_id], true)
-                        ),
-                )
+                ->setHtmlBody('Su presupuesto para el empleo: ' . $empleo->titulo . ' ha sido aceptado <br>' .
+                    Html::a('Haz click aquí para ver el presupuesto recibido', Url::to(['profesionales/perfil', 'id'=>$model->profesional_id], true)))
                 ->send();
 
                 Yii::$app->session->setFlash('success', '!Presupuesto aceptado!.');
                 return $this->redirect(Yii::$app->request->referrer);
             } else {
-                
                 Yii::$app->session->setFlash('danger', 'Ocurrio un error, intentelo más tarde o contacte con el administrador');
                 return $this->redirect(Yii::$app->request->referrer);
             }
         }
-
-
     }
 
 
      /**
      * Función que cambia el estado de un presupuesto a "Rechazado"
      *
-     * @param integer $id , es el id del presupuesto 
+     * @param integer $id , es el id del presupuesto
      * @return void
      */
     public function actionRechazar($id)
@@ -274,23 +245,21 @@ class PresupuestosController extends Controller
 
         if ($aceptados > 0) {
             Yii::$app->session->setFlash('danger', 'No se puede rechazar un presupuesto que se ha aceptado previamente.');
-            return $this->redirect(Yii::$app->request->referrer);  
+            return $this->redirect(Yii::$app->request->referrer);
         }
 
         $model = $this->findModel($id);
         $model->estado = '0';
         $model->save();
 
-        if($model->estado == '0') {
+        if ($model->estado == '0') {
             Yii::$app->session->setFlash('success', '!Presupuesto rechazado correctamente!.');
             return $this->redirect(Yii::$app->request->referrer);
         } else {
-            
             $this->findModel($id)->delete();
             Yii::$app->session->setFlash('danger', 'Ocurrio un error, intentelo más tarde o contacte con el administrador');
             return $this->redirect(Yii::$app->request->referrer);
         }
-
     }
 
     /**

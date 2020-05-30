@@ -6,19 +6,15 @@ return [
     'adminEmail' => getenv('PAYPAL_EMAIL') ,
     'payPalClientId' => getenv('PAYPAL_ID') ,
     'payPalClientSecret' => getenv('PAYPAL_SECRET'),
-
     'senderEmail' => 'noreply@example.com',
     'senderName' => 'Example.com mailer',
     'smtpUsername' => 'yiijjujerez@gmail.com',
-    // Modulo configuracion fecha y hora
     'bsVersion' => '4.x', // this will set globally `bsVersion` to Bootstrap 4.x for all Krajee Extensions
-    // MOSTRAR - format settings for displaying each date attribute (ICU format example)  
     'dateControlDisplay' => [
         Module::FORMAT_DATE => 'php:d-m-Y',
         Module::FORMAT_TIME => 'php:H:i:s',
         Module::FORMAT_DATETIME => 'php:d-m-Y H:i:s', 
     ],
-
     // GUARDAR - format settings for saving each date attribute (PHP format example)
     'dateControlSave' => [
         Module::FORMAT_DATE => 'php:Y-m-d', // saves as unix timestamp

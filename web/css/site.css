@@ -227,7 +227,7 @@ a.desc:after {
 	20%{
         -webkit-transform: rotate(15deg);
         transform: rotate(15deg);    
-	}
+    }
 
 	40%{
 		-webkit-transform: rotate(-10deg);
@@ -431,6 +431,3 @@ footer a:hover {
 body {
     overflow-x: hidden;
 }
-
-
-
