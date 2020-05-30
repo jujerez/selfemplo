@@ -48,29 +48,29 @@
 
 #### **Google Chrome**
 
-![Captura Google Chrome](images/anexo/captura_chrome.png)
+![Captura Google Chrome](images/anexos/index-chrome.PNG)
 
 ---
 
 #### **Mozilla Firefox**
 
-![Captura Mozilla Firefox](images/anexo/captura_firefox.png)
+![Captura Mozilla Firefox](images/anexos/index-firefox.png)
 
 ---
 
 #### **Opera**
 
-![Captura Opera](images/anexo/captura_opera.png)
+![Captura Opera](images/anexos/index-opera.png)
 
 ---
 
 #### **Microsoft Edge**
 
-![Captura Microsoft Edge](images/anexo/captura_edge.png)
+![Captura Microsoft Edge](images/anexos/index-edge.PNG)
 
 ---
 
 ### **([R25](https://github.com/jujerez/selfemplo/issues/25)) Codeception**
 
-![Pruebas Codeception](images/anexo/captura_codeception.png)
+![Pruebas Codeception](images/anexos/codeception.png)
 
