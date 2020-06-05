@@ -64,13 +64,13 @@
 </code></pre>
 </li>
 <li><p>Nos movemos a la raiz del proyecto y ejecutamos el siguiente comando:
- <code class="hljs php"> $ composer install
-</code></p>
+ <pre><code class="hljs php"> $ composer install
+</code></pre></p>
 </li>
 <li><p>Creamos la base de datos e intyectamos con los scripts, dentro de la raiz del proyecto ejecutamos los siguientes comandos:</p>
-<p> <code class="hljs php"> $ db/create.sh 
+<pre> <code class="hljs php"> $ db/create.sh 
  $ db/load.sh
-</code></p>
+</code></pre>
 </li>
 <li>Modificamos el archivo <strong>.env.example</strong> y lo guardamos como <strong>.env</strong> con las siguentes variables de entorno:<ul>
 <li><code>SMTP_PASS=clave de aplicación de correo</code></li>
@@ -80,8 +80,8 @@
 <li><code>PAYPAL_SECRET=Secret de PayPal</code></li>
 </ul>
 </li>
-<li><p>Cambiamos la dirección de correo en:
-<code class="hljs php">config/params.php</code></p>
+<li><p>Cambiamos la dirección de correo en:</p>
+<code class="hljs php">config/params.php</code>
 </li>
 <li><p>Ejectumos la aplicación desde la raiz del proyecto con el siguiente comando:</p>
 <p> <code class="hljs php">  $ make serve
