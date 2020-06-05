@@ -183,6 +183,17 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
         return static::findOne(['nombre' => $nombre]);
     }
 
+    /**
+     * Metodo que busca un usurio por email
+     *
+     * @param [type] $nombre
+     * @return void
+     */
+    public static function findPorEmail($email)
+    {
+        return static::findOne(['email' => $email]);
+    }
+
     public function beforeSave($insert)
     {
         if (!parent::beforeSave($insert)) {

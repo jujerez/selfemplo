@@ -157,6 +157,46 @@ class UsuariosController extends Controller
     }
 
     /**
+     * Función para recuperar la contraseña en caso de olvido
+     *
+     * @return void
+     */
+    public function actionRecuperarContrasena() 
+    {
+        $email = Yii::$app->request->post('email');   
+        $usuario = Usuarios::findOne(['email'=>$email]);
+        $pass = Yii::$app->security->generateRandomString(9);
+            
+        if ($email != null) {
+            
+            if (($usuario = Usuarios::findOne(['email'=>$email]))!== null) {
+                $usuario->password = Yii::$app->security->generatePasswordHash($pass);;
+                $usuario->save();
+
+                Yii::$app->mailer->compose()
+                ->setFrom(Yii::$app->params['smtpUsername'])
+                ->setTo($email)
+                ->setSubject('Recuperación de contraseña')
+                ->setHtmlBody(
+                    'Su nueva contraseña es: ' . $pass . '<br>' .
+                    Html::a('Haz click aquí para iniciar sesión',Url::to(['/site/login'], true)),
+                )
+                ->send();
+                Yii::$app->session->setFlash('success',  'Hemos enviado su nueva contraseña a '. $email);
+                return $this->redirect('/site/login');
+            } else {
+                Yii::$app->session->setFlash('danger',  'Email incorrecto');
+                return $this->redirect(Yii::$app->request->referrer);
+            }
+
+        } else {
+            return $this->render('recuperar-contrasena'); 
+        }
+
+    }
+
+
+    /**
      * Finds the Profesionales model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
@@ -171,9 +211,4 @@ class UsuariosController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-
-
-
-
-    
 } 
