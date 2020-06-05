@@ -59,20 +59,17 @@
 <li>Git</li>
 </ul>
 <h5>Instalación: <span id="instalacion"></span><a href="#instalacion" class="hashlink">&para;</a></h5><ol>
-<li>Clonamos el proyecto:<pre><code class="hljs shell language-shell"><span class="hljs-meta">$</span><span class="bash"> git <span class="hljs-built_in">clone</span> https://github.com/jujerez/selfemplo.git</span>
+<li><p>Clonamos el proyecto:</p>
+<pre><code class="hljs php">$ git <span class="hljs-keyword">clone</span> https:<span class="hljs-comment">//github.com/jujerez/selfemplo.git</span>
 </code></pre>
 </li>
 <li><p>Nos movemos a la raiz del proyecto y ejecutamos el siguiente comando:
- ~~~shell
- $ composer install
- ~~~</p>
+ <code> $ composer install
+</code></p>
 </li>
 <li><p>Creamos la base de datos e intyectamos con los scripts, dentro de la raiz del proyecto ejecutamos los siguientes comandos:</p>
-<p>
-~~~shell
- $ db/create.sh
+<p> <code> $ db/create.sh
  $ db/load.sh
-~~~
 </code></p>
 </li>
 <li>Modificamos el archivo <strong>.env.example</strong> y lo guardamos como <strong>.env</strong> con las siguentes variables de entorno:<ul>
@@ -87,9 +84,8 @@
 <code>config/params.php</code></p>
 </li>
 <li><p>Ejectumos la aplicación desde la raiz del proyecto con el siguiente comando:</p>
-<p> ~~~shell
-  $ make serve
- ~~~</p>
+<p> <code>  $ make serve
+</code></p>
 </li>
 <li><p>Abrimos el navegador con la siguiente dirección:
 <code>http://localhost:8080/</code></p>
@@ -108,19 +104,16 @@
 <li><p>Añadir a la aplicación el <em>add-on</em> Heroku Postgres.</p>
 </li>
 <li><p>Iniciar sesión en heroku desde la terminal:</p>
-<p> ~~~shell
- $ heroku login
- ~~~</p>
+<p> <code> $ heroku login
+</code></p>
 </li>
 <li><p>Inyectamos la base de datos:</p>
-<p> ~~~shell
- $ heroku psql &lt; db/libraryii.sql
- ~~~</p>
+<p> <code> $ heroku psql &lt; db/libraryii.sql
+</code></p>
 </li>
 <li><p>Sincronizar el proyecto con GitHub, y seleccionar en que rama queremos el despliegue:</p>
-<p> ~~~shell
- $ git push heroku master
- ~~~</p>
+<p> <code> $ git push heroku master
+</code></p>
 </li>
 </ol>
         <div class="toplink"><a href="#" class="h1" title="go to top"><span class="glyphicon glyphicon-arrow-up"></a></div>
@@ -131,7 +124,7 @@
 </div>
 
 <footer class="footer">
-        <p class="pull-right"><small>Page generated on Fri, 05 Jun 2020 05:07:20 +0000</small></p>
+        <p class="pull-right"><small>Page generated on Fri, 05 Jun 2020 05:23:31 +0000</small></p>
     Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
 
 <script>jQuery(function ($) {
