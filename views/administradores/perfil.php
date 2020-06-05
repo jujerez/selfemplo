@@ -185,16 +185,16 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
             </ul>
             <div class="tab-content" id="myTabContent">
                 <!-- Tab info-->
-                <div class="tab-pane fade show active" id="perfil" role="tabpanel" aria-labelledby="perfil-tab">
+                <div itemscope itemtype="http://schema.org/Person" class="tab-pane fade show active" id="perfil" role="tabpanel" aria-labelledby="perfil-tab">
                     <div class="card mb-4">
                         <div class="card-header gris text-white-50">
                             Información Cuenta
                         </div>
                             
                         <div class="card-body bg-light">
-                            <p><strong>Usuario:</strong> <?= $model->usuario->nombre?></p>
-                            <p><strong>Email:</strong> <?= $model->usuario->email?></p>
-                            <p><strong>Rol:</strong> Administrador</p>         
+                            <p itemprop="name"><strong>Usuario:</strong> <?= $model->usuario->nombre?></p>
+                            <p itemprop="email"><strong>Email:</strong> <?= $model->usuario->email?></p>
+                            <p itemprop="hasOccupation"><strong>Rol:</strong> Administrador</p>         
                         </div>
    
                     </div>
@@ -205,13 +205,16 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                         </div>
                             
                         <div class="card-body bg-light">
-                                <p><strong>Nombre:</strong> <?= Html::encode( $model->nombre) ?></p>
-                                <p><strong>Apellidos:</strong> <?= Html::encode($model->apellidos) ?></p>
-                                <p><strong>Teléfono:</strong> <?= Html::encode($model->telefono) ?></p>
-                                <p><strong>Dirección:</strong> <?= Html::encode($model->direccion) ?></p>
+                                <p itemprop="name"><strong>Nombre:</strong> <?= Html::encode( $model->nombre) ?></p>
+                                <p itemprop="alternateName"><strong>Apellidos:</strong> <?= Html::encode($model->apellidos) ?></p>
+                                <p itemprop="telephone"><strong>Teléfono:</strong> <?= Html::encode($model->telefono) ?></p>
+                                <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+
+                                    <p itemprop="streetAddress"><strong>Dirección:</strong> <?= Html::encode($model->direccion) ?></p>
+                                </span>
                                 <p><strong>Fecha alta:</strong> <?= Yii::$app->formatter->asDate($model->created_at)?></p>
-                                <p><strong>Población:</strong> <?= Html::encode($model->poblacion->nombre) ?></p>
-                                <p><strong>Provincia:</strong> <?= Html::encode($model->provincia->nombre) ?></p>                                        
+                                <p itemprop="addressLocality"><strong>Población:</strong> <?= Html::encode($model->poblacion->nombre) ?></p>
+                                <p itemprop="addressRegion"><strong>Provincia:</strong> <?= Html::encode($model->provincia->nombre) ?></p>                                        
                         </div>
    
                     </div>
