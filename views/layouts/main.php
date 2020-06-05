@@ -147,10 +147,10 @@ WowWidget::widget();
 <footer class="footer bg-dark mt-3">
     <div class="container">
         <div class="row justify-content-around align-content-center">
-            <div class="col-md-12">
+            <div class="col-md-12" itemscope itemtype="http://schema.org/Organization">
 
-                <p class="text-center"> <?=Html::a('<em class="fab fa-paypal" ></em> Donar',Url::to(['site/donar']))?> </p>
-                <p class="text-center text-white">&copy; Selfemplo <?= date('Y')?> | Todos los derechos reservados</p>
+                <p itemprop="name" class="text-center"> <?=Html::a('<em class="fab fa-paypal" ></em> Donar',Url::to(['site/donar']))?> </p>
+                <p itemprop="name" class="text-center text-white">&copy; Selfemplo <?= date('Y')?> | Todos los derechos reservados</p>
                 
             </div>
         </div>
