@@ -100,21 +100,21 @@ Array
 
     [14] => Array
         (
-            [line] => 212
+            [line] => 211
             [file] => ./controllers/EmpleadoresController.php
             [message] => No docblock for element 'actionTabsData'
         )
 
     [15] => Array
         (
-            [line] => 157
+            [line] => 155
             [file] => ./controllers/ProfesionalesController.php
             [message] => No docblock for element 'actionPerfil'
         )
 
     [16] => Array
         (
-            [line] => 178
+            [line] => 175
             [file] => ./controllers/ProfesionalesController.php
             [message] => No docblock for element 'actionPerfilPublico'
         )

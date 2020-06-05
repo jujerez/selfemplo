@@ -59,19 +59,18 @@
 <li>Git</li>
 </ul>
 <h5>Instalación: <span id="instalacion"></span><a href="#instalacion" class="hashlink">&para;</a></h5><ol>
-<li>Clonamos el proyecto:<pre><code class="language- shell">$ git clone https://github.com/jujerez/selfemplo.git
+<li>Clonamos el proyecto:<pre><code class="hljs shell language-shell"><span class="hljs-meta">$</span><span class="bash"> git <span class="hljs-built_in">clone</span> https://github.com/jujerez/selfemplo.git</span>
 </code></pre>
 </li>
 <li><p>Nos movemos a la raiz del proyecto y ejecutamos el siguiente comando:
- ~~~ shell
+ ~~~shell
  $ composer install
  ~~~</p>
 </li>
 <li>Creamos la base de datos e intyectamos con los scripts, dentro de la raiz del proyecto ejecutamos los siguientes comandos:
- ~~~ shell
- $ db/create.sh
+ <code> $ db/create.sh
  $ db/load.sh
- ~~~</li>
+</code></li>
 <li>Modificamos el archivo <strong>.env.example</strong> y lo guardamos como <strong>.env</strong> con las siguentes variables de entorno:<ul>
 <li><code>SMTP_PASS=clave de aplicación de correo</code></li>
 <li><code>API_KEY=clave API Google</code></li>
@@ -128,7 +127,7 @@
 </div>
 
 <footer class="footer">
-        <p class="pull-right"><small>Page generated on Sat, 30 May 2020 11:30:12 +0000</small></p>
+        <p class="pull-right"><small>Page generated on Fri, 05 Jun 2020 04:54:04 +0000</small></p>
     Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
 
 <script>jQuery(function ($) {
