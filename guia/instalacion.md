@@ -10,19 +10,19 @@
 
 ##### Instalación:
 1. Clonamos el proyecto:
-   ~~~ shell
+   ~~~shell
    $ git clone https://github.com/jujerez/selfemplo.git
    ~~~ 
 2. Nos movemos a la raiz del proyecto y ejecutamos el siguiente comando:
-    ~~~ shell
+    ~~~shell
     $ composer install
     ~~~
 
 3. Creamos la base de datos e intyectamos con los scripts, dentro de la raiz del proyecto ejecutamos los siguientes comandos:
-    ~~~ shell
+    ```
     $ db/create.sh
     $ db/load.sh
-    ~~~
+    ```
 4. Modificamos el archivo **.env.example** y lo guardamos como **.env** con las siguentes variables de entorno:
     * `SMTP_PASS=clave de aplicación de correo`
     * `API_KEY=clave API Google`
