@@ -33,13 +33,13 @@ $this->registerJs($js);
                     <?= Html::encode($model->profesion->sector->secnom) ?>
                 </span>
             </div> 
-            <div class="card-body">
+            <div class="card-body" itemscope itemtype="http://schema.org/Offer">
  
-                <h3><?=$model->titulo?></h3>
-                <p class="card-text mb-auto"><?= Html::encode($model->descripcion) ?></p>
-                <p class="card-text mb-auto text-black-50">
-                     <?=Icon::show('map-marker-alt') . Html::encode($model->poblacion->nombre).', '. 
-                        Html::encode($model->poblacion->provincia->nombre) ?>
+                <h3 itemprop="name"><?=$model->titulo?></h3>
+                <p itemprop="itemOffered" class="card-text mb-auto"><?= Html::encode($model->descripcion) ?></p>
+                <p itemprop="address" itemscope itemtype="http://schema.org/PostalAddress" class="card-text mb-auto text-black-50"  >
+                     <span itemprop="addressLocality"><?=Icon::show('map-marker-alt') . Html::encode($model->poblacion->nombre).', '. 
+                        Html::encode($model->poblacion->provincia->nombre) ?></span>
                     
                 </p>
                 
@@ -66,10 +66,10 @@ $this->registerJs($js);
                             
                     </div>
 
-                    <div>
+                    <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
     
                         <?php $model->precioMedio != null ?: $model->precioMedio = '0' ?> 
-                        <span class=" p-2 badge badge-pill badge-success text-uppercase text-center">
+                        <span itemprop="price" class=" p-2 badge badge-pill badge-success text-uppercase text-center">
                             Precio medio: <?=Yii::$app->formatter->asDecimal($model->precioMedio). ' €'?>
                         </span>
                     </div>
@@ -84,9 +84,9 @@ $this->registerJs($js);
                 
             </div>
 
-            <div class="card-footer mt-3">
-                <span class="float-right text-muted"><?= Icon::show('calendar-alt') . Yii::$app->formatter->asDate($model->created_at)?></span>
-                <span class="text-muted"><i class=""></i>Publicado por: <?= Html::encode($model->nombre)?></span>             
+            <div class="card-footer mt-3" itemscope itemtype="http://schema.org/Person">
+                <span itemprop="startDate" class="float-right text-muted"><?= Icon::show('calendar-alt') . Yii::$app->formatter->asDate($model->created_at)?></span>
+                <span itemprop="name" class="text-muted"><i class=""></i>Publicado por: <?= Html::encode($model->nombre)?></span>             
             </div>
         </div>
     </div>
