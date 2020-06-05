@@ -72,5 +72,10 @@
 
 ### **([R25](https://github.com/jujerez/selfemplo/issues/25)) Codeception**
 
-![Pruebas Codeception](images/anexos/codeception.png)
+![Pruebas Codeception](images/anexos/tests-funcionales.png)
+
+### **([R38](https://github.com/jujerez/selfemplo/issues/25)) Despliegue en servidor local**
+
+![Despliegue local](images/anexos/despliegue.jpg)
+
 
