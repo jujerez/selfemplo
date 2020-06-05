@@ -67,10 +67,14 @@
  $ composer install
  ~~~</p>
 </li>
-<li>Creamos la base de datos e intyectamos con los scripts, dentro de la raiz del proyecto ejecutamos los siguientes comandos:
- <code> $ db/create.sh
+<li><p>Creamos la base de datos e intyectamos con los scripts, dentro de la raiz del proyecto ejecutamos los siguientes comandos:</p>
+<p>
+~~~shell
+ $ db/create.sh
  $ db/load.sh
-</code></li>
+~~~
+</code></p>
+</li>
 <li>Modificamos el archivo <strong>.env.example</strong> y lo guardamos como <strong>.env</strong> con las siguentes variables de entorno:<ul>
 <li><code>SMTP_PASS=clave de aplicación de correo</code></li>
 <li><code>API_KEY=clave API Google</code></li>
@@ -83,8 +87,8 @@
 <code>config/params.php</code></p>
 </li>
 <li><p>Ejectumos la aplicación desde la raiz del proyecto con el siguiente comando:</p>
-<p> ~~~ shell
- $ make serve
+<p> ~~~shell
+  $ make serve
  ~~~</p>
 </li>
 <li><p>Abrimos el navegador con la siguiente dirección:
@@ -104,17 +108,17 @@
 <li><p>Añadir a la aplicación el <em>add-on</em> Heroku Postgres.</p>
 </li>
 <li><p>Iniciar sesión en heroku desde la terminal:</p>
-<p> ~~~ shell
+<p> ~~~shell
  $ heroku login
  ~~~</p>
 </li>
 <li><p>Inyectamos la base de datos:</p>
-<p> ~~~ shell
+<p> ~~~shell
  $ heroku psql &lt; db/libraryii.sql
  ~~~</p>
 </li>
 <li><p>Sincronizar el proyecto con GitHub, y seleccionar en que rama queremos el despliegue:</p>
-<p> ~~~
+<p> ~~~shell
  $ git push heroku master
  ~~~</p>
 </li>
@@ -127,7 +131,7 @@
 </div>
 
 <footer class="footer">
-        <p class="pull-right"><small>Page generated on Fri, 05 Jun 2020 04:54:04 +0000</small></p>
+        <p class="pull-right"><small>Page generated on Fri, 05 Jun 2020 05:07:20 +0000</small></p>
     Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
 
 <script>jQuery(function ($) {

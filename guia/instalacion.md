@@ -19,6 +19,7 @@
     ~~~
 
 3. Creamos la base de datos e intyectamos con los scripts, dentro de la raiz del proyecto ejecutamos los siguientes comandos:
+
     ```
     $ db/create.sh
     $ db/load.sh
@@ -34,8 +35,8 @@
 
 5. Ejectumos la aplicación desde la raiz del proyecto con el siguiente comando:
 
-    ~~~ shell
-    $ make serve
+    ~~~shell
+     $ make serve
     ~~~
 6. Abrimos el navegador con la siguiente dirección:
 `http://localhost:8080/`
@@ -60,19 +61,19 @@
 
 5. Iniciar sesión en heroku desde la terminal:
 
-    ~~~ shell
+    ~~~shell
     $ heroku login
     ~~~
 
 6. Inyectamos la base de datos:
 
-    ~~~ shell
+    ~~~shell
     $ heroku psql < db/libraryii.sql
     ~~~
 
 7. Sincronizar el proyecto con GitHub, y seleccionar en que rama queremos el despliegue:
 
-    ~~~
+    ~~~shell
     $ git push heroku master
     ~~~
 
