@@ -11,18 +11,18 @@
 #### Instalación:
 1. Clonamos el proyecto:
    
-   ```shell
+   ```
    $ git clone https://github.com/jujerez/selfemplo.git
    ``` 
 2. Nos movemos a la raiz del proyecto y ejecutamos el siguiente comando:
 
-    ```shell
+    ```
     $ composer install
     ```
 
 3. Creamos la base de datos e intyectamos con los scripts, dentro de la raiz del proyecto ejecutamos los siguientes comandos:
 
-    ```shell
+    ```
     $ db/create.sh
     $ db/load.sh
     ```
@@ -37,7 +37,7 @@
 
 5. Ejectumos la aplicación desde la raiz del proyecto con el siguiente comando:
 
-    ```shell
+    ```
      $ make serve
     ```
 6. Abrimos el navegador con la siguiente dirección:
@@ -63,19 +63,19 @@
 
 5. Iniciar sesión en heroku desde la terminal:
 
-    ```shell
+    ```
     $ heroku login
     ```
 
 6. Inyectamos la base de datos:
 
-    ```shell
+    ```
     $ heroku psql < db/libraryii.sql
     ```
 
 7. Sincronizar el proyecto con GitHub, y seleccionar en que rama queremos el despliegue:
 
-    ```shell
+    ```
     $ git push heroku master
     ```
 
