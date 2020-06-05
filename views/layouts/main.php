@@ -82,6 +82,7 @@ WowWidget::widget();
             
             ['label' => 'Inicio', 'url' => ['/site/index']],
             ['label' => 'Empleos', 'url' => ['/empleos/index']],
+            ['label' => 'Contacto', 'url' => ['/site/contact']],
 
             Yii::$app->user->isGuest 
             ? (['label' => 'Entrar', 'url' => ['site/login'], 'options' => ['class' => 'entrar']])

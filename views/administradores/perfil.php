@@ -194,7 +194,7 @@ $imagen = Url::to('@app/web/img/' . $model->usuario_id . '.jpg');
                         <div class="card-body bg-light">
                             <p itemprop="name"><strong>Usuario:</strong> <?= $model->usuario->nombre?></p>
                             <p itemprop="email"><strong>Email:</strong> <?= $model->usuario->email?></p>
-                            <p itemprop="hasOccupation"><strong>Rol:</strong> Administrador</p>         
+                            <p itemprop="jobTitle"><strong>Rol:</strong> Administrador</p>         
                         </div>
    
                     </div>
