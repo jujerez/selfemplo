@@ -15,6 +15,7 @@
    $ git clone https://github.com/jujerez/selfemplo.git
    ``` 
 2. Nos movemos a la raiz del proyecto y ejecutamos el siguiente comando:
+
     ```
     $ composer install
     ```

@@ -60,15 +60,15 @@
 </ul>
 <h5>Instalación: <span id="instalacion"></span><a href="#instalacion" class="hashlink">&para;</a></h5><ol>
 <li><p>Clonamos el proyecto:</p>
-<pre><code class="hljs php">$ git <span class="hljs-keyword">clone</span> https:<span class="hljs-comment">//github.com/jujerez/selfemplo.git</span>
+<pre><code class="hljs php">$ git <span class="hljs-keyword">clone</span> https://github.com/jujerez/selfemplo.git
 </code></pre>
 </li>
 <li><p>Nos movemos a la raiz del proyecto y ejecutamos el siguiente comando:
- <code> $ composer install
+ <code class="hljs php"> $ composer install
 </code></p>
 </li>
 <li><p>Creamos la base de datos e intyectamos con los scripts, dentro de la raiz del proyecto ejecutamos los siguientes comandos:</p>
-<p> <code> $ db/create.sh
+<p> <code class="hljs php"> $ db/create.sh 
  $ db/load.sh
 </code></p>
 </li>
@@ -81,10 +81,10 @@
 </ul>
 </li>
 <li><p>Cambiamos la dirección de correo en:
-<code>config/params.php</code></p>
+<code class="hljs php">config/params.php</code></p>
 </li>
 <li><p>Ejectumos la aplicación desde la raiz del proyecto con el siguiente comando:</p>
-<p> <code>  $ make serve
+<p> <code class="hljs php">  $ make serve
 </code></p>
 </li>
 <li><p>Abrimos el navegador con la siguiente dirección:
@@ -108,7 +108,7 @@
 </code></p>
 </li>
 <li><p>Inyectamos la base de datos:</p>
-<p> <code> $ heroku psql &lt; db/libraryii.sql
+<p> <code class="hljs php"> $ heroku psql &lt; db/libraryii.sql
 </code></p>
 </li>
 <li><p>Sincronizar el proyecto con GitHub, y seleccionar en que rama queremos el despliegue:</p>
