@@ -92,7 +92,7 @@ $this->registerJs($js3, View::POS_END);
 
     <?= $form->field($model, 'direccion')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'slogan')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'presentacion')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'provincia')->widget(Select2::className(), [
                         'data' => $provincias,

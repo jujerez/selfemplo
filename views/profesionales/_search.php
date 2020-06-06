@@ -25,7 +25,7 @@ use yii\bootstrap4\ActiveForm;
 
     <?= $form->field($model, 'direccion') ?>
 
-    <?php // echo $form->field($model, 'slogan') ?>
+    <?php // echo $form->field($model, 'presentacion') ?>
 
     <?php // echo $form->field($model, 'created_at') ?>
 

@@ -18,7 +18,7 @@ class ProfesionalesSearch extends Profesionales
     {
         return [
             [['usuario_id', 'poblacion_id', 'profesion_id'], 'integer'],
-            [['nombre', 'apellidos', 'telefono', 'direccion', 'slogan', 'created_at'], 'safe'],
+            [['nombre', 'apellidos', 'telefono', 'direccion', 'presentacion', 'created_at'], 'safe'],
         ];
     }
 
@@ -68,7 +68,7 @@ class ProfesionalesSearch extends Profesionales
             ->andFilterWhere(['ilike', 'apellidos', $this->apellidos])
             ->andFilterWhere(['ilike', 'telefono', $this->telefono])
             ->andFilterWhere(['ilike', 'direccion', $this->direccion])
-            ->andFilterWhere(['ilike', 'slogan', $this->slogan]);
+            ->andFilterWhere(['ilike', 'presentacion', $this->presentacion]);
 
         return $dataProvider;
     }

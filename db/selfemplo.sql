@@ -70,7 +70,7 @@ CREATE TABLE profesionales
     , apellidos                VARCHAR(255) NOT NULL
     , telefono                 VARCHAR(255) NOT NULL
     , direccion                VARCHAR(255) 
-    , presentacion                   VARCHAR(255)
+    , presentacion             VARCHAR(255)
     , created_at               TIMESTAMP(0) DEFAULT CURRENT_TIMESTAMP
     , poblacion_id             BIGINT       NOT NULL REFERENCES poblaciones (id)
                                             ON DELETE CASCADE ON UPDATE CASCADE
