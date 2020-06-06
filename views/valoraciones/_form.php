@@ -82,7 +82,7 @@ $empleador = Yii::$app->user->identity->id;
                         <?= $form->field($model, 'comentario')->textArea([
                             'maxlength' => true,
                             'spellcheck' => true,  
-                            'placeholder' => 'Sea breve y conciso',
+                            'placeholder' => 'Los comentarios obsecenos o fuera de lugar serán eliminados',
                             'rows' => '3'
                             ]) 
                         ?>

@@ -13,6 +13,7 @@ use yii\web\View;
 
 $js = <<<EOT
     
+    document.getElementById('profesionales-nombre').value = '';
     document.getElementById('profesionales-apellidos').value = '';
     document.getElementById('profesionales-telefono').value = ''; 
 EOT;
@@ -84,49 +85,76 @@ $this->registerJs($js3, View::POS_END);
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
+    <div class="row">
+        <div class="col-md-6">
 
-    <?= $form->field($model, 'apellidos')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-md-6">
+
+            <?= $form->field($model, 'apellidos')->textInput(['maxlength' => true]) ?>
+        </div>
+    </div>
+
+
 
     <?= $form->field($model, 'telefono')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'direccion')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'presentacion')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'presentacion')->textInput(['maxlength' => true, 'placeholder' => 'Por ejemplo: Soy una persona educada, seria y entregada a mi trabajo']) ?>
 
-    <?= $form->field($model, 'provincia')->widget(Select2::className(), [
-                        'data' => $provincias,
-                        'options' => ['placeholder' => 'Selecciona una provincia', 'value' => $model->provinci->id ],
-                        'pluginOptions' => [
-                            'allowClear' => true
-                        ]
-                    ]); ?>
-                    
-    <?= $form->field($model, 'poblacion_id')->widget(Select2::className(), [
-                        'data' => $poblaciones,
-                        'options' => ['placeholder' => 'Selecciona una población'],
-                        'pluginOptions' => [
-                            'allowClear' => true
-                        ]
-                    ]); ?>
+    <div class="row">
+        <div class="col-md-6">
 
-    <?= $form->field($model, 'sector')->widget(Select2::className(), [
-                        'data' => $sectores,
-                        'options' => ['placeholder' => 'Selecciona un sector', 'value' => $model->secto->id,],
-                        'pluginOptions' => [
-                            'allowClear' => true
-                        ]
-                    ]); ?>
-    <?= $form->field($model, 'profesion_id')->widget(Select2::className(), [
-                        'data' => $profesiones,
-                        'options' => ['placeholder' => 'Selecciona una profesión',],
-                        'pluginOptions' => [
-                            'allowClear' => true
-                        ]
-                    ]); ?>
+            <?= $form->field($model, 'provincia')->widget(Select2::className(), [
+                'data' => $provincias,
+                'options' => ['placeholder' => 'Selecciona una provincia', 'value' => $model->provinci->id ],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ]
+            ]); ?>
+        </div>
+        <div class="col-md-6">
+
+            <?= $form->field($model, 'poblacion_id')->widget(Select2::className(), [
+                'data' => $poblaciones,
+                'options' => ['placeholder' => 'Selecciona una población'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ]
+            ]); ?>
+        </div>
+
+                        
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6">
+
+            <?= $form->field($model, 'sector')->widget(Select2::className(), [
+                'data' => $sectores,
+                'options' => ['placeholder' => 'Selecciona un sector', 'value' => $model->secto->id,],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ]
+            ]); ?>
+        </div>
+        <div class="col-md-6">
+
+            <?= $form->field($model, 'profesion_id')->widget(Select2::className(), [
+                'data' => $profesiones,
+                'options' => ['placeholder' => 'Selecciona una profesión',],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ]
+            ]); ?>
+        </div>
+    </div>
+
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Guardar' : 'Modificar', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Guardar' : 'Modificar', ['class' => 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
