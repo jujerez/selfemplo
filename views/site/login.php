@@ -61,6 +61,7 @@ $this->registerJs($js);
                     </div>
 
                     <p><?=Html::a('Registrarme ahora',Url::to(['usuarios/registrar']))?></p>
+                    <p><?=Html::a('¿Olvidaste tu contraseña?',Url::to(['usuarios/recuperar-contrasena']))?></p>
 
                 <?php ActiveForm::end(); ?>
             </div>
