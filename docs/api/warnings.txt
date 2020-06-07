@@ -562,49 +562,49 @@ Array
 
     [80] => Array
         (
-            [line] => 149
+            [line] => 150
             [file] => ./models/Usuarios.php
             [message] => No docblock for element 'findIdentity'
         )
 
     [81] => Array
         (
-            [line] => 160
+            [line] => 161
             [file] => ./models/Usuarios.php
             [message] => No docblock for element 'getId'
         )
 
     [82] => Array
         (
-            [line] => 170
+            [line] => 171
             [file] => ./models/Usuarios.php
             [message] => No docblock for element 'validatePassword'
         )
 
     [83] => Array
         (
-            [line] => 181
+            [line] => 182
             [file] => ./models/Usuarios.php
             [message] => No docblock for element 'findPorNombre'
         )
 
     [84] => Array
         (
-            [line] => 186
+            [line] => 198
             [file] => ./models/Usuarios.php
             [message] => No docblock for element 'beforeSave'
         )
 
     [85] => Array
         (
-            [line] => 204
+            [line] => 216
             [file] => ./models/Usuarios.php
             [message] => No docblock for element 'afterSave'
         )
 
     [86] => Array
         (
-            [line] => 242
+            [line] => 254
             [file] => ./models/Usuarios.php
             [message] => No docblock for element 'getCuentaActivada'
         )

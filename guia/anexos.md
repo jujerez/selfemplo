@@ -74,6 +74,14 @@
 
 ![Pruebas Codeception](images/anexos/tests-funcionales.png)
 
+---
+
+### **([R26](https://github.com/jujerez/selfemplo/issues/26)) Codeclimate**
+
+![Pruebas Codeception](images/anexos/code-climate.png)
+
+---
+
 ### **([R38](https://github.com/jujerez/selfemplo/issues/25)) Despliegue en servidor local**
 
 ![Despliegue local](images/anexos/despliegue.jpg)
