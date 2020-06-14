@@ -149,7 +149,12 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
-    
+    /**
+     * Función para crear una cookie
+     *
+     * @param string $cadena
+     * @return void
+     */
     public function actionCookie($cadena='politica')
     {
         
@@ -157,7 +162,12 @@ class SiteController extends Controller
         return $this->redirect(Yii::$app->request->referrer);
          
     }
-
+    /**
+    * Función que valida el formulario para hacer la donacion, guarda los parametros en una 
+    * variable superglobal con dichos parametros y se revisan con el metodo "checkOut" de la Api Rest
+    *
+    * @return void
+    */
     public function actionDonar() 
     {
         $model = new DonarForm();
@@ -165,9 +175,8 @@ class SiteController extends Controller
         
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $cantidad = Yii::$app->request->post()['DonarForm']['cantidad'];
-            setcookie('total', $cantidad, time() + 60 );
-
-            $params = [
+            
+            $_SESSION['params'] = [
                 'method'=>'paypal',
                 'intent'=>'sale',
                 'order'=>[
@@ -188,7 +197,7 @@ class SiteController extends Controller
                 ]
             ];
             
-            Yii::$app->PayPalRestApi->checkOut($params);
+            Yii::$app->PayPalRestApi->checkOut($_SESSION['params']);
             
         }
 
@@ -199,27 +208,36 @@ class SiteController extends Controller
 
     }
 
-    
+    /**
+     * Función que recibe la respuesta de Paypal tras hacer una donación y procesa la donación
+     * a traves del metodo "processPayment" de la Api Rest
+     *
+     * @return void
+     */
     public function actionMakePayment()
     {
-      
-        $params = [
-            'order'=>[
-                'description'=>'Donación',
-                'subtotal'=>20,
-                'shippingCost'=>0,
-                'total'=>20,
-                'currency'=>'EUR',
-            ]
-        ];
-        // In case of payment success this will return the payment object that contains all information about the order
-        // In case of failure it will return Null
- 
-        $response = Json::decode(Yii::$app->PayPalRestApi->processPayment($params));
+       $params = $_SESSION['params'];
+       
+        if (isset(Yii::$app->request->get()['success']) && Yii::$app->request->get()['success'] == 'true') {
+            Yii::$app->PayPalRestApi->processPayment($params);
+            unset($params);
 
-        return $this->render('make-payment', [
-            'response' => $response
-        ]);
+            Yii::$app->session->setFlash('success', 'Donación realizada con exito');
+            return $this->redirect('/site/gracias');
+        } else {
+            Yii::$app->session->setFlash('danger', 'Ocurrio un error inesperado, intentelo de nuevo');
+            return $this->redirect('/site/donar');
+        }
+    }
+
+    /**
+     *  Muestra la página "Gracias" tras hacer una donación
+     *
+     * @return void
+     */
+    public function actionGracias() {
+
+        return $this->render('gracias');
 
     }
 
